@@ -1,18 +1,11 @@
-### Lab Coordinator :
+EMPTY
+<!-- Remove all lines above this line before making changes to the file -->
+### Subject Matter Experts
+| SNo. | Name | Email | Institute | ID |
+| :---: | :---: | :---: | :---: | :---: |
+| 1 | name | email | institute | id |
 
-| SNo. | Name | Institute |
-| :--: | :-- | :-------: |
-|  1   | Prof. Suresh Bhalla | IIT Delhi |
-
-### Lab Developers (Coding):
-
-| SNo. | Name | Institute |
-| :--: | :-- | :-------: |
-|  1   | Sayed Sameer hasan | IIT Delhi |
-
-### Content Developers (Subject matter):
-
-| SNo. | Name | Institute |
-| :--: | :-- | :-------: |
-|  1   | Prof. Suresh Bhalla | IIT Delhi |
-|  2   | Sayed Sameer Hasan | IIT Delhi |
+### Developers
+| SNo. | Name | Email | Institute | ID |
+| :---: | :---: | :---: | :---: | :---: |
+| 1 | name | email | institute | id |
