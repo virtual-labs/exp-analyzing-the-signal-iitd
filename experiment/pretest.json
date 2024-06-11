@@ -1,38 +1,82 @@
 {
   "version": 2.0,
-  "questions": [
-    {
-      "question": "This is a Sample Question 1?",
+  "questions": [{
+      "question": "1. The vertical distance between the axis of the beam before and after loading at a point is called as?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": " Deformation",
+        "b": "Deflection",
+        "c": "Slope",
+        "d": "None of the above"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+
+        "b": "The vertical distance between the axis of a beam before and after loading at a point is typically referred to as the deflection."
+
       },
-      "correctAnswer": "a",
+      "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "2. Which of the following is not an assumption of the slope deflection method?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": " Elastic behavior of materials",
+        "b": "Plain section section remains plain",
+        "c": "Large deformations",
+        "d": "Small deformations"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+
+        "c": "Explanation 2"
+
       },
       "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "3. Slope deflection method is _________",
+      "answers": {
+        "a": "Displacement method",
+        "b": "Force method  ",
+        "c": "Both a & b",
+        "d": "Neither a & b "
+      },
+      "explanations": {
+        "b": "Slope deflection method is a displacement method useful for analyzing statically indeterminate structures, where traditional equilibrium equations alone are insufficient to determine all the internal forces and reactions."
+
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "4. Slope deflection method can be used to analyse which of the following?",
+      "answers": {
+        "a": "Statically determinate structures",
+        "b": "Statically indeterminate structures",
+        "c": "Unstable structures",
+        "d": "Simply supported structures"
+      },
+      "explanations": {
+
+        "b": "Slope deflection method is a displacement method used to analyse statically indeterminate structures "
+
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "5. The slope deflection method is a _______.",
+      "answers": {
+        "a": "Numerical technique",
+        "b": "Analytical technique",
+        "c": "Empirical method",
+        "d": "Experimental method"
+      },
+      "explanations": {
+
+        "b": "The slope deflection method relies on equilibrium equations and compatibility conditions to solve for unknown displacements and rotations. By considering the relationships between moments, rotations, and slopes."
+
+      },
+      "correctAnswer": "b",
       "difficulty": "beginner"
     }
   ]
