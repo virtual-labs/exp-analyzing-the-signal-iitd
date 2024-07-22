@@ -1,0 +1,357 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Virtual Labs</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+  <body>
+    <!-- sidebar and body -->
+    <div class="flex min-h-[80vh]">
+      <div class="px-6 pb-6 flex-1">
+        <!--  -->
+        <div class="flex max-lg:flex-col mt-5 items-center gap-x-8 gap-y-2">
+          <div class="flex-1">
+            <div class="flex items-center gap-2">
+              <label
+                for="delay-input"
+                class="text-[#2c99ce] font-medium"
+                >Delay (seconds): </label
+              >
+              <input
+                class="border ml-5 border-black px-2 py-1 rounded-sm"
+                type="number"
+                id="delay-input"
+                value="1"
+              />
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2">
+              <label for="signal-type" class="text-[#2c99ce] font-medium"
+                >Select Signal Type:</label
+              >
+              <select
+                class="border border-black px-2 py-[3px] ml-6 rounded-sm"
+                id="signal-type" onchange="toggleCustomInput()"
+              >
+              <option value="sine">Sine</option>
+              <option value="cosine">Cosine</option>
+              <option value="impulse">Impulse</option>
+              <option value="gaussian">Gaussian</option>
+              <option value="custom">Custom</option>
+              </select>
+            </div>
+          </div>
+          <div class="flex-1">
+            <input id="custom-function" style="display:none;" type="text" class="border ml-5 border-black px-2 py-1 w-56 rounded-sm" placeholder="Enter custom function of x" >
+            <div id="frequency-input" style="display: none;" class="flex  items-center gap-2">
+              <label
+                for="frequency"
+                class="text-[#2c99ce] font-medium"
+                >Frequency (Hz):</label
+              >
+              <input
+                class="border ml-5 border-black px-2 py-1 rounded-sm"
+                type="number"
+                id="frequency"
+                value="1"
+              />
+            </div>
+          </div>
+
+        </div>
+        
+        <div class="mt-4 border-t-2">
+          <div class="flex flex-col">
+            <div class="flex justify-center pt-4">
+              <button
+                class="bg-blue-500 text-white rounded-md px-2 py-1"
+                class="button"
+                onclick="updatePlots()"
+              >
+                Simulate
+              </button>
+            </div>
+            <div class="flex justify-center items-center">
+              <div id="input-signal" style="width: 600px; height: 400px;"></div>
+              <div id="delayed-signal" style="width: 600px; height: 400px;"></div>
+            </div>
+            <div class="flex justify-center items-center">
+              <div id="fft-original" style="width: 600px; height: 400px;"></div>
+              <div id="fft-delayed" style="width: 600px; height: 400px;"></div>
+            </div>
+            <div class="flex justify-center items-center">
+              <div id="phase-original" style="width: 600px; height: 400px;"></div>
+              <div id="phase-delayed" style="width: 600px; height: 400px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function toggleCustomInput() {
+          const signalType = document.getElementById('signal-type').value;
+          const customFunctionInput = document.getElementById('custom-function');
+          const frequencyInput = document.getElementById('frequency-input');
+          
+          if (signalType === 'custom') {
+              customFunctionInput.style.display = 'inline';
+              frequencyInput.style.display = 'none';
+          } else if (signalType === 'sine' || signalType === 'cosine') {
+              customFunctionInput.style.display = 'none';
+              frequencyInput.style.display = 'inline';
+          } else {
+              customFunctionInput.style.display = 'none';
+              frequencyInput.style.display = 'none';
+          }
+      }
+
+      function createCustomFunction(expression) {
+          expression = expression.replace(/exp\(([^)]+)\)/g, 'Math.exp($1)');
+          expression = expression.replace(/e\^([^)]+)/g, 'Math.exp($1)');
+          expression = expression.replace(/\be\b/g, 'Math.E');
+          return new Function('x', `return ${expression}`);
+      }
+
+      function sine(x, frequency) {
+          return Math.sin(2 * Math.PI * frequency * x);
+      }
+
+      function cosine(x, frequency) {
+          return Math.cos(2 * Math.PI * frequency * x);
+      }
+
+      function impulse(x) {
+          return x === 0 ? 1 : 0;
+      }
+
+      function gaussian(x) {
+          return Math.exp(-x * x);
+      }
+
+      function generateSignal(type, length, sampleRate, frequency, customFunc = null) {
+          const signal = new Array(length);
+          const step = 1 / sampleRate;
+          for (let i = 0; i < length; i++) {
+              const t = i * step;
+              switch (type) {
+                  case 'sine':
+                      signal[i] = sine(t, frequency);
+                      break;
+                  case 'cosine':
+                      signal[i] = cosine(t, frequency);
+                      break;
+                  case 'impulse':
+                      signal[i] = impulse(t);
+                      break;
+                  case 'gaussian':
+                      signal[i] = gaussian(t - length / (2 * sampleRate));
+                      break;
+                  case 'custom':
+                      signal[i] = customFunc(t);
+                      break;
+                  default:
+                      signal[i] = 0;
+              }
+          }
+          return signal;
+      }
+
+      function toComplexArray(realArray) {
+          return realArray.map(value => ({ re: value, im: 0 }));
+      }
+
+      function padToNextPowerOf2(arr) {
+          const len = arr.length;
+          const nextPowerOf2 = Math.pow(2, Math.ceil(Math.log2(len)));
+          const paddedArray = new Array(nextPowerOf2).fill(0);
+          for (let i = 0; i < len; i++) {
+              paddedArray[i] = arr[i];
+          }
+          return paddedArray;
+      }
+
+      function fft(input) {
+          const N = input.length;
+          if (N <= 1) {
+              return input;
+          }
+
+          const halfN = N / 2;
+          const even = fft(input.filter((_, i) => i % 2 === 0));
+          const odd = fft(input.filter((_, i) => i % 2 !== 0));
+
+          const results = new Array(N).fill(0).map(() => ({ re: 0, im: 0 }));
+
+          for (let k = 0; k < halfN; k++) {
+              const exp = -2 * Math.PI * k / N;
+              const cosExp = Math.cos(exp);
+              const sinExp = Math.sin(exp);
+
+              const oddk = odd[k] || { re: 0, im: 0 };
+              const tpre = cosExp * oddk.re - sinExp * oddk.im;
+              const tpim = cosExp * oddk.im + sinExp * oddk.re;
+
+              const evenk = even[k];
+
+              results[k] = {
+                  re: evenk.re + tpre,
+                  im: evenk.im + tpim
+              };
+
+              results[k + halfN] = {
+                  re: evenk.re - tpre,
+                  im: evenk.im - tpim
+              };
+          }
+
+          return results;
+      }
+
+      function delaySignal(signal, delaySeconds, sampleRate) {
+          const delaySamples = Math.floor(delaySeconds * sampleRate);
+          const delayedSignal = new Array(signal.length).fill(0);
+          for (let i = 0; i < signal.length; i++) {
+              if (i - delaySamples >= 0) {
+                  delayedSignal[i] = signal[i - delaySamples];
+              }
+          }
+          return delayedSignal;
+      }
+
+      function getMagnitudes(fftResult) {
+          return fftResult.map(({ re, im }) => Math.sqrt(re * re + im * im));
+      }
+
+      function getPhases(fftResult) {
+          return fftResult.map(({ re, im }) => Math.atan2(im, re));
+      }
+
+      const sampleRate = 1024; // Sample rate in Hz
+      const duration = 5; // Duration in seconds
+
+      function updatePlots() {
+          const signalType = document.getElementById('signal-type').value;
+          const customFunctionInput = document.getElementById('custom-function').value;
+          const frequencyInput = parseFloat(document.getElementById('frequency').value);
+          const delayInput = document.getElementById('delay-input').value;
+          const delaySeconds = parseFloat(delayInput);
+
+          const length = sampleRate * duration;
+          const customFunc = signalType === 'custom' ? createCustomFunction(customFunctionInput) : null;
+          const signal = generateSignal(signalType, length, sampleRate, frequencyInput, customFunc);
+
+          const delayedSignal = delaySignal(signal, delaySeconds, sampleRate);
+
+          const complexSignal = toComplexArray(padToNextPowerOf2(signal));
+          const complexDelayedSignal = toComplexArray(padToNextPowerOf2(delayedSignal));
+
+          const fftSignal = fft(complexSignal);
+          const fftDelayedSignal = fft(complexDelayedSignal);
+
+          const fftSignalMagnitudes = getMagnitudes(fftSignal);
+          const fftDelayedSignalMagnitudes = getMagnitudes(fftDelayedSignal);
+
+          const fftSignalPhases = getPhases(fftSignal);
+          const fftDelayedSignalPhases = getPhases(fftDelayedSignal);
+
+          // Clear existing plots
+          Plotly.purge('input-signal');
+          Plotly.purge('delayed-signal');
+          Plotly.purge('fft-original');
+          Plotly.purge('fft-delayed');
+          Plotly.purge('phase-original');
+          Plotly.purge('phase-delayed');
+
+          // Plot updated graphs
+          Plotly.newPlot('input-signal', [
+              {
+                  x: Array.from({ length }, (_, i) => i / sampleRate),
+                  y: signal,
+                  type: 'scatter',
+                  mode: 'lines',
+                  name: 'Original Signal'
+              }
+          ], {
+              title: 'Original Signal',
+              xaxis: { title: 'Time (s)' },
+              yaxis: { title: 'Amplitude' }
+          });
+
+          Plotly.newPlot('delayed-signal', [
+              {
+                  x: Array.from({ length }, (_, i) => i / sampleRate),
+                  y: delayedSignal,
+                  type: 'scatter',
+                  mode: 'lines',
+                  name: 'Delayed Signal'
+              }
+          ], {
+              title: 'Delayed Signal',
+              xaxis: { title: 'Time (s)' },
+              yaxis: { title: 'Amplitude' }
+          });
+
+          Plotly.newPlot('fft-original', [
+              {
+                  x: Array.from({ length: fftSignalMagnitudes.length / 2 }, (_, i) => i / (fftSignalMagnitudes.length / sampleRate)),
+                  y: fftSignalMagnitudes.slice(0, fftSignalMagnitudes.length / 2),
+                  type: 'scatter',
+                  mode: 'lines',
+                  name: 'FFT of Original Signal'
+              }
+          ], {
+              title: 'FFT of Original Signal',
+              xaxis: { title: 'Frequency (Hz)' },
+              yaxis: { title: 'Magnitude' }
+          });
+
+          Plotly.newPlot('fft-delayed', [
+              {
+                  x: Array.from({ length: fftDelayedSignalMagnitudes.length / 2 }, (_, i) => i / (fftDelayedSignalMagnitudes.length / sampleRate)),
+                  y: fftDelayedSignalMagnitudes.slice(0, fftDelayedSignalMagnitudes.length / 2),
+                  type: 'scatter',
+                  mode: 'lines',
+                  name: 'FFT of Delayed Signal'
+              }
+          ], {
+              title: 'FFT of Delayed Signal',
+              xaxis: { title: 'Frequency (Hz)' },
+              yaxis: { title: 'Magnitude' }
+          });
+
+          Plotly.newPlot('phase-original', [
+              {
+                  x: Array.from({ length: fftSignalPhases.length / 2 }, (_, i) => i / (fftSignalPhases.length / sampleRate)),
+                  y: fftSignalPhases.slice(0, fftSignalPhases.length / 2),
+                  type: 'scatter',
+                  mode: 'lines',
+                  name: 'Phase of Original Signal'
+              }
+          ], {
+              title: 'Phase of Original Signal',
+              xaxis: { title: 'Frequency (Hz)' },
+              yaxis: { title: 'Phase (radians)' }
+          });
+
+          Plotly.newPlot('phase-delayed', [
+              {
+                  x: Array.from({ length: fftDelayedSignalPhases.length / 2 }, (_, i) => i / (fftDelayedSignalPhases.length / sampleRate)),
+                  y: fftDelayedSignalPhases.slice(0, fftDelayedSignalPhases.length / 2),
+                  type: 'scatter',
+                  mode: 'lines',
+                  name: 'Phase of Delayed Signal'
+              }
+          ], {
+              title: 'Phase of Delayed Signal',
+              xaxis: { title: 'Frequency (Hz)' },
+              yaxis: { title: 'Phase (radians)' }
+          });
+      }
+
+      updatePlots();
+    </script>
+  </body>
+</html>

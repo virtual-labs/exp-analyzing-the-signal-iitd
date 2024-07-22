@@ -1,0 +1,171 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Virtual Labs</title>
+    <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min/plotly.min.js"></script>
+  </head>
+  <body>
+    <!-- sidebar and body -->
+    <div class="flex min-h-[80vh]">
+      <div class="px-6 pb-6 flex-1">
+        <div class="flex max-lg:flex-col mt-5 items-center gap-x-8 gap-y-2">
+            <div class="flex items-center gap-2">
+              <label
+                for="fftPoints"
+                class="text-[#2c99ce] font-medium"
+                >Number of FFT Points (N):</label
+              >
+              <input
+                class="border ml-5 border-black px-2 py-1 rounded-sm"
+                type="number"
+                id="fftPoints"
+                value="1024"
+              />
+            </div>
+          <div class="flex justify-center">
+            <button
+              class="bg-blue-500 text-white rounded-md px-2 py-1"
+              class="button"
+              onclick="updatePlot()"
+            >
+              Simulate
+            </button>
+          </div>
+        </div>
+        <div class="mt-2 border-t-2">
+            <div class="flex justify-center items-center">
+              <div id="impulsePlot" style="width: 600px; height: 400px;"></div>
+              <div id="fftPlot" style="width: 600px; height: 400px;"></div>
+            </div>
+            <div class="flex justify-center items-center">
+              <div id="phasePlot" style="width: 600px; height: 400px;"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function fft(real, imag, N) {
+          const n = real.length;
+          if (n <= 1 || n !== N) return;
+
+          const half = n / 2;
+          const evenReal = new Array(half);
+          const evenImag = new Array(half);
+          const oddReal = new Array(half);
+          const oddImag = new Array(half);
+
+          for (let i = 0; i < half; ++i) {
+              evenReal[i] = real[i * 2];
+              evenImag[i] = imag[i * 2];
+              oddReal[i] = real[i * 2 + 1];
+              oddImag[i] = imag[i * 2 + 1];
+          }
+
+          fft(evenReal, evenImag, half);
+          fft(oddReal, oddImag, half);
+
+          for (let k = 0; k < half; ++k) {
+              const t = -2 * Math.PI * k / n;
+              const cos = Math.cos(t);
+              const sin = Math.sin(t);
+              const tre = cos * oddReal[k] - sin * oddImag[k];
+              const tim = sin * oddReal[k] + cos * oddImag[k];
+
+              real[k] = evenReal[k] + tre;
+              imag[k] = evenImag[k] + tim;
+              real[k + half] = evenReal[k] - tre;
+              imag[k + half] = evenImag[k] - tim;
+          }
+      }
+
+      // Function to update the plot based on user input
+      function updatePlot() {
+          const N = parseInt(document.getElementById('fftPoints').value);
+          const sampleRate = 1024; // Sample rate in Hz
+
+          // Generate the time values in seconds
+          const t = Array.from({ length: N }, (_, i) => i / sampleRate);
+
+          // Generate the impulse function signal
+          const realImpulse = new Array(N).fill(0);
+          realImpulse[0] = 1; // Impulse at the first sample
+          const imagImpulse = new Array(N).fill(0);
+
+          // Perform the FFT
+          const realFFT = [...realImpulse];
+          const imagFFT = [...imagImpulse];
+          fft(realFFT, imagFFT, N);
+
+          // Extract the magnitude spectrum for FFT
+          const magnitudes = new Array(N);
+          const phases = new Array(N).fill(0); // Phase is zero for an impulse response
+          for (let i = 0; i < N; i++) {
+              magnitudes[i] = Math.sqrt(realFFT[i] ** 2 + imagFFT[i] ** 2);
+          }
+
+          // Prepare data for plotting
+          const frequencies = Array.from({ length: N / 2 }, (_, i) => i * sampleRate / N);
+          const magnitudesHalf = magnitudes.slice(0, N / 2);
+          const phasesHalf = phases.slice(0, N / 2);
+
+          // Plot the impulse response
+          const impulseTrace = {
+              x: t,
+              y: realImpulse,
+              type: 'scatter',
+              mode: 'lines',
+              line: { color: 'green' },
+              name: 'Impulse Response'
+          };
+
+          // Plot the FFT magnitude spectrum
+          const fftTrace = {
+              x: frequencies,
+              y: magnitudesHalf,
+              type: 'scatter',
+              mode: 'lines',
+              line: { color: 'blue' },
+              name: 'FFT Magnitude Spectrum'
+          };
+
+          // Plot the FFT phase spectrum
+          const phaseTrace = {
+              x: frequencies,
+              y: phasesHalf,
+              type: 'scatter',
+              mode: 'lines',
+              line: { color: 'red' },
+              name: 'FFT Phase Spectrum'
+          };
+
+          const impulseLayout = {
+              title: 'Impulse Response',
+              xaxis: { title: 'Time (Seconds)' },
+              yaxis: { title: 'Amplitude', range: [-0.1, 1.1] }
+          };
+
+          const fftLayout = {
+              title: 'Fourier Transform Magnitude Spectrum',
+              xaxis: { title: 'Frequency (Hz)' },
+              yaxis: { title: 'Magnitude' }
+          };
+
+          const phaseLayout = {
+              title: 'Fourier Transform Phase Spectrum',
+              xaxis: { title: 'Frequency (Hz)' },
+              yaxis: { title: 'Phase (radians)' }
+          };
+
+          // Plotly: First plot impulse response, then FFT plot, then phase plot
+          Plotly.newPlot('impulsePlot', [impulseTrace], impulseLayout);
+          Plotly.newPlot('fftPlot', [fftTrace], fftLayout);
+          Plotly.newPlot('phasePlot', [phaseTrace], phaseLayout);
+      }
+
+      // Initial plot generation on page load
+      updatePlot();
+    </script>
+  </body>
+</html>
