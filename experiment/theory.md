@@ -1074,63 +1074,63 @@ div.WordSection1
 	mso-list-template-ids:1226579800 -728051014 -1393493620 -109427048 -1236381790 1214159194 -1426549336 -494005080 -1269367442 -21220692;}
 @list l4:level1
 	{mso-level-number-format:bullet;
-	mso-level-text:•;
+	mso-level-text:â€¢;
 	mso-level-tab-stop:36.0pt;
 	mso-level-number-position:left;
 	text-indent:-18.0pt;
 	font-family:"Times New Roman","serif";}
 @list l4:level2
 	{mso-level-number-format:bullet;
-	mso-level-text:•;
+	mso-level-text:â€¢;
 	mso-level-tab-stop:72.0pt;
 	mso-level-number-position:left;
 	text-indent:-18.0pt;
 	font-family:"Times New Roman","serif";}
 @list l4:level3
 	{mso-level-number-format:bullet;
-	mso-level-text:•;
+	mso-level-text:â€¢;
 	mso-level-tab-stop:108.0pt;
 	mso-level-number-position:left;
 	text-indent:-18.0pt;
 	font-family:"Times New Roman","serif";}
 @list l4:level4
 	{mso-level-number-format:bullet;
-	mso-level-text:•;
+	mso-level-text:â€¢;
 	mso-level-tab-stop:144.0pt;
 	mso-level-number-position:left;
 	text-indent:-18.0pt;
 	font-family:"Times New Roman","serif";}
 @list l4:level5
 	{mso-level-number-format:bullet;
-	mso-level-text:•;
+	mso-level-text:â€¢;
 	mso-level-tab-stop:180.0pt;
 	mso-level-number-position:left;
 	text-indent:-18.0pt;
 	font-family:"Times New Roman","serif";}
 @list l4:level6
 	{mso-level-number-format:bullet;
-	mso-level-text:•;
+	mso-level-text:â€¢;
 	mso-level-tab-stop:216.0pt;
 	mso-level-number-position:left;
 	text-indent:-18.0pt;
 	font-family:"Times New Roman","serif";}
 @list l4:level7
 	{mso-level-number-format:bullet;
-	mso-level-text:•;
+	mso-level-text:â€¢;
 	mso-level-tab-stop:252.0pt;
 	mso-level-number-position:left;
 	text-indent:-18.0pt;
 	font-family:"Times New Roman","serif";}
 @list l4:level8
 	{mso-level-number-format:bullet;
-	mso-level-text:•;
+	mso-level-text:â€¢;
 	mso-level-tab-stop:288.0pt;
 	mso-level-number-position:left;
 	text-indent:-18.0pt;
 	font-family:"Times New Roman","serif";}
 @list l4:level9
 	{mso-level-number-format:bullet;
-	mso-level-text:•;
+	mso-level-text:â€¢;
 	mso-level-tab-stop:324.0pt;
 	mso-level-number-position:left;
 	text-indent:-18.0pt;
@@ -1339,7 +1339,7 @@ src="Fourier_Transform_files/image004.png" v:shapes="_x0000_i1025"><![endif]></s
 style='mso-bidi-font-style:normal'><span style='font-size:14.0pt;line-height:
 107%;font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman";
 mso-fareast-theme-font:minor-fareast;color:#040C28'><span
-style='mso-spacerun:yes'> </span>denotes the signal in the frequency domain.</span></i><i
+style='mso-spacerun:yes'>Â </span>denotes the signal in the frequency domain.</span></i><i
 style='mso-bidi-font-style:normal'><span style='font-size:14.0pt;line-height:
 107%;font-family:"Times New Roman","serif"'><o:p></o:p></span></i></p>
 
@@ -1412,7 +1412,7 @@ Fourier transform is realized by<o:p></o:p></span></p>
 
 <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif"'>For complex numbers x<sub>0</sub>,
-x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, <span class=GramE>… ,</span> x<sub>n-1</sub><o:p></o:p></span></p>
+x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, <span class=GramE>â€¦ ,</span> x<sub>n-1</sub><o:p></o:p></span></p>
 
 <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif"'>X[k] = </span><!--[if gte msEquation 12]><m:oMath><m:nary><m:naryPr><m:chr
@@ -1446,12 +1446,12 @@ mso-ansi-language:EN-IN;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><!--
 src="Fourier_Transform_files/image008.png" v:shapes="_x0000_i1025"><![endif]></span><![endif]><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'><span
-style='mso-spacerun:yes'> </span><span class=SpellE><span class=GramE><i
+style='mso-spacerun:yes'>Â </span><span class=SpellE><span class=GramE><i
 style='mso-bidi-font-style:normal'>W<sub>N</sub><sup>kn</sup></i></span></span><span
 class=GramE><sup> </sup><span style='mso-fareast-font-family:Calibri;
 mso-fareast-theme-font:minor-latin'>,</span></span></span><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'><span
-style='mso-spacerun:yes'>  </span>where k=1,2,3,..,N-1<o:p></o:p></span></p>
+style='mso-spacerun:yes'>Â  </span>where k=1,2,3,..,N-1<o:p></o:p></span></p>
 
 <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif"'>Where </span><span
@@ -1459,7 +1459,7 @@ class=GramE><i style='mso-bidi-font-style:normal'><span style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif";mso-fareast-font-family:
 "Times New Roman";mso-fareast-theme-font:minor-fareast'>W<sub>N</sub><sup> </sup></span></i><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'><span
-style='mso-spacerun:yes'> </span>is</span></span><span style='font-size:14.0pt;
+style='mso-spacerun:yes'>Â </span>is</span></span><span style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif"'> the n<sup>th</sup>
 root of unity given by<o:p></o:p></span></p>
 
@@ -1494,7 +1494,7 @@ mso-ansi-language:EN-IN;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><!--
 src="Fourier_Transform_files/image010.png" v:shapes="_x0000_i1025"><![endif]></span><![endif]><em><b><sub><span
 style='font-size:14.0pt;line-height:107%;mso-fareast-font-family:"Times New Roman";
 mso-fareast-theme-font:minor-fareast;color:#5F6368;background:white;font-style:
-normal'><span style='mso-spacerun:yes'> </span></span></sub></b></em><em><b><span
+normal'><span style='mso-spacerun:yes'>Â </span></span></sub></b></em><em><b><span
 style='font-size:14.0pt;line-height:107%;mso-fareast-font-family:"Times New Roman";
 mso-fareast-theme-font:minor-fareast;color:#5F6368;background:white;font-style:
 normal'>)<o:p></o:p></span></b></em></p>
@@ -1527,7 +1527,7 @@ length N/2. <o:p></o:p></span></p>
 <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif";mso-fareast-font-family:
 "Times New Roman";mso-fareast-theme-font:minor-fareast'>For complex numbers
-x[n] where, n = 1, 2, 3<span class=GramE>, …,</span> n-1<o:p></o:p></span></p>
+x[n] where, n = 1, 2, 3<span class=GramE>, â€¦,</span> n-1<o:p></o:p></span></p>
 
 <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif";mso-fareast-font-family:
@@ -1562,7 +1562,7 @@ mso-ansi-language:EN-IN;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><!--
 src="Fourier_Transform_files/image008.png" v:shapes="_x0000_i1025"><![endif]></span><![endif]><i
 style='mso-bidi-font-style:normal'><span style='font-size:14.0pt;line-height:
 107%;font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman";
-mso-fareast-theme-font:minor-fareast'><span style='mso-spacerun:yes'> </span><span
+mso-fareast-theme-font:minor-fareast'><span style='mso-spacerun:yes'>Â </span><span
 class=SpellE>W<sub>N</sub><sup>kn</sup></span> </span></i><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>=
@@ -1933,7 +1933,7 @@ principle of superposition<o:p></o:p></span></p>
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif"'>If F(x<sub>1</sub>(t)) = X<sub>1</sub>(<span
 style='color:#040C28'>&#969;)<span class=GramE>,<span
-style='mso-spacerun:yes'>  </span><span style='color:windowtext'>F</span></span></span>(x<sub>2</sub>(t))
+style='mso-spacerun:yes'>Â  </span><span style='color:windowtext'>F</span></span></span>(x<sub>2</sub>(t))
 = X<sub>2</sub>(<span style='color:#040C28'>&#969;)<o:p></o:p></span></span></p>
 
 <p class=MsoNormal style='tab-stops:278.6pt'><span style='font-size:14.0pt;
@@ -1943,7 +1943,7 @@ line-height:107%;font-family:"Times New Roman","serif"'>x<sub>1</sub>(t) + <span
 style='color:#040C28'>a<sub>2</sub></span>x<sub>2</sub>(t)] = <span
 style='color:#040C28'>a<sub>1</sub></span>X<sub>1</sub>(<span style='color:
 #040C28'>&#969;) + a<sub>2</sub></span>X<sub>2</sub>(<span style='color:#040C28'>&#969;)<span
-style='mso-tab-count:1'>    </span><o:p></o:p></span></span></p>
+style='mso-tab-count:1'>Â Â Â  </span><o:p></o:p></span></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";color:#040C28'><o:p>&nbsp;</o:p></span></p>
@@ -1963,11 +1963,11 @@ style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'>
 style='color:#040C28'>&#969;)<o:p></o:p></span></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
-"Times New Roman","serif";color:#040C28'>If ‘a’ is real constant then <o:p></o:p></span></p>
+"Times New Roman","serif";color:#040C28'>If â€˜aâ€™ is real constant then <o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";color:#040C28'><span
-style='mso-spacerun:yes'> </span></span><span style='font-size:14.0pt;
+style='mso-spacerun:yes'>Â </span></span><span style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif"'>F(<span class=GramE>x(</span>at))
 = </span><!--[if gte msEquation 12]><m:oMath><m:f><m:fPr><span
    style='font-size:14.0pt;mso-ansi-font-size:14.0pt;mso-bidi-font-size:14.0pt;
@@ -1995,7 +1995,7 @@ AR-SA'><!--[if gte vml 1]><v:shape id="_x0000_i1025" type="#_x0000_t75"
 </v:shape><![endif]--><![if !vml]><img width=17 height=35
 src="Fourier_Transform_files/image018.png" v:shapes="_x0000_i1025"><![endif]></span><![endif]><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'>X(<span
-style='color:#040C28'>&#969;),<span style='mso-spacerun:yes'>  </span><o:p></o:p></span></span></p>
+style='color:#040C28'>&#969;),<span style='mso-spacerun:yes'>Â  </span><o:p></o:p></span></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";color:#040C28'><o:p>&nbsp;</o:p></span></p>
@@ -2049,15 +2049,15 @@ color:#040C28'>Time domain convolution<o:p></o:p></span></b></p>
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif"'>F(x<sub>1</sub>(t)) = X<sub>1</sub>(<span
 style='color:#040C28'>&#969;)<span class=GramE>,<span
-style='mso-spacerun:yes'>  </span><span style='color:windowtext'>F</span></span></span>(x<sub>2</sub>(t))
+style='mso-spacerun:yes'>Â  </span><span style='color:windowtext'>F</span></span></span>(x<sub>2</sub>(t))
 = X<sub>2</sub>(<span style='color:#040C28'>&#969;)<o:p></o:p></span></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif"'>Then F(x<sub>1</sub>(t)* x<sub>2</sub>(t))<span
 style='color:#040C28'> </span>= X<sub>1</sub>(<span style='color:#040C28'>&#969;<span
 class=GramE>) .</span></span> X<sub>2</sub>(<span style='color:#040C28'>&#969;),<span
-style='mso-spacerun:yes'>  </span><span style='mso-spacerun:yes'>  </span>[‘*’
-– convolution sign)]<o:p></o:p></span></span></p>
+style='mso-spacerun:yes'>Â  </span><span style='mso-spacerun:yes'>Â Â </span>[â€˜*â€™
+â€“ convolution sign)]<o:p></o:p></span></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";color:#040C28'><o:p>&nbsp;</o:p></span></p>
@@ -2091,7 +2091,7 @@ mso-fareast-theme-font:minor-fareast;color:#5F6368;background:white;font-style:
 normal;mso-bidi-font-style:italic'>.</span></em><span style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif"'>X<sub>1</sub>(<span
 style='color:#040C28'>&#969;) *</span> X<sub>2</sub>(<span style='color:#040C28'>&#969;)<span
-style='mso-spacerun:yes'>      </span>[‘*’ – convolution sign)]</span><o:p></o:p></span></p>
+style='mso-spacerun:yes'>Â Â Â Â Â  </span>[â€˜*â€™ â€“ convolution sign)]</span><o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
@@ -2105,7 +2105,7 @@ style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'>
 Property<o:p></o:p></span></b></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
-"Times New Roman","serif"'>F(<span class=GramE>x(</span>t – t<sub>0</sub>)) = e<sup>-j<span
+"Times New Roman","serif"'>F(<span class=GramE>x(</span>t â€“ t<sub>0</sub>)) = e<sup>-j<span
 style='color:#040C28'>&#969;</span>t0 </sup>X(<span style='color:#040C28'>&#969;</span>)<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
@@ -2125,7 +2125,7 @@ style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif"'>F(<span class=GramE>x(</span>t) =<span
-style='mso-spacerun:yes'>  </span>X(t) = 2</span><!--[if gte msEquation 12]><m:oMath><em><span
+style='mso-spacerun:yes'>Â  </span>X(t) = 2</span><!--[if gte msEquation 12]><m:oMath><em><span
  style='font-size:14.0pt;line-height:107%;font-family:"Cambria Math","serif";
  color:#5F6368;background:white;font-style:normal'><m:r><m:rPr><m:scr m:val="roman"/><m:sty
     m:val="p"/></m:rPr>&#960;</m:r></span></em></m:oMath><![endif]--><![if !msEquation]><span
@@ -2141,7 +2141,7 @@ mso-ansi-language:EN-IN;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><!--
 src="Fourier_Transform_files/image020.png" v:shapes="_x0000_i1025"><![endif]></span><![endif]><em><span
 style='font-size:14.0pt;line-height:107%;mso-fareast-font-family:"Times New Roman";
 mso-fareast-theme-font:minor-fareast;color:#5F6368;background:white;font-style:
-normal;mso-bidi-font-style:italic'><span style='mso-spacerun:yes'> </span>x(-</span></em><span
+normal;mso-bidi-font-style:italic'><span style='mso-spacerun:yes'>Â </span>x(-</span></em><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 color:#040C28'>&#969;)<o:p></o:p></span></p>
 
@@ -2185,7 +2185,7 @@ mso-ansi-language:EN-IN;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><!--
 src="Fourier_Transform_files/image022.png" v:shapes="_x0000_i1025"><![endif]></span><![endif]><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'><span
-style='mso-spacerun:yes'> </span>) </span><span style='font-size:14.0pt;
+style='mso-spacerun:yes'>Â </span>) </span><span style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif"'>=</span><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>
@@ -2365,13 +2365,13 @@ Property<o:p></o:p></span></b></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif"'>F{<span class=GramE>x(</span>t)<span class=SpellE><i
-style='mso-bidi-font-style:normal'>cosat</i></span>} = ½ {X(<span
+style='mso-bidi-font-style:normal'>cosat</i></span>} = Â½ {X(<span
 style='color:#040C28'>&#969; + a</span>) + X(<span style='color:#040C28'>&#969;
 - a</span>)}<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif"'>F{<span class=GramE>x(</span>t)<span class=SpellE><i
-style='mso-bidi-font-style:normal'>sinat</i></span>} = ½ {X(<span
+style='mso-bidi-font-style:normal'>sinat</i></span>} = Â½ {X(<span
 style='color:#040C28'>&#969; + a</span>) - X(<span style='color:#040C28'>&#969;
 - a</span>)}<o:p></o:p></span></p>
 
@@ -2385,7 +2385,7 @@ style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
 </span></span></span><![endif]><span style='font-size:14.0pt;line-height:107%;
 font-family:"Times New Roman","serif"'>If the Fourier transform <span
 class=SpellE>of f</span>(x) is F(k), then f<sup>*</sup>(x) &lt;=&gt;<span
-style='mso-spacerun:yes'>  </span>F<sup>*</sup>(-k)<o:p></o:p></span></p>
+style='mso-spacerun:yes'>Â  </span>F<sup>*</sup>(-k)<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif"'>As a consequence Fourier transform of a real
@@ -2406,7 +2406,7 @@ style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
 style='mso-list:Ignore'>11.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span></span></span></b><![endif]><b style='mso-bidi-font-weight:normal'><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'><span
-style='mso-spacerun:yes'> </span><span class=SpellE>Parseval’s</span> theorem <o:p></o:p></span></b></p>
+style='mso-spacerun:yes'>Â </span><span class=SpellE>Parsevalâ€™s</span> theorem <o:p></o:p></span></b></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif"'>Energy = </span><!--[if gte msEquation 12]><m:oMath><m:nary><m:naryPr><m:limLoc
@@ -2458,7 +2458,7 @@ src="Fourier_Transform_files/image028.png" v:shapes="_x0000_i1025"><![endif]></s
 style='mso-bidi-font-weight:normal'><span style='font-size:10.5pt;line-height:
 107%;mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast;
 color:#5F6368;background:white;mso-bidi-font-style:normal'><span
-style='mso-spacerun:yes'> </span></span></b></em><!--[if gte msEquation 12]><m:oMath><m:nary><m:naryPr><m:limLoc
+style='mso-spacerun:yes'>Â </span></span></b></em><!--[if gte msEquation 12]><m:oMath><m:nary><m:naryPr><m:limLoc
     m:val="subSup"/><span style='font-size:14.0pt;mso-ansi-font-size:14.0pt;
    mso-bidi-font-size:14.0pt;font-family:"Cambria Math","serif";mso-ascii-font-family:
    "Cambria Math";mso-hansi-font-family:"Cambria Math";mso-bidi-font-family:
@@ -2708,7 +2708,7 @@ mso-bidi-font-weight:bold'> (t) = 0 for t&lt;0<o:p></o:p></span></strong></p>
 font-family:"Palatino Linotype","serif";mso-bidi-font-family:"Times New Roman";
 mso-bidi-theme-font:minor-bidi;color:black;mso-themecolor:text1;background:
 white;font-weight:normal;mso-bidi-font-weight:bold'><span
-style='mso-spacerun:yes'>                                                           
+style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
 </span>= 1 for t &#8805;1</span></strong><b style='mso-bidi-font-weight:normal'><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 color:black;mso-themecolor:text1'><o:p></o:p></span></b></p>
@@ -2728,7 +2728,7 @@ color:#202122;background:white;font-weight:normal;mso-bidi-font-weight:bold'>
 "Times New Roman","serif"'> = </span><i style='mso-bidi-font-style:normal'><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'><span
-style='mso-spacerun:yes'> </span></span></i><!--[if gte msEquation 12]><m:oMath><m:nary><m:naryPr><m:limLoc
+style='mso-spacerun:yes'>Â </span></span></i><!--[if gte msEquation 12]><m:oMath><m:nary><m:naryPr><m:limLoc
     m:val="subSup"/><span style='font-size:14.0pt;mso-ansi-font-size:14.0pt;
    mso-bidi-font-size:14.0pt;font-family:"Cambria Math","serif";mso-ascii-font-family:
    "Cambria Math";mso-hansi-font-family:"Cambria Math";mso-bidi-font-family:
@@ -2788,7 +2788,7 @@ AR-SA'><!--[if gte vml 1]><v:shape id="_x0000_i1025" type="#_x0000_t75"
 src="Fourier_Transform_files/image046.png" v:shapes="_x0000_i1025"><![endif]></span><![endif]><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'><span
-style='mso-spacerun:yes'> </span></span><span style='font-size:14.0pt;
+style='mso-spacerun:yes'>Â </span></span><span style='font-size:14.0pt;
 line-height:107%;font-family:"Lucida Calligraphy";mso-fareast-font-family:"Times New Roman";
 mso-fareast-theme-font:minor-fareast;mso-bidi-font-family:"Times New Roman"'>F(</span><!--[if gte msEquation 12]><m:oMath><span
  style='font-size:14.5pt;line-height:107%;font-family:"Cambria Math","serif";
@@ -2864,7 +2864,7 @@ src="Fourier_Transform_files/image052.png" v:shapes="_x0000_i1025"><![endif]></s
 style='font-size:14.5pt;line-height:107%;font-family:"Lucida Calligraphy";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast;
 mso-bidi-font-family:"Times New Roman";color:#3D3D3D;background:#F9F9F9'><span
-style='mso-spacerun:yes'>  </span><o:p></o:p></span></p>
+style='mso-spacerun:yes'>Â  </span><o:p></o:p></span></p>
 
 <p class=MsoNormal><i style='mso-bidi-font-style:normal'><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
@@ -2874,7 +2874,7 @@ color:#3D3D3D;background:#F9F9F9'>[See the property of integration above]<o:p></
 <p class=MsoNormal><span style='font-size:14.5pt;line-height:107%;font-family:
 "Lucida Calligraphy";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
 minor-fareast;mso-bidi-font-family:"Times New Roman";color:#3D3D3D;background:
-#F9F9F9'><span style='mso-spacerun:yes'>           </span>= </span><!--[if gte msEquation 12]><m:oMath><m:f><m:fPr><span
+#F9F9F9'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â  </span>= </span><!--[if gte msEquation 12]><m:oMath><m:f><m:fPr><span
    style='font-size:14.0pt;mso-ansi-font-size:14.0pt;mso-bidi-font-size:14.0pt;
    font-family:"Cambria Math","serif";mso-ascii-font-family:"Cambria Math";
    mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast;
@@ -2902,7 +2902,7 @@ AR-SA'><!--[if gte vml 1]><v:shape id="_x0000_i1025" type="#_x0000_t75"
 src="Fourier_Transform_files/image046.png" v:shapes="_x0000_i1025"><![endif]></span><![endif]><span
 style='font-size:14.0pt;line-height:107%;font-family:"Lucida Calligraphy";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast;
-mso-bidi-font-family:"Times New Roman"'><span style='mso-spacerun:yes'> </span></span><span
+mso-bidi-font-family:"Times New Roman"'><span style='mso-spacerun:yes'>Â </span></span><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>+
 </span><!--[if gte msEquation 12]><m:oMath><em><b style='mso-bidi-font-weight:
@@ -2930,7 +2930,7 @@ mso-ansi-language:EN-IN;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><!--
 src="Fourier_Transform_files/image054.png" v:shapes="_x0000_i1025"><![endif]></span><![endif]><span
 style='font-size:14.5pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast;
-color:#3D3D3D;background:#F9F9F9'><span style='mso-spacerun:yes'>     
+color:#3D3D3D;background:#F9F9F9'><span style='mso-spacerun:yes'>Â Â Â Â Â 
 </span>[as </span><span class=GramE><span style='font-size:14.0pt;line-height:
 107%;font-family:"Lucida Calligraphy";mso-fareast-font-family:"Times New Roman";
 mso-fareast-theme-font:minor-fareast;mso-bidi-font-family:"Times New Roman"'>F(</span></span><!--[if gte msEquation 12]><m:oMath><span
@@ -3027,7 +3027,7 @@ style='color:#202124;background:white'>&#928;(t) = </span></span><strong><span
 style='font-size:14.0pt;line-height:107%;font-family:"Palatino Linotype","serif";
 mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi;
 color:#202122;background:white;font-weight:normal;mso-bidi-font-weight:bold'>&#947;
-(t + ½) - &#947;(t - ½)</span></strong><span style='font-size:14.0pt;
+(t + Â½) - &#947;(t - Â½)</span></strong><span style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
@@ -3047,11 +3047,11 @@ color:#040C28'><o:p></o:p></span></p>
 minor-fareast;color:#040C28'>For a function <span class=SpellE><span
 class=GramE>rect</span></span><span class=GramE>(</span>t) = </span><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
-color:#202124;background:white'>&#928;(t) = 1 for |t| &#8804; ½<o:p></o:p></span></p>
+color:#202124;background:white'>&#928;(t) = 1 for |t| &#8804; Â½<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";color:#202124;background:white'><span
-style='mso-spacerun:yes'>                                             </span>=
+style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  </span>=
 0 otherwise<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
@@ -3116,8 +3116,8 @@ mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                          
-</span><span class=GramE>=<span style='mso-spacerun:yes'>  </span></span></span><!--[if gte msEquation 12]><m:oMath><m:nary><m:naryPr><m:limLoc
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
+</span><span class=GramE>=<span style='mso-spacerun:yes'>Â  </span></span></span><!--[if gte msEquation 12]><m:oMath><m:nary><m:naryPr><m:limLoc
     m:val="subSup"/><span style='font-size:14.0pt;mso-ansi-font-size:14.0pt;
    mso-bidi-font-size:14.0pt;font-family:"Cambria Math","serif";mso-ascii-font-family:
    "Cambria Math";mso-hansi-font-family:"Cambria Math";mso-bidi-font-family:
@@ -3143,17 +3143,17 @@ src="Fourier_Transform_files/image062.png" v:shapes="_x0000_i1025"><![endif]></s
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>e
 <sup>-<span class=SpellE>j&#969;<span style='color:#040C28'>t</span></span></sup>
-<span class=SpellE>dt</span><span style='mso-spacerun:yes'>     </span>[as </span><span
+<span class=SpellE>dt</span><span style='mso-spacerun:yes'>Â Â Â Â  </span>[as </span><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
-color:#202124;background:white'>&#928;(t) = 1 for |t| &#8804; ½</span><span
+color:#202124;background:white'>&#928;(t) = 1 for |t| &#8804; Â½</span><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>]<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                           
-</span><span class=GramE>=<span style='mso-spacerun:yes'>  </span><span
-style='font-size:18.0pt;line-height:107%'>[</span></span>(e <sup>–<span
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
+</span><span class=GramE>=<span style='mso-spacerun:yes'>Â  </span><span
+style='font-size:18.0pt;line-height:107%'>[</span></span>(e <sup>â€“<span
 class=SpellE>j&#969;<span style='color:#040C28'>t</span></span></sup><span
 style='color:#040C28'>)/-</span><span class=SpellE>j&#969;</span></span><span
 style='font-size:18.0pt;line-height:107%;font-family:"Times New Roman","serif";
@@ -3166,17 +3166,17 @@ mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>
 <p class=MsoNormal><sup><span style='font-size:14.0pt;line-height:107%;
 font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman";
 mso-fareast-theme-font:minor-fareast'><span
-style='mso-spacerun:yes'>                                          </span></span></sup><span
+style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  </span></span></sup><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'><span
-style='mso-spacerun:yes'> </span>= [e <sup>–<span class=SpellE>j&#969;</span><span
+style='mso-spacerun:yes'>Â </span>= [e <sup>â€“<span class=SpellE>j&#969;</span><span
 style='color:#040C28'>/2</span></sup><span style='color:#040C28'> - </span>e <span
 class=SpellE><sup>j&#969;</sup></span><sup><span style='color:#040C28'>/2</span></sup><span
 style='color:#040C28'>] / -</span><span class=SpellE>j&#969;</span><o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                           
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
 </span>= [e <span class=SpellE><sup>j&#969;</sup></span><sup><span
 style='color:#040C28'>/2</span></sup><span style='color:#040C28'> - </span>e <sup>-<span
 class=SpellE>j&#969;</span><span style='color:#040C28'>/2</span></sup><span
@@ -3184,7 +3184,7 @@ style='color:#040C28'>] / </span><span class=SpellE>j&#969;</span><o:p></o:p></s
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                           
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
 </span>= 2/<span class=GramE>&#969; .</span> {[e <span class=SpellE><sup>j&#969;</sup></span><sup><span
 style='color:#040C28'>/2</span></sup><span style='color:#040C28'> - </span>e <sup>-<span
 class=SpellE>j&#969;</span><span style='color:#040C28'>/2</span></sup><span
@@ -3192,19 +3192,19 @@ style='color:#040C28'>] / 2</span>j}<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                           
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
 </span>= 2/<span class=GramE>&#969; .</span> <span class=GramE>sin(</span>&#969;<span
 style='color:#040C28'>/2</span>)<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                           
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
 </span>= {<span class=GramE>sin(</span>&#969;<span style='color:#040C28'>/2</span>)
 / (&#969;<span style='color:#040C28'>/2</span>)}<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                          
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
 </span>= {<span class=GramE>sin(</span></span><!--[if gte msEquation 12]><m:oMath><i
  style='mso-bidi-font-style:normal'><span style='font-size:14.0pt;line-height:
  107%;font-family:"Cambria Math","serif";mso-fareast-font-family:"Times New Roman";
@@ -3274,7 +3274,7 @@ mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                           
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
 </span>= <span class=SpellE><span class=GramE>sinc</span></span><span
 class=GramE>(</span>&#969;<span style='color:#040C28'>/2</span></span><!--[if gte msEquation 12]><m:oMath><em><span
  style='font-size:14.0pt;line-height:107%;font-family:"Cambria Math","serif";
@@ -3300,15 +3300,15 @@ minor-fareast'><o:p>&nbsp;</o:p></span></p>
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
 minor-fareast'>For the above case, the rectangular function has a pulse width value
-of 1 over the interval of [-½, ½]; 0 otherwise.<o:p></o:p></span></p>
+of 1 over the interval of [-Â½, Â½]; 0 otherwise.<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'>Now we’ll discuss a rectangular pulse that has a width of T<o:p></o:p></span></p>
+minor-fareast'>Now weâ€™ll discuss a rectangular pulse that has a width of T<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'>Then,<span style='mso-spacerun:yes'>    </span><span
+minor-fareast'>Then,<span style='mso-spacerun:yes'>Â Â Â  </span><span
 class=SpellE><span class=GramE><span style='color:#040C28'>rect</span></span></span><span
 class=GramE><span style='color:#040C28'>(</span></span><span style='color:#040C28'>t/T)
 = </span></span><span style='font-size:14.0pt;line-height:107%;font-family:
@@ -3317,7 +3317,7 @@ class=GramE><span style='color:#040C28'>(</span></span><span style='color:#040C2
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";color:#202124;background:white'><span
-style='mso-spacerun:yes'>                                             </span>=
+style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  </span>=
 0 otherwise<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
@@ -3367,8 +3367,8 @@ mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                          
-</span><span class=GramE>=<span style='mso-spacerun:yes'>  </span></span></span><!--[if gte msEquation 12]><m:oMath><m:nary><m:naryPr><m:limLoc
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
+</span><span class=GramE>=<span style='mso-spacerun:yes'>Â  </span></span></span><!--[if gte msEquation 12]><m:oMath><m:nary><m:naryPr><m:limLoc
     m:val="subSup"/><span style='font-size:14.0pt;mso-ansi-font-size:14.0pt;
    mso-bidi-font-size:14.0pt;font-family:"Cambria Math","serif";mso-ascii-font-family:
    "Cambria Math";mso-hansi-font-family:"Cambria Math";mso-bidi-font-family:
@@ -3394,7 +3394,7 @@ src="Fourier_Transform_files/image068.png" v:shapes="_x0000_i1025"><![endif]></s
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>e
 <sup>-<span class=SpellE>j&#969;<span style='color:#040C28'>t</span></span></sup>
-<span class=SpellE>dt</span><span style='mso-spacerun:yes'>     </span>[as </span><span
+<span class=SpellE>dt</span><span style='mso-spacerun:yes'>Â Â Â Â  </span>[as </span><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 color:#202124;background:white'>&#928;(t/T) = 1 for |t| &#8804; T/2</span><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
@@ -3402,9 +3402,9 @@ mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                           
-</span><span class=GramE>=<span style='mso-spacerun:yes'>  </span><span
-style='font-size:18.0pt;line-height:107%'>[</span></span>(e <sup>–<span
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
+</span><span class=GramE>=<span style='mso-spacerun:yes'>Â  </span><span
+style='font-size:18.0pt;line-height:107%'>[</span></span>(e <sup>â€“<span
 class=SpellE>j&#969;<span style='color:#040C28'>t</span></span></sup><span
 style='color:#040C28'>)/-</span><span class=SpellE>j&#969;</span></span><span
 style='font-size:18.0pt;line-height:107%;font-family:"Times New Roman","serif";
@@ -3417,17 +3417,17 @@ mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>
 <p class=MsoNormal><sup><span style='font-size:14.0pt;line-height:107%;
 font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman";
 mso-fareast-theme-font:minor-fareast'><span
-style='mso-spacerun:yes'>                                          </span></span></sup><span
+style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  </span></span></sup><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'><span
-style='mso-spacerun:yes'> </span>= [e <sup>–<span class=SpellE>j&#969;T</span><span
+style='mso-spacerun:yes'>Â </span>= [e <sup>â€“<span class=SpellE>j&#969;T</span><span
 style='color:#040C28'>/2</span></sup><span style='color:#040C28'> - </span>e <span
 class=SpellE><sup>j&#969;T</sup></span><sup><span style='color:#040C28'>/2</span></sup><span
 style='color:#040C28'>] / -</span><span class=SpellE>j&#969;</span><o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                           
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
 </span>= [e <span class=SpellE><sup>j&#969;T</sup></span><sup><span
 style='color:#040C28'>/2</span></sup><span style='color:#040C28'> - </span>e <sup>-<span
 class=SpellE>j&#969;T</span><span style='color:#040C28'>/2</span></sup><span
@@ -3435,7 +3435,7 @@ style='color:#040C28'>] / </span><span class=SpellE>j&#969;</span><o:p></o:p></s
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                           
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
 </span>= 2/<span class=GramE>&#969; .</span> {[e <span class=SpellE><sup>j&#969;T</sup></span><sup><span
 style='color:#040C28'>/2</span></sup><span style='color:#040C28'> - </span>e <sup>-<span
 class=SpellE>j&#969;T</span><span style='color:#040C28'>/2</span></sup><span
@@ -3443,19 +3443,19 @@ style='color:#040C28'>] / 2</span>j}<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                           
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
 </span>= 2/<span class=GramE>&#969; .</span> <span class=GramE>sin(</span>&#969;(T<span
 style='color:#040C28'>/2)</span>)<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                           
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
 </span>= {<span class=GramE>sin(</span>&#969;(T<span style='color:#040C28'>/2)</span>)
 / (&#969;<span style='color:#040C28'>/2</span>)}<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                           
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
 </span>= {<span class=GramE>sin(</span></span><!--[if gte msEquation 12]><m:oMath><em><span
  style='font-size:14.0pt;line-height:107%;font-family:"Cambria Math","serif";
  color:#5F6368;background:white;font-style:normal'><m:r><m:rPr><m:scr m:val="roman"/><m:sty
@@ -3522,7 +3522,7 @@ mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                           
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
 </span>= {<span class=GramE>sin(</span></span><!--[if gte msEquation 12]><m:oMath><em><span
  style='font-size:14.0pt;line-height:107%;font-family:"Cambria Math","serif";
  color:#5F6368;background:white;font-style:normal'><m:r><m:rPr><m:scr m:val="roman"/><m:sty
@@ -3589,7 +3589,7 @@ mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>                           
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
 </span>= T. <span class=SpellE><span class=GramE>sinc</span></span><span
 class=GramE>(</span><span class=SpellE>&#969;T</span><span style='color:#040C28'>/2</span></span><!--[if gte msEquation 12]><m:oMath><em><span
  style='font-size:14.0pt;line-height:107%;font-family:"Cambria Math","serif";
@@ -3652,12 +3652,12 @@ line-height:107%;font-family:"Times New Roman","serif";color:#202124;
 background:white'>&#923;(</span></span><span style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif";color:#202124;
 background:white'>t) = &#928;(t) * &#928;(t)<span
-style='mso-spacerun:yes'>                </span><o:p></o:p></span></p>
+style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  </span><o:p></o:p></span></p>
 
 <p class=MsoNormal><i style='mso-bidi-font-style:normal'><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 color:#202124;background:white'>[<span class=GramE>&#928;(</span>t) is a unit
-pulse function &amp; ‘*’ denotes convolution]</span></i><i style='mso-bidi-font-style:
+pulse function &amp; â€˜*â€™ denotes convolution]</span></i><i style='mso-bidi-font-style:
 normal'><span style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'><o:p></o:p></span></i></p>
 
@@ -3709,7 +3709,7 @@ mso-ansi-language:EN-IN;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><!--
 src="Fourier_Transform_files/image074.png" v:shapes="_x0000_i1025"><![endif]></span><![endif]><em><span
 style='font-size:14.0pt;line-height:107%;mso-fareast-font-family:"Times New Roman";
 mso-fareast-theme-font:minor-fareast;color:#5F6368;background:white;font-style:
-normal'><span style='mso-spacerun:yes'> </span>= </span></em><span
+normal'><span style='mso-spacerun:yes'>Â </span>= </span></em><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 color:#202124;background:white'>sinc<sup>2</sup>(</span><span style='font-size:
 14.0pt;line-height:107%;font-family:"Times New Roman","serif";mso-fareast-font-family:
@@ -3768,7 +3768,7 @@ mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
 minor-fareast'><span
-style='mso-spacerun:yes'>                                                 
+style='mso-spacerun:yes'>Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 
 </span>= 1, for 0 &#8804; t &#8804; 1<b style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
@@ -3938,7 +3938,7 @@ mso-ansi-language:EN-IN;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><!--
 src="Fourier_Transform_files/image086.png" v:shapes="_x0000_i1025"><![endif]></span><![endif]><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast;
-color:#202124;background:white'><span style='mso-spacerun:yes'> </span>- </span><!--[if gte msEquation 12]><m:oMath><span
+color:#202124;background:white'><span style='mso-spacerun:yes'>Â </span>- </span><!--[if gte msEquation 12]><m:oMath><span
  style='font-size:14.5pt;line-height:107%;font-family:"Cambria Math","serif";
  mso-bidi-font-family:"Cambria Math";color:#3D3D3D;background:#F9F9F9'><m:r><m:rPr><m:scr
     m:val="roman"/><m:sty m:val="p"/></m:rPr>&#948;(t-1)</m:r></span></m:oMath><![endif]--><![if !msEquation]><span
@@ -3958,7 +3958,7 @@ color:#3D3D3D;background:#F9F9F9'><o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.5pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast;color:#3D3D3D;background:#F9F9F9'>Now, we’ve to find the Fourier
+minor-fareast;color:#3D3D3D;background:#F9F9F9'>Now, weâ€™ve to find the Fourier
 transform of <span class=GramE>y(</span>t),<o:p></o:p></span></p>
 
 <p class=MsoNormal><span class=GramE><span style='font-size:14.5pt;line-height:
@@ -4212,7 +4212,7 @@ mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>
 
 <p class=MsoNormal><span class=GramE><span style='font-size:14.0pt;line-height:
 107%;font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman";
-mso-fareast-theme-font:minor-fareast'>=<span style='mso-spacerun:yes'>  </span>(</span></span><span
+mso-fareast-theme-font:minor-fareast'>=<span style='mso-spacerun:yes'>Â  </span>(</span></span><span
 style='font-size:14.5pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast;
 color:#3D3D3D;background:#F9F9F9'>((sin(&#960; . </span><span style='font-size:
@@ -4257,7 +4257,7 @@ style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>/2</span></sup><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>)
-/ <span class=SpellE>j&#969;</span>) – (</span><span style='font-size:14.5pt;
+/ <span class=SpellE>j&#969;</span>) â€“ (</span><span style='font-size:14.5pt;
 line-height:107%;font-family:"Times New Roman","serif";mso-fareast-font-family:
 "Times New Roman";mso-fareast-theme-font:minor-fareast;color:#3D3D3D;
 background:#F9F9F9'>e<sup>-<span class=SpellE>j<span style='font-size:14.0pt;
@@ -4282,7 +4282,7 @@ style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>/2</span></sup><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>)
-/ j&#969;<sup>2</sup>) – (j</span><span style='font-size:14.5pt;line-height:
+/ j&#969;<sup>2</sup>) â€“ (j</span><span style='font-size:14.5pt;line-height:
 107%;font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman";
 mso-fareast-theme-font:minor-fareast;color:#3D3D3D;background:#F9F9F9'>e<sup>-<span
 class=SpellE>j<span style='font-size:14.0pt;line-height:107%;color:windowtext'>&#969;</span></span></sup></span><span
@@ -4321,7 +4321,7 @@ mso-fareast-theme-font:minor-fareast;color:#3D3D3D;background:#F9F9F9'>e<sup>-<s
 class=SpellE>j<span style='font-size:14.0pt;line-height:107%;color:windowtext'>&#969;</span></span></sup></span><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>
-/ &#969;)<span style='mso-spacerun:yes'>     </span>[as j<sup>2 </sup>= -1]<o:p></o:p></span></p>
+/ &#969;)<span style='mso-spacerun:yes'>Â Â Â Â  </span>[as j<sup>2 </sup>= -1]<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
@@ -4534,7 +4534,7 @@ mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>
 class=GramE><i style='mso-bidi-font-style:normal'><sub><span style='font-size:
 14.0pt;line-height:107%;font-family:"Times New Roman","serif";mso-fareast-font-family:
 "Times New Roman";mso-fareast-theme-font:minor-fareast'><span
-style='mso-spacerun:yes'>  </span></span></sub></i><i style='mso-bidi-font-style:
+style='mso-spacerun:yes'>Â  </span></span></sub></i><i style='mso-bidi-font-style:
 normal'><span style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>(</span></i></span><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
@@ -4564,7 +4564,7 @@ mso-ansi-language:EN-IN;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><!--
 src="Fourier_Transform_files/image010.png" v:shapes="_x0000_i1025"><![endif]></span><![endif]><em><b><sub><span
 style='font-size:14.0pt;line-height:107%;mso-fareast-font-family:"Times New Roman";
 mso-fareast-theme-font:minor-fareast;color:#5F6368;background:white;font-style:
-normal'><span style='mso-spacerun:yes'> </span></span></sub></b></em><em><b><span
+normal'><span style='mso-spacerun:yes'>Â </span></span></sub></b></em><em><b><span
 style='font-size:14.0pt;line-height:107%;mso-fareast-font-family:"Times New Roman";
 mso-fareast-theme-font:minor-fareast;color:#5F6368;background:white;font-style:
 normal'>.k) ) </span></b></em><em><span style='font-size:14.0pt;line-height:
@@ -4588,7 +4588,7 @@ background:white;mso-bidi-font-weight:bold;font-style:normal'><o:p></o:p></span>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif"'>In the above figure the values for N = 2, 4, and 8
-are shown in the complex plain. Where ‘N’ denotes N point DFT.<o:p></o:p></span></p>
+are shown in the complex plain. Where â€˜Nâ€™ denotes N point DFT.<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
@@ -4641,7 +4641,7 @@ mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>      </span>= </span><!--[if gte msEquation 12]><m:oMath><m:nary><m:naryPr><m:chr
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â  </span>= </span><!--[if gte msEquation 12]><m:oMath><m:nary><m:naryPr><m:chr
     m:val="&#8721;"/><m:limLoc m:val="subSup"/><span style='font-size:14.0pt;
    mso-ansi-font-size:14.0pt;mso-bidi-font-size:14.0pt;font-family:"Cambria Math","serif";
    mso-ascii-font-family:"Cambria Math";mso-hansi-font-family:"Cambria Math";
@@ -4672,11 +4672,11 @@ style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>      </span>= a<sub>0</sub> <i
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â  </span>= a<sub>0</sub> <i
 style='mso-bidi-font-style:normal'>(-1<span class=GramE>)<sup>k</sup></span><sup><span
-style='mso-spacerun:yes'>  </span>.0<span style='mso-spacerun:yes'>  </span></sup>+
+style='mso-spacerun:yes'>Â  </span>.0<span style='mso-spacerun:yes'>Â  </span></sup>+
 </i>a<sub>1</sub> <i style='mso-bidi-font-style:normal'>(-1)<sup>k<span
-style='mso-spacerun:yes'>  </span>.1<o:p></o:p></sup></i></span></p>
+style='mso-spacerun:yes'>Â  </span>.1<o:p></o:p></sup></i></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
@@ -4690,15 +4690,15 @@ font-family:"Times New Roman","serif"'> <b style='mso-bidi-font-weight:normal'>A
 </sub></b></span><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
 minor-fareast'>= <span class=GramE>a<sub>0</sub><i style='mso-bidi-font-style:
-normal'><sup><span style='mso-spacerun:yes'>  </span></sup>+</i></span><i
+normal'><sup><span style='mso-spacerun:yes'>Â  </span></sup>+</i></span><i
 style='mso-bidi-font-style:normal'> </i>a<sub>1</sub><o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
 minor-fareast'>And <b style='mso-bidi-font-weight:normal'>A<sub>1 </sub>= </b><span
 class=GramE>a<sub>0</sub><i style='mso-bidi-font-style:normal'><sup><span
-style='mso-spacerun:yes'>  </span></sup>-</i></span><i style='mso-bidi-font-style:
-normal'><span style='mso-spacerun:yes'>  </span></i>a<sub>1</sub></span><span
+style='mso-spacerun:yes'>Â  </span></sup>-</i></span><i style='mso-bidi-font-style:
+normal'><span style='mso-spacerun:yes'>Â  </span></i>a<sub>1</sub></span><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
@@ -4749,7 +4749,7 @@ mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>
 <i style='mso-bidi-font-style:normal'>W<sub>4</sub><sup>kn<o:p></o:p></sup></i></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
-"Times New Roman","serif"'><span style='mso-spacerun:yes'>     </span>= </span><!--[if gte msEquation 12]><m:oMath><m:nary><m:naryPr><m:chr
+"Times New Roman","serif"'><span style='mso-spacerun:yes'>Â Â Â Â  </span>= </span><!--[if gte msEquation 12]><m:oMath><m:nary><m:naryPr><m:chr
     m:val="&#8721;"/><m:limLoc m:val="subSup"/><span style='font-size:14.0pt;
    mso-ansi-font-size:14.0pt;mso-bidi-font-size:14.0pt;font-family:"Cambria Math","serif";
    mso-ascii-font-family:"Cambria Math";mso-hansi-font-family:"Cambria Math";
@@ -4779,16 +4779,16 @@ mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
-"Times New Roman","serif"'><span style='mso-spacerun:yes'>     </span>= </span><span
+"Times New Roman","serif"'><span style='mso-spacerun:yes'>Â Â Â Â  </span>= </span><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>a<sub>0</sub>
 <i style='mso-bidi-font-style:normal'>(-j<span class=GramE>)<sup>k</sup></span><sup><span
-style='mso-spacerun:yes'>  </span>.0<span style='mso-spacerun:yes'>  </span></sup>+
+style='mso-spacerun:yes'>Â  </span>.0<span style='mso-spacerun:yes'>Â  </span></sup>+
 </i>a<sub>1</sub> <i style='mso-bidi-font-style:normal'>(-j)<sup>k<span
-style='mso-spacerun:yes'>  </span>.1</sup> + </i>a<sub>2</sub> <i
-style='mso-bidi-font-style:normal'>(-j)<sup>k<span style='mso-spacerun:yes'> 
+style='mso-spacerun:yes'>Â  </span>.1</sup> + </i>a<sub>2</sub> <i
+style='mso-bidi-font-style:normal'>(-j)<sup>k<span style='mso-spacerun:yes'>Â 
 </span>.2</sup> + </i>a<sub>3</sub> <i style='mso-bidi-font-style:normal'>(-j)<sup>k<span
-style='mso-spacerun:yes'>  </span>.3</sup></i></span><span style='font-size:
+style='mso-spacerun:yes'>Â  </span>.3</sup></i></span><span style='font-size:
 14.0pt;line-height:107%;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
@@ -4798,38 +4798,38 @@ font-family:"Times New Roman","serif"'> <b style='mso-bidi-font-weight:normal'>A
 </sub></b></span><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
 minor-fareast'>= <span class=GramE>a<sub>0</sub><i style='mso-bidi-font-style:
-normal'><sup><span style='mso-spacerun:yes'>  </span></sup>+</i></span><i
+normal'><sup><span style='mso-spacerun:yes'>Â  </span></sup>+</i></span><i
 style='mso-bidi-font-style:normal'> </i>a<sub>1 </sub>+ a<sub>2</sub><i
-style='mso-bidi-font-style:normal'><sup><span style='mso-spacerun:yes'> 
+style='mso-bidi-font-style:normal'><sup><span style='mso-spacerun:yes'>Â 
 </span></sup>+ </i>a<sub>3</sub><o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>      </span><b style='mso-bidi-font-weight:
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â  </span><b style='mso-bidi-font-weight:
 normal'>A<sub>1 </sub>= </b><span class=GramE>a<sub>0</sub><i style='mso-bidi-font-style:
-normal'><sup><span style='mso-spacerun:yes'>  </span></sup>-</i></span><i
+normal'><sup><span style='mso-spacerun:yes'>Â  </span></sup>-</i></span><i
 style='mso-bidi-font-style:normal'> j</i>a<sub>1 </sub>- a<sub>2</sub><i
-style='mso-bidi-font-style:normal'><sup><span style='mso-spacerun:yes'> 
+style='mso-bidi-font-style:normal'><sup><span style='mso-spacerun:yes'>Â 
 </span></sup>+ j</i>a<sub>3</sub></span><span style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>      </span><b style='mso-bidi-font-weight:
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â  </span><b style='mso-bidi-font-weight:
 normal'>A<sub>2 </sub>= </b><span class=GramE>a<sub>0</sub><i style='mso-bidi-font-style:
-normal'><sup><span style='mso-spacerun:yes'>  </span></sup>-</i></span><i
+normal'><sup><span style='mso-spacerun:yes'>Â  </span></sup>-</i></span><i
 style='mso-bidi-font-style:normal'> </i>a<sub>1 </sub>+ a<sub>2</sub><i
-style='mso-bidi-font-style:normal'><sup><span style='mso-spacerun:yes'> 
+style='mso-bidi-font-style:normal'><sup><span style='mso-spacerun:yes'>Â 
 </span></sup>- </i>a<sub>3</sub></span><span style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>      </span><b style='mso-bidi-font-weight:
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â  </span><b style='mso-bidi-font-weight:
 normal'>A<sub>3 </sub>= </b><span class=GramE>a<sub>0</sub><i style='mso-bidi-font-style:
-normal'><sup><span style='mso-spacerun:yes'>  </span></sup>+</i></span><i
+normal'><sup><span style='mso-spacerun:yes'>Â  </span></sup>+</i></span><i
 style='mso-bidi-font-style:normal'> j</i>a<sub>1 </sub>- a<sub>2</sub><i
-style='mso-bidi-font-style:normal'><sup><span style='mso-spacerun:yes'> 
+style='mso-bidi-font-style:normal'><sup><span style='mso-spacerun:yes'>Â 
 </span></sup>- j</i>a<sub>3</sub></span><span style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
 
@@ -4842,43 +4842,43 @@ quickly, we can pre-compute common sub-expressions:<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>      </span></span><b
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â  </span></span><b
 style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
 107%;font-family:"Times New Roman","serif"'>A<sub>0 </sub></span></b><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'>=
 (a<sub>0</sub><i style='mso-bidi-font-style:normal'><sup> </sup>+ </i>a<sub>2</sub>)<sub>
 </sub>+ (<span class=GramE>a<sub>1</sub><i style='mso-bidi-font-style:normal'><sup><span
-style='mso-spacerun:yes'>  </span></sup>+</i></span><i style='mso-bidi-font-style:
+style='mso-spacerun:yes'>Â  </span></sup>+</i></span><i style='mso-bidi-font-style:
 normal'> </i>a<sub>3</sub>)<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>      </span><b style='mso-bidi-font-weight:
-normal'>A<sub>1 </sub><span class=GramE>=<span style='mso-spacerun:yes'> 
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â  </span><b style='mso-bidi-font-weight:
+normal'>A<sub>1 </sub><span class=GramE>=<span style='mso-spacerun:yes'>Â 
 </span>(</span></b>a<sub>0</sub><i style='mso-bidi-font-style:normal'><sup> </sup></i>-
-a<sub>2</sub>)<sub> </sub><i style='mso-bidi-font-style:normal'>– j(</i>a<sub>1</sub><i
-style='mso-bidi-font-style:normal'><sup><span style='mso-spacerun:yes'> 
+a<sub>2</sub>)<sub> </sub><i style='mso-bidi-font-style:normal'>â€“ j(</i>a<sub>1</sub><i
+style='mso-bidi-font-style:normal'><sup><span style='mso-spacerun:yes'>Â 
 </span></sup>- </i>a<sub>3</sub>)</span><span style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>      </span><b style='mso-bidi-font-weight:
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â  </span><b style='mso-bidi-font-weight:
 normal'>A<sub>2 </sub>= (</b><span class=GramE>a<sub>0</sub><i
-style='mso-bidi-font-style:normal'><sup><span style='mso-spacerun:yes'> 
+style='mso-bidi-font-style:normal'><sup><span style='mso-spacerun:yes'>Â 
 </span></sup>+</i></span><i style='mso-bidi-font-style:normal'> </i>a<sub>2</sub>)<sub>
 </sub>- (a<sub>1</sub><i style='mso-bidi-font-style:normal'><sup><span
-style='mso-spacerun:yes'>  </span></sup>+ </i>a<sub>3</sub>)</span><span
+style='mso-spacerun:yes'>Â  </span></sup>+ </i>a<sub>3</sub>)</span><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
-minor-fareast'><span style='mso-spacerun:yes'>      </span><b style='mso-bidi-font-weight:
+minor-fareast'><span style='mso-spacerun:yes'>Â Â Â Â Â  </span><b style='mso-bidi-font-weight:
 normal'>A<sub>3 </sub>= (</b><span class=GramE>a<sub>0</sub><i
-style='mso-bidi-font-style:normal'><sup><span style='mso-spacerun:yes'> 
+style='mso-bidi-font-style:normal'><sup><span style='mso-spacerun:yes'>Â 
 </span></sup></i>-</span> a<sub>2</sub>)<i style='mso-bidi-font-style:normal'><sup><span
-style='mso-spacerun:yes'>  </span></sup>+ j(</i>a<sub>1 </sub>- a<sub>3</sub>)<o:p></o:p></span></p>
+style='mso-spacerun:yes'>Â  </span></sup>+ j(</i>a<sub>1 </sub>- a<sub>3</sub>)<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
@@ -4950,10 +4950,10 @@ class=GramE><i style='mso-bidi-font-style:normal'><sup><span style='font-size:
 "Times New Roman";mso-fareast-theme-font:minor-fareast'> </span></sup></i><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'><span
-style='mso-spacerun:yes'> </span></span><span lang=EN-US style='font-size:14.0pt;
+style='mso-spacerun:yes'>Â </span></span><span lang=EN-US style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif";mso-ansi-language:EN-US'>can</span></span><span
 lang=EN-US style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
-mso-ansi-language:EN-US'> be expanded as<span style='mso-spacerun:yes'> 
+mso-ansi-language:EN-US'> be expanded as<span style='mso-spacerun:yes'>Â 
 </span>NXN <b>DFT matrix</b></span><span lang=EN-US style='font-size:14.0pt;
 line-height:107%;font-family:"Times New Roman","serif";mso-fareast-font-family:
 "Times New Roman";mso-fareast-theme-font:minor-fareast;mso-ansi-language:EN-US'><o:p></o:p></span></p>
@@ -4998,7 +4998,7 @@ style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif"'>Oppositely, to find <b style='mso-bidi-font-weight:
-normal'>inverse DFT</b> we replace the ‘j’ with ‘-j’ in the matrix or we take
+normal'>inverse DFT</b> we replace the â€˜jâ€™ with â€˜-jâ€™ in the matrix or we take
 complex conjugates of the matrix elements.<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
@@ -5049,7 +5049,7 @@ algorithm.<o:p></o:p></span></p>
 
 <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'>N=8-point
-radix-4<span style='mso-spacerun:yes'>   </span>DIT-FFT<o:p></o:p></span></b></p>
+radix-4<span style='mso-spacerun:yes'>Â Â  </span>DIT-FFT<o:p></o:p></span></b></p>
 
 <p class=MsoNormal align=center style='text-align:center'><span
 style='mso-fareast-language:EN-IN;mso-no-proof:yes'><!--[if gte vml 1]><v:shape
@@ -5064,30 +5064,30 @@ style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'>
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'>Where,
 </span><span lang=EN-US style='font-size:14.0pt;line-height:107%;mso-ansi-language:
 EN-US'>-W<sup>4 </sup>= W<sup>0</sup>=1; -W<sup>5</sup>= <span class=GramE>W<sup>1<span
-style='mso-spacerun:yes'>  </span></sup>=</span> a<span
-style='mso-spacerun:yes'>  </span>= (1-j)/</span><span lang=EN-US
+style='mso-spacerun:yes'>Â  </span></sup>=</span> a<span
+style='mso-spacerun:yes'>Â  </span>= (1-j)/</span><span lang=EN-US
 style='font-size:14.0pt;line-height:107%;font-family:Symbol;mso-ascii-font-family:
 Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;
 mso-hansi-theme-font:minor-latin;mso-ansi-language:EN-US;mso-char-type:symbol;
 mso-symbol-font-family:Symbol'><span style='mso-char-type:symbol;mso-symbol-font-family:
-Symbol'>Ö</span></span><span lang=EN-US style='font-size:14.0pt;line-height:
-107%;mso-ansi-language:EN-US'>2;<span style='mso-spacerun:yes'>  </span></span><span
+Symbol'>Ã–</span></span><span lang=EN-US style='font-size:14.0pt;line-height:
+107%;mso-ansi-language:EN-US'>2;<span style='mso-spacerun:yes'>Â  </span></span><span
 lang=EN-US style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-ansi-language:EN-US'>-W<sup>2 </sup>= W<sup>6</sup>=j and -W<sup>3 </sup>=
-W<sup>7 </sup>= b<span style='mso-spacerun:yes'>  </span>=<span
-style='mso-spacerun:yes'>  </span>(1+j)/</span><span lang=EN-US
+W<sup>7 </sup>= b<span style='mso-spacerun:yes'>Â  </span>=<span
+style='mso-spacerun:yes'>Â  </span>(1+j)/</span><span lang=EN-US
 style='font-size:14.0pt;line-height:107%;font-family:Symbol;mso-ascii-font-family:
 "Times New Roman";mso-hansi-font-family:"Times New Roman";mso-bidi-font-family:
 "Times New Roman";mso-ansi-language:EN-US;mso-char-type:symbol;mso-symbol-font-family:
-Symbol'><span style='mso-char-type:symbol;mso-symbol-font-family:Symbol'>Ö</span></span><span
+Symbol'><span style='mso-char-type:symbol;mso-symbol-font-family:Symbol'>Ã–</span></span><span
 lang=EN-US style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif";
 mso-ansi-language:EN-US'>2</span><span lang=EN-US style='font-size:14.0pt;
 line-height:107%;mso-ansi-language:EN-US'><o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='text-align:center'><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'>The
-above diagram is same as illustrated in section ‘Fast Fourier Transform’ under
-‘Basics of Fourier Transform’<o:p></o:p></span></p>
+above diagram is same as illustrated in section â€˜Fast Fourier Transformâ€™ under
+â€˜Basics of Fourier Transformâ€™<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
@@ -5112,7 +5112,7 @@ style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'>
 
 <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
 style='font-size:14.0pt;line-height:107%;font-family:"Times New Roman","serif"'>N=8-point
-radix-2<span style='mso-spacerun:yes'>   </span>DIT-FFT<o:p></o:p></span></b></p>
+radix-2<span style='mso-spacerun:yes'>Â Â  </span>DIT-FFT<o:p></o:p></span></b></p>
 
 <p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;font-family:
 "Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
