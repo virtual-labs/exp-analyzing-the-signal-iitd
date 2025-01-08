@@ -1,3 +1,2 @@
-### 1. Oppenheim, A.V. and Verghese, G.C. Signals, systems & inference. London: Pearson, 2017.
-### 2. Anderson, J.B. Digital transmission engineering. John Wiley & Sons, 2006.
-### 3. Proakis, J.G. and Salehi, M. Digital communications. McGraw-hill, 2008.
+### 1. Plemmons, R.J. Matrix analysis (roger a. horn and charles r. johnson), 1988.
+### 2. Golub, G.H. and Van Loan, C.F. Matrix computations. JHU press, 2013.

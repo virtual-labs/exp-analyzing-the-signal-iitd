@@ -4,39 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <title>Signal Processing Simulator</title>
 </head>
 <body>
-  <ul>
-    <li>
-      <strong>Input Parameters:</strong>
-      <ul>
-        <li><strong>Operations:</strong> Use the input field to select various operations, such as Fourier addition, subtraction, multiplication, convolution, differentiation, and integration properties.</li>
-        <li><strong>Input Signal(s):</strong> Specify and input the frequency values of the signal(s).</li>
-        <li><strong>FFT Points:</strong> Enter the number of FFT points in the input field.</li>
-        <li><strong>SNR (in dB):</strong> Enter the desired Signal-to-Noise Ratio (SNR) in decibels (dB).</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Generate Input Signal(s):</strong> 
-      Click the <em>“Generate Input Signal”</em> button to create the input signals.
-    </li>
-    <li>
-      <strong>Generate Combined Signal:</strong> 
-      Click the <em>“Generate Combined Signal”</em> button to create the combined signal, if applicable.
-    </li>
-    <li>
-      <strong>Generate Phase Plot:</strong> 
-      Click the <em>“Generate Phase Plot”</em> button to display the phase plot of the input signal.
-    </li>
-    <li>
-      <strong>Generate Noisy Signal:</strong> 
-      Click the <em>“Generate Noisy Signal”</em> button to add Additive White Gaussian Noise (AWGN) to the input signal and generate the noisy signal.
-    </li>
-    <li>
-      <strong>Display Power Spectral Density (PSD):</strong> 
-      Click the <em>“Generate PSD”</em> and <em>“Generate PSD for Noisy Signal”</em> buttons to visualize the PSD of both input and noisy signals.
-    </li>
-  </ul>
+    <ul>
+        <li>The simulations are divided into three sections:
+            <ul>
+                <li><strong>Matrix Operations</strong></li>
+                <li><strong>System of Equations Calculator</strong></li>
+                <li><strong>Matrix Decompositions</strong></li>
+            </ul>
+        </li>
+        <li>For each section, you can input your matrix element values in two ways:
+            <ul>
+                <li><strong>Textarea</strong>:
+                    <ul>
+                        <li>Enter values directly into the provided textarea.</li>
+                        <li>Separate matrix elements by spaces.</li>
+                        <li>Start a new row by pressing the Enter key.</li>
+                    </ul>
+                </li>
+                <li><strong>Cells</strong>:
+                    <ul>
+                        <li>To use cell input mode, click on the "Cell" button in the simulator.</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>After entering the matrix values, select the desired operation by clicking the corresponding button:
+            <ul>
+                <li><strong>Available operations include</strong>:</li>
+                <li>Determinant</li>
+                <li>Eigenvalue Decomposition</li>
+                <li>LU Decomposition, etc.</li>
+            </ul>
+        </li>
+    </ul>
 </body>
 </html>
