@@ -1,0 +1,395 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Virtual Labs</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.4/math.min.js"></script>
+    <style>
+      .eqnContainer {
+        display: grid;
+        gap: 16px;
+        margin: 20px 0;
+      }
+
+      .eqnRow {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .part_eqn {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .box {
+        width: 64px; /* Adjust the box width as needed */
+        height: 32px; /* Adjust the box height as needed */
+        background-color: black; /* Adjust the box background color as needed */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        color: white;
+        border-radius: 5px;
+        border: none;
+      }
+
+      .eqn_buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px;
+        max-width: 400px;
+        margin: auto;
+      }
+      .eqn_buttons button {
+        width: 8vw;
+        min-width: fit-content;
+        border-radius: 10px;
+        border: none;
+        background-color: rgb(34, 197, 238);
+        height: 25px;
+        color: white;
+        margin: 0px 10px;
+        padding: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+    <style>
+      /* Style for overlay container */
+      .overlay {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        z-index: 1000; /* Ensure it's on top of other content */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .resultbox {
+        width: 95px; /* Adjust the box width as needed */
+        height: 30px; /* Adjust the box height as needed */
+        background-color: black; /* Adjust the box background color as needed */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        color: white;
+        border-radius: 5px;
+        border: none;
+      }
+      .overlay-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow for the container */
+        position: relative; /* Ensure close button can be positioned */
+      }
+
+      .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- sidebar and body -->
+    <div class="flex min-h-[80vh]">
+      <div class="px-6 pb-6 flex-1">
+        <!--  -->
+        <div>
+          <div class="">
+            <div class="">
+              <!--  -->
+              <p class="text-[28px] font-medium">System of Equations:</p>
+              <div id="eqnContainer" class="eqnContainer mt-5">
+                <div class="eqnRow">
+                  <div class="part_eqn">
+                    <input class="box" value="" /><label>x1</label
+                    ><label class="plus_sign">+</label>
+                  </div>
+                  <div class="part_eqn">
+                    <input class="box" value="" /><label>x2</label
+                    ><label class="plus_sign">+</label>
+                  </div>
+                  <div class="part_eqn">
+                    <input class="box" value="" /><label>x3</label
+                    ><label class="equal_sign">=</label
+                    ><input class="box" value="" />
+                  </div>
+                </div>
+                <div class="eqnRow">
+                  <div class="part_eqn">
+                    <input class="box" value="" /><label>x1</label
+                    ><label class="plus_sign">+</label>
+                  </div>
+                  <div class="part_eqn">
+                    <input class="box" value="" /><label>x2</label
+                    ><label class="plus_sign">+</label>
+                  </div>
+                  <div class="part_eqn">
+                    <input class="box" value="" /><label>x3</label
+                    ><label class="equal_sign">=</label
+                    ><input class="box" value="" />
+                  </div>
+                </div>
+                <div class="eqnRow">
+                  <div class="part_eqn">
+                    <input class="box" value="" /><label>x1</label
+                    ><label class="plus_sign">+</label>
+                  </div>
+                  <div class="part_eqn">
+                    <input class="box" value="" /><label>x2</label
+                    ><label class="plus_sign">+</label>
+                  </div>
+                  <div class="part_eqn">
+                    <input class="box" value="" /><label>x3</label
+                    ><label class="equal_sign">=</label
+                    ><input class="box" value="" />
+                  </div>
+                </div>
+              </div>
+              <div class="eqn_buttons">
+                <button id="clearButton">Clear</button>
+                <button id="addVarButton" class="text-[20px]">+</button>
+                <button id="subtractVarButton" class="text-[20px]">-</button>
+                <button id="solveButton">Solve</button>
+              </div>
+            </div>
+            <!-- <div class=" bg-slate-300 flex justify-center items-center">
+              <p class="" id="result">helo</p>
+            </div> -->
+            <div class="overlay" style="display: none" id="overlay">
+              <div class="overlay-content">
+                <span class="close-button" onclick="toggleOverlay()"
+                  >&times;</span
+                >
+                <h2 class="text-[#17bee7] text-[20px]" id="overlayheading">
+                  System of Equations
+                </h2>
+                <div class="flex flex-col justify-center items-center gap-3">
+                  <div id="result"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var overlay = document.getElementById("overlay");
+
+      // Function to toggle the overlay visibility
+      function toggleOverlay() {
+        overlay.style.display =
+          overlay.style.display === "none" ? "flex" : "none";
+      }
+    </script>
+    <script>
+      let numVars = 3; // Number of variables (and equations)
+
+      function parseEquations() {
+        const rows = document.querySelectorAll(".eqnRow");
+        const matrixRows = [];
+
+        rows.forEach((row) => {
+          const inputs = row.querySelectorAll(".box");
+          const rowData = [];
+          inputs.forEach((input) => rowData.push(input.value));
+          matrixRows.push(rowData.join(" "));
+        });
+
+        return matrixRows.join("\n");
+      }
+
+      function solveLinearEquations(matrixString) {
+        try {
+          const rows = matrixString.trim().split("\n");
+          const matrixA = [];
+          const vectorB = [];
+          rows.forEach((row) => {
+            const values = row.trim().split(/\s+/).map(Number);
+            vectorB.push(values.pop());
+            matrixA.push(values);
+          });
+
+          const A = math.matrix(matrixA);
+          const B = math.matrix(vectorB);
+
+          if (A.size()[0] !== A.size()[1]) {
+            throw new Error("Coefficient matrix is not square");
+          }
+          if (math.det(A) === 0) {
+            throw new Error("Coefficient matrix is singular");
+          }
+
+          const x = math.multiply(math.inv(A), B);
+          return x.toArray();
+        } catch (error) {
+          return `Error: ${error.message}`;
+        }
+      }
+
+      function createRow(numVars) {
+        const row = document.createElement("div");
+        row.className = "eqnRow";
+        for (let i = 1; i <= numVars; i++) {
+          const partEqn = document.createElement("div");
+          partEqn.className = "part_eqn";
+          partEqn.innerHTML = `<input class="box" value=""><label>x${i}</label><label class="plus_sign">${
+            i === numVars ? "=" : "+"
+          }</label>`;
+          row.appendChild(partEqn);
+        }
+        const resultPart = document.createElement("div");
+        resultPart.className = "part_eqn";
+        resultPart.innerHTML = `<input class="box" value="">`;
+        row.appendChild(resultPart);
+        return row;
+      }
+
+      function addVariableAndEquation() {
+        numVars++;
+        const container = document.getElementById("eqnContainer");
+        const rows = Array.from(document.querySelectorAll(".eqnRow"));
+
+        // Clear current rows
+        container.innerHTML = "";
+
+        // Add updated rows
+        rows.forEach((row) => {
+          const inputs = row.querySelectorAll(".box");
+          const newRow = createRow(numVars);
+          const newInputs = newRow.querySelectorAll(".box");
+          inputs.forEach((input, index) => {
+            newInputs[index].value = input.value;
+          });
+          container.appendChild(newRow);
+        });
+
+        // Add new row
+        const newRow = createRow(numVars);
+        container.appendChild(newRow);
+      }
+
+      function removeVariableAndEquation() {
+        if (numVars > 1) {
+          numVars--;
+          const container = document.getElementById("eqnContainer");
+          const rows = Array.from(document.querySelectorAll(".eqnRow"));
+
+          // Clear current rows
+          container.innerHTML = "";
+
+          // Add updated rows
+          rows.slice(0, numVars).forEach((row) => {
+            const inputs = row.querySelectorAll(".box");
+            const newRow = createRow(numVars);
+            const newInputs = newRow.querySelectorAll(".box");
+            inputs.forEach((input, index) => {
+              if (index < numVars) {
+                newInputs[index].value = input.value;
+              }
+            });
+            container.appendChild(newRow);
+          });
+        }
+      }
+      function parseMatrixString(matrixString) {
+        return matrixString
+          .trim()
+          .split("\n")
+          .map((row) => row.trim().split(/\s+/).map(Number));
+      }
+      function formatMatrix(matrix) {
+        if (Array.isArray(matrix[0])) {
+          // Handle array of arrays (matrix)
+          return matrix.map((row) => row.join(" ")).join("\n");
+        } else {
+          // Handle single array (vector)
+          return matrix.join(" ");
+        }
+      }
+      function printResultmatrix(matrixString) {
+        var resultContainer = document.getElementById("result");
+
+        // Clear any existing content in the result container
+        resultContainer.innerHTML = "";
+
+        // Parse the matrix string into a 2D array
+        const matrix = parseMatrixString(matrixString);
+
+        var solutionGrid = document.createElement("div");
+        solutionGrid.className = "inputBoxes";
+        var maxColumns = matrix[0].length + 1; // Number of values + 1 for the header
+
+        // Set grid template columns based on the number of values in a vector
+        solutionGrid.style.gridTemplateColumns = `repeat(2, 100px)`;
+
+        matrix.forEach((value) => {
+          // Create and append cells for each value
+          value.forEach((val, index) => {
+            // Create and append the 'x{i}' cell
+            var valueCell = document.createElement("div");
+            // valueCell.className = "resultbox";
+            valueCell.innerText = `x${index + 1}`; // Assuming you want to start with x1
+            solutionGrid.appendChild(valueCell);
+
+            var input = document.createElement("input");
+            input.className = "resultbox";
+            // Round the value to 2 decimal places
+            let roundedValue = Math.round(val * 100) / 100;
+            input.value = roundedValue;
+            input.readOnly = true; // Make input read-only
+            solutionGrid.appendChild(input);
+          });
+        });
+
+        // Append the new solution grid to the result container
+        resultContainer.appendChild(solutionGrid);
+      }
+
+      document.getElementById("solveButton").addEventListener("click", () => {
+        const matrixString = parseEquations();
+        console.log(matrixString);
+        const solution = solveLinearEquations(matrixString);
+        console.log("solution", solution);
+        toggleOverlay();
+        const resultElement = document.getElementById("result");
+        if (Array.isArray(solution)) {
+          const formattedMatrix = formatMatrix(solution);
+          printResultmatrix(formattedMatrix);
+        } else {
+          resultElement.textContent = solution;
+        }
+      });
+
+      document.getElementById("clearButton").addEventListener("click", () => {
+        const inputs = document.querySelectorAll(".box");
+        inputs.forEach((input) => (input.value = ""));
+        document.getElementById("result").textContent = "";
+      });
+
+      document
+        .getElementById("addVarButton")
+        .addEventListener("click", addVariableAndEquation);
+      document
+        .getElementById("subtractVarButton")
+        .addEventListener("click", removeVariableAndEquation);
+    </script>
+  </body>
+</html>
