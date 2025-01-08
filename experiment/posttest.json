@@ -1,124 +1,176 @@
 {
-  "version": 2.0,
-  "questions": [
-    {
-      "question": "What are the eigenvalues of the matrix [[3, 0],[0, 4]]",
-      "answers": {
-        "a": "1,2",
-        "b": "3,4",
-        "c": "2,3",
-        "d": "4,5"
+    "version": 2.0,
+    "questions": [
+      {
+        "question": "What is the relationship between the bandwidth of a signal and the width of its Fourier Transform?",
+        "answers": {
+          "a": "The bandwidth is inversely proportional to the width of the Fourier Transform.",
+          "b": "The bandwidth is directly proportional to the width of the Fourier Transform.",
+          "c": "The bandwidth is unaffected by the Fourier Transform.",
+          "d": "The bandwidth is related to the phase spectrum of the Fourier Transform."
+        },
+        "explanations": {
+          "a": "This is incorrect. The relationship is direct, not inverse.",
+          "b": "Correct! The bandwidth of a signal is directly proportional to the width of its Fourier Transform.",
+          "c": "This is incorrect; the Fourier Transform affects the bandwidth of the signal.",
+          "d": "This is incorrect; the bandwidth is related to the magnitude spectrum, not the phase."
+        },
+        "correctAnswer": "b",
+        "difficulty": "hard"
       },
-      "explanations": {
-        "a": "Explanation 2",
-        "b": "For a diagonal matrix, the eigenvalues are the diagonal elements.",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+      {
+        "question": "What is the Fourier Transform of a Gaussian pulse \( g(t) = e^{-\alpha t^2} \)?",
+        "answers": {
+          "a": "A Gaussian function.",
+          "b": "A sinc function.",
+          "c": "An exponential function.",
+          "d": "A delta function."
+        },
+        "explanations": {
+          "a": "Correct! The Fourier Transform of a Gaussian pulse results in another Gaussian function.",
+          "b": "This is incorrect; sinc functions arise from rectangular pulses, not Gaussian pulses.",
+          "c": "This is incorrect; the Fourier Transform of a Gaussian pulse is not an exponential function.",
+          "d": "This is incorrect; a delta function is not the Fourier Transform of a Gaussian pulse."
+        },
+        "correctAnswer": "a",
+        "difficulty": "hard"
       },
-      "correctAnswer": "b",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "Which vector is an eigenvector of the matrix [[2, 0],[0, 3]]",
-      "answers": {
-        "a": "[1 0]",
-        "b": "[0 1]",
-        "c": "[1 1]",
-        "d": "Both a and b"
+      {
+        "question": "If a signal \( x(t) \) has a Fourier Transform \( X(f) \), what is the Fourier Transform of \( x(t) \cdot e^{j 2 \pi f_0 t} \)?",
+        "answers": {
+          "a": "The Fourier Transform is \( X(f - f_0) \).",
+          "b": "The Fourier Transform is \( X(f + f_0) \).",
+          "c": "The Fourier Transform is \( X(f) \).",
+          "d": "The Fourier Transform is \( X(f) \cdot e^{j 2 \pi f_0 t} \)."
+        },
+        "explanations": {
+          "a": "Correct! Multiplying a signal by a complex exponential in the time domain shifts its Fourier Transform in the frequency domain.",
+          "b": "This is incorrect; the shift is \( f - f_0 \), not \( f + f_0 \).",
+          "c": "This is incorrect; the multiplication by a complex exponential causes a frequency shift.",
+          "d": "This is incorrect; multiplying by a complex exponential introduces a frequency shift, not a direct multiplication."
+        },
+        "correctAnswer": "a",
+        "difficulty": "hard"
       },
-      "explanations": {
-        "a": "Explanation 2",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "[1 0] is an eigenvector for eigenvalue 2, and [0 1] is an eigenvector for eigenvalue 3."
+      {
+        "question": "What is the Fourier Transform of a triangular pulse of width \( T \)?",
+        "answers": {
+          "a": "A sinc function.",
+          "b": "A Gaussian function.",
+          "c": "A triangular function.",
+          "d": "A sinc function squared."
+        },
+        "explanations": {
+          "a": "Correct! The Fourier Transform of a triangular pulse results in a sinc function.",
+          "b": "This is incorrect; Gaussian functions are not related to triangular pulses.",
+          "c": "This is incorrect; the Fourier Transform of a triangular pulse is not another triangular pulse.",
+          "d": "This is incorrect; the Fourier Transform of a triangular pulse is a sinc function, not its square."
+        },
+        "correctAnswer": "a",
+        "difficulty": "hard"
       },
-      "correctAnswer": "d",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "Eigenvalue decomposition of a matrix involves decomposing the matrix into which form?",
-      "answers": {
-        "a": "A = PDP^-1",
-        "b": "A = LDU",
-        "c": "A = LUP",
-        "d": "A = LQU"
+      {
+        "question": "What is the effect of frequency scaling on the Fourier Transform of a signal?",
+        "answers": {
+          "a": "The Fourier Transform is scaled by the same factor.",
+          "b": "The Fourier Transform is scaled by the reciprocal of the scaling factor.",
+          "c": "The Fourier Transform is shifted in frequency by the scaling factor.",
+          "d": "The Fourier Transform is unchanged."
+        },
+        "explanations": {
+          "a": "This is incorrect; the scaling in the frequency domain is not straightforward.",
+          "b": "Correct! Frequency scaling in the time domain results in an inverse scaling in the Fourier domain.",
+          "c": "This is incorrect; frequency scaling does not shift the Fourier Transform.",
+          "d": "This is incorrect; scaling in the time domain affects the Fourier Transform."
+        },
+        "correctAnswer": "b",
+        "difficulty": "hard"
       },
-      "explanations": {
-        "a": "A = PDP^-1, where P is the matrix of eigenvectors and D is the diagonal matrix of eigenvalues.",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+      {
+        "question": "What is the Fourier Transform of a Dirac delta function \( \delta(t) \)?",
+        "answers": {
+          "a": "A constant function.",
+          "b": "A sinc function.",
+          "c": "A delta function.",
+          "d": "An impulse function."
+        },
+        "explanations": {
+          "a": "Correct! The Fourier Transform of a Dirac delta function is a constant function.",
+          "b": "This is incorrect; sinc functions are related to rectangular pulses, not delta functions.",
+          "c": "This is incorrect; the Fourier Transform of a Dirac delta function is not another delta function.",
+          "d": "This is incorrect; an impulse function is not the Fourier Transform of a Dirac delta function."
+        },
+        "correctAnswer": "a",
+        "difficulty": "hard"
       },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "LU Decomposition of a matrix A is represented as:",
-      "answers": {
-        "a": "A=LU",
-        "b": "A=UL",
-        "c": "A=PLU",
-        "d": "A=PQU"
+      {
+        "question": "What is the Fourier Transform of a signal \( x(t) \) sampled at a rate \( f_s \)?",
+        "answers": {
+          "a": "The Fourier Transform is periodic with period \( f_s \).",
+          "b": "The Fourier Transform is continuous with no periodicity.",
+          "c": "The Fourier Transform has a frequency shift by \( f_s \).",
+          "d": "The Fourier Transform is a sinc function."
+        },
+        "explanations": {
+          "a": "Correct! The Fourier Transform of a sampled signal is periodic with a period equal to the sampling rate \( f_s \).",
+          "b": "This is incorrect; the Fourier Transform of a sampled signal is periodic.",
+          "c": "This is incorrect; there is no frequency shift by \( f_s \).",
+          "d": "This is incorrect; the Fourier Transform is not necessarily a sinc function."
+        },
+        "correctAnswer": "a",
+        "difficulty": "hard"
       },
-      "explanations": {
-        "a": "LU decomposition expresses A as a product of a lower triangular matrix L and an upper triangular matrix U",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+      {
+        "question": "What happens to the Fourier Transform of a signal when the signal is convolved with a filter in the time domain?",
+        "answers": {
+          "a": "The Fourier Transform of the signal is multiplied by the Fourier Transform of the filter.",
+          "b": "The Fourier Transform of the signal is shifted in frequency.",
+          "c": "The Fourier Transform is unaffected by convolution.",
+          "d": "The Fourier Transform of the signal is convolved with the Fourier Transform of the filter."
+        },
+        "explanations": {
+          "a": "Correct! Convolution in the time domain corresponds to multiplication in the frequency domain.",
+          "b": "This is incorrect; convolution in the time domain does not cause a frequency shift.",
+          "c": "This is incorrect; convolution in the time domain does affect the Fourier Transform.",
+          "d": "This is incorrect; multiplication in the frequency domain corresponds to convolution in the time domain."
+        },
+        "correctAnswer": "a",
+        "difficulty": "hard"
       },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "SVD of a matrix A is represented as",
-      "answers": {
-        "a": "A = UΣV",
-        "b": "A = UVΣ^T",
-        "c": "A = UΣV^T",
-        "d": "A = UΣV*"
+      {
+        "question": "What is the Fourier Transform of a time-scaled signal \( x(at) \), where \( a \) is a constant?",
+        "answers": {
+          "a": "The Fourier Transform is scaled by \( \frac{1}{|a|} \).",
+          "b": "The Fourier Transform is scaled by \( a \).",
+          "c": "The Fourier Transform is unaffected by time-scaling.",
+          "d": "The Fourier Transform is shifted by a factor of \( a \)."
+        },
+        "explanations": {
+          "a": "Correct! Time-scaling by \( a \) scales the Fourier Transform by \( \frac{1}{|a|} \).",
+          "b": "This is incorrect; the scaling is by the reciprocal of \( a \).",
+          "c": "This is incorrect; time-scaling does affect the Fourier Transform.",
+          "d": "This is incorrect; time-scaling does not cause a shift in the Fourier Transform."
+        },
+        "correctAnswer": "a",
+        "difficulty": "hard"
       },
-      "explanations": {
-        "a": "Explanation 2",
-        "b": "Explanation 2",
-        "c": "In SVD, A is decomposed into U ,Σ(a digonal matrix) and V^T.",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "c",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "The result of multiplying [[1, 2], [3, 4]] and [[2, 0], [1, 2]]",
-      "answers": {
-        "a": "[[4, 4], [10, 8]]",
-        "b": "[[2, 4], [7, 10]]",
-        "c": "[[4, 4], [7, 10]]",
-        "d": "[[4, 4], [10, 10]]"
-      },
-      "explanations": {
-        "a": "Multiplying the matrices results in [[1.2 + 2.1, 1.0 + 2.2], [3.2 + 4.1, 3.0 + 4.2]]=[[4, 4], [10, 8]]",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "The result of adding [[1, 2], [3, 4]] and [[2, 0], [1, 2]]",
-      "answers": {
-        "a": "[[2, 0], [1, 2]]",
-        "b": "[[3, 2], [3, 6]]",
-        "c": "[[1, 2], [3, 4]]",
-        "d": "[[3, 2], [4, 6]]"
-      },
-      "explanations": {
-        "a": "Explanation 2",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Adding the matrices results in [[1+2, 2+0], [3+1, 4+2]]=[[3, 2], [4, 6]]"
-      },
-      "correctAnswer": "d",
-      "difficulty": "beginner"
-    }
-  ]
-}
+      {
+        "question": "What is the effect of multiplying a signal by a complex exponential \( e^{j 2\pi f_0 t} \) on its Fourier Transform?",
+        "answers": {
+          "a": "It shifts the Fourier Transform by \( f_0 \).",
+          "b": "It scales the Fourier Transform by \( f_0 \).",
+          "c": "It shifts the Fourier Transform by \( -f_0 \).",
+          "d": "It does not affect the Fourier Transform."
+        },
+        "explanations": {
+          "a": "This is incorrect; the shift in the frequency domain is in the opposite direction.",
+          "b": "This is incorrect; multiplication by a complex exponential does not scale the Fourier Transform.",
+          "c": "Correct! Multiplying a signal by a complex exponential in the time domain shifts its Fourier Transform by \( -f_0 \).",
+          "d": "This is incorrect; multiplication by a complex exponential causes a frequency shift."
+        },
+        "correctAnswer": "c",
+        "difficulty": "hard"
+      }
+    ]
+  }
+  
