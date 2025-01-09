@@ -3,8 +3,8 @@
 
 <b>Discipline | <b> Electrical Department
 :--|:--|
-<b> Lab | <b> Virtual Matrix Calculator
-<b> Experiment|     <b> Experiment 1 : Matrix Decompostion
+<b> Lab | <b> Fourier Transform Calculator
+<b> Experiment|     <b> Experiment 2 : Fourier Transform
 
 ### About the Experiment 
 
@@ -21,4 +21,5 @@ Fill a brief description of this experiment here
 SrNo | Name | Faculty or Student | Department| Institute | Email id
 :--|:--|:--|:--|:--|:--|
 1 | Prof Monika Aggarwal| Faculty | CARE | IIT Delhi | maggarwal@iitd.care.ac.in
-2 | Abhishek Ranakoti | Student | Electrical | IIT Delhi | abhishek.ranakoti@iitd.ee.ac.in
+2 | Salim Mia | Jr. Research Fellow | CARE | IIT Delhi | salim.cstaff@iitd.ac.in <br> www.salimwireless.com
+3 | Abhishek Ranakoti | Student | Electrical | IIT Delhi | abhishek.ranakoti@iitd.ee.ac.in
