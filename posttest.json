@@ -1,0 +1,91 @@
+{
+    "version": 2.0,
+    "questions": [
+      {
+        "question": "What is the relationship between the bandwidth of a signal and the width of its Fourier Transform?",
+        "answers": {
+          "a": "The bandwidth is inversely proportional to the width of the Fourier Transform.",
+          "b": "The bandwidth is directly proportional to the width of the Fourier Transform.",
+          "c": "The bandwidth is unaffected by the Fourier Transform.",
+          "d": "The bandwidth is related to the phase spectrum of the Fourier Transform."
+        },
+        "explanations": {
+          "a": "This is incorrect. The relationship is direct, not inverse.",
+          "b": "Correct! The bandwidth of a signal is directly proportional to the width of its Fourier Transform.",
+          "c": "This is incorrect; the Fourier Transform affects the bandwidth of the signal.",
+          "d": "This is incorrect; the bandwidth is related to the magnitude spectrum, not the phase."
+        },
+        "correctAnswer": "b",
+        "difficulty": "hard"
+      },
+      {
+        "question": "What is the Fourier Transform of a triangular pulse?",
+        "answers": {
+          "a": "A sinc function.",
+          "b": "A Gaussian function.",
+          "c": "A triangular function.",
+          "d": "A sinc function squared."
+        },
+        "explanations": {
+          "a": "Correct! The Fourier Transform of a triangular pulse results in a sinc function.",
+          "b": "This is incorrect; Gaussian functions are not related to triangular pulses.",
+          "c": "This is incorrect; the Fourier Transform of a triangular pulse is not another triangular pulse.",
+          "d": "This is incorrect; the Fourier Transform of a triangular pulse is a sinc function, not its square."
+        },
+        "correctAnswer": "a",
+        "difficulty": "hard"
+      },
+      {
+        "question": "What is the effect of frequency scaling on the Fourier Transform of a signal?",
+        "answers": {
+          "a": "The Fourier Transform is scaled by the same factor.",
+          "b": "The Fourier Transform is scaled by the reciprocal of the scaling factor.",
+          "c": "The Fourier Transform is shifted in frequency by the scaling factor.",
+          "d": "The Fourier Transform is unchanged."
+        },
+        "explanations": {
+          "a": "This is incorrect; the scaling in the frequency domain is not straightforward.",
+          "b": "Correct! Frequency scaling in the time domain results in an inverse scaling in the Fourier domain.",
+          "c": "This is incorrect; frequency scaling does not shift the Fourier Transform.",
+          "d": "This is incorrect; scaling in the time domain affects the Fourier Transform."
+        },
+        "correctAnswer": "b",
+        "difficulty": "hard"
+      },
+      {
+        "question": "What is the Fourier Transform of a signal x(t) sampled at a rate  fs?",
+        "answers": {
+          "a": "The Fourier Transform is periodic with period fs.",
+          "b": "The Fourier Transform is continuous with no periodicity.",
+          "c": "The Fourier Transform has a frequency shift by fs.",
+          "d": "The Fourier Transform is a sinc function."
+        },
+        "explanations": {
+          "a": "Correct! The Fourier Transform of a sampled signal is periodic with a period equal to the sampling rate fs.",
+          "b": "This is incorrect; the Fourier Transform of a sampled signal is periodic.",
+          "c": "This is incorrect; there is no frequency shift by fs.",
+          "d": "This is incorrect; the Fourier Transform is not necessarily a sinc function."
+        },
+        "correctAnswer": "a",
+        "difficulty": "hard"
+      },
+      {
+        "question": "What happens to the Fourier Transform of a signal when the signal is convolved with a filter in the time domain?",
+        "answers": {
+          "a": "The Fourier Transform of the signal is multiplied by the Fourier Transform of the filter.",
+          "b": "The Fourier Transform of the signal is shifted in frequency.",
+          "c": "The Fourier Transform is unaffected by convolution.",
+          "d": "The Fourier Transform of the signal is convolved with the Fourier Transform of the filter."
+        },
+        "explanations": {
+          "a": "Correct! Convolution in the time domain corresponds to multiplication in the frequency domain.",
+          "b": "This is incorrect; convolution in the time domain does not cause a frequency shift.",
+          "c": "This is incorrect; convolution in the time domain does affect the Fourier Transform.",
+          "d": "This is incorrect; multiplication in the frequency domain corresponds to convolution in the time domain."
+        },
+        "correctAnswer": "a",
+        "difficulty": "hard"
+      }
+    ]
+  }
+  

@@ -1,0 +1,91 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "What is the Fourier Transform of the Dirac delta function?",
+      "answers": {
+        "a": "A sinc function.",
+        "b": "A Gaussian function.",
+        "c": "A constant function.",
+        "d": "An impulse in the frequency domain."
+      },
+      "explanations": {
+        "a": "A sinc function is the Fourier Transform of a rectangular pulse.",
+        "b": "A Gaussian function in the time domain transforms into another Gaussian.",
+        "c": "This is incorrect; the Fourier Transform of the Dirac delta is not constant.",
+        "d": "The Dirac delta in the time domain corresponds to an impulse at all frequencies in the frequency domain."
+      },
+      "correctAnswer": "d",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What is the significance of the duality property in the Fourier Transform?",
+      "answers": {
+        "a": "It simplifies convolution calculations.",
+        "b": "It allows the Fourier Transform of a signal to be obtained from its inverse.",
+        "c": "It relates time-domain multiplication to frequency-domain convolution.",
+        "d": "It explains how energy is conserved in the transform."
+      },
+      "explanations": {
+        "a": "Convolution is simplified using the convolution property.",
+        "b": "Duality enables symmetry between time and frequency domains for transforms.",
+        "c": "This describes the convolution theorem, not duality.",
+        "d": "Energy conservation is related to Parseval's theorem."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What type of signal corresponds to a sinc function in the frequency domain?",
+      "answers": {
+        "a": "A Gaussian signal.",
+        "b": "A unit step signal.",
+        "c": "A rectangular pulse.",
+        "d": "A cosine wave."
+      },
+      "explanations": {
+        "a": "A Gaussian transforms into another Gaussian.",
+        "b": "The step function has a complex frequency domain representation.",
+        "c": "A rectangular pulse in time results in a sinc function in frequency.",
+        "d": "A cosine wave has delta functions at its positive and negative frequencies."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Which of the following best describes the Fourier Transform of a time-limited signal?",
+      "answers": {
+        "a": "A time-limited signal has a band-limited Fourier Transform.",
+        "b": "The Fourier Transform is always infinite in duration.",
+        "c": "The Fourier Transform has the same duration as the signal.",
+        "d": "The Fourier Transform is finite only for periodic signals."
+      },
+      "explanations": {
+        "a": "The Fourier Transform of a time-limited signal is not band-limited; it spreads over all frequencies.",
+        "b": "This statement is correct as the Fourier Transform of a time-limited signal typically has infinite duration.",
+        "c": "Fourier Transforms do not have the same duration as the signal.",
+        "d": "Fourier Transforms apply to any signal, not just periodic ones."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What is the effect of multiplying a signal by a cosine wave in the time domain?",
+      "answers": {
+        "a": "It results in a band-pass filter effect.",
+        "b": "It shifts the signal's spectrum to a higher frequency.",
+        "c": "It convolves the signal with a sinc function in frequency.",
+        "d": "It reduces the signal's bandwidth."
+      },
+      "explanations": {
+        "a": "This is incorrect; modulation does not create a band-pass effect directly.",
+        "b": "Multiplying by a cosine modulates the signal, shifting its spectrum.",
+        "c": "This applies to sampling, not modulation.",
+        "d": "Modulation does not reduce bandwidth."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    }
+  ]
+  }
+  
