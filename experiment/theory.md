@@ -14,7 +14,7 @@
     <p>Fourier Transform</p>
     <ol class="mb-4 pl-4">
       <li>
-        <a href="#">
+        <a href="./Fourier_Transform.pdf">
           <div class="flex">
             <span class="text-black mr-4">1.</span>
             <p class="hover:text-[#3e6389] hover:underline">
