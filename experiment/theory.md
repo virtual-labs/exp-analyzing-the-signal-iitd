@@ -9,7 +9,7 @@ signal to the primary time domain signal.
 
 The Fourier transform of a time-domain signal is defined as follows
 
-$X(\omega) = \int_{-\infty}^{\infty} x(t) \cdot \exp(-j \omega t) \, dt$
+$$X(\omega) = \int_{-\infty}^{\infty} x(t) \cdot \exp(-j \omega t) \, dt$$
 
 *\*\*x(t) denotes the signal in the time domain,* $X(\omega)$ *denotes
 the signal in the frequency domain and* $\omega$ is the angular
@@ -23,13 +23,13 @@ $$x(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} X(\omega) \cdot \exp(j \omega t)
 
 For digital systems, the Fourier transform is realized by:
 
-For complex numbers \( x_0, x_1, x_2, x_3, \dots, x_{n-1} \)
+For complex numbers $$\( x_0, x_1, x_2, x_3, \dots, x_{n-1} \)$$
 
 $$ X[k] = \sum_{n=0}^{N-1} x[n] \cdot W_N^{kn} $$
 
-where \( k = 1, 2, 3, \dots, N-1 \)
+where $$\( k = 1, 2, 3, \dots, N-1 \)$$
 
-Where \( W_N \) is the \( n \)-th root of unity given by:
+Where $$\ W_N \$$ is the $$\ n \$$-th root of unity given by:
 
 $$ W_N = \exp\left(-j \left(2 \frac{\pi}{N}\right) \right) $$
 
@@ -39,7 +39,7 @@ $$ W_N = \exp\left(-j \left(2 \frac{\pi}{N}\right) \right) $$
 
 The basic idea of a fast Fourier transform is to break up a transform of length \( N \) into two transforms of length \( N/2 \).
 
-For complex numbers \( x[n] \) where \( n = 1, 2, 3, \dots, n-1 \)
+For complex numbers $$\( x[n] \)$$ where $$\( n = 1, 2, 3, \dots, n-1 \)$$
 
 $$ X[k] = \sum_{n=0}^{N-1} x[n] \cdot W_N^{kn} $$
 
