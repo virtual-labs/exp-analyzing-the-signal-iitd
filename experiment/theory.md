@@ -504,8 +504,3 @@ transform is most probably the best tool to find the frequency in an
 entire field. This makes it a useful tool for LTI systems and signal
 processing. Partial differential equations reduce to ordinary
 differential equations in Fourier Transform.
-
-<!-- Include MathJax in the head of your HTML file -->
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
