@@ -9,7 +9,7 @@ signal to the primary time domain signal.
 
 The Fourier transform of a time-domain signal is defined as follows
 
-X(ω) = $\int_{- \infty}^{\infty}{x(t).\ exp( - j}$ωt) dt
+$X(\omega) = \int_{-\infty}^{\infty} x(t) \cdot \exp(-j \omega t) \, dt$
 
 *\*\*x(t) denotes the signal in the time domain,* $X(\omega)$ *denotes
 the signal in the frequency domain and* $\omega$ is the angular
@@ -17,51 +17,45 @@ frequency.
 
 **Inverse Fourier transform**
 
-x(t) =
-$\frac{1}{2\mathbf{\pi}}\int_{- \infty}^{\infty}{X(\omega)\ .\ exp(j}$ωt)
-dt
+$$x(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} X(\omega) \cdot \exp(j \omega t) \, dt$$
 
 **Discrete Fourier Transform (DFT)**
 
-For digital systems, the Fourier transform is realized by
+For digital systems, the Fourier transform is realized by:
 
-For complex numbers x~0~, x~1~, x~2~, x~3~, ... , x~n-1~
+For complex numbers \( x_0, x_1, x_2, x_3, \dots, x_{n-1} \)
 
-X\[k\] = $\sum_{n = 0}^{N - 1}{x\lbrack n\rbrack}$ *W~N~^kn^* , where
-k=1,2,3,..,N-1
+$$ X[k] = \sum_{n=0}^{N-1} x[n] \cdot W_N^{kn} $$
 
-Where *W~N~* is the n^th^ root of unity given by
+where \( k = 1, 2, 3, \dots, N-1 \)
 
-*W~N\ ~*= exp(-j(2$\frac{\mathbf{\pi}}{\mathbf{N}}$ **)**
+Where \( W_N \) is the \( n \)-th root of unity given by:
 
-*\*\*DFT Algorithms are at the end of this article*
+$$ W_N = \exp\left(-j \left(2 \frac{\pi}{N}\right) \right) $$
+
+***DFT Algorithms are at the end of this article***
 
 **Fast Fourier Transform (FFT)**
 
-The basic idea of a fast Fourier transform is to break up a transform of
-length N into two transforms of length N/2.
+The basic idea of a fast Fourier transform is to break up a transform of length \( N \) into two transforms of length \( N/2 \).
 
-For complex numbers x\[n\] where, n = 1, 2, 3, ..., n-1
+For complex numbers \( x[n] \) where \( n = 1, 2, 3, \dots, n-1 \)
 
-X\[k\] = $\sum_{n = 0}^{N - 1}{x\lbrack n\rbrack}$ *W~N~^kn^* =
-$\sum_{r = 0}^{(\frac{N}{2}) - 1}{x\lbrack 2r\rbrack}$e^-j2πk(2r)/N^ +
-$\sum_{r = 0}^{(\frac{N}{2}) - 1}{x\lbrack 2r + 1\rbrack}$e^-j2πk(2r+1)/N^
+$$ X[k] = \sum_{n=0}^{N-1} x[n] \cdot W_N^{kn} $$
 
-*\*\*In the above transform of length N is broken into two transforms of
-length N/2 and on the other hand, they pick up even and odd samples of
-x\[n\] separately*
+This can be expanded as:
 
-= $\sum_{r = 0}^{(\frac{N}{2}) - 1}{x\lbrack 2r\rbrack}$e^-j2πk(2r)/N^ +
-e^-j2πk/N^
-$\sum_{r = 0}^{(\frac{N}{2}) - 1}{x\lbrack 2r + 1\rbrack}$e^-j2πk(2r)/N^
+$$ X[k] = \sum_{r=0}^{(N/2)-1} x[2r] \cdot e^{-j 2\pi k (2r)/N} + \sum_{r=0}^{(N/2)-1} x[2r+1] \cdot e^{-j 2\pi k (2r+1)/N} $$
 
-=
-$\sum_{r = 0}^{(\frac{N}{2}) - 1}{x\lbrack 2r\rbrack}$e^-j2πkr/(N/2)^ +
-e^-j2πk/N^
-$\sum_{r = 0}^{(\frac{N}{2}) - 1}{x\lbrack 2r + 1\rbrack}$e^-j2πkr/(N/2)^
+***In the above transform of length \( N \), it is broken into two transforms of length \( N/2 \), and on the other hand, they pick up even and odd samples of \( x[n] \) separately.***
 
-![](./media/media/image1.png){width="6.560808180227472in"
-height="3.7391294838145233in"}
+This can be rewritten as:
+
+$$ X[k] = \sum_{r=0}^{(N/2)-1} x[2r] \cdot e^{-j 2\pi k r/(N/2)} + e^{-j 2\pi k/N} \sum_{r=0}^{(N/2)-1} x[2r+1] \cdot e^{-j 2\pi k r/(N/2)} $$
+
+
+
+![](./media/media/image1.png)
 
 In the above diagram {**X\[0\], X\[1\], X\[2\], X\[3\], X\[4\], X\[5\],
 X\[6\], X\[7\]**} is the Fourier transform of {x\[0\], x\[1\], x\[2\],
