@@ -25,14 +25,14 @@ dt
 
 For digital systems, the Fourier transform is realized by
 
-For complex numbers $x_0, x_1, x_2, \dots, x_{n-1}$
+For complex numbers x~0~, x~1~, x~2~, x~3~, ... , x~n-1~
 
-$X[k] = \sum_{n = 0}^{N - 1} x[n] \cdot W_N^{kn}$, where \( k = 1, 2, 3, \dots, N - 1 \)
+X\[k\] = $\sum_{n = 0}^{N - 1}{x\lbrack n\rbrack}$ *W~N~^kn^* , where
+k=1,2,3,..,N-1
 
-Where \( W_N \) is the \( n^{\text{th}} \) root of unity given by:
+Where *W~N~* is the n^th^ root of unity given by
 
-$W_N = \exp\left(-j 2 \pi \frac{k}{N}\right)$
-
+*W~N\ ~*= exp(-j(2$\frac{\mathbf{\pi}}{\mathbf{N}}$ **)**
 
 *\*\*DFT Algorithms are at the end of this article*
 
@@ -43,21 +43,25 @@ length N into two transforms of length N/2.
 
 For complex numbers x\[n\] where, n = 1, 2, 3, ..., n-1
 
-$X[k] = \sum_{n = 0}^{N - 1} x[n] \cdot W_N^{kn}$
-
-$= \sum_{r = 0}^{\left(\frac{N}{2}\right) - 1} x[2r] e^{-j 2 \pi k \cdot 2r / N} + \sum_{r = 0}^{\left(\frac{N}{2}\right) - 1} x[2r + 1] e^{-j 2 \pi k \cdot (2r + 1) / N}$
-
+X\[k\] = $\sum_{n = 0}^{N - 1}{x\lbrack n\rbrack}$ *W~N~^kn^* =
+$\sum_{r = 0}^{(\frac{N}{2}) - 1}{x\lbrack 2r\rbrack}$e^-j2πk(2r)/N^ +
+$\sum_{r = 0}^{(\frac{N}{2}) - 1}{x\lbrack 2r + 1\rbrack}$e^-j2πk(2r+1)/N^
 
 *\*\*In the above transform of length N is broken into two transforms of
 length N/2 and on the other hand, they pick up even and odd samples of
 x\[n\] separately*
 
-$\sum_{r = 0}^{\left(\frac{N}{2}\right) - 1} x[2r] e^{-j 2 \pi k \cdot 2r / N} + e^{-j 2 \pi k / N} \sum_{r = 0}^{\left(\frac{N}{2}\right) - 1} x[2r + 1] e^{-j 2 \pi k \cdot 2r / N}$
+= $\sum_{r = 0}^{(\frac{N}{2}) - 1}{x\lbrack 2r\rbrack}$e^-j2πk(2r)/N^ +
+e^-j2πk/N^
+$\sum_{r = 0}^{(\frac{N}{2}) - 1}{x\lbrack 2r + 1\rbrack}$e^-j2πk(2r)/N^
 
-$= \sum_{r = 0}^{\left(\frac{N}{2}\right) - 1} x[2r] e^{-j 2 \pi k r / (N/2)} + e^{-j 2 \pi k / N} \sum_{r = 0}^{\left(\frac{N}{2}\right) - 1} x[2r + 1] e^{-j 2 \pi k r / (N/2)}$
+=
+$\sum_{r = 0}^{(\frac{N}{2}) - 1}{x\lbrack 2r\rbrack}$e^-j2πkr/(N/2)^ +
+e^-j2πk/N^
+$\sum_{r = 0}^{(\frac{N}{2}) - 1}{x\lbrack 2r + 1\rbrack}$e^-j2πkr/(N/2)^
 
-
-![](./media/media/image1.png)
+![](./media/media/image1.png){width="6.560808180227472in"
+height="3.7391294838145233in"}
 
 In the above diagram {**X\[0\], X\[1\], X\[2\], X\[3\], X\[4\], X\[5\],
 X\[6\], X\[7\]**} is the Fourier transform of {x\[0\], x\[1\], x\[2\],
@@ -65,74 +69,87 @@ x\[3\], x\[4\], x\[5\], x\[6\], x\[7\]}
 
 *\*\*FFT algorithms are at the end of this article*
 
-2. **Advantages of FFT over DFT**
+2.  **Advantages of FFT over DFT**
 
-To compute the DFT of an N-point sequence, it takes $O(N^2)$ multiplies and adds. The FFT algorithm computes the DFT using $O(N \log N)$ multiplies and adds.
+To compute the DFT of an N-point sequence it take O(N^2^) multiplies and
+adds. The FFT algorithm computes the DFT using O(N log N) multiplies and
+adds.
 
-The Fast Fourier Transform (FFT) is a discrete Fourier transform algorithm which reduces the number of computations needed for $N$ points from $2N^2$ to $2N \log_2 N$.
+The fast Fourier transform (FFT) is a discrete Fourier transform
+algorithm which reduces the number of computations needed for N points
+from 2N^2^ to 2Nlog~2~N.
 
-3. **Properties of Fourier Transform**
+3.  **Properties of Fourier Transform**
 
-1. **Linearity**
+<!-- -->
 
-The Fourier Transform satisfies linearity & the principle of superposition.
+1.  **Linearity**
 
-Consider two functions $x_1(t)$ and $x_2(t)$.
+The Fourier Transform satisfies linearity & principle of superposition
 
-If $F(x_1(t)) = X_1(\omega)$, $F(x_2(t)) = X_2(\omega)$,
+Consider two functions x~1~(t) & x~2~(t)
 
-Then $F[a_1 x_1(t) + a_2 x_2(t)] = a_1 X_1(\omega) + a_2 X_2(\omega)$.
+If F(x~1~(t)) = X~1~(ω), F(x~2~(t)) = X~2~(ω)
 
-2. **Scaling**
+Then F\[a~1~x~1~(t) + a~2~x~2~(t)\] = a~1~X~1~(ω) + a~2~X~2~(ω)
 
-$F(x(t)) = X(\omega)$
+2.  **Scaling**
 
-If 'a' is a real constant, then
+F(x(t)) = X(ω)
 
-$F(x(at)) = \frac{1}{|a|} X(\omega)$.
+If 'a' is real constant then
 
-3. **Symmetry**
+F(x(at)) = $\frac{1}{|a|}$X(ω),
 
-When $x(t)$ is real and even, then $X(\omega) = X^*(-\omega)$.
+3.  **Symmetry**
 
-When $x(t)$ is real and odd, then $X(\omega) = X(-\omega)$.
+When x(t) is real and even then X(ω) = X^\*^(-ω)
 
-4. **Convolution**
+When x(t) is real and odd then X(ω) = X(-ω)
 
-The Fourier transform makes the convolution of 2 signals into the product of their Fourier transforms. There are two types of convolutions: one for the time domain and one for the frequency domain.
+4.  **Convolution**
 
-a. **Time domain convolution**
+Fourier transform makes the convolution of 2 signals into the product of
+their Fourier Transform. There are two types of convolutions, one for
+time domain and other for frequency domain.
 
-If $F(x_1(t)) = X_1(\omega)$, $F(x_2(t)) = X_2(\omega)$,
+a.  **Time domain convolution**
 
-Then $F(x_1(t) * x_2(t)) = X_1(\omega) \cdot X_2(\omega)$, where $*$ denotes the convolution operator.
+F(x~1~(t)) = X~1~(ω), F(x~2~(t)) = X~2~(ω)
 
-b. **Frequency domain convolution**
+Then F(x~1~(t)\* x~2~(t)) = X~1~(ω) . X~2~(ω), \['\*' -- convolution
+sign)\]
 
-$F(x_1(t) \cdot x_2(t)) = \frac{1}{2\pi} X_1(\omega) * X_2(\omega)$, where $*$ denotes the convolution operator.
+b.  **Frequency domain convolution**
 
-5. **Shifting Property**
+F(x~1~(t) . x~2~(t)) = 1/2$\pi$.X~1~(ω) \* X~2~(ω) \['\*' -- convolution
+sign)\]
 
-$F(x(t - t_0)) = e^{-j \omega t_0} X(\omega)$.
+5.  **Shifting Property**
 
-As a consequence, transforms leave the Fourier spectrum $|X(\omega)|^2$ unchanged.
+F(x(t -- t~0~)) = e^-jωt0^ X(ω)
 
-6. **Duality**
+As a consequence, transforms leave the Fourier spectrum \| X(ω)\|^2^
+unchanged.
 
-$F(x(t)) = X(t) = 2\pi x(-\omega)$.
+6.  **Duality**
 
-7. **Differentiation**
+F(x(t) = X(t) = 2$\pi$ x(-ω)
 
-$F\left(\frac{dx(t)}{dt}\right) = j\omega X(\omega)$.
+7.  **Differentiation**
 
-8. **Integration**
+F($\frac{dx(t)}{dt}$ ) = jωX(ω)
 
-$F\left(\int_{-\infty}^{\infty} x(t) dt\right) = \frac{X(\omega)}{j\omega}$.
+8.  **Integration**
 
-When a function (i.e., $x(t)$) is not an energy function, the Fourier transform of $\left[\int_{-\infty}^{\infty} x(t) dt\right]$ includes an impulse function.
+F$(\int_{- \infty}^{\infty}x$*(t) dt*) = X(ω)/jω
 
-$F\left(\int_{-\infty}^{\infty} x(t) dt\right) = \frac{X(\omega)}{j\omega} + \pi X(0) \delta(\omega)$.
+When a function (i.e., x(t)) is not an energy function and hence the
+Fourier transform of $\lbrack\int_{- \infty}^{\infty}x$*(t) dt*\]
+includes an impulse function.
 
+F$(\int_{- \infty}^{\infty}x$*(t) dt*) = X(ω)/jω +
+$\mathbf{\pi}$X$(0)\delta(\omega)$
 
 9.  **Modulation Property**
 
@@ -168,24 +185,27 @@ F(x(-t)) = X(-ω)
 
     1.  **Fourier Transform of a delta function**
 
-![](./media/media/image2.png)
+![](./media/media/image2.png){width="5.104166666666667in"
+height="1.6608694225721785in"}
 
-If $x(t) = \delta(t)$, then the Fourier transform is
+If x(t) = 𝛅(t), then Fourier transform,
 
-$X(\omega) = \int_{- \infty}^{\infty} x(t) e^{-j \omega t} dt$
+X(ω) = $\int_{- \infty}^{\infty}x$*(t)e^-j^*^ωt^ *dt*
 
-$= \int_{- \infty}^{\infty} \delta(t) e^{-j \omega t} dt$
+*=* $\int_{- \infty}^{\infty}\delta$*(t)e^-j^*^ωt^ *dt*
 
-$= \int_{- \infty}^{\infty} 1 \cdot e^{-j \omega 0} dt$
+*=* $\int_{- \infty}^{\infty}{1.}$*e^-j^*^ω0^ *dt*
 
-$= 1$
+*= 1*
 
-Thus, the Fourier transform of a delta impulse is a constant equal to 1, independent of frequency. Remember that this derivation uses the shifting property of the impulse to eliminate the integral.
-
+Thus Fourier transform of a delta/impulse is a constant equal to 1,
+independent of frequency. Remember that derivation is used the shifting
+property of the impulse to eliminate the integral.
 
 2.  **Fourier transform of a unit step function**
 
-![](./media/media/image3.png)
+![](./media/media/image3.png){width="4.136000656167979in"
+height="1.551388888888889in"}
 
 γ (t) = 0 for t\<0
 
@@ -214,78 +234,80 @@ A pulse function can be represented as,
 
 x(t)=Π(t) = γ (t + ½) - γ(t - ½)
 
-![](./media/media/image4.PNG)
+![](./media/media/image4.PNG){width="4.492055993000875in"
+height="2.897490157480315in"}
 
-For a function $\text{rect}(t) = \Pi(t) = 1$ for $|t| \leq \frac{1}{2}$
+For a function rect(t) = Π(t) = 1 for \|t\| ≤ ½
 
-$= 0$ otherwise
-
-Given that
-
-$x(t) = \Pi(t)$
-
-Hence from the definition of the Fourier transform we have
-
-$F (\Pi(t)) = X(\omega) = \int_{- \infty}^{\infty}{x(t)} e^{-j\omega t} dt$
-
-$= \int_{- 1/2}^{1/2}{1.} e^{-j\omega t} dt \quad \text{(as } \Pi(t) = 1 \text{ for } |t| \leq \frac{1}{2} \text{)}$
-
-$= \frac{e^{-j\omega t}}{-j\omega} \Big|_{-1/2}^{1/2}$
-
-$= \frac{e^{-j\omega/2} - e^{j\omega/2}}{-j\omega}$
-
-$= \frac{e^{j\omega/2} - e^{-j\omega/2}}{j\omega}$
-
-$= \frac{2}{\omega} \cdot \frac{e^{j\omega/2} - e^{-j\omega/2}}{2j}$
-
-$= \frac{2}{\omega} \cdot \sin\left(\frac{\omega}{2}\right)$
-
-$= \frac{\sin\left(\frac{\omega}{2}\right)}{\frac{\omega}{2}}$
-
-$= \frac{\sin\left(\pi \frac{\omega}{2\pi}\right)}{\pi \frac{\omega}{2\pi}}$
-
-$= \text{sinc}\left(\frac{\omega}{2\pi}\right)$
-
-For the above case, the rectangular function has a pulse width value of 1 over the interval of $[-\frac{1}{2}, \frac{1}{2}]$; 0 otherwise.
-
-Now we'll discuss a rectangular pulse that has a width of $T$.
-
-Then, $\text{rect}(t/T) = \Pi(t/T) = 1$ for $|t| \leq T/2$
-
-$= 0$ otherwise
+= 0 otherwise
 
 Given that
 
-$x(t/T) = \Pi(t/T)$
+x(t) = Π(t)
 
 Hence from the definition of the Fourier transform we have
 
-$F (\Pi(t/T)) = \int_{- \infty}^{\infty}{x(t/T)} e^{-j\omega t} dt$
+F (Π(t)) = X($\omega$) = $\int_{- \infty}^{\infty}{x(t)}$e ^-jωt^ dt
 
-$= \int_{- T/2}^{T/2}{1.} e^{-j\omega t} dt \quad \text{(as } \Pi(t/T) = 1 \text{ for } |t| \leq T/2 \text{)}$
+= $\int_{- 1/2}^{1/2}{1.}$e ^-jωt^ dt \[as Π(t) = 1 for \|t\| ≤ ½\]
 
-$= \frac{e^{-j\omega t}}{-j\omega} \Big|_{-T/2}^{T/2}$
+= \[(e ^--jωt^)/-jω\]~-1/2~^1/2^
 
-$= \frac{e^{-j\omega T/2} - e^{j\omega T/2}}{-j\omega}$
+= \[e ^--jω/2^ - e ^jω/2^\] / -jω
 
-$= \frac{e^{j\omega T/2} - e^{-j\omega T/2}}{j\omega}$
+= \[e ^jω/2^ - e ^-jω/2^\] / jω
 
-$= \frac{2}{\omega} \cdot \frac{e^{j\omega T/2} - e^{-j\omega T/2}}{2j}$
+= 2/ω . {\[e ^jω/2^ - e ^-jω/2^\] / 2j}
 
-$= \frac{2}{\omega} \cdot \sin\left(\frac{\omega T}{2}\right)$
+= 2/ω . sin(ω/2)
 
-$= \frac{\sin\left(\frac{\omega T}{2}\right)}{\frac{\omega}{2}}$
+= {sin(ω/2) / (ω/2)}
 
-$= \frac{\sin\left(\pi \frac{\omega T}{2\pi}\right)}{\pi \frac{\omega}{2\pi}}$
+= {sin($(\pi$(ω/2$\pi$)) / ($\pi$(ω/2$\pi$))}
 
-$= \frac{\sin\left(\pi \frac{\omega T}{2\pi}\right)}{\pi \frac{\omega T}{2\pi}} \cdot T$
+= sinc(ω/2$\pi$)
 
-$= T \cdot \text{sinc}\left(\frac{\omega T}{2\pi}\right)$
+For the above case, the rectangular function has a pulse width value of
+1 over the interval of \[-½, ½\]; 0 otherwise.
 
+Now we'll discuss a rectangular pulse that has a width of T
+
+Then, rect(t/T) = Π(t/T) = 1 for \|t\| ≤ T/2
+
+= 0 otherwise
+
+Given that
+
+x(t/T) = Π(t/T)
+
+Hence from the definition of the Fourier transform we have
+
+F (Π(t/T)) = $\int_{- \infty}^{\infty}{x(t/T)}$e ^-jωt^ dt
+
+= $\int_{- T/2}^{T/2}{1.}$e ^-jωt^ dt \[as Π(t/T) = 1 for \|t\| ≤ T/2\]
+
+= \[(e ^--jωt^)/-jω\]~-T/2~^T/2^
+
+= \[e ^--jωT/2^ - e ^jωT/2^\] / -jω
+
+= \[e ^jωT/2^ - e ^-jωT/2^\] / jω
+
+= 2/ω . {\[e ^jωT/2^ - e ^-jωT/2^\] / 2j}
+
+= 2/ω . sin(ω(T/2))
+
+= {sin(ω(T/2)) / (ω/2)}
+
+= {sin($\pi($ωT/2$\pi$)) / ($\pi($ω/2$\pi$))}
+
+= {sin($\pi($ωT/2$\pi$)) / ($\pi($ωT/2$\pi$))}.T
+
+= T. sinc(ωT/2$\pi$)
 
 4.  **Fourier Transform of a unit triangle pulse**
 
-![](./media/media/image5.png)
+![](./media/media/image5.png){width="2.9679997812773404in"
+height="2.087159886264217in"}
 
 A unit triangle pulse is simply the convolution of a unit pulse function
 with itself.
@@ -294,12 +316,12 @@ Here, Λ(t) = Π(t) \* Π(t)
 
 *\[Π(t) is a unit pulse function & '\*' denotes convolution\]*
 
-$\Lambda(\omega) = \text{sinc}\left(\frac{\omega}{2\pi}\right) \cdot \text{sinc}^2\left(\frac{\omega}{2\pi}\right)$
-
+So, Λ(ω) = sinc(ω/2$\pi$) . sinc(ω/2$\pi)$ = sinc^2^(ω/2$\pi)$
 
 5.  **Fourier Transform of a Sawtooth function**
 
-![](./media/media/image6.png)
+![](./media/media/image6.png){width="3.2395833333333335in"
+height="2.296000656167979in"}
 
 s(t) = 0, for t \< 0 and t \> 1
 
@@ -309,145 +331,121 @@ We can represent sawtooth as the integral of shifted unit pulse function
 (to give the ramp) and a negative impulse (delayed by one second) to
 give the discontinuity at the end of the ramp
 
-![](./media/media/image7.png)
+![](./media/media/image7.png){width="3.783333333333333in"
+height="2.2in"}
 
-$$
-s(t) = \int_{- \infty}^{t} \Pi(t - \frac{1}{2}) \, dt - \int_{- \infty}^{t} \delta(t - 1) \, dt = \int_{- \infty}^{t} y(t) \, dt
-$$
+s(t) = $\int_{- \infty}^{t}{\Pi(t - \frac{1}{2})}$dt -
+$\int_{- \infty}^{t}{\delta(t - 1)}$dt =$\int_{- \infty}^{t}{y(t)dt}$
 
-$$
-y(t) = \Pi(t - \frac{1}{2}) - \delta(t - 1)
-$$
+y(t) = $\Pi(t - \frac{1}{2})$ - $\delta(t - 1)$
 
-Now, we need to find the Fourier transform of \( y(t) \):
+Now, we've to find the Fourier transform of y(t),
 
-$$
-Y(\omega) = \text{sinc}\left(\frac{\omega}{2\pi}\right) e^{-j\omega/2} - e^{-j\omega}
-$$
+Y(ω) = sinc(ω/2$\pi$)e^-jω/2^ - e^-jω^
 
-We can now apply the integral property with \( Y(0) = 0 \) to find \( S(\omega) \):
+We can now apply integral property with Y(0) = 0, to find S(ω)
 
-$$
-S(\omega) = F\left(\int_{- \infty}^{t} y(t) \, dt\right) = \frac{Y(\omega)}{j\omega} - \pi Y(0) \delta(0)
-= \frac{Y(\omega)}{j\omega}
-$$
+S(ω) = F($\int_{- \infty}^{t}{y(t)dt}$) = Y(ω)/jω - $\pi$Y(0)$\delta$(0)
+= Y(ω)/jω
 
-$$
-= \frac{\text{sinc}\left(\frac{\omega}{2\pi}\right) e^{-j\omega/2} - e^{-j\omega}}{j\omega}
-$$
+= {(sinc(ω/2$\pi$)e^-jω/2^ - e^-jω^) / jω}
 
-$$
-= \frac{\left(\frac{\sin(\pi \cdot \frac{\omega}{2\pi})}{\pi \cdot \frac{\omega}{2\pi}}\right) e^{-j\omega/2} - e^{-j\omega}}{j\omega}
-$$
+= {((sin(π . ω/2$\pi$) / (π . ω/2$\pi$))e^-jω/2^ - e^-jω^) / jω}
 
-$$
-= \frac{\left(\frac{\sin(\pi \cdot \frac{\omega}{2\pi})}{\pi \cdot \frac{\omega}{2\pi}}\right) e^{-j\omega/2}}{j\omega} - \frac{e^{-j\omega}}{j\omega}
-$$
+= (((sin(π . ω/2$\pi$) / (π . ω/2$\pi$))e^-jω/2^) / jω) -- (e^-jω^ / jω)
 
-$$
-= \frac{2 \left(\frac{\sin(\omega/2)}{j\omega^2}\right) e^{-j\omega/2}}{j\omega} - \frac{j e^{-j\omega}}{\omega}
-$$
+= (2(sin(ω/2)e^-jω/2^) / jω^2^) -- (je^-jω^ / j^2^ω)
 
-$$
-= \frac{2\left(\frac{e^{j\omega/2} - e^{-j\omega/2}}{2j}\right) e^{-j\omega/2}}{j\omega^2} + \frac{j e^{-j\omega}}{\omega}
-$$
+= (2((e^jω/2^ - e^-jω/2^) / 2j)e^-jω/2^) / jω^2^) + (je^-jω^ / ω) \[as
+j^2^ = -1\]
 
-$$
-= \frac{\left(e^{j\omega/2} - e^{-j\omega/2}\right) e^{-j\omega/2}}{j^2 \omega^2} + \frac{j e^{-j\omega}}{\omega}
-$$
+= (((e^jω/2^ - e^-jω/2^)e^-jω/2^) / j^2^ω^2^) + (je^-jω^ / ω)
 
-$$
-= \frac{\left(e^{-j\omega/2} - e^{j\omega/2}\right) e^{-j\omega/2}}{\omega^2} + \frac{j e^{-j\omega}}{\omega}
-$$
+= (((e^-jω/2^ - e^jω/2^)e^-jω/2^) / ω^2^) + (je^-jω^ / ω)
 
-$$
-= \frac{\left(e^{-j\omega/2} - e^{j\omega/2}\right) e^{-j\omega/2}}{\omega^2} + \frac{j e^{-j\omega}}{\omega}
-$$
+= (((e^-jω/2^ - e^jω/2^)e^-jω/2^) / ω^2^) + (je^-jω^ / ω)
 
-$$
-= \frac{\left(e^{-j\omega/2} - e^{j\omega/2}\right) e^{-j\omega/2} + j\omega e^{-j\omega}}{\omega^2}
-$$
+= ((((e^-jω/2^ - e^jω/2^)e^-jω/2^) + jωe^-jω^) / ω^2^)
 
-$$
-= \frac{e^{-j\omega} (1 + j\omega) - 1}{\omega^2}
-$$
+= ((e^-jω^ - 1 + jωe^-jω^) / ω^2^)
 
-### For DFT & FFT
+= ((e^-jω^(1+jω) - 1) / ω^2^)
 
-Look at the aforementioned formula for DFT. The term $W_k^N \left( = \exp\left(-j\left(2\frac{\pi}{N}\right) k\right) \right)$ can be represented as follows.
+5.  **Algorithms**
 
+**For DFT & FFT**
 
-![](./media/media/image8.png)
+Look at the aforementioned formula for DFT. The term ***W**^k^~**N**~
+(*= exp(-j(2$\frac{\mathbf{\pi}}{\mathbf{N}}$ **.k) )** can be
+represented as follows
 
-In the above figure, the values for $N = 2, 4, \text{ and } 8$ are shown in the complex plane. Where 'N' denotes the N-point DFT.
+![](./media/media/image8.png){width="5.703274278215223in"
+height="1.5570614610673665in"}
+
+In the above figure the values for N = 2, 4, and 8 are shown in the
+complex plain. Where 'N' denotes N point DFT.
 
 For example,
 
-### For a 2-point DFT:
-$$
-W_2 = e^{-2j\pi / N} = e^{-2j\pi / 2} = e^{-j\pi} = -1
-$$
-Now, the discrete Fourier transform for complex numbers $a_1$ and $a_2$ is:
-$$
-A_K = \sum_{n=0}^{1} a_n W_2^{kn}
-= \sum_{n=0}^{1} a_n (-1)^{kn}
-= a_0 (-1)^{k \cdot 0} + a_1 (-1)^{k \cdot 1}
-$$
-As $K = 0$ and $1$ (for a 2-point DFT), we get:
-$$
-A_0 = a_0 + a_1
-$$
-and
-$$
-A_1 = a_0 - a_1
-$$
+**For a 2 point DFT**
 
-### Similarly for a 4-point DFT:
-$$
-W_4 = e^{-2j\pi / 4} = e^{-j\pi / 2} = -j
-$$
-Now, the discrete Fourier transform for complex numbers $a_1, a_2, a_3, \text{ and } a_4$ is:
-$$
-A_K = \sum_{n=0}^{3} a_n W_4^{kn}
-= \sum_{n=0}^{3} a_n (-j)^{kn}
-= a_0 (-j)^{k \cdot 0} + a_1 (-j)^{k \cdot 1} + a_2 (-j)^{k \cdot 2} + a_3 (-j)^{k \cdot 3}
-$$
-So, we get:
-$$
-A_0 = a_0 + a_1 + a_2 + a_3
-$$
-$$
-A_1 = a_0 - j a_1 - a_2 + j a_3
-$$
-$$
-A_2 = a_0 - a_1 - a_2 + a_3
-$$
-$$
-A_3 = a_0 + j a_1 - a_2 - j a_3
-$$
+**W~2~ = e^-2jπ/N^ = e^-2jπ/2^ = e^-jπ^ = -1**
 
-To compute $A$ quickly, we can pre-compute common sub-expressions:
-$$
-A_0 = (a_0 + a_2) + (a_1 + a_3)
-$$
-$$
-A_1 = (a_0 - a_2) - j(a_1 - a_3)
-$$
-$$
-A_2 = (a_0 + a_2) - (a_1 + a_3)
-$$
-$$
-A_3 = (a_0 - a_2) + j(a_1 - a_3)
-$$
+Now, discrete Fourier transform for complex numbers a~1~ and a~2~ is
 
-Then we can diagram the 4-point DFT like so:
+**A~K~** = $\sum_{n = 0}^{1}a$~n~ *W~2~^kn^*
 
+= $\sum_{n = 0}^{1}a$~n~ *(-1)^kn^*
 
-![](./media/media/image9.png)
+= a~0~ *(-1)^k\ .0^ +* a~1~ *(-1)^k\ .1^*
+
+As **K =** 0 and 1 (for 2 point DFT)
+
+So, **A~0\ ~**= a~0~ *+* a~1~
+
+And **A~1~ =** a~0~ *-* a~1~
+
+**Similarly for a 4-point DFT**
+
+**W~4~ = e^-2jπ/4^ = e^-2jπ/4^ = e^-jπ/2^ = -j**
+
+Now, discrete Fourier transform for complex numbers a~1~, a~2~, a~3~,
+and a~4~ is
+
+**A~K~** = $\sum_{n = 0}^{3}a$~n~ *W~4~^kn^*
+
+= $\sum_{n = 0}^{3}a$~n~ *(-j)^kn^*
+
+= a~0~ *(-j)^k\ .0^ +* a~1~ *(-j)^k\ .1^ +* a~2~ *(-j)^k\ .2^ +* a~3~
+*(-j)^k\ .3^*
+
+So, **A~0\ ~**= a~0~ *+* a~1~ + a~2~ *+* a~3~
+
+**A~1~ =** a~0~ *- j*a~1~ - a~2~ *+ j*a~3~
+
+**A~2~ =** a~0~ *-* a~1~ + a~2~ *-* a~3~
+
+**A~3~ =** a~0~ *+ j*a~1~ - a~2~ *- j*a~3~
+
+To compute **A** quickly, we can pre-compute common sub-expressions:
+
+**A~0\ ~**= (a~0~ *+* a~2~) + (a~1~ *+* a~3~)
+
+**A~1~ = (**a~0~ - a~2~) *-- j(*a~1~ *-* a~3~)
+
+**A~2~ = (**a~0~ *+* a~2~) - (a~1~ *+* a~3~)
+
+**A~3~ = (**a~0~ - a~2~) *+ j(*a~1~ - a~3~)
+
+Then we can diagram the 4-point like so,
+
+![](./media/media/image9.png){width="4.254671916010499in"
+height="2.3639260717410324in"}
 
 Fig: Three stages in the computation of an N=8-point DFT
 
-![](./media/media/image10.png)
+![](./media/media/image10.png){width="5.4501848206474195in"
+height="2.511738845144357in"}
 
 Fig: Three stages in the computation of an N=8-point DFT
 
@@ -457,24 +455,26 @@ The DFT samples defined by
 
 ![](./media/media/image11.wmf)
 
-$W_N^{kn}$ can be expanded as $N \times N$
-**DFT matrix**
+*W~N~^kn\ ^* can be expanded as NXN **DFT matrix**
 
 ![](./media/media/image12.wmf)
 
-In the matrix, the elements in the first row and first column are all $W_N^{.k.0}$ or $W_N^{.0} = 1$. In the third row, the powers are multiplied by 2, and in the fourth row, the powers are multiplied by 3, and so on.
-
+In the matrix the elements in first row and first column all are
+*W~N~^.k.0^ or W~N~^.0^=1.* In the third row powers are multiplied by 2
+and in the fourth row powers are multiplied by 3 and so on.
 
 So,
 
-![](./media/media/image13.png)
+![](./media/media/image13.png){width="5.237485783027122in"
+height="1.5151924759405075in"}
 
 Oppositely, to find **inverse DFT** we replace the 'j' with '-j' in the
 matrix or we take complex conjugates of the matrix elements.
 
 So,
 
-![](./media/media/image14.PNG)
+![](./media/media/image14.PNG){width="6.268055555555556in"
+height="1.9076388888888889in"}
 
 The effective determinant of above is 1/4
 
@@ -486,19 +486,21 @@ The FFT is a fast algorithm for computing the DFT. If we take the
 
 **N=8-point radix-4 DIT-FFT**
 
-![](./media/media/image15.png)
+![](./media/media/image15.png){width="5.448472222222223in"
+height="3.2711034558180225in"}
 
-Where, $W^4 = W_8^0 = 1$; $W^5 = W_8^1 = a = \frac{1 - j}{\sqrt{2}}$; $W^2 = W_8^6 = j$; and $W^3 = W_8^7 = b = \frac{1 + j}{\sqrt{2}}$
-
+Where, -W^4^ = W^0^=1; -W^5^= W^1^ = a = (1-j)/√2; -W^2^ = W^6^=j and
+-W^3^ = W^7^ = b = (1+j)/√2
 
 The above diagram is same as illustrated in section 'Fast Fourier
 Transform' under 'Basics of Fourier Transform'
 
 **N=8-point radix-2 DIT-FFT**
 
-![](./media/media/image16.png)
+![](./media/media/image16.png){width="6.280231846019247in"
+height="3.199833770778653in"}
 
-**\*\*** $W^x = W_8^x$
+**\*\*** *W^x^ = W~8~^x^*
 
 6.  **Applications**
 
