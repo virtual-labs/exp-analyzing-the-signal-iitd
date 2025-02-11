@@ -1,510 +1,840 @@
-1.  **Basics of Fourier Transform**
-
-Fourier transform is a process to convert a spatial domain signal (i.e.,
-time domain signal) into a frequency domain signal. Oppositely, the
-inverse Fourier transform is a process to convert the frequency domain
-signal to the primary time domain signal.
-
-**Fourier transform**
-
-The Fourier transform of a time-domain signal is defined as follows
-
-$$X(\omega) = \int_{-\infty}^{\infty} x(t) \cdot \exp(-j \omega t) \, dt$$
-
-*\*\*x(t) denotes the signal in the time domain,* $X(\omega)$ *denotes
-the signal in the frequency domain and* $\omega$ is the angular
-frequency.
-
-**Inverse Fourier transform**
-
-$$x(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} X(\omega) \cdot \exp(j \omega t) \, dt$$
-
-**Discrete Fourier Transform (DFT)**
-
-For digital systems, the Fourier transform is realized by:
-
-For complex numbers $$\( x_0, x_1, x_2, x_3, \dots, x_{n-1} \)$$
-
-$$ X[k] = \sum_{n=0}^{N-1} x[n] \cdot W_N^{kn} $$
-
-where $$\( k = 1, 2, 3, \dots, N-1 \)$$
-
-Where $$\ W_N \$$ is the $$\ n \$$-th root of unity given by:
-
-$$ W_N = \exp\left(-j \left(2 \frac{\pi}{N}\right) \right) $$
-
-***DFT Algorithms are at the end of this article***
-
-**Fast Fourier Transform (FFT)**
-
-The basic idea of a fast Fourier transform is to break up a transform of length \( N \) into two transforms of length \( N/2 \).
-
-For complex numbers $$\( x[n] \)$$ where $$\( n = 1, 2, 3, \dots, n-1 \)$$
-
-$$ X[k] = \sum_{n=0}^{N-1} x[n] \cdot W_N^{kn} $$
-
-This can be expanded as:
-
-$$ X[k] = \sum_{r=0}^{(N/2)-1} x[2r] \cdot e^{-j 2\pi k (2r)/N} + \sum_{r=0}^{(N/2)-1} x[2r+1] \cdot e^{-j 2\pi k (2r+1)/N} $$
-
-***In the above transform of length \( N \), it is broken into two transforms of length \( N/2 \), and on the other hand, they pick up even and odd samples of \( x[n] \) separately.***
-
-This can be rewritten as:
-
-$$ X[k] = \sum_{r=0}^{(N/2)-1} x[2r] \cdot e^{-j 2\pi k r/(N/2)} + e^{-j 2\pi k/N} \sum_{r=0}^{(N/2)-1} x[2r+1] \cdot e^{-j 2\pi k r/(N/2)} $$
-
-
-
-![](./media/media/image1.png)
-
-In the above diagram {**X\[0\], X\[1\], X\[2\], X\[3\], X\[4\], X\[5\],
-X\[6\], X\[7\]**} is the Fourier transform of {x\[0\], x\[1\], x\[2\],
-x\[3\], x\[4\], x\[5\], x\[6\], x\[7\]}
-
-*\*\*FFT algorithms are at the end of this article*
-
-2.  **Advantages of FFT over DFT**
-
-To compute the DFT of an N-point sequence it take O(N^2^) multiplies and
-adds. The FFT algorithm computes the DFT using O(N log N) multiplies and
-adds.
-
-The fast Fourier transform (FFT) is a discrete Fourier transform
-algorithm which reduces the number of computations needed for N points
-from 2N^2^ to 2Nlog~2~N.
-
-3.  **Properties of Fourier Transform**
-
-<!-- -->
-
-1.  **Linearity**
-
-The Fourier Transform satisfies linearity & principle of superposition
-
-Consider two functions x~1~(t) & x~2~(t)
-
-If F(x~1~(t)) = X~1~(ω), F(x~2~(t)) = X~2~(ω)
-
-Then F\[a~1~x~1~(t) + a~2~x~2~(t)\] = a~1~X~1~(ω) + a~2~X~2~(ω)
-
-2.  **Scaling**
-
-F(x(t)) = X(ω)
-
-If 'a' is real constant then
-
-F(x(at)) = $\frac{1}{|a|}$X(ω),
-
-3.  **Symmetry**
-
-When x(t) is real and even then X(ω) = X^\*^(-ω)
-
-When x(t) is real and odd then X(ω) = X(-ω)
-
-4.  **Convolution**
-
-Fourier transform makes the convolution of 2 signals into the product of
-their Fourier Transform. There are two types of convolutions, one for
-time domain and other for frequency domain.
-
-a.  **Time domain convolution**
-
-F(x~1~(t)) = X~1~(ω), F(x~2~(t)) = X~2~(ω)
-
-Then F(x~1~(t)\* x~2~(t)) = X~1~(ω) . X~2~(ω), \['\*' -- convolution
-sign)\]
-
-b.  **Frequency domain convolution**
-
-F(x~1~(t) . x~2~(t)) = 1/2$\pi$.X~1~(ω) \* X~2~(ω) \['\*' -- convolution
-sign)\]
-
-5.  **Shifting Property**
-
-F(x(t -- t~0~)) = e^-jωt0^ X(ω)
-
-As a consequence, transforms leave the Fourier spectrum \| X(ω)\|^2^
-unchanged.
-
-6.  **Duality**
-
-F(x(t) = X(t) = 2$\pi$ x(-ω)
-
-7.  **Differentiation**
-
-F($\frac{dx(t)}{dt}$ ) = jωX(ω)
-
-8.  **Integration**
-
-F$(\int_{- \infty}^{\infty}x$*(t) dt*) = X(ω)/jω
-
-When a function (i.e., x(t)) is not an energy function and hence the
-Fourier transform of $\lbrack\int_{- \infty}^{\infty}x$*(t) dt*\]
-includes an impulse function.
-
-F$(\int_{- \infty}^{\infty}x$*(t) dt*) = X(ω)/jω +
-$\mathbf{\pi}$X$(0)\delta(\omega)$
-
-9.  **Modulation Property**
-
-F{x(t)*cosat*} = ½ {X(ω + a) + X(ω - a)}
-
-F{x(t)*sinat*} = ½ {X(ω + a) - X(ω - a)}
-
-10. If the Fourier transform of f(x) is F(k), then f^\*^(x) \<=\>
-    F^\*^(-k)
-
-As a consequence Fourier transform of a real function must satisfy the
-symmetry relation.
-
-F(k) = F^\*^(-k), meaning that the Fourier transform is symmetric about
-the origin in k-space. \|F(k)\|^2^ = \|F(-k)\|^2^
-
-11. **Parseval's theorem**
-
-Energy =
-$\int_{\mathbf{- \infty}}^{\mathbf{\infty}}\mathbf{|x}$***(t)\|^2^dt =
-1/2***$\mathbf{\pi}$
-$\int_{\mathbf{- \infty}}^{\mathbf{\infty}}\mathbf{|X}$***(*ω*)\|^2^d*ω**
-
-The total energy in the time domain signal, x(t) \[i.e., the left
-integral\] can be easily calculated from the frequency domain signal,
-*X(ω)* \[i.e., from the right integral\]
-
-12. **Time reversal**
-
-F(x(-t)) = X(-ω)
-
-4.  **Fourier Transform of some common signals**
-
-    1.  **Fourier Transform of a delta function**
-
-![](./media/media/image2.png){width="5.104166666666667in"
-height="1.6608694225721785in"}
-
-If x(t) = 𝛅(t), then Fourier transform,
-
-X(ω) = $\int_{- \infty}^{\infty}x$*(t)e^-j^*^ωt^ *dt*
-
-*=* $\int_{- \infty}^{\infty}\delta$*(t)e^-j^*^ωt^ *dt*
-
-*=* $\int_{- \infty}^{\infty}{1.}$*e^-j^*^ω0^ *dt*
-
-*= 1*
-
-Thus Fourier transform of a delta/impulse is a constant equal to 1,
-independent of frequency. Remember that derivation is used the shifting
-property of the impulse to eliminate the integral.
-
-2.  **Fourier transform of a unit step function**
-
-![](./media/media/image3.png){width="4.136000656167979in"
-height="1.551388888888889in"}
-
-γ (t) = 0 for t\<0
-
-= 1 for t ≥1
-
-We know that a unit-step function is an integration of a delta function.
-So for a unit step function,
-
-γ (t) = $\int_{- \infty}^{\infty}\delta$*(t) dt*
-
-So, X(ω) = $\frac{1}{j\omega}$ F($\delta(t)$) +
-$\mathbf{\pi}$F($\delta(0)$)$\delta(\omega)$
-
-*\[See the property of integration above\]*
-
-= $\frac{1}{j\omega}$ + $\mathbf{\pi}\delta(\omega)$ \[as
-F($\delta(t)$)= F($\delta(0)$)=1\]
-
-When a function (i.e., x(t)) is not an energy function and hence the
-Fourier transform of $\lbrack\int_{- \infty}^{\infty}x$*(t) dt*\]
-includes an impulse function.
-
-3.  **Fourier Transform of a unit pulse function**
-
-A pulse function can be represented as,
-
-x(t)=Π(t) = γ (t + ½) - γ(t - ½)
-
-![](./media/media/image4.PNG){width="4.492055993000875in"
-height="2.897490157480315in"}
-
-For a function rect(t) = Π(t) = 1 for \|t\| ≤ ½
-
-= 0 otherwise
-
-Given that
-
-x(t) = Π(t)
-
-Hence from the definition of the Fourier transform we have
-
-F (Π(t)) = X($\omega$) = $\int_{- \infty}^{\infty}{x(t)}$e ^-jωt^ dt
-
-= $\int_{- 1/2}^{1/2}{1.}$e ^-jωt^ dt \[as Π(t) = 1 for \|t\| ≤ ½\]
-
-= \[(e ^--jωt^)/-jω\]~-1/2~^1/2^
-
-= \[e ^--jω/2^ - e ^jω/2^\] / -jω
-
-= \[e ^jω/2^ - e ^-jω/2^\] / jω
-
-= 2/ω . {\[e ^jω/2^ - e ^-jω/2^\] / 2j}
-
-= 2/ω . sin(ω/2)
-
-= {sin(ω/2) / (ω/2)}
-
-= {sin($(\pi$(ω/2$\pi$)) / ($\pi$(ω/2$\pi$))}
-
-= sinc(ω/2$\pi$)
-
-For the above case, the rectangular function has a pulse width value of
-1 over the interval of \[-½, ½\]; 0 otherwise.
-
-Now we'll discuss a rectangular pulse that has a width of T
-
-Then, rect(t/T) = Π(t/T) = 1 for \|t\| ≤ T/2
-
-= 0 otherwise
-
-Given that
-
-x(t/T) = Π(t/T)
-
-Hence from the definition of the Fourier transform we have
-
-F (Π(t/T)) = $\int_{- \infty}^{\infty}{x(t/T)}$e ^-jωt^ dt
-
-= $\int_{- T/2}^{T/2}{1.}$e ^-jωt^ dt \[as Π(t/T) = 1 for \|t\| ≤ T/2\]
-
-= \[(e ^--jωt^)/-jω\]~-T/2~^T/2^
-
-= \[e ^--jωT/2^ - e ^jωT/2^\] / -jω
-
-= \[e ^jωT/2^ - e ^-jωT/2^\] / jω
-
-= 2/ω . {\[e ^jωT/2^ - e ^-jωT/2^\] / 2j}
-
-= 2/ω . sin(ω(T/2))
-
-= {sin(ω(T/2)) / (ω/2)}
-
-= {sin($\pi($ωT/2$\pi$)) / ($\pi($ω/2$\pi$))}
-
-= {sin($\pi($ωT/2$\pi$)) / ($\pi($ωT/2$\pi$))}.T
-
-= T. sinc(ωT/2$\pi$)
-
-4.  **Fourier Transform of a unit triangle pulse**
-
-![](./media/media/image5.png){width="2.9679997812773404in"
-height="2.087159886264217in"}
-
-A unit triangle pulse is simply the convolution of a unit pulse function
-with itself.
-
-Here, Λ(t) = Π(t) \* Π(t)
-
-*\[Π(t) is a unit pulse function & '\*' denotes convolution\]*
-
-So, Λ(ω) = sinc(ω/2$\pi$) . sinc(ω/2$\pi)$ = sinc^2^(ω/2$\pi)$
-
-5.  **Fourier Transform of a Sawtooth function**
-
-![](./media/media/image6.png){width="3.2395833333333335in"
-height="2.296000656167979in"}
-
-s(t) = 0, for t \< 0 and t \> 1
-
-= 1, for 0 ≤ t ≤ 1
-
-We can represent sawtooth as the integral of shifted unit pulse function
-(to give the ramp) and a negative impulse (delayed by one second) to
-give the discontinuity at the end of the ramp
-
-![](./media/media/image7.png){width="3.783333333333333in"
-height="2.2in"}
-
-s(t) = $\int_{- \infty}^{t}{\Pi(t - \frac{1}{2})}$dt -
-$\int_{- \infty}^{t}{\delta(t - 1)}$dt =$\int_{- \infty}^{t}{y(t)dt}$
-
-y(t) = $\Pi(t - \frac{1}{2})$ - $\delta(t - 1)$
-
-Now, we've to find the Fourier transform of y(t),
-
-Y(ω) = sinc(ω/2$\pi$)e^-jω/2^ - e^-jω^
-
-We can now apply integral property with Y(0) = 0, to find S(ω)
-
-S(ω) = F($\int_{- \infty}^{t}{y(t)dt}$) = Y(ω)/jω - $\pi$Y(0)$\delta$(0)
-= Y(ω)/jω
-
-= {(sinc(ω/2$\pi$)e^-jω/2^ - e^-jω^) / jω}
-
-= {((sin(π . ω/2$\pi$) / (π . ω/2$\pi$))e^-jω/2^ - e^-jω^) / jω}
-
-= (((sin(π . ω/2$\pi$) / (π . ω/2$\pi$))e^-jω/2^) / jω) -- (e^-jω^ / jω)
-
-= (2(sin(ω/2)e^-jω/2^) / jω^2^) -- (je^-jω^ / j^2^ω)
-
-= (2((e^jω/2^ - e^-jω/2^) / 2j)e^-jω/2^) / jω^2^) + (je^-jω^ / ω) \[as
-j^2^ = -1\]
-
-= (((e^jω/2^ - e^-jω/2^)e^-jω/2^) / j^2^ω^2^) + (je^-jω^ / ω)
-
-= (((e^-jω/2^ - e^jω/2^)e^-jω/2^) / ω^2^) + (je^-jω^ / ω)
-
-= (((e^-jω/2^ - e^jω/2^)e^-jω/2^) / ω^2^) + (je^-jω^ / ω)
-
-= ((((e^-jω/2^ - e^jω/2^)e^-jω/2^) + jωe^-jω^) / ω^2^)
-
-= ((e^-jω^ - 1 + jωe^-jω^) / ω^2^)
-
-= ((e^-jω^(1+jω) - 1) / ω^2^)
-
-5.  **Algorithms**
-
-**For DFT & FFT**
-
-Look at the aforementioned formula for DFT. The term ***W**^k^~**N**~
-(*= exp(-j(2$\frac{\mathbf{\pi}}{\mathbf{N}}$ **.k) )** can be
-represented as follows
-
-![](./media/media/image8.png){width="5.703274278215223in"
-height="1.5570614610673665in"}
-
-In the above figure the values for N = 2, 4, and 8 are shown in the
-complex plain. Where 'N' denotes N point DFT.
-
-For example,
-
-**For a 2 point DFT**
-
-**W~2~ = e^-2jπ/N^ = e^-2jπ/2^ = e^-jπ^ = -1**
-
-Now, discrete Fourier transform for complex numbers a~1~ and a~2~ is
-
-**A~K~** = $\sum_{n = 0}^{1}a$~n~ *W~2~^kn^*
-
-= $\sum_{n = 0}^{1}a$~n~ *(-1)^kn^*
-
-= a~0~ *(-1)^k\ .0^ +* a~1~ *(-1)^k\ .1^*
-
-As **K =** 0 and 1 (for 2 point DFT)
-
-So, **A~0\ ~**= a~0~ *+* a~1~
-
-And **A~1~ =** a~0~ *-* a~1~
-
-**Similarly for a 4-point DFT**
-
-**W~4~ = e^-2jπ/4^ = e^-2jπ/4^ = e^-jπ/2^ = -j**
-
-Now, discrete Fourier transform for complex numbers a~1~, a~2~, a~3~,
-and a~4~ is
-
-**A~K~** = $\sum_{n = 0}^{3}a$~n~ *W~4~^kn^*
-
-= $\sum_{n = 0}^{3}a$~n~ *(-j)^kn^*
-
-= a~0~ *(-j)^k\ .0^ +* a~1~ *(-j)^k\ .1^ +* a~2~ *(-j)^k\ .2^ +* a~3~
-*(-j)^k\ .3^*
-
-So, **A~0\ ~**= a~0~ *+* a~1~ + a~2~ *+* a~3~
-
-**A~1~ =** a~0~ *- j*a~1~ - a~2~ *+ j*a~3~
-
-**A~2~ =** a~0~ *-* a~1~ + a~2~ *-* a~3~
-
-**A~3~ =** a~0~ *+ j*a~1~ - a~2~ *- j*a~3~
-
-To compute **A** quickly, we can pre-compute common sub-expressions:
-
-**A~0\ ~**= (a~0~ *+* a~2~) + (a~1~ *+* a~3~)
-
-**A~1~ = (**a~0~ - a~2~) *-- j(*a~1~ *-* a~3~)
-
-**A~2~ = (**a~0~ *+* a~2~) - (a~1~ *+* a~3~)
-
-**A~3~ = (**a~0~ - a~2~) *+ j(*a~1~ - a~3~)
-
-Then we can diagram the 4-point like so,
-
-![](./media/media/image9.png){width="4.254671916010499in"
-height="2.3639260717410324in"}
-
-Fig: Three stages in the computation of an N=8-point DFT
-
-![](./media/media/image10.png){width="5.4501848206474195in"
-height="2.511738845144357in"}
-
-Fig: Three stages in the computation of an N=8-point DFT
-
-**Matrix Relations in DFT**
-
-The DFT samples defined by
-
-![](./media/media/image11.wmf)
-
-*W~N~^kn\ ^* can be expanded as NXN **DFT matrix**
-
-![](./media/media/image12.wmf)
-
-In the matrix the elements in first row and first column all are
-*W~N~^.k.0^ or W~N~^.0^=1.* In the third row powers are multiplied by 2
-and in the fourth row powers are multiplied by 3 and so on.
-
-So,
-
-![](./media/media/image13.png){width="5.237485783027122in"
-height="1.5151924759405075in"}
-
-Oppositely, to find **inverse DFT** we replace the 'j' with '-j' in the
-matrix or we take complex conjugates of the matrix elements.
-
-So,
-
-![](./media/media/image14.PNG){width="6.268055555555556in"
-height="1.9076388888888889in"}
-
-The effective determinant of above is 1/4
-
-**For a 8-point FFT**
-
-The FFT is a fast algorithm for computing the DFT. If we take the
-2-point DFT and 4-point DFT and generalize them to 8-point, 16-point,
-\..., 2^r^-point, we get the FFT algorithm.
-
-**N=8-point radix-4 DIT-FFT**
-
-![](./media/media/image15.png){width="5.448472222222223in"
-height="3.2711034558180225in"}
-
-Where, -W^4^ = W^0^=1; -W^5^= W^1^ = a = (1-j)/√2; -W^2^ = W^6^=j and
--W^3^ = W^7^ = b = (1+j)/√2
-
-The above diagram is same as illustrated in section 'Fast Fourier
-Transform' under 'Basics of Fourier Transform'
-
-**N=8-point radix-2 DIT-FFT**
-
-![](./media/media/image16.png){width="6.280231846019247in"
-height="3.199833770778653in"}
-
-**\*\*** *W^x^ = W~8~^x^*
-
-6.  **Applications**
-
-Fourier transform is used in circuit analysis, signal analysis, cell
-phones, image analysis, signal processing, and LTI systems. The Fourier
-transform is most probably the best tool to find the frequency in an
-entire field. This makes it a useful tool for LTI systems and signal
-processing. Partial differential equations reduce to ordinary
-differential equations in Fourier Transform.
-
-    <script type="text/javascript" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+			<ol>
+				<li>
+					<p><strong>&#xa0;&#xa0; Basics of Fourier Transform</strong></p>
+				</li>
+			</ol>
+			<p>
+				Fourier transform is a process to convert a spatial domain signal (i.e., time domain signal) into a frequency domain signal. Oppositely, the inverse Fourier transform is a process to convert the frequency domain signal to the primary time domain signal.
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				<strong>Fourier transform</strong>
+			</p>
+			<p>
+				The Fourier transform of a time-domain signal is defined as follows
+			</p>
+			<p>
+				X(ω) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-1.png" width="142" height="30" alt="" />ωt) dt
+			</p>
+			<p>
+				<em>&#xa0;</em>
+			</p>
+			<p>
+				<em>**x(t) denotes the signal in the time domain, </em><img src="1738659393_fourier-transform/1738659393_fourier-transform-2.png" width="42" height="24" alt="" /><em> denotes the signal in the frequency domain and </em><img src="1738659393_fourier-transform/1738659393_fourier-transform-3.png" width="14" height="24" alt="" /><em> </em>is the angular frequency.
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				<strong>Inverse Fourier transform</strong>
+			</p>
+			<p>
+				x(t) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-4.png" width="151" height="33" alt="" />ωt) dt
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				<strong>Discrete Fourier Transform (DFT)</strong>
+			</p>
+			<p>
+				For digital systems, the Fourier transform is realized by
+			</p>
+			<p>
+				For complex numbers x<sub>0</sub>, x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, … , x<sub>n-1</sub>
+			</p>
+			<p>
+				X[k] = <img src="1738659393_fourier-transform/1738659393_fourier-transform-5.png" width="79" height="25" alt="" /> <em>W</em><em><sub>N</sub></em><em><sup>kn</sup></em><sup> </sup>,&#xa0; where k=1,2,3,..,N-1
+			</p>
+			<p>
+				Where <em>W</em><em><sub>N</sub></em><em><sup> </sup></em>&#xa0;is the n<sup>th</sup> root of unity given by
+			</p>
+			<p>
+				<em>W</em><em><sub>N </sub></em>= exp(-j(2<img src="1738659393_fourier-transform/1738659393_fourier-transform-6.png" width="11" height="31" alt="" /> )
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				**DFT Algorithms are at the end of this article
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				<strong>Fast Fourier Transform (FFT)</strong>
+			</p>
+			<p>
+				The basic idea of a fast Fourier transform is to break up a transform of length N into two transforms of length N/2. 
+			</p>
+			<p>
+				For complex numbers x[n] where, n = 1, 2, 3, …, n-1
+			</p>
+			<p>
+				X[k] = <img src="1738659393_fourier-transform/1738659393_fourier-transform-5.png" width="79" height="25" alt="" /><em> W</em><em><sub>N</sub></em><em><sup>kn</sup></em><em> </em>= <img src="1738659393_fourier-transform/1738659393_fourier-transform-7.png" width="96" height="37" alt="" />e<sup>-j2πk(2r)/N</sup> + <img src="1738659393_fourier-transform/1738659393_fourier-transform-8.png" width="129" height="37" alt="" />e<sup>-j2πk(2r+1)/N</sup>
+			</p>
+			<p>
+				<em>**In the above transform of length N is broken into two transforms of length N/2 and on the other hand, they pick up even and odd samples of x[n] separately</em>
+			</p>
+			<p>
+				= <img src="1738659393_fourier-transform/1738659393_fourier-transform-7.png" width="96" height="37" alt="" />e<sup>-j2πk(2r)/N</sup> + e<sup>-j2πk/N</sup> <img src="1738659393_fourier-transform/1738659393_fourier-transform-8.png" width="129" height="37" alt="" />e<sup>-j2πk(2r)/N</sup>
+			</p>
+			<p>
+				= <img src="1738659393_fourier-transform/1738659393_fourier-transform-7.png" width="96" height="37" alt="" />e<sup>-j2πkr/(N/2)</sup> + e<sup>-j2πk/N</sup> <img src="1738659393_fourier-transform/1738659393_fourier-transform-8.png" width="129" height="37" alt="" />e<sup>-j2πkr/(N/2)</sup>
+			</p>
+			<p>
+				<img src="1738659393_fourier-transform/1738659393_fourier-transform-9.png" width="630" height="359" alt="" />
+			</p>
+			<p>
+				In the above diagram {<strong>X[0], X[1], X[2], X[3], X[4], X[5], X[6], X[7]</strong>} is the Fourier transform of {x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7]} 
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				**FFT algorithms are at the end of this article
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="2">
+				<li>
+					&#xa0;&#xa0; Advantages of FFT over DFT
+				</li>
+			</ol>
+			<p>
+				To compute the DFT of an N-point sequence it take O(N<sup>2</sup>) multiplies and adds. The FFT algorithm computes the DFT using O(N log N) multiplies and adds. 
+			</p>
+			<p>
+				The fast Fourier transform (FFT) is a discrete Fourier transform algorithm which reduces the number of computations needed for N points from 2N<sup>2</sup> to 2Nlog<sub>2</sub>N.
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="3">
+				<li>
+					&#xa0;&#xa0; Properties of Fourier Transform
+				</li>
+			</ol>
+			<ol>
+				<li>
+					Linearity
+				</li>
+			</ol>
+			<p>
+				The Fourier Transform satisfies linearity &amp; principle of superposition
+			</p>
+			<p>
+				Consider two functions x<sub>1</sub>(t) &amp; x<sub>2</sub>(t)
+			</p>
+			<p>
+				If F(x<sub>1</sub>(t)) = X<sub>1</sub>(ω),&#xa0; F(x<sub>2</sub>(t)) = X<sub>2</sub>(ω)
+			</p>
+			<p>
+				Then F[a<sub>1</sub>x<sub>1</sub>(t) + a<sub>2</sub>x<sub>2</sub>(t)] = a<sub>1</sub>X<sub>1</sub>(ω) + a<sub>2</sub>X<sub>2</sub>(ω)&#xa0;
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="2">
+				<li>
+					Scaling
+				</li>
+			</ol>
+			<p>
+				F(x(t)) = X(ω)
+			</p>
+			<p>
+				If ‘a’ is real constant then 
+			</p>
+			<p>
+				&#xa0;F(x(at)) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-10.png" width="18" height="36" alt="" />X(ω),&#xa0; 
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="3">
+				<li>
+					Symmetry
+				</li>
+			</ol>
+			<p>
+				When x(t) is real and even then X(ω) = X<sup>*</sup>(-ω)
+			</p>
+			<p>
+				When x(t) is real and odd then X(ω) = X(-ω)
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="4">
+				<li>
+					Convolution
+				</li>
+			</ol>
+			<p>
+				Fourier transform makes the convolution of 2 signals into the product of their Fourier Transform. There are two types of convolutions, one for time domain and other for frequency domain.
+			</p>
+			<ol>
+				<li>
+					Time domain convolution
+				</li>
+			</ol>
+			<p>
+				F(x<sub>1</sub>(t)) = X<sub>1</sub>(ω),&#xa0; F(x<sub>2</sub>(t)) = X<sub>2</sub>(ω)
+			</p>
+			<p>
+				Then F(x<sub>1</sub>(t)* x<sub>2</sub>(t)) = X<sub>1</sub>(ω) . X<sub>2</sub>(ω),&#xa0;&#xa0;&#xa0; [‘*’ – convolution sign)]
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="2">
+				<li>
+					Frequency domain convolution
+				</li>
+			</ol>
+			<p>
+				F(x<sub>1</sub>(t) . x<sub>2</sub>(t)) = 1/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />.X<sub>1</sub>(ω) * X<sub>2</sub>(ω)&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; [‘*’ – convolution sign)]
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="5">
+				<li>
+					Shifting Property
+				</li>
+			</ol>
+			<p>
+				F(x(t – t<sub>0</sub>)) = e<sup>-j</sup><sup>ω</sup><sup>t0 </sup>X(ω)
+			</p>
+			<p>
+				As a consequence, transforms leave the Fourier spectrum | X(ω)|<sup>2</sup> unchanged.
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="6">
+				<li>
+					Duality
+				</li>
+			</ol>
+			<p>
+				F(x(t) =&#xa0; X(t) = 2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" /> x(-ω)
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="7">
+				<li>
+					Differentiation
+				</li>
+			</ol>
+			<p>
+				F(<img src="1738659393_fourier-transform/1738659393_fourier-transform-12.png" width="35" height="34" alt="" /> ) = jωX(ω)
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="8">
+				<li>
+					Integration
+				</li>
+			</ol>
+			<p>
+				F<img src="1738659393_fourier-transform/1738659393_fourier-transform-13.png" width="50" height="30" alt="" /><em>(t) dt</em>) = X(ω)/jω 
+			</p>
+			<p>
+				When a function (i.e., x(t)) is not an energy function and hence the Fourier transform of <img src="1738659393_fourier-transform/1738659393_fourier-transform-14.png" width="49" height="30" alt="" /><em>(t) dt</em>] includes an impulse function. 
+			</p>
+			<p>
+				F<img src="1738659393_fourier-transform/1738659393_fourier-transform-13.png" width="50" height="30" alt="" /><em>(t) dt</em>) = X(ω)/jω + <img src="1738659393_fourier-transform/1738659393_fourier-transform-15.png" width="10" height="18" alt="" />X<img src="1738659393_fourier-transform/1738659393_fourier-transform-16.png" width="67" height="24" alt="" />
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="9">
+				<li>
+					Modulation Property
+				</li>
+			</ol>
+			<p>
+				F{x(t)<em>cosat</em>} = ½ {X(ω + a) + X(ω - a)}
+			</p>
+			<p>
+				F{x(t)<em>sinat</em>} = ½ {X(ω + a) - X(ω - a)}
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="10">
+				<li>
+					If the Fourier transform of f(x) is F(k), then f<sup>*</sup>(x) &lt;=&gt;&#xa0; F<sup>*</sup>(-k)
+				</li>
+			</ol>
+			<p>
+				As a consequence Fourier transform of a real function must satisfy the symmetry relation. 
+			</p>
+			<p>
+				F(k) = F<sup>*</sup>(-k), meaning that the Fourier transform is symmetric about the origin in k-space. |F(k)|<sup>2</sup> = |F(-k)|<sup>2</sup>
+			</p>
+			<p>
+				<strong>&#xa0;</strong>
+			</p>
+			<ol start="11">
+				<li>
+					&#xa0;Parseval’s theorem 
+				</li>
+			</ol>
+			<p>
+				Energy = <img src="1738659393_fourier-transform/1738659393_fourier-transform-17.png" width="49" height="30" alt="" /><strong><em>(t)|</em></strong><strong><em><sup>2</sup></em></strong><strong><em>dt = 1/2</em></strong><img src="1738659393_fourier-transform/1738659393_fourier-transform-18.png" width="10" height="18" alt="" /> <img src="1738659393_fourier-transform/1738659393_fourier-transform-19.png" width="51" height="30" alt="" /><strong><em>(</em></strong><strong>ω</strong><strong><em>)|</em></strong><strong><em><sup>2</sup></em></strong><strong><em>d</em></strong><strong>ω</strong>
+			</p>
+			<p>
+				The total energy in the time domain signal, x(t) [i.e., the left integral] can be easily calculated from the frequency domain signal, <em>X(</em><em>ω) </em>[i.e., from the right integral]
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="12">
+				<li>
+					Time reversal
+				</li>
+			</ol>
+			<p>
+				F(x(-t)) = X(-ω)
+			</p>
+			<p>
+				<strong>&#xa0;</strong>
+			</p>
+			<ol start="4">
+				<li>
+					&#xa0;&#xa0; Fourier Transform of some common signals
+					<ol>
+						<li>
+							&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; Fourier Transform of a delta function
+						</li>
+					</ol>
+				</li>
+			</ol>
+			<p>
+				<img src="1738659393_fourier-transform/1738659393_fourier-transform-20.png" width="490" height="160" alt="" />
+			</p>
+			<p>
+				If x(t) = 𝛅(t), then Fourier transform,
+			</p>
+			<p>
+				X(ω) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-21.png" width="39" height="30" alt="" /><em>(t)e</em><em><sup>-j</sup></em><sup>ωt</sup><em> dt</em>
+			</p>
+			<p>
+				<em>= </em><img src="1738659393_fourier-transform/1738659393_fourier-transform-22.png" width="43" height="30" alt="" /><em>(t)e</em><em><sup>-j</sup></em><sup>ωt</sup><em> dt</em>
+			</p>
+			<p>
+				<em>= </em><img src="1738659393_fourier-transform/1738659393_fourier-transform-23.png" width="47" height="30" alt="" /><em>e</em><em><sup>-j</sup></em><sup>ω0</sup><em> dt</em>
+			</p>
+			<p>
+				<em>= 1</em>
+			</p>
+			<p>
+				Thus Fourier transform of a delta/impulse is a constant equal to 1, independent of frequency. Remember that derivation is used the shifting property of the impulse to eliminate the integral.
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="2">
+				<li>
+					&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; Fourier transform of a unit step function
+				</li>
+			</ol>
+			<p>
+				<strong>&#xa0;</strong>
+			</p>
+			<p>
+				<img src="1738659393_fourier-transform/1738659393_fourier-transform-24.png" width="398" height="149" alt="" />
+			</p>
+			<p>
+				γ (t) = 0 for t&lt;0
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = 1 for t ≥1
+			</p>
+			<p>
+				We know that a unit-step function is an integration of a delta function. So for a unit step function,
+			</p>
+			<p>
+				γ (t) = <em>&#xa0;</em><img src="1738659393_fourier-transform/1738659393_fourier-transform-22.png" width="43" height="30" alt="" /><em>(t) dt</em>
+			</p>
+			<p>
+				So, X(ω) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-25.png" width="15" height="36" alt="" /> F(<img src="1738659393_fourier-transform/1738659393_fourier-transform-26.png" width="33" height="24" alt="" />) + <img src="1738659393_fourier-transform/1738659393_fourier-transform-15.png" width="10" height="18" alt="" />F(<img src="1738659393_fourier-transform/1738659393_fourier-transform-27.png" width="37" height="24" alt="" />)<img src="1738659393_fourier-transform/1738659393_fourier-transform-28.png" width="41" height="24" alt="" />&#xa0; 
+			</p>
+			<p>
+				<em>[See the property of integration above]</em>
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = <img src="1738659393_fourier-transform/1738659393_fourier-transform-25.png" width="15" height="36" alt="" /> + <img src="1738659393_fourier-transform/1738659393_fourier-transform-29.png" width="50" height="21" alt="" />&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; [as F(<img src="1738659393_fourier-transform/1738659393_fourier-transform-26.png" width="33" height="24" alt="" />)= F(<img src="1738659393_fourier-transform/1738659393_fourier-transform-27.png" width="37" height="24" alt="" />)=1]
+			</p>
+			<p>
+				When a function (i.e., x(t)) is not an energy function and hence the Fourier transform of <img src="1738659393_fourier-transform/1738659393_fourier-transform-14.png" width="49" height="30" alt="" /><em>(t) dt</em>] includes an impulse function. 
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="3">
+				<li>
+					&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; Fourier Transform of a unit pulse function
+				</li>
+			</ol>
+			<p>
+				A pulse function can be represented as,
+			</p>
+			<p>
+				x(t)=Π(t) = γ (t + ½) - γ(t - ½)
+			</p>
+			<p>
+				<img src="1738659393_fourier-transform/1738659393_fourier-transform-30.png" width="432" height="279" alt="" />
+			</p>
+			<p>
+				For a function rect(t) = Π(t) = 1 for |t| ≤ ½
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = 0 otherwise
+			</p>
+			<p>
+				Given that 
+			</p>
+			<p>
+				x(t) = Π(t)
+			</p>
+			<p>
+				Hence from the definition of the Fourier transform we have
+			</p>
+			<p>
+				F (Π(t)) = X(<img src="1738659393_fourier-transform/1738659393_fourier-transform-31.png" width="15" height="24" alt="" />) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-32.png" width="64" height="30" alt="" />e <sup>-jω</sup><sup>t</sup> dt
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; =&#xa0; <img src="1738659393_fourier-transform/1738659393_fourier-transform-33.png" width="58" height="36" alt="" />e <sup>-jω</sup><sup>t</sup> dt&#xa0;&#xa0;&#xa0;&#xa0; [as Π(t) = 1 for |t| ≤ ½]
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; =&#xa0; [(e <sup>–jω</sup><sup>t</sup>)/-jω]<sub>-1/2</sub><sup>1/2</sup>
+			</p>
+			<p>
+				<sup>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </sup>&#xa0;= [e <sup>–jω</sup><sup>/2</sup> - e <sup>jω</sup><sup>/2</sup>] / -jω
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = [e <sup>jω</sup><sup>/2</sup> - e <sup>-jω</sup><sup>/2</sup>] / jω
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = 2/ω . {[e <sup>jω</sup><sup>/2</sup> - e <sup>-jω</sup><sup>/2</sup>] / 2j}
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = 2/ω . sin(ω/2)
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = {sin(ω/2) / (ω/2)}
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = {sin(<img src="1738659393_fourier-transform/1738659393_fourier-transform-34.png" width="19" height="24" alt="" />(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />)) / (<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />))}
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = sinc(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />)
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				For the above case, the rectangular function has a pulse width value of 1 over the interval of [-½, ½]; 0 otherwise.
+			</p>
+			<p>
+				Now we’ll discuss a rectangular pulse that has a width of T
+			</p>
+			<p>
+				Then,&#xa0;&#xa0;&#xa0; rect(t/T) = Π(t/T) = 1 for |t| ≤ T/2
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = 0 otherwise
+			</p>
+			<p>
+				Given that 
+			</p>
+			<p>
+				x(t/T) = Π(t/T)
+			</p>
+			<p>
+				Hence from the definition of the Fourier transform we have
+			</p>
+			<p>
+				F (Π(t/T)) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-35.png" width="85" height="30" alt="" />e <sup>-jω</sup><sup>t</sup> dt
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; =&#xa0; <img src="1738659393_fourier-transform/1738659393_fourier-transform-36.png" width="58" height="36" alt="" />e <sup>-jω</sup><sup>t</sup> dt&#xa0;&#xa0;&#xa0;&#xa0; [as Π(t/T) = 1 for |t| ≤ T/2]
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; =&#xa0; [(e <sup>–jω</sup><sup>t</sup>)/-jω]<sub>-T/2</sub><sup>T/2</sup>
+			</p>
+			<p>
+				<sup>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </sup>&#xa0;= [e <sup>–jωT</sup><sup>/2</sup> - e <sup>jωT</sup><sup>/2</sup>] / -jω
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = [e <sup>jωT</sup><sup>/2</sup> - e <sup>-jωT</sup><sup>/2</sup>] / jω
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = 2/ω . {[e <sup>jωT</sup><sup>/2</sup> - e <sup>-jωT</sup><sup>/2</sup>] / 2j}
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = 2/ω . sin(ω(T/2))
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = {sin(ω(T/2)) / (ω/2)}
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = {sin(<img src="1738659393_fourier-transform/1738659393_fourier-transform-37.png" width="19" height="24" alt="" />ωT/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />)) / (<img src="1738659393_fourier-transform/1738659393_fourier-transform-37.png" width="19" height="24" alt="" />ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />))}
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = {sin(<img src="1738659393_fourier-transform/1738659393_fourier-transform-37.png" width="19" height="24" alt="" />ωT/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />)) / (<img src="1738659393_fourier-transform/1738659393_fourier-transform-37.png" width="19" height="24" alt="" />ωT/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />))}.T
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = T. sinc(ωT/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />)
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="4">
+				<li>
+					&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; Fourier Transform of a unit triangle pulse
+				</li>
+			</ol>
+			<p>
+				<img src="1738659393_fourier-transform/1738659393_fourier-transform-38.png" width="285" height="201" alt="" />
+			</p>
+			<p>
+				A unit triangle pulse is simply the convolution of a unit pulse function with itself.
+			</p>
+			<p>
+				Here, Λ(t) = Π(t) * Π(t)&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; 
+			</p>
+			<p>
+				<em>[Π(t) is a unit pulse function &amp; ‘*’ denotes convolution]</em>
+			</p>
+			<p>
+				So, Λ(ω) = sinc(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />) . sinc(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-39.png" width="19" height="24" alt="" /> = sinc<sup>2</sup>(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-39.png" width="19" height="24" alt="" />
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<ol start="5">
+				<li>
+					&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; Fourier Transform of a Sawtooth function
+				</li>
+			</ol>
+			<p>
+				<img src="1738659393_fourier-transform/1738659393_fourier-transform-40.png" width="311" height="221" alt="" />
+			</p>
+			<p>
+				s(t) = 0, for t &lt; 0 and t &gt; 1
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = 1, for 0 ≤ t ≤ 1
+			</p>
+			<p>
+				We can represent sawtooth as the integral of shifted unit pulse function (to give the ramp) and a negative impulse (delayed by one second) to give the discontinuity at the end of the ramp
+			</p>
+			<p>
+				<img src="1738659393_fourier-transform/1738659393_fourier-transform-41.png" width="364" height="212" alt="" />
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				s(t) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-42.png" width="101" height="33" alt="" />dt - <img src="1738659393_fourier-transform/1738659393_fourier-transform-43.png" width="99" height="32" alt="" />dt =<img src="1738659393_fourier-transform/1738659393_fourier-transform-44.png" width="84" height="32" alt="" />
+			</p>
+			<p>
+				y(t) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-45.png" width="69" height="33" alt="" /> - <img src="1738659393_fourier-transform/1738659393_fourier-transform-46.png" width="67" height="24" alt="" />
+			</p>
+			<p>
+				Now, we’ve to find the Fourier transform of y(t),
+			</p>
+			<p>
+				Y(ω) = sinc(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />)e<sup>-j</sup><sup>ω/2 </sup>- e<sup>-j</sup><sup>ω</sup>
+			</p>
+			<p>
+				We can now apply integral property with Y(0) = 0, to find S(ω)
+			</p>
+			<p>
+				S(ω) = F(<img src="1738659393_fourier-transform/1738659393_fourier-transform-44.png" width="84" height="32" alt="" />) = Y(ω)/jω - <img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />Y(0)<img src="1738659393_fourier-transform/1738659393_fourier-transform-47.png" width="11" height="24" alt="" />(0) = Y(ω)/jω
+			</p>
+			<p>
+				= {(sinc(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />)e<sup>-j</sup><sup>ω/2 </sup>- e<sup>-j</sup><sup>ω</sup>) / jω}
+			</p>
+			<p>
+				= {((sin(π . ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />) / (π . ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />))e<sup>-j</sup><sup>ω/2 </sup>- e<sup>-j</sup><sup>ω</sup>) / jω}
+			</p>
+			<p>
+				=&#xa0; (((sin(π . ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />) / (π . ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />))e<sup>-j</sup><sup>ω/2</sup>) / jω) – (e<sup>-j</sup><sup>ω</sup> / jω)
+			</p>
+			<p>
+				= (2(sin(ω/2)e<sup>-j</sup><sup>ω/2</sup>) / jω<sup>2</sup>) – (je<sup>-j</sup><sup>ω</sup> / j<sup>2</sup>ω)
+			</p>
+			<p>
+				= (2((e<sup>j</sup><sup>ω/2</sup> - e<sup>-j</sup><sup>ω/2</sup>) / 2j)e<sup>-j</sup><sup>ω/2</sup>) / jω<sup>2</sup>) + (je<sup>-j</sup><sup>ω</sup> / ω)&#xa0;&#xa0;&#xa0;&#xa0; [as j<sup>2 </sup>= -1]
+			</p>
+			<p>
+				= (((e<sup>j</sup><sup>ω/2</sup> - e<sup>-j</sup><sup>ω/2</sup>)e<sup>-j</sup><sup>ω/2</sup>) / j<sup>2</sup>ω<sup>2</sup>) + (je<sup>-j</sup><sup>ω</sup> / ω)
+			</p>
+			<p>
+				= (((e<sup>-j</sup><sup>ω/2 </sup>- e<sup>j</sup><sup>ω/2</sup>)e<sup>-j</sup><sup>ω/2</sup>) / ω<sup>2</sup>) + (je<sup>-j</sup><sup>ω</sup> / ω)
+			</p>
+			<p>
+				= (((e<sup>-j</sup><sup>ω/2 </sup>- e<sup>j</sup><sup>ω/2</sup>)e<sup>-j</sup><sup>ω/2</sup>) / ω<sup>2</sup>) + (je<sup>-j</sup><sup>ω</sup> / ω)
+			</p>
+			<p>
+				= ((((e<sup>-j</sup><sup>ω/2 </sup>- e<sup>j</sup><sup>ω/2</sup>)e<sup>-j</sup><sup>ω/2</sup>) + jωe<sup>-j</sup><sup>ω</sup>) / ω<sup>2</sup>)
+			</p>
+			<p>
+				= ((e<sup>-j</sup><sup>ω </sup>- 1 + jωe<sup>-j</sup><sup>ω</sup>) / ω<sup>2</sup>)
+			</p>
+			<p>
+				= ((e<sup>-j</sup><sup>ω</sup>(1+jω)<sup> </sup>- 1) / ω<sup>2</sup>)
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				<strong>&#xa0;</strong>
+			</p>
+			<ol start="5">
+				<li>
+					&#xa0;&#xa0; Algorithms
+				</li>
+			</ol>
+			<p>
+				<strong>For DFT &amp; FFT</strong>
+			</p>
+			<p>
+				Look at the aforementioned formula for DFT. The term <strong><em>W</em></strong><em><sup>k</sup></em><strong><em><sub>N</sub></em></strong><em><sub>&#xa0; </sub></em><em>(</em>= exp(-j(2<img src="1738659393_fourier-transform/1738659393_fourier-transform-6.png" width="11" height="31" alt="" /> .k) ) can be represented as follows
+			</p>
+			<p>
+				<img src="1738659393_fourier-transform/1738659393_fourier-transform-48.png" width="545" height="149" alt="" />
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				In the above figure the values for N = 2, 4, and 8 are shown in the complex plain. Where ‘N’ denotes N point DFT.
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				For example,
+			</p>
+			<p>
+				<strong>For a 2 point DFT</strong>
+			</p>
+			<p>
+				<strong>W</strong><strong><sub>2</sub></strong><strong> = e</strong><strong><sup>-2jπ/N</sup></strong><strong> = e</strong><strong><sup>-2jπ/2</sup></strong><strong> = e</strong><strong><sup>-jπ </sup></strong><strong>= -1</strong>
+			</p>
+			<p>
+				Now, discrete Fourier transform for complex numbers a<sub>1</sub> and a<sub>2</sub> is
+			</p>
+			<p>
+				<strong>A</strong><strong><sub>K</sub></strong><sub> </sub>= <img src="1738659393_fourier-transform/1738659393_fourier-transform-49.png" width="54" height="24" alt="" /><sub>n</sub> <em>W</em><em><sub>2</sub></em><em><sup>kn</sup></em>
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = <img src="1738659393_fourier-transform/1738659393_fourier-transform-49.png" width="54" height="24" alt="" /><sub>n</sub> <em>(-1)</em><em><sup>kn</sup></em>
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; = a<sub>0</sub> <em>(-1)</em><em><sup>k</sup></em><em><sup>&#xa0; </sup></em><em><sup>.0</sup></em><em><sup>&#xa0; </sup></em><em>+ </em>a<sub>1</sub> <em>(-1)</em><em><sup>k</sup></em><em><sup>&#xa0; </sup></em><em><sup>.1</sup></em>
+			</p>
+			<p>
+				As <strong>K = </strong>0 and 1 (for 2 point DFT)
+			</p>
+			<p>
+				So, <strong>A</strong><strong><sub>0 </sub></strong>= a<sub>0</sub><em><sup>&#xa0; </sup></em><em>+ </em>a<sub>1</sub>
+			</p>
+			<p>
+				And <strong>A</strong><strong><sub>1 </sub></strong><strong>= </strong>a<sub>0</sub><em><sup>&#xa0; </sup></em><em>-</em><em>&#xa0; </em>a<sub>1</sub>
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				<strong>Similarly for a 4-point DFT</strong>
+			</p>
+			<p>
+				<strong>W</strong><strong><sub>4</sub></strong><strong> = e</strong><strong><sup>-2jπ/4</sup></strong><strong> = e</strong><strong><sup>-2jπ/4</sup></strong><strong> = e</strong><strong><sup>-jπ/2 </sup></strong><strong>= -j</strong>
+			</p>
+			<p>
+				Now, discrete Fourier transform for complex numbers a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, and a<sub>4</sub> is
+			</p>
+			<p>
+				<strong>A</strong><strong><sub>K</sub></strong><sub> </sub>= <img src="1738659393_fourier-transform/1738659393_fourier-transform-50.png" width="54" height="25" alt="" /><sub>n</sub> <em>W</em><em><sub>4</sub></em><em><sup>kn</sup></em>
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0; = <img src="1738659393_fourier-transform/1738659393_fourier-transform-50.png" width="54" height="25" alt="" /><sub>n</sub> <em>(-j)</em><em><sup>kn</sup></em>
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0; = a<sub>0</sub> <em>(-j)</em><em><sup>k</sup></em><em><sup>&#xa0; </sup></em><em><sup>.0</sup></em><em><sup>&#xa0; </sup></em><em>+ </em>a<sub>1</sub> <em>(-j)</em><em><sup>k</sup></em><em><sup>&#xa0; </sup></em><em><sup>.1</sup></em><em> + </em>a<sub>2</sub> <em>(-j)</em><em><sup>k</sup></em><em><sup>&#xa0; </sup></em><em><sup>.2</sup></em><em> + </em>a<sub>3</sub> <em>(-j)</em><em><sup>k</sup></em><em><sup>&#xa0; </sup></em><em><sup>.3</sup></em>
+			</p>
+			<p>
+				So, <strong>A</strong><strong><sub>0 </sub></strong>= a<sub>0</sub><em><sup>&#xa0; </sup></em><em>+ </em>a<sub>1 </sub>+ a<sub>2</sub><em><sup>&#xa0; </sup></em><em>+ </em>a<sub>3</sub>
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; <strong>A</strong><strong><sub>1 </sub></strong><strong>= </strong>a<sub>0</sub><em><sup>&#xa0; </sup></em><em>- j</em>a<sub>1 </sub>- a<sub>2</sub><em><sup>&#xa0; </sup></em><em>+ j</em>a<sub>3</sub>
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; <strong>A</strong><strong><sub>2 </sub></strong><strong>= </strong>a<sub>0</sub><em><sup>&#xa0; </sup></em><em>- </em>a<sub>1 </sub>+ a<sub>2</sub><em><sup>&#xa0; </sup></em><em>- </em>a<sub>3</sub>
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; <strong>A</strong><strong><sub>3 </sub></strong><strong>= </strong>a<sub>0</sub><em><sup>&#xa0; </sup></em><em>+ j</em>a<sub>1 </sub>- a<sub>2</sub><em><sup>&#xa0; </sup></em><em>- j</em>a<sub>3</sub>
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				To compute <strong>A</strong> quickly, we can pre-compute common sub-expressions:
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; <strong>A</strong><strong><sub>0 </sub></strong>= (a<sub>0</sub><em><sup> </sup></em><em>+ </em>a<sub>2</sub>)<sub> </sub>+ (a<sub>1</sub><em><sup>&#xa0; </sup></em><em>+ </em>a<sub>3</sub>)
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; <strong>A</strong><strong><sub>1 </sub></strong><strong>=</strong><strong>&#xa0; </strong><strong>(</strong>a<sub>0</sub><em><sup> </sup></em>- a<sub>2</sub>)<sub> </sub><em>– j(</em>a<sub>1</sub><em><sup>&#xa0; </sup></em><em>- </em>a<sub>3</sub>)
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; <strong>A</strong><strong><sub>2 </sub></strong><strong>= (</strong>a<sub>0</sub><em><sup>&#xa0; </sup></em><em>+ </em>a<sub>2</sub>)<sub> </sub>- (a<sub>1</sub><em><sup>&#xa0; </sup></em><em>+ </em>a<sub>3</sub>)
+			</p>
+			<p>
+				&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; <strong>A</strong><strong><sub>3 </sub></strong><strong>= (</strong>a<sub>0</sub><em><sup>&#xa0; </sup></em>- a<sub>2</sub>)<em><sup>&#xa0; </sup></em><em>+ j(</em>a<sub>1 </sub>- a<sub>3</sub>)
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				Then we can diagram the 4-point like so,
+			</p>
+			<p>
+				<img src="1738659393_fourier-transform/1738659393_fourier-transform-51.png" width="406" height="226" alt="" />
+			</p>
+			<p>
+				Fig: Three stages in the computation of an N=8-point DFT
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				<img src="1738659393_fourier-transform/1738659393_fourier-transform-52.png" width="520" height="240" alt="" />
+			</p>
+			<p>
+				Fig: Three stages in the computation of an N=8-point DFT
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				<strong>Matrix Relations in DFT</strong>
+			</p>
+			<p>
+				The DFT samples defined by
+			</p>
+			<p>
+				<img src="1738659393_fourier-transform/1738659393_fourier-transform-53.png" width="231" height="49" alt="" />
+			</p>
+			<p>
+				<strong>&#xa0;</strong>
+			</p>
+			<p>
+				<em>W</em><em><sub>N</sub></em><em><sup>kn </sup></em>&#xa0;can be expanded as&#xa0; NXN <strong>DFT matrix</strong>
+			</p>
+			<p>
+				<img src="1738659393_fourier-transform/1738659393_fourier-transform-54.png" width="288" height="125" alt="" />
+			</p>
+			<p>
+				In the matrix the elements in first row and first column all are <em>W</em><em><sub>N</sub></em><em><sup>.k.0</sup></em><em> or W</em><em><sub>N</sub></em><em><sup>.0</sup></em><em>=1. </em>In the third row powers are multiplied by 2 and in the fourth row powers are multiplied by 3 and so on.
+			</p>
+			<p>
+				So,
+			</p>
+			<p>
+				<img src="1738659393_fourier-transform/1738659393_fourier-transform-55.png" width="500" height="145" alt="" />
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				Oppositely, to find <strong>inverse DFT</strong> we replace the ‘j’ with ‘-j’ in the matrix or we take complex conjugates of the matrix elements.
+			</p>
+			<p>
+				So, 
+			</p>
+			<p>
+				<img src="1738659393_fourier-transform/1738659393_fourier-transform-56.png" width="602" height="184" alt="" />
+			</p>
+			<p>
+				The effective determinant of above is 1/4
+			</p>
+			<p>
+				<strong>&#xa0;</strong>
+			</p>
+			<p>
+				<strong>For a 8-point FFT</strong>
+			</p>
+			<p>
+				The FFT is a fast algorithm for computing the DFT. If we take the 2-point DFT and 4-point DFT and generalize them to 8-point, 16-point, ..., 2<sup>r</sup>-point, we get the FFT algorithm.
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				<strong>N=8-point radix-4</strong><strong>&#xa0;&#xa0; </strong><strong>DIT-FFT</strong>
+			</p>
+			<p>
+				<img src="1738659393_fourier-transform/1738659393_fourier-transform-57.png" width="521" height="313" alt="" />
+			</p>
+			<p>
+				Where, -W<sup>4 </sup>= W<sup>0</sup>=1; -W<sup>5</sup>= W<sup>1</sup><sup>&#xa0; </sup>= a&#xa0; = (1-j)/2;&#xa0; -W<sup>2 </sup>= W<sup>6</sup>=j and -W<sup>3 </sup>= W<sup>7 </sup>= b&#xa0; =&#xa0; (1+j)/2
+			</p>
+			<p>
+				The above diagram is same as illustrated in section ‘Fast Fourier Transform’ under ‘Basics of Fourier Transform’
+			</p>
+			<p>
+				<strong>&#xa0;</strong>
+			</p>
+			<p>
+				<strong>N=8-point radix-2</strong><strong>&#xa0;&#xa0; </strong><strong>DIT-FFT</strong>
+			</p>
+			<p>
+				&#xa0;
+			</p>
+			<p>
+				<img src="1738659393_fourier-transform/1738659393_fourier-transform-58.png" width="602" height="307" alt="" />
+			</p>
+			<p>
+				<strong>** </strong><em>W</em><em><sup>x</sup></em><em> = W</em><em><sub>8</sub></em><em><sup>x</sup></em>
+			</p>
+			<p>
+				<strong>&#xa0;</strong>
+			</p>
+			<ol start="6">
+				<li>
+					&#xa0;&#xa0; Applications 
+				</li>
+			</ol>
+			<p>
+				Fourier transform is used in circuit analysis, signal analysis, cell phones, image analysis, signal processing, and LTI systems. The Fourier transform is most probably the best tool to find the frequency in an entire field. This makes it a useful tool for LTI systems and signal processing. Partial differential equations reduce to ordinary differential equations in Fourier Transform.
+			</p>
+</body>
+</html>
