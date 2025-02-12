@@ -10,31 +10,19 @@
     <li>
       <strong>Input Parameters:</strong>
       <ul>
+        <li><strong>Input Signal(s):</strong> Specify and input the frequency values of the signal(s). In the case of a rectangular or triangular pulse signal, input the pulse width in seconds.</li>
         <li><strong>Operations:</strong> Use the input field to select various operations, such as Fourier addition, subtraction, multiplication, convolution, differentiation, and integration properties.</li>
-        <li><strong>Input Signal(s):</strong> Specify and input the frequency values of the signal(s).</li>
-        <li><strong>FFT Points:</strong> Enter the number of FFT points in the input field.</li>
-        <li><strong>SNR (in dB):</strong> Enter the desired Signal-to-Noise Ratio (SNR) in decibels (dB).</li>
       </ul>
     </li>
+    <br/>
+    <h3><strong>Steps:</strong></h3>
     <li>
-      <strong>Generate Input Signal(s):</strong> 
-      Click the <em>“Generate Input Signal”</em> button to create the input signals.
+      <strong>1. Generate Input Signal(s):</strong> 
+      Click the <em>“Generate Input Signal”</em> button to create the input signals. Choose the base signal, such as a sine wave, cosine wave, rectangular pulse, or triangular pulse, and select the operation from the dropdown menus.
     </li>
     <li>
-      <strong>Generate Combined Signal:</strong> 
-      Click the <em>“Generate Combined Signal”</em> button to create the combined signal, if applicable.
-    </li>
-    <li>
-      <strong>Generate Phase Plot:</strong> 
-      Click the <em>“Generate Phase Plot”</em> button to display the phase plot of the input signal.
-    </li>
-    <li>
-      <strong>Generate Noisy Signal:</strong> 
-      Click the <em>“Generate Noisy Signal”</em> button to add Additive White Gaussian Noise (AWGN) to the input signal and generate the noisy signal.
-    </li>
-    <li>
-      <strong>Display Power Spectral Density (PSD):</strong> 
-      Click the <em>“Generate PSD”</em> and <em>“Generate PSD for Noisy Signal”</em> buttons to visualize the PSD of both input and noisy signals.
+      <strong>2. Display the fourier magnitude spectrum and the phase plot:</strong> 
+      Click the <em>“Simulate”</em> button to visualize the fourier magnitude spectrum and phase plot of the input signal.
     </li>
   </ul>
 </body>
