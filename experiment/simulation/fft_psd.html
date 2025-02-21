@@ -444,6 +444,12 @@ function solveToeplitz(toeplitzMatrix, Rxy) {
     // Conjugate and scale the output, then take only the real part
     return fftResult.map(x => x.re / N);
   }
+  
+          const rr = {
+            showLink: false,             
+            displaylogo: false,           
+            modeBarButtonsToRemove: ['sendDataToCloud'] 
+        };
 
         let fs;    // Sampling frequency
 		let fm;
@@ -720,7 +726,7 @@ function inputSignal1() {
     Plotly.newPlot('inputSignal1', [
         { x: Array.from({ length: fs }, (_, i) => i / fs), y: y, mode: 'lines', name: 'Signal 1' }
     ], { title: 'Input Signal' , xaxis: { title: 'time (s)' },
-            yaxis: { title: 'Amplitude' }});
+            yaxis: { title: 'Amplitude' }}, rr);
 
     //document.getElementById('scrolltoinputsignal1').scrollIntoView({ behavior: 'smooth' });
 }
@@ -737,7 +743,7 @@ function generateInputSignal2() {
     Plotly.newPlot('inputSignal2', [
         { x: Array.from({ length: fs }, (_, i) => i / fs), y: y2, mode: 'lines', name: 'Signal 1' }
     ], { title: 'Input Signal 2' , xaxis: { title: 'time (s)' },
-            yaxis: { title: 'Amplitude' }});
+            yaxis: { title: 'Amplitude' }}, rr);
 
     //document.getElementById('scrolltoinputsignal2').scrollIntoView({ behavior: 'smooth' });
 }
@@ -767,7 +773,7 @@ function generateInputSignal2() {
             // Plot original message signal
             Plotly.newPlot('plot11', [
                 { x: Array.from({ length: fs }, (_, i) => i / fs), y: y3, mode: 'lines', name: 'Original Message Signal' }
-            ], { title: 'Combined Signal' }, config);
+            ], { title: 'Combined Signal' }, rr);
 				//document.getElementById('scrolltomessage').scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -790,7 +796,7 @@ function generateInputSignal2() {
 		        Plotly.newPlot('plot12', [
             { x: tt, y: x, mode: 'lines', name: 'Noisy Signal' },
         ], { title: 'Noisy Signal' , xaxis: { title: 'time (s)' },
-            yaxis: { title: 'Amplitude' } });
+            yaxis: { title: 'Amplitude' } }, rr);
 			//document.getElementById('scrolltonoisy').scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -987,7 +993,7 @@ console.log(computeWindow(windowType, N)); // Logs the computed window values fo
                     title: 'Power/Frequency (dB/Hz)'
                     //range: [-100, 10] // Specify your desired y-axis range here
                 }
-            });
+            }, rr);
 			//document.getElementById('scrolltopsd1').scrollIntoView({ behavior: 'smooth' });
 
             // If x is not null, calculate and plot the PSD for the noisy signal
@@ -1011,7 +1017,7 @@ console.log(computeWindow(windowType, N)); // Logs the computed window values fo
                         title: 'Power/Frequency (dB/Hz)'
                         //range: [-120, 10] // Specify your desired y-axis range here
                     }
-                });
+                }, rr);
 			//document.getElementById('scrolltopsd2').scrollIntoView({ behavior: 'smooth' });
             }
         }
@@ -1158,7 +1164,7 @@ if (inputSelector1 === 'rectangular' || inputSelector2 === 'rectangular') {
             title: 'Phase Plot',
             xaxis: { title: 'Frequency (Hz)' },
             yaxis: { title: 'Phase (radians)' }
-        });
+        }, rr);
 		    //document.getElementById('scrolltophaseplot').scrollIntoView({ behavior: 'smooth' });
 }
 
