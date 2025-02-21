@@ -444,6 +444,13 @@ function solveToeplitz(toeplitzMatrix, Rxy) {
     // Conjugate and scale the output, then take only the real part
     return fftResult.map(x => x.re / N);
   }
+  
+          const rr = {
+            showLink: false,             
+            displaylogo: false,           
+            modeBarButtonsToRemove: ['sendDataToCloud'] 
+        };
+
 
         let fs;    // Sampling frequency
 		let fm;
@@ -811,7 +818,7 @@ function inputSignal1() {
     Plotly.newPlot('inputSignal1', [
         { x: Array.from({ length: fs }, (_, i) => i / fs), y: y, mode: 'lines', name: 'Signal 1' }
     ], { title: 'Input Signal' , xaxis: { title: 'time (s)' },
-            yaxis: { title: 'Amplitude' }});
+            yaxis: { title: 'Amplitude' }}, rr);
 
     //document.getElementById('scrolltoinputsignal1').scrollIntoView({ behavior: 'smooth' });
 }
@@ -828,7 +835,7 @@ function generateInputSignal2() {
     Plotly.newPlot('inputSignal2', [
         { x: Array.from({ length: fs }, (_, i) => i / fs), y: y2, mode: 'lines', name: 'Signal 1' }
     ], { title: 'Input Signal 2' , xaxis: { title: 'time (s)' },
-            yaxis: { title: 'Amplitude' }});
+            yaxis: { title: 'Amplitude' }}, rr);
 
     //document.getElementById('scrolltoinputsignal2').scrollIntoView({ behavior: 'smooth' });
 }
@@ -858,7 +865,7 @@ function generateInputSignal2() {
             // Plot original message signal
             Plotly.newPlot('plot11', [
                 { x: Array.from({ length: fs }, (_, i) => i / fs), y: y3, mode: 'lines', name: 'Original Message Signal' }
-            ], { title: 'Combined Signal' }, config);
+            ], { title: 'Combined Signal' }, rr);
 				//document.getElementById('scrolltomessage').scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -881,7 +888,7 @@ function generateInputSignal2() {
 		        Plotly.newPlot('plot12', [
             { x: tt, y: x, mode: 'lines', name: 'Noisy Signal' },
         ], { title: 'Noisy Signal' , xaxis: { title: 'time (s)' },
-            yaxis: { title: 'Amplitude' } });
+            yaxis: { title: 'Amplitude' } }, rr);
 			//document.getElementById('scrolltonoisy').scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -1133,7 +1140,7 @@ console.log(computeWindow(windowType, N)); // Logs the computed window values fo
             showlegend: true
         };
 
-        Plotly.newPlot('fourier-plot', [trace], layout);
+        Plotly.newPlot('fourier-plot', [trace], layout, rr);
 					//document.getElementById('scrolltofourier').scrollIntoView({ behavior: 'smooth' });
 		}
 ///////////////////////////////////////////////////////
@@ -1280,7 +1287,7 @@ if (inputSelector1 === 'rectangular' || inputSelector2 === 'rectangular') {
             title: 'Phase Plot',
             xaxis: { title: 'Frequency (Hz)', range: [-((fs/10)+fm+5), ((fs/10)+fm+5)] },
             yaxis: { title: 'Phase (radians)' }
-        });
+        }, rr);
 		    //document.getElementById('scrolltophaseplot').scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -1325,7 +1332,7 @@ if (inputSelector1 === 'rectangular' || inputSelector2 === 'rectangular') {
                 grid: true
             };
 
-            Plotly.newPlot('inputSignal1', [timeTrace], timeLayout);
+            Plotly.newPlot('inputSignal1', [timeTrace], timeLayout, rr);
         }
 		
 		        // Compute the Fourier Transform of a Triangular Wave
@@ -1387,8 +1394,8 @@ if (inputSelector1 === 'rectangular' || inputSelector2 === 'rectangular') {
                 grid: true
             };
 
-            Plotly.newPlot('fourier-plot', [magnitudeTrace], layout);
-            Plotly.newPlot('phasePlot', [phaseTrace], phaseLayout);
+            Plotly.newPlot('fourier-plot', [magnitudeTrace], layout, rr);
+            Plotly.newPlot('phasePlot', [phaseTrace], phaseLayout, rr);
         }
 ///////////////////////////triangular pulse ends//////////	
 
@@ -1432,7 +1439,7 @@ if (inputSelector1 === 'rectangular' || inputSelector2 === 'rectangular') {
                     yaxis: { title: 'Amplitude' }
                 };
 
-                Plotly.newPlot('inputSignal1', [pulseTrace], pulseLayout);
+                Plotly.newPlot('inputSignal1', [pulseTrace], pulseLayout, rr);
             }
 
             function plotFourierTransform() {
@@ -1475,8 +1482,8 @@ if (inputSelector1 === 'rectangular' || inputSelector2 === 'rectangular') {
                     yaxis: { title: 'Phase (Radians)' }
                 };
 
-                Plotly.newPlot('fourier-plot', [magnitudeTrace], layout);
-                Plotly.newPlot('phasePlot', [phaseTrace], phaseLayout);
+                Plotly.newPlot('fourier-plot', [magnitudeTrace], layout, rr);
+                Plotly.newPlot('phasePlot', [phaseTrace], phaseLayout, rr);
             }
 
             plotRectangularPulse();
