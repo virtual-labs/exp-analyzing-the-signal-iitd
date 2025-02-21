@@ -801,7 +801,12 @@ function inputSignal1() {
     Plotly.newPlot('inputSignal1', [
         { x: Array.from({ length: fs }, (_, i) => i / fs), y: y, mode: 'lines', name: 'Signal 1' }
     ], { title: 'Input Signal' , xaxis: { title: 'time (s)' },
-            yaxis: { title: 'Amplitude' }});
+            yaxis: { title: 'Amplitude' }}, {
+				showLink: false,              // Hides "Edit in Chart Studio" link
+				displaylogo: false,           // Removes Plotly logo
+				modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+			});
+
 
     //document.getElementById('scrolltoinputsignal1').scrollIntoView({ behavior: 'smooth' });
 }
@@ -818,7 +823,11 @@ function generateInputSignal2() {
     Plotly.newPlot('inputSignal2', [
         { x: Array.from({ length: fs }, (_, i) => i / fs), y: y2, mode: 'lines', name: 'Signal 1' }
     ], { title: 'Input Signal 2' , xaxis: { title: 'time (s)' },
-            yaxis: { title: 'Amplitude' }});
+            yaxis: { title: 'Amplitude' }}, {
+				showLink: false,              // Hides "Edit in Chart Studio" link
+				displaylogo: false,           // Removes Plotly logo
+				modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+			});
 
     //document.getElementById('scrolltoinputsignal2').scrollIntoView({ behavior: 'smooth' });
 }
@@ -1067,7 +1076,11 @@ console.log(computeWindow(windowType, N)); // Logs the computed window values fo
                 yaxis: { title: "Magnitude" }
             };
 
-            Plotly.newPlot("fourier-plot", [trace], layout);
+            Plotly.newPlot("fourier-plot", [trace], layout, {
+            showLink: false,              // Hides "Edit in Chart Studio" link
+            displaylogo: false,          // Removes Plotly logo
+            modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+        });
 			//document.getElementById('scrolltofourier').scrollIntoView({ behavior: 'smooth' });
         }
 ///////////////////////////////////////////////////////
@@ -1210,11 +1223,16 @@ if (inputSelector1 === 'rectangular' || inputSelector2 === 'rectangular') {
             name: 'Phase'
         };
 
-        Plotly.newPlot('phasePlot', [phaseData], {
-            title: 'Phase Plot',
-            xaxis: { title: 'Frequency (Hz)', range: [-((fs/10)+fm+5), ((fs/10)+fm+5)] },
-            yaxis: { title: 'Phase (radians)' }
-        });
+			Plotly.newPlot('phasePlot', [phaseData], { 
+				title: 'Phase Plot',
+				xaxis: { title: 'Frequency (Hz)', range: [-((fs/10) + fm + 5), ((fs/10) + fm + 5)] },
+				yaxis: { title: 'Phase (radians)' } 
+			}, {
+				showLink: false,              // Hides "Edit in Chart Studio" link
+				displaylogo: false,           // Removes Plotly logo
+				modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+			});
+
 		    //document.getElementById('scrolltophaseplot').scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -1260,7 +1278,12 @@ if (inputSelector1 === 'rectangular' || inputSelector2 === 'rectangular') {
                 grid: true
             };
 
-            Plotly.newPlot('inputSignal1', [timeTrace], timeLayout);
+            Plotly.newPlot('inputSignal1', [timeTrace], timeLayout, {
+				showLink: false,              // Hides "Edit in Chart Studio" link
+				displaylogo: false,           // Removes Plotly logo
+				modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+			});
+
         }
 		
 		        // Compute the Fourier Transform of a Triangular Wave
@@ -1322,8 +1345,16 @@ if (inputSelector1 === 'rectangular' || inputSelector2 === 'rectangular') {
                 grid: true
             };
 
-            Plotly.newPlot('fourier-plot', [magnitudeTrace], layout);
-            Plotly.newPlot('phasePlot', [phaseTrace], phaseLayout);
+            Plotly.newPlot('fourier-plot', [magnitudeTrace], layout, {
+            showLink: false,              // Hides "Edit in Chart Studio" link
+            displaylogo: false,          // Removes Plotly logo
+            modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+        });
+            Plotly.newPlot('phasePlot', [phaseTrace], phaseLayout, {
+            showLink: false,              // Hides "Edit in Chart Studio" link
+            displaylogo: false,          // Removes Plotly logo
+            modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+        });
         }
 ///////////////////////////triangular pulse ends//////////	
 
@@ -1367,7 +1398,12 @@ if (inputSelector1 === 'rectangular' || inputSelector2 === 'rectangular') {
                     yaxis: { title: 'Amplitude' }
                 };
 
-                Plotly.newPlot('inputSignal1', [pulseTrace], pulseLayout);
+                Plotly.newPlot('inputSignal1', [pulseTrace], pulseLayout, {
+				showLink: false,              // Hides "Edit in Chart Studio" link
+				displaylogo: false,           // Removes Plotly logo
+				modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+			});
+
             }
 
             function plotFourierTransform() {
@@ -1410,8 +1446,16 @@ if (inputSelector1 === 'rectangular' || inputSelector2 === 'rectangular') {
                     yaxis: { title: 'Phase (Radians)' }
                 };
 
-                Plotly.newPlot('fourier-plot', [magnitudeTrace], layout);
-                Plotly.newPlot('phasePlot', [phaseTrace], phaseLayout);
+                Plotly.newPlot('fourier-plot', [magnitudeTrace], layout, {
+            showLink: false,              // Hides "Edit in Chart Studio" link
+            displaylogo: false,          // Removes Plotly logo
+            modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+        });
+                Plotly.newPlot('phasePlot', [phaseTrace], phaseLayout, {
+            showLink: false,              // Hides "Edit in Chart Studio" link
+            displaylogo: false,          // Removes Plotly logo
+            modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+        });
             }
 
             plotRectangularPulse();
