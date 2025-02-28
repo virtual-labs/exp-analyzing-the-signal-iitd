@@ -27,12 +27,12 @@
         "d": "A sinc function squared."
       },
       "explanations": {
-        "a": "Correct! The Fourier Transform of a triangular pulse results in a sinc function.",
+        "a": "Incorrect! The Fourier Transform of a rectangular pulse results in a sinc function.",
         "b": "This is incorrect; Gaussian functions are not related to triangular pulses.",
         "c": "This is incorrect; the Fourier Transform of a triangular pulse is not another triangular pulse.",
-        "d": "This is incorrect; the Fourier Transform of a triangular pulse is a sinc function, not its square."
+        "d": "This is correct; the Fourier Transform of a triangular pulse is a sinc function squared."
       },
-      "correctAnswer": "a",
+      "correctAnswer": "d",
       "difficulty": "hard"
     },
     {
