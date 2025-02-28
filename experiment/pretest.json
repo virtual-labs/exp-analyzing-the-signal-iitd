@@ -12,10 +12,10 @@
       "explanations": {
         "a": "A sinc function is the Fourier Transform of a rectangular pulse.",
         "b": "A Gaussian function in the time domain transforms into another Gaussian.",
-        "c": "This is incorrect; the Fourier Transform of the Dirac delta is not constant.",
-        "d": "The Dirac delta in the time domain corresponds to an impulse at all frequencies in the frequency domain."
+        "c": "The Fourier Transform of the Dirac delta function δ(t) is a constant function across all frequencies. .",
+        "d": "Incorrect."
       },
-      "correctAnswer": "d",
+      "correctAnswer": "c",
       "difficulty": "intermediate"
     },
     {
