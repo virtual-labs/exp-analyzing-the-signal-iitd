@@ -12,7 +12,7 @@
       "explanations": {
         "a": "A sinc function is the Fourier Transform of a rectangular pulse.",
         "b": "A Gaussian function in the time domain transforms into another Gaussian.",
-        "c": "The Fourier Transform of the Dirac delta function δ(t) is a constant function across all frequencies. .",
+        "c": "The Fourier Transform of the Dirac delta function δ(t) is a constant function across all frequencies.",
         "d": "Incorrect."
       },
       "correctAnswer": "c",
@@ -82,6 +82,91 @@
         "b": "Multiplying by a cosine modulates the signal, shifting its spectrum.",
         "c": "This applies to sampling, not modulation.",
         "d": "Modulation does not reduce bandwidth."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "6. What happens when you double the frequency of a sinusoidal signal in the time domain?",
+      "answers": {
+        "a": "Its Fourier Transform shifts to the left.",
+        "b": "Its Fourier Transform shifts to higher frequencies.",
+        "c": "The signal's duration increases.",
+        "d": "The signal becomes band-limited."
+      },
+      "explanations": {
+        "a": "Shifting left is incorrect; increasing frequency shifts the spectrum to higher frequencies.",
+        "b": "Doubling the frequency moves the delta spikes in the Fourier domain farther apart.",
+        "c": "Doubling frequency doesn't affect time duration.",
+        "d": "It doesn’t make the signal more band-limited."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "7. What is the consequence of sampling a signal below its Nyquist rate?",
+      "answers": {
+        "a": "The signal becomes periodic.",
+        "b": "The signal's frequency increases.",
+        "c": "Aliasing occurs, causing frequency overlap.",
+        "d": "The amplitude of the signal increases."
+      },
+      "explanations": {
+        "a": "Sampling does not make the signal itself periodic, but its spectrum becomes periodic.",
+        "b": "Frequency increase is not a direct consequence of undersampling.",
+        "c": "Aliasing is the correct effect of undersampling — higher frequency content overlaps with lower frequencies.",
+        "d": "Sampling does not change amplitude."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "8. What does the sampling theorem guarantee?",
+      "answers": {
+        "a": "Signals can be reconstructed exactly from samples if sampled below Nyquist rate.",
+        "b": "Signals must be periodic to be sampled correctly.",
+        "c": "Exact reconstruction is possible if sampling rate is greater than twice the highest frequency.",
+        "d": "Aliasing is unavoidable."
+      },
+      "explanations": {
+        "a": "Sampling below Nyquist leads to aliasing, not perfect reconstruction.",
+        "b": "Periodicity is not a requirement for sampling.",
+        "c": "This is the core statement of the sampling theorem.",
+        "d": "Aliasing can be avoided with proper sampling."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "9. What happens in the frequency domain when two signals overlap in time?",
+      "answers": {
+        "a": "Their spectra multiply.",
+        "b": "Their spectra add.",
+        "c": "Their bandwidths compress.",
+        "d": "They cancel out each other."
+      },
+      "explanations": {
+        "a": "Multiplication in time corresponds to convolution in frequency, not overlap.",
+        "b": "Overlapping signals in time leads to addition of their frequency spectra.",
+        "c": "Bandwidth is not compressed simply by time-domain overlap.",
+        "d": "Cancellation depends on the phase, not just overlap."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "10. How does aliasing appear in the frequency domain?",
+      "answers": {
+        "a": "As increased amplitude of the spectral components.",
+        "b": "As copies of the spectrum overlapping due to undersampling.",
+        "c": "As a single narrow spike.",
+        "d": "As a shift of the whole spectrum to zero frequency."
+      },
+      "explanations": {
+        "a": "Aliasing does not increase amplitude.",
+        "b": "Aliasing results in overlapping replicas of the spectrum in the frequency domain.",
+        "c": "Aliasing is not a spike — it causes distortion.",
+        "d": "Spectrum shifting to zero is not aliasing."
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
