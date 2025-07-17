@@ -1,0 +1,1183 @@
+<!DOCTYPE html><html lang="en"><head>
+      <!--Google Tag Manager-->
+      <script class="gtm">
+        var dataLayer = [{
+        'labName': 'Virtual Lab',
+        'discipline': 'Test',
+        'college': 'IITD',
+        'phase': 'Testing',
+        'expName': 'UNDERSTAND VARIOUS SIGNAL PROCESSING TOOLS LIKE FOURIER SERIES, FOURIER
+    TRANSFORM, POWER SPECTRAL DENSITY ETC. FOR ANALYZING THE SIGNAL',
+        'expShortName': 'analyzing-the-signal'
+        }];
+    
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5NMQ9NQ');
+      </script>
+      <!--End Google Tag Manager-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    
+    	<meta name="experiment-short-name" content="analyzing-the-signal">
+    	<meta name="developer-institute" content="IITD">
+    	<meta name="learning-unit" content="UNDERSTAND VARIOUS SIGNAL PROCESSING TOOLS LIKE FOURIER SERIES, FOURIER
+    TRANSFORM, POWER SPECTRAL DENSITY ETC. FOR ANALYZING THE SIGNAL">
+    	<meta name="task-name" content="Theory">
+    
+    <!-- For iPhone -->
+    <meta name="msapplication-TileColor" content="#4076e0">
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#4076e0">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#4076e0">
+    <title>Virtual Labs</title>
+    <link rel="shortcut icon" href="./assets/images/favicon.ico">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css" integrity="sha512-Oy18vBnbSJkXTndr2n6lDMO5NN31UljR8e/ICzVPrGpSud4Gkckb8yUpqhKuUNoE+o9gAb4O/rAxxw1ojyUVzg==" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;family=Raleway&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/github-markdown.min.css">
+    <link rel="stylesheet" href="./assets/css/vlabs-style.css">
+    <link rel="stylesheet" href="./assets/css/toast.css">
+    <link rel="stylesheet" href="./assets/katex_assets/katex.min.css">
+    
+    <script src="./assets/js/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+      h1 {
+      font-size: 1.8rem;
+      }
+      h2 {
+      font-size: 1.4rem;
+      }
+      h3 {
+      font-size: 1.2rem;
+      }
+
+      h2, h3 {
+      font-weight: 800;
+      }
+    </style>
+    
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"></head>
+  <body class="p-0 container-fluid vlabs-page d-flex flex-column justify-content-between">
+      <!--Google Tag Manager (noscript)-->
+      <noscript class="gtm">
+        <iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-5NMQ9NQ" style="display:none;visibility:hidden" width="0">
+        </iframe>
+      </noscript>
+      <!--End Google Tag Manager (noscript)-->
+  
+      <header class="vlabs-header sticky-top bg-white">
+        <nav class="p-0 navbar navbar-light d-flex align-items-stretch">
+          
+          <button class="navbar-toggler px-4" type="button" onclick="toggle()">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="d-flex justify-content-center">        
+            <a href="https://vlab.co.in" class="navbar-brand">
+              <img src="./assets/images/vlabs-color-small-moe.jpg" alt="vlabs logo" class="vlabs-logo">
+            </a>
+          </div>
+          
+          <div id="headerNavbar" class="d-none border-top flex-grow-1 d-lg-flex align-items-center justify-content-end">
+            <div class="svc-rating-display">
+                <rating-display spreadsheetid="1x12nhpp0QvnsA6x-O1sV4IA9SAbfVsq_wiexWkutOmU" sheetname="Experiment-Database" columnname="Experiment Short Name" columnvalue="analyzing-the-signal" imagesdirectory="/plugins/svc-rating/images/">
+                </rating-display>
+            </div>      <div class="svc-rating-submit">
+                <rating-submit title="Rate" this="" experiment="">
+                </rating-submit>
+            </div>      <bug-report id="bug-report" title="[BUG REPORT] UNDERSTAND VARIOUS SIGNAL PROCESSING TOOLS LIKE FOURIER SERIES, FOURIER
+      TRANSFORM, POWER SPECTRAL DENSITY ETC. FOR ANALYZING THE SIGNAL" page-type="text" context-info="{&quot;organisation&quot;:&quot;Virtual Labs&quot;,&quot;developer_institute&quot;:&quot;IITD&quot;,&quot;expname&quot;:&quot;UNDERSTAND VARIOUS SIGNAL PROCESSING TOOLS LIKE FOURIER SERIES, FOURIER\nTRANSFORM, POWER SPECTRAL DENSITY ETC. FOR ANALYZING THE SIGNAL&quot;,&quot;labname&quot;:&quot;Virtual Lab&quot;,&quot;phase&quot;:&quot;Testing&quot;}" checkbox-json="{&quot;text&quot;:[&quot;Insufficient Content&quot;],&quot;video&quot;:[&quot;Insufficient Content&quot;],&quot;assesment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;assessment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;simulation&quot;:[&quot;Simulation Not Working&quot;,&quot;Incorrect Results/Observations&quot;,&quot;Insufficient/Incorrect Instructions&quot;],&quot;DEFAULT&quot;:[&quot;Page Not Loading&quot;,&quot;Content Not Visible&quot;,&quot;Incorrect Content&quot;]}" button_style="border: none; color: #fff; background-color: #288ec8; text-align: center; font-size: 1.05rem; border-radius: 1em;padding: 0.6em 1.2em; margin: 0 10px" position="override" custom_button_class="v-button"></bug-report>
+          </div>
+        </nav>
+      </header>
+      <div class="container-fluid flex-fill d-flex flex-column vlabs-page-main">
+        <div class="row d-flex justify-content-between">
+          <div class="flex-column">
+          <div class="row py-4 px-4 breadcrumbs">
+          	<div class="title is-4 tools">Tools</div>
+          	<span class="mx-2">
+          		<i aria-hidden="true" class="fa fa-angle-right"></i>
+          	</span>
+          	<a href="performance-report.html" class="my-2 mx-3" target="_blank">
+          		<button class="v-button">Performance Tool</button>
+          	</a>
+          	<a href="validator-report.html" class="my-2 mx-3" target="_blank">
+          		<button class="v-button">Validation Tool</button>
+          	</a>
+          </div>
+          </div>
+        </div>
+        <div class="row flex-grow-1 d-flex flex-nowrap flex-column flex-lg-row">
+          <div class="modal fade popupmenu" id="popupMenu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">
+                              <a href="https://vlab.co.in" class="navbar-brand">
+                                  <img src="./assets/images/vlabs-color-small-moe.jpg" alt="vlabs logo" class="vlabs-logo">
+                              </a>
+                          </h5>
+                          <button type="button" class="btn-close align-self-center" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body nav-menu">
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="index.html" class="p-2 ">
+                                      Aim
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="theory.html" class="p-2  current-item ">
+                                      Theory
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="pretest.html" class="p-2 ">
+                                      Pretest
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="procedure.html" class="p-2 ">
+                                      Procedure
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="simulation.html" class="p-2 ">
+                                      Simulation
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="posttest.html" class="p-2 ">
+                                      Posttest
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="references.html" class="p-2 ">
+                                      References
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="feedback.html" class="p-2 ">
+                                      Feedback
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="nav flex-column sidebar nav-menu flex-shrink-0 px-lg-4 align-items-center align-items-lg-start hidden d-none d-lg-flex" id="menu">
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="index.html" class="p-2 ">
+                        Aim
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="theory.html" class="p-2  current-item ">
+                        Theory
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="pretest.html" class="p-2 ">
+                        Pretest
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="procedure.html" class="p-2 ">
+                        Procedure
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="simulation.html" class="p-2 ">
+                        Simulation
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="posttest.html" class="p-2 ">
+                        Posttest
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="references.html" class="p-2 ">
+                        References
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="feedback.html" class="p-2 ">
+                        Feedback
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+          </div>          <div class="vlabs-page-content px-5 pb-4 flex-grow-1 markdown-body">
+            <div class="text-center fix-spacing">
+              <h2 id="understand-various-signal-processing-tools-like-fourier-series-fourier-transform-power-spectral-density-etc-for-analyzing-the-signal">Understand various signal processing tools like Fourier series, Fourier transform, Power spectral density etc. for analyzing the signal</h2>
+          
+            </div>
+              
+          
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="./css/imgstyles.css">
+          
+          
+                      <ol>
+                          <li>
+                              <h2>Basics of Fourier Transform</h2>
+                          </li>
+                      </ol>
+                      <p>
+                          Fourier transform is a process to convert a spatial domain signal (i.e., time domain signal) into a frequency domain signal. Oppositely, the inverse Fourier transform is a process to convert the frequency domain signal to the primary time domain signal.
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <h3>
+                      Fourier transform
+                      </h3>
+                      <p>
+                          The Fourier transform of a time-domain signal is defined as follows
+                      </p>
+                      <p>
+                          X(ω) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-1.png" width="142" height="30" alt="">ωt) dt
+                      </p>
+                      <p>
+                          <em>&nbsp;</em>
+                      </p>
+                      <p>
+                          <em>**x(t) denotes the signal in the time domain, </em><img src="1738659393_fourier-transform/1738659393_fourier-transform-2.png" width="42" height="24" alt=""><em> denotes the signal in the frequency domain and </em><img src="1738659393_fourier-transform/1738659393_fourier-transform-3.png" width="14" height="24" alt=""><em> </em>is the angular frequency.
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <h3>
+                      Inverse Fourier transform
+                      </h3>
+                      <p>
+                          x(t) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-4.png" width="151" height="33" alt="">ωt) dt
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <h3>
+                       Discrete Fourier Transform (DFT)
+                      </h3>
+                      <p>
+                          For digital systems, the Fourier transform is realized by
+                      </p>
+                      <p>
+                          For complex numbers x<sub>0</sub>, x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, … , x<sub>n-1</sub>
+                      </p>
+                      <p>
+                          X[k] = <img src="1738659393_fourier-transform/1738659393_fourier-transform-5.png" width="79" height="25" alt=""> <em>W</em><em><sub>N</sub></em><em><sup>kn</sup></em><sup> </sup>,&nbsp; where k=1,2,3,..,N-1
+                      </p>
+                      <p>
+                          Where <em>W</em><em><sub>N</sub></em><em><sup> </sup></em>&nbsp;is the n<sup>th</sup> root of unity given by
+                      </p>
+                      <p>
+                          <em>W</em><em><sub>N </sub></em>= exp(-j(2<img src="1738659393_fourier-transform/1738659393_fourier-transform-6.png" width="11" height="31" alt=""> )
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <p>
+                          **DFT Algorithms are at the end of this article
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <h3>
+                       Fast Fourier Transform (FFT)
+                      </h3>
+                      <p>
+                          The basic idea of a fast Fourier transform is to break up a transform of length N into two transforms of length N/2. 
+                      </p>
+                      <p>
+                          For complex numbers x[n] where, n = 1, 2, 3, …, n-1
+                      </p>
+                      <p>
+                          X[k] = <img src="1738659393_fourier-transform/1738659393_fourier-transform-5.png" width="79" height="25" alt=""><em> W</em><em><sub>N</sub></em><em><sup>kn</sup></em><em> </em>= <img src="1738659393_fourier-transform/1738659393_fourier-transform-7.png" width="96" height="37" alt="">e<sup>-j2πk(2r)/N</sup> + <img src="1738659393_fourier-transform/1738659393_fourier-transform-8.png" width="129" height="37" alt="">e<sup>-j2πk(2r+1)/N</sup>
+                      </p>
+                      <p>
+                          <em>**In the above transform of length N is broken into two transforms of length N/2 and on the other hand, they pick up even and odd samples of x[n] separately</em>
+                      </p>
+                      <p>
+                          = <img src="1738659393_fourier-transform/1738659393_fourier-transform-7.png" width="96" height="37" alt="">e<sup>-j2πk(2r)/N</sup> + e<sup>-j2πk/N</sup> <img src="1738659393_fourier-transform/1738659393_fourier-transform-8.png" width="129" height="37" alt="">e<sup>-j2πk(2r)/N</sup>
+                      </p>
+                      <p>
+                          = <img src="1738659393_fourier-transform/1738659393_fourier-transform-7.png" width="96" height="37" alt="">e<sup>-j2πkr/(N/2)</sup> + e<sup>-j2πk/N</sup> <img src="1738659393_fourier-transform/1738659393_fourier-transform-8.png" width="129" height="37" alt="">e<sup>-j2πkr/(N/2)</sup>
+                      </p>
+                      <p>
+                          <img src="1738659393_fourier-transform/1738659393_fourier-transform-9.png" width="630" height="359" alt="">
+                      </p>
+                      <p>
+                          In the above diagram {<strong>X[0], X[1], X[2], X[3], X[4], X[5], X[6], X[7]</strong>} is the Fourier transform of {x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7]} 
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <p>
+                          **FFT algorithms are at the end of this article
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                              <h3>Advantages of FFT over DFT</h3>
+                      <p>
+                          To compute the DFT of an N-point sequence it take O(N<sup>2</sup>) multiplies and adds. The FFT algorithm computes the DFT using O(N log N) multiplies and adds. 
+                      </p>
+                      <p>
+                          The fast Fourier transform (FFT) is a discrete Fourier transform algorithm which reduces the number of computations needed for N points from 2N<sup>2</sup> to 2Nlog<sub>2</sub>N.
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <br>
+                      <h2>Properties of Fourier Transform</h2>
+                          <li>
+                              <h3>Linearity</h3>
+                          </li>
+                      <p>
+                          The Fourier Transform satisfies linearity &amp; principle of superposition
+                      </p>
+                      <p>
+                          Consider two functions x<sub>1</sub>(t) &amp; x<sub>2</sub>(t)
+                      </p>
+                      <p>
+                          If F(x<sub>1</sub>(t)) = X<sub>1</sub>(ω),&nbsp; F(x<sub>2</sub>(t)) = X<sub>2</sub>(ω)
+                      </p>
+                      <p>
+                          Then F[a<sub>1</sub>x<sub>1</sub>(t) + a<sub>2</sub>x<sub>2</sub>(t)] = a<sub>1</sub>X<sub>1</sub>(ω) + a<sub>2</sub>X<sub>2</sub>(ω)&nbsp;
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                          <li>
+                              <h3>Scaling</h3>
+                          </li>
+                      <p>
+                          F(x(t)) = X(ω)
+                      </p>
+                      <p>
+                          If ‘a’ is real constant then 
+                      </p>
+                      <p>
+                          &nbsp;F(x(at)) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-10.png" width="18" height="36" alt="">X(ω),&nbsp; 
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                          <li>
+                              <h3>Symmetry</h3>
+                          </li>
+                      <p>
+                          When x(t) is real and even then X(ω) = X<sup>*</sup>(-ω)
+                      </p>
+                      <p>
+                          When x(t) is real and odd then X(ω) = X(-ω)
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                          <li>
+                              <h3>Convolution</h3>
+                          </li>
+                      <p>
+                          Fourier transform makes the convolution of 2 signals into the product of their Fourier Transform. There are two types of convolutions, one for time domain and other for frequency domain.
+                      </p>
+                          <li>
+                              <h4>Time domain convolution</h4>
+                          </li>
+                      <p>
+                          F(x<sub>1</sub>(t)) = X<sub>1</sub>(ω),&nbsp; F(x<sub>2</sub>(t)) = X<sub>2</sub>(ω)
+                      </p>
+                      <p>
+                          Then F(x<sub>1</sub>(t)* x<sub>2</sub>(t)) = X<sub>1</sub>(ω) . X<sub>2</sub>(ω),&nbsp;&nbsp;&nbsp; [‘*’ – convolution sign)]
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                          <li>
+                              <h4>Frequency domain convolution</h4>
+                          </li>
+                      <p>
+                          F(x<sub>1</sub>(t) . x<sub>2</sub>(t)) = 1/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">.X<sub>1</sub>(ω) * X<sub>2</sub>(ω)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [‘*’ – convolution sign)]
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                          <li>
+                              <h3>Shifting Property</h3>
+                          </li>
+                      <p>
+                          F(x(t – t<sub>0</sub>)) = e<sup>-j</sup><sup>ω</sup><sup>t0 </sup>X(ω)
+                      </p>
+                      <p>
+                          As a consequence, transforms leave the Fourier spectrum | X(ω)|<sup>2</sup> unchanged.
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                          <li>
+                              <h3>Duality</h3>
+                          </li>
+                      <p>
+                          F(x(t) =&nbsp; X(t) = 2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt=""> x(-ω)
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                          <li>
+                              <h3>Differentiation</h3>
+                          </li>
+                      <p>
+                          F(<img src="1738659393_fourier-transform/1738659393_fourier-transform-12.png" width="35" height="34" alt=""> ) = jωX(ω)
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                          <li>
+                              <h3>Integration</h3>
+                          </li>
+                      <p>
+                          F<img src="1738659393_fourier-transform/1738659393_fourier-transform-13.png" width="50" height="30" alt=""><em>(t) dt</em>) = X(ω)/jω 
+                      </p>
+                      <p>
+                          When a function (i.e., x(t)) is not an energy function and hence the Fourier transform of <img src="1738659393_fourier-transform/1738659393_fourier-transform-14.png" width="49" height="30" alt=""><em>(t) dt</em>] includes an impulse function. 
+                      </p>
+                      <p>
+                          F<img src="1738659393_fourier-transform/1738659393_fourier-transform-13.png" width="50" height="30" alt=""><em>(t) dt</em>) = X(ω)/jω + <img src="1738659393_fourier-transform/1738659393_fourier-transform-15.png" width="10" height="18" alt="">X<img src="1738659393_fourier-transform/1738659393_fourier-transform-16.png" width="67" height="24" alt="">
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                          <li>
+                              <h3>Modulation Property</h3>
+                          </li>
+                      <p>
+                          F{x(t)<em>cosat</em>} = ½ {X(ω + a) + X(ω - a)}
+                      </p>
+                      <p>
+                          F{x(t)<em>sinat</em>} = ½ {X(ω + a) - X(ω - a)}
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                          <li>
+                              If the Fourier transform of f(x) is F(k), then f<sup>*</sup>(x) &lt;=&gt;&nbsp; F<sup>*</sup>(-k)
+                          </li>
+                      <p>
+                          As a consequence Fourier transform of a real function must satisfy the symmetry relation. 
+                      </p>
+                      <p>
+                          F(k) = F<sup>*</sup>(-k), meaning that the Fourier transform is symmetric about the origin in k-space. |F(k)|<sup>2</sup> = |F(-k)|<sup>2</sup>
+                      </p>
+                      <p>
+                          <strong>&nbsp;</strong>
+                      </p>
+                          <li>
+                          <h3>Parseval’s theorem</h3>
+                          </li>
+                      <p>
+                          Energy = <img src="1738659393_fourier-transform/1738659393_fourier-transform-17.png" width="49" height="30" alt=""><strong><em>(t)|</em></strong><strong><em><sup>2</sup></em></strong><strong><em>dt = 1/2</em></strong><img src="1738659393_fourier-transform/1738659393_fourier-transform-18.png" width="10" height="18" alt=""> <img src="1738659393_fourier-transform/1738659393_fourier-transform-19.png" width="51" height="30" alt=""><strong><em>(</em></strong><strong>ω</strong><strong><em>)|</em></strong><strong><em><sup>2</sup></em></strong><strong><em>d</em></strong><strong>ω</strong>
+                      </p>
+                      <p>
+                          The total energy in the time domain signal, x(t) [i.e., the left integral] can be easily calculated from the frequency domain signal, <em>X(</em><em>ω) </em>[i.e., from the right integral]
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                          <li>
+                              <h3>Time reversal</h3>
+                          </li>
+                      <p>
+                          F(x(-t)) = X(-ω)
+                      </p>
+                      <p>
+                          <strong>&nbsp;</strong>
+                      </p>
+                       <h2>Fourier Transform of some common signals</h2>
+                                  <li>
+                                   <h3>Fourier Transform of a delta function</h3>
+                                  </li>
+                              
+                          
+                      
+                      <p>
+                          <img src="1738659393_fourier-transform/1738659393_fourier-transform-20.png" width="490" height="160" alt="">
+                      </p>
+                      <p>
+                          If x(t) = 𝛅(t), then Fourier transform,
+                      </p>
+                      <p>
+                          X(ω) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-21.png" width="39" height="30" alt=""><em>(t)e</em><em><sup>-j</sup></em><sup>ωt</sup><em> dt</em>
+                      </p>
+                      <p>
+                          <em>= </em><img src="1738659393_fourier-transform/1738659393_fourier-transform-22.png" width="43" height="30" alt=""><em>(t)e</em><em><sup>-j</sup></em><sup>ωt</sup><em> dt</em>
+                      </p>
+                      <p>
+                          <em>= </em><img src="1738659393_fourier-transform/1738659393_fourier-transform-23.png" width="47" height="30" alt=""><em>e</em><em><sup>-j</sup></em><sup>ω0</sup><em> dt</em>
+                      </p>
+                      <p>
+                          <em>= 1</em>
+                      </p>
+                      <p>
+                          Thus Fourier transform of a delta/impulse is a constant equal to 1, independent of frequency. Remember that derivation is used the shifting property of the impulse to eliminate the integral.
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                          <li>
+                              <h3>Fourier transform of a unit step function</h3>
+                          </li>
+                      <p>
+                          <strong>&nbsp;</strong>
+                      </p>
+                      <p>
+                          <img src="1738659393_fourier-transform/1738659393_fourier-transform-24.png" width="398" height="149" alt="">
+                      </p>
+                      <p>
+                          γ (t) = 0 for t&lt;0
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1 for t ≥1
+                      </p>
+                      <p>
+                          We know that a unit-step function is an integration of a delta function. So for a unit step function,
+                      </p>
+                      <p>
+                          γ (t) = <em>&nbsp;</em><img src="1738659393_fourier-transform/1738659393_fourier-transform-22.png" width="43" height="30" alt=""><em>(t) dt</em>
+                      </p>
+                      <p>
+                          So, X(ω) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-25.png" width="15" height="36" alt=""> F(<img src="1738659393_fourier-transform/1738659393_fourier-transform-26.png" width="33" height="24" alt="">) + <img src="1738659393_fourier-transform/1738659393_fourier-transform-15.png" width="10" height="18" alt="">F(<img src="1738659393_fourier-transform/1738659393_fourier-transform-27.png" width="37" height="24" alt="">)<img src="1738659393_fourier-transform/1738659393_fourier-transform-28.png" width="41" height="24" alt="">&nbsp; 
+                      </p>
+                      <p>
+                          <em>[See the property of integration above]</em>
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = <img src="1738659393_fourier-transform/1738659393_fourier-transform-25.png" width="15" height="36" alt=""> + <img src="1738659393_fourier-transform/1738659393_fourier-transform-29.png" width="50" height="21" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [as F(<img src="1738659393_fourier-transform/1738659393_fourier-transform-26.png" width="33" height="24" alt="">)= F(<img src="1738659393_fourier-transform/1738659393_fourier-transform-27.png" width="37" height="24" alt="">)=1]
+                      </p>
+                      <p>
+                          When a function (i.e., x(t)) is not an energy function and hence the Fourier transform of <img src="1738659393_fourier-transform/1738659393_fourier-transform-14.png" width="49" height="30" alt=""><em>(t) dt</em>] includes an impulse function. 
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                          <li>
+                              <h3> Fourier Transform of a unit pulse function</h3>
+                          </li>
+                      <p>
+                          A pulse function can be represented as,
+                      </p>
+                      <p>
+                          x(t)=Π(t) = γ (t + ½) - γ(t - ½)
+                      </p>
+                      <p>
+                          <img src="1738659393_fourier-transform/1738659393_fourier-transform-30.png" width="432" height="279" alt="">
+                      </p>
+                      <p>
+                          For a function rect(t) = Π(t) = 1 for |t| ≤ ½
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0 otherwise
+                      </p>
+                      <p>
+                          Given that 
+                      </p>
+                      <p>
+                          x(t) = Π(t)
+                      </p>
+                      <p>
+                          Hence from the definition of the Fourier transform we have
+                      </p>
+                      <p>
+                          F (Π(t)) = X(<img src="1738659393_fourier-transform/1738659393_fourier-transform-31.png" width="15" height="24" alt="">) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-32.png" width="64" height="30" alt="">e <sup>-jω</sup><sup>t</sup> dt
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp; <img src="1738659393_fourier-transform/1738659393_fourier-transform-33.png" width="58" height="36" alt="">e <sup>-jω</sup><sup>t</sup> dt&nbsp;&nbsp;&nbsp;&nbsp; [as Π(t) = 1 for |t| ≤ ½]
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp; [(e <sup>–jω</sup><sup>t</sup>)/-jω]<sub>-1/2</sub><sup>1/2</sup>
+                      </p>
+                      <p>
+                          <sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </sup>&nbsp;= [e <sup>–jω</sup><sup>/2</sup> - e <sup>jω</sup><sup>/2</sup>] / -jω
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = [e <sup>jω</sup><sup>/2</sup> - e <sup>-jω</sup><sup>/2</sup>] / jω
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 2/ω . {[e <sup>jω</sup><sup>/2</sup> - e <sup>-jω</sup><sup>/2</sup>] / 2j}
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 2/ω . sin(ω/2)
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = {sin(ω/2) / (ω/2)}
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = {sin(<img src="1738659393_fourier-transform/1738659393_fourier-transform-34.png" width="19" height="24" alt="">(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">)) / (<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">))}
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = sinc(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">)
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <p>
+                          For the above case, the rectangular function has a pulse width value of 1 over the interval of [-½, ½]; 0 otherwise.
+                      </p>
+                      <p>
+                          Now we’ll discuss a rectangular pulse that has a width of T
+                      </p>
+                      <p>
+                          Then,&nbsp;&nbsp;&nbsp; rect(t/T) = Π(t/T) = 1 for |t| ≤ T/2
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0 otherwise
+                      </p>
+                      <p>
+                          Given that 
+                      </p>
+                      <p>
+                          x(t/T) = Π(t/T)
+                      </p>
+                      <p>
+                          Hence from the definition of the Fourier transform we have
+                      </p>
+                      <p>
+                          F (Π(t/T)) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-35.png" width="85" height="30" alt="">e <sup>-jω</sup><sup>t</sup> dt
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp; <img src="1738659393_fourier-transform/1738659393_fourier-transform-36.png" width="58" height="36" alt="">e <sup>-jω</sup><sup>t</sup> dt&nbsp;&nbsp;&nbsp;&nbsp; [as Π(t/T) = 1 for |t| ≤ T/2]
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp; [(e <sup>–jω</sup><sup>t</sup>)/-jω]<sub>-T/2</sub><sup>T/2</sup>
+                      </p>
+                      <p>
+                          <sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </sup>&nbsp;= [e <sup>–jωT</sup><sup>/2</sup> - e <sup>jωT</sup><sup>/2</sup>] / -jω
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = [e <sup>jωT</sup><sup>/2</sup> - e <sup>-jωT</sup><sup>/2</sup>] / jω
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 2/ω . {[e <sup>jωT</sup><sup>/2</sup> - e <sup>-jωT</sup><sup>/2</sup>] / 2j}
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 2/ω . sin(ω(T/2))
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = {sin(ω(T/2)) / (ω/2)}
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = {sin(<img src="1738659393_fourier-transform/1738659393_fourier-transform-37.png" width="19" height="24" alt="">ωT/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">)) / (<img src="1738659393_fourier-transform/1738659393_fourier-transform-37.png" width="19" height="24" alt="">ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">))}
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = {sin(<img src="1738659393_fourier-transform/1738659393_fourier-transform-37.png" width="19" height="24" alt="">ωT/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">)) / (<img src="1738659393_fourier-transform/1738659393_fourier-transform-37.png" width="19" height="24" alt="">ωT/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">))}.T
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = T. sinc(ωT/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">)
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                          <li>
+                              <h3> Fourier Transform of a unit triangle pulse</h3>
+                          </li>
+                      <p>
+                          <img src="1738659393_fourier-transform/1738659393_fourier-transform-38.png" width="285" height="201" alt="">
+                      </p>
+                      <p>
+                          A unit triangle pulse is simply the convolution of a unit pulse function with itself.
+                      </p>
+                      <p>
+                          Here, Λ(t) = Π(t) * Π(t)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                      </p>
+                      <p>
+                          <em>[Π(t) is a unit pulse function &amp; ‘*’ denotes convolution]</em>
+                      </p>
+                      <p>
+                          So, Λ(ω) = sinc(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">) . sinc(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-39.png" width="19" height="24" alt=""> = sinc<sup>2</sup>(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-39.png" width="19" height="24" alt="">
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                          <li>
+                              <h3> Fourier Transform of a Sawtooth function</h3>
+                          </li>
+                      <p>
+                          <img src="1738659393_fourier-transform/1738659393_fourier-transform-40.png" width="311" height="221" alt="">
+                      </p>
+                      <p>
+                          s(t) = 0, for t &lt; 0 and t &gt; 1
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1, for 0 ≤ t ≤ 1
+                      </p>
+                      <p>
+                          We can represent sawtooth as the integral of shifted unit pulse function (to give the ramp) and a negative impulse (delayed by one second) to give the discontinuity at the end of the ramp
+                      </p>
+                      <p>
+                          <img src="1738659393_fourier-transform/1738659393_fourier-transform-41.png" width="364" height="212" alt="">
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <p>
+                          s(t) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-42.png" width="101" height="33" alt="">dt - <img src="1738659393_fourier-transform/1738659393_fourier-transform-43.png" width="99" height="32" alt="">dt =<img src="1738659393_fourier-transform/1738659393_fourier-transform-44.png" width="84" height="32" alt="">
+                      </p>
+                      <p>
+                          y(t) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-45.png" width="69" height="33" alt=""> - <img src="1738659393_fourier-transform/1738659393_fourier-transform-46.png" width="67" height="24" alt="">
+                      </p>
+                      <p>
+                          Now, we’ve to find the Fourier transform of y(t),
+                      </p>
+                      <p>
+                          Y(ω) = sinc(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">)e<sup>-j</sup><sup>ω/2 </sup>- e<sup>-j</sup><sup>ω</sup>
+                      </p>
+                      <p>
+                          We can now apply integral property with Y(0) = 0, to find S(ω)
+                      </p>
+                      <p>
+                          S(ω) = F(<img src="1738659393_fourier-transform/1738659393_fourier-transform-44.png" width="84" height="32" alt="">) = Y(ω)/jω - <img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">Y(0)<img src="1738659393_fourier-transform/1738659393_fourier-transform-47.png" width="11" height="24" alt="">(0) = Y(ω)/jω
+                      </p>
+                      <p>
+                          = {(sinc(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">)e<sup>-j</sup><sup>ω/2 </sup>- e<sup>-j</sup><sup>ω</sup>) / jω}
+                      </p>
+                      <p>
+                          = {((sin(π . ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">) / (π . ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">))e<sup>-j</sup><sup>ω/2 </sup>- e<sup>-j</sup><sup>ω</sup>) / jω}
+                      </p>
+                      <p>
+                          =&nbsp; (((sin(π . ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">) / (π . ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="">))e<sup>-j</sup><sup>ω/2</sup>) / jω) – (e<sup>-j</sup><sup>ω</sup> / jω)
+                      </p>
+                      <p>
+                          = (2(sin(ω/2)e<sup>-j</sup><sup>ω/2</sup>) / jω<sup>2</sup>) – (je<sup>-j</sup><sup>ω</sup> / j<sup>2</sup>ω)
+                      </p>
+                      <p>
+                          = (2((e<sup>j</sup><sup>ω/2</sup> - e<sup>-j</sup><sup>ω/2</sup>) / 2j)e<sup>-j</sup><sup>ω/2</sup>) / jω<sup>2</sup>) + (je<sup>-j</sup><sup>ω</sup> / ω)&nbsp;&nbsp;&nbsp;&nbsp; [as j<sup>2 </sup>= -1]
+                      </p>
+                      <p>
+                          = (((e<sup>j</sup><sup>ω/2</sup> - e<sup>-j</sup><sup>ω/2</sup>)e<sup>-j</sup><sup>ω/2</sup>) / j<sup>2</sup>ω<sup>2</sup>) + (je<sup>-j</sup><sup>ω</sup> / ω)
+                      </p>
+                      <p>
+                          = (((e<sup>-j</sup><sup>ω/2 </sup>- e<sup>j</sup><sup>ω/2</sup>)e<sup>-j</sup><sup>ω/2</sup>) / ω<sup>2</sup>) + (je<sup>-j</sup><sup>ω</sup> / ω)
+                      </p>
+                      <p>
+                          = (((e<sup>-j</sup><sup>ω/2 </sup>- e<sup>j</sup><sup>ω/2</sup>)e<sup>-j</sup><sup>ω/2</sup>) / ω<sup>2</sup>) + (je<sup>-j</sup><sup>ω</sup> / ω)
+                      </p>
+                      <p>
+                          = ((((e<sup>-j</sup><sup>ω/2 </sup>- e<sup>j</sup><sup>ω/2</sup>)e<sup>-j</sup><sup>ω/2</sup>) + jωe<sup>-j</sup><sup>ω</sup>) / ω<sup>2</sup>)
+                      </p>
+                      <p>
+                          = ((e<sup>-j</sup><sup>ω </sup>- 1 + jωe<sup>-j</sup><sup>ω</sup>) / ω<sup>2</sup>)
+                      </p>
+                      <p>
+                          = ((e<sup>-j</sup><sup>ω</sup>(1+jω)<sup> </sup>- 1) / ω<sup>2</sup>)
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <p>
+                          <strong>&nbsp;</strong>
+                      </p>
+                          <li>
+                              <h2> Algorithms</h2>
+                          </li>
+                      <h3>For DFT &amp; FFT</h3>
+                      <p>
+                          Look at the aforementioned formula for DFT. The term <strong><em>W</em></strong><em><sup>k</sup></em><strong><em><sub>N</sub></em></strong><em><sub>&nbsp; </sub></em><em>(</em>= exp(-j(2<img src="1738659393_fourier-transform/1738659393_fourier-transform-6.png" width="11" height="31" alt=""> .k) ) can be represented as follows
+                      </p>
+                      <p>
+                          <img src="1738659393_fourier-transform/1738659393_fourier-transform-48.png" width="545" height="149" alt="">
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <p>
+                          In the above figure the values for N = 2, 4, and 8 are shown in the complex plain. Where ‘N’ denotes N point DFT.
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <p>
+                          For example,
+                      </p>
+          <h3>For a 2 point DFT</h3>
+                      <p>
+                          <strong>W</strong><strong><sub>2</sub></strong><strong> = e</strong><strong><sup>-2jπ/N</sup></strong><strong> = e</strong><strong><sup>-2jπ/2</sup></strong><strong> = e</strong><strong><sup>-jπ </sup></strong><strong>= -1</strong>
+                      </p>
+                      <p>
+                          Now, discrete Fourier transform for complex numbers a<sub>1</sub> and a<sub>2</sub> is
+                      </p>
+                      <p>
+                          <strong>A</strong><strong><sub>K</sub></strong><sub> </sub>= <img src="1738659393_fourier-transform/1738659393_fourier-transform-49.png" width="54" height="24" alt=""><sub>n</sub> <em>W</em><em><sub>2</sub></em><em><sup>kn</sup></em>
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = <img src="1738659393_fourier-transform/1738659393_fourier-transform-49.png" width="54" height="24" alt=""><sub>n</sub> <em>(-1)</em><em><sup>kn</sup></em>
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = a<sub>0</sub> <em>(-1)</em><em><sup>k</sup></em><em><sup>&nbsp; </sup></em><em><sup>.0</sup></em><em><sup>&nbsp; </sup></em><em>+ </em>a<sub>1</sub> <em>(-1)</em><em><sup>k</sup></em><em><sup>&nbsp; </sup></em><em><sup>.1</sup></em>
+                      </p>
+                      <p>
+                          As <strong>K = </strong>0 and 1 (for 2 point DFT)
+                      </p>
+                      <p>
+                          So, <strong>A</strong><strong><sub>0 </sub></strong>= a<sub>0</sub><em><sup>&nbsp; </sup></em><em>+ </em>a<sub>1</sub>
+                      </p>
+                      <p>
+                          And <strong>A</strong><strong><sub>1 </sub></strong><strong>= </strong>a<sub>0</sub><em><sup>&nbsp; </sup></em><em>-</em><em>&nbsp; </em>a<sub>1</sub>
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <h3>Similarly for a 4-point DFT</h3>
+                      <p>
+                          <strong>W</strong><strong><sub>4</sub></strong><strong> = e</strong><strong><sup>-2jπ/4</sup></strong><strong> = e</strong><strong><sup>-2jπ/4</sup></strong><strong> = e</strong><strong><sup>-jπ/2 </sup></strong><strong>= -j</strong>
+                      </p>
+                      <p>
+                          Now, discrete Fourier transform for complex numbers a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, and a<sub>4</sub> is
+                      </p>
+                      <p>
+                          <strong>A</strong><strong><sub>K</sub></strong><sub> </sub>= <img src="1738659393_fourier-transform/1738659393_fourier-transform-50.png" width="54" height="25" alt=""><sub>n</sub> <em>W</em><em><sub>4</sub></em><em><sup>kn</sup></em>
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp; = <img src="1738659393_fourier-transform/1738659393_fourier-transform-50.png" width="54" height="25" alt=""><sub>n</sub> <em>(-j)</em><em><sup>kn</sup></em>
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp; = a<sub>0</sub> <em>(-j)</em><em><sup>k</sup></em><em><sup>&nbsp; </sup></em><em><sup>.0</sup></em><em><sup>&nbsp; </sup></em><em>+ </em>a<sub>1</sub> <em>(-j)</em><em><sup>k</sup></em><em><sup>&nbsp; </sup></em><em><sup>.1</sup></em><em> + </em>a<sub>2</sub> <em>(-j)</em><em><sup>k</sup></em><em><sup>&nbsp; </sup></em><em><sup>.2</sup></em><em> + </em>a<sub>3</sub> <em>(-j)</em><em><sup>k</sup></em><em><sup>&nbsp; </sup></em><em><sup>.3</sup></em>
+                      </p>
+                      <p>
+                          So, <strong>A</strong><strong><sub>0 </sub></strong>= a<sub>0</sub><em><sup>&nbsp; </sup></em><em>+ </em>a<sub>1 </sub>+ a<sub>2</sub><em><sup>&nbsp; </sup></em><em>+ </em>a<sub>3</sub>
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>A</strong><strong><sub>1 </sub></strong><strong>= </strong>a<sub>0</sub><em><sup>&nbsp; </sup></em><em>- j</em>a<sub>1 </sub>- a<sub>2</sub><em><sup>&nbsp; </sup></em><em>+ j</em>a<sub>3</sub>
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>A</strong><strong><sub>2 </sub></strong><strong>= </strong>a<sub>0</sub><em><sup>&nbsp; </sup></em><em>- </em>a<sub>1 </sub>+ a<sub>2</sub><em><sup>&nbsp; </sup></em><em>- </em>a<sub>3</sub>
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>A</strong><strong><sub>3 </sub></strong><strong>= </strong>a<sub>0</sub><em><sup>&nbsp; </sup></em><em>+ j</em>a<sub>1 </sub>- a<sub>2</sub><em><sup>&nbsp; </sup></em><em>- j</em>a<sub>3</sub>
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <p>
+                          To compute <strong>A</strong> quickly, we can pre-compute common sub-expressions:
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>A</strong><strong><sub>0 </sub></strong>= (a<sub>0</sub><em><sup> </sup></em><em>+ </em>a<sub>2</sub>)<sub> </sub>+ (a<sub>1</sub><em><sup>&nbsp; </sup></em><em>+ </em>a<sub>3</sub>)
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>A</strong><strong><sub>1 </sub></strong><strong>=</strong><strong>&nbsp; </strong><strong>(</strong>a<sub>0</sub><em><sup> </sup></em>- a<sub>2</sub>)<sub> </sub><em>– j(</em>a<sub>1</sub><em><sup>&nbsp; </sup></em><em>- </em>a<sub>3</sub>)
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>A</strong><strong><sub>2 </sub></strong><strong>= (</strong>a<sub>0</sub><em><sup>&nbsp; </sup></em><em>+ </em>a<sub>2</sub>)<sub> </sub>- (a<sub>1</sub><em><sup>&nbsp; </sup></em><em>+ </em>a<sub>3</sub>)
+                      </p>
+                      <p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>A</strong><strong><sub>3 </sub></strong><strong>= (</strong>a<sub>0</sub><em><sup>&nbsp; </sup></em>- a<sub>2</sub>)<em><sup>&nbsp; </sup></em><em>+ j(</em>a<sub>1 </sub>- a<sub>3</sub>)
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <p>
+                          Then we can diagram the 4-point like so,
+                      </p>
+                      <p>
+                          <img src="1738659393_fourier-transform/1738659393_fourier-transform-51.png" width="406" height="226" alt="">
+                      </p>
+                      <p>
+                          Fig: Three stages in the computation of an N=8-point DFT
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <p>
+                          <img src="1738659393_fourier-transform/1738659393_fourier-transform-52.png" width="520" height="240" alt="">
+                      </p>
+                      <p>
+                          Fig: Three stages in the computation of an N=8-point DFT
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                  <h3>Matrix Relations in DFT</h3>
+                      <p>
+                          The DFT samples defined by
+                      </p>
+                      <p>
+                          <img src="1738659393_fourier-transform/1738659393_fourier-transform-53.png" width="231" height="49" alt="">
+                      </p>
+                      <p>
+                          <strong>&nbsp;</strong>
+                      </p>
+                      <p>
+                          <em>W</em><em><sub>N</sub></em><em><sup>kn </sup></em>&nbsp;can be expanded as&nbsp; NXN <strong>DFT matrix</strong>
+                      </p>
+                      <p>
+                          <img src="1738659393_fourier-transform/1738659393_fourier-transform-54.png" width="288" height="125" alt="">
+                      </p>
+                      <p>
+                          In the matrix the elements in first row and first column all are <em>W</em><em><sub>N</sub></em><em><sup>.k.0</sup></em><em> or W</em><em><sub>N</sub></em><em><sup>.0</sup></em><em>=1. </em>In the third row powers are multiplied by 2 and in the fourth row powers are multiplied by 3 and so on.
+                      </p>
+                      <p>
+                          So,
+                      </p>
+                      <p>
+                          <img src="1738659393_fourier-transform/1738659393_fourier-transform-55.png" width="500" height="145" alt="">
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <p>
+                          Oppositely, to find <strong>inverse DFT</strong> we replace the ‘j’ with ‘-j’ in the matrix or we take complex conjugates of the matrix elements.
+                      </p>
+                      <p>
+                          So, 
+                      </p>
+                      <p>
+                          <img src="1738659393_fourier-transform/1738659393_fourier-transform-56.png" width="602" height="184" alt="">
+                      </p>
+                      <p>
+                          The effective determinant of above is 1/4
+                      </p>
+                      <p>
+                          <strong>&nbsp;</strong>
+                      </p>
+          <h3>For a 8-point FFT</h3>
+                      <p>
+                          The FFT is a fast algorithm for computing the DFT. If we take the 2-point DFT and 4-point DFT and generalize them to 8-point, 16-point, ..., 2<sup>r</sup>-point, we get the FFT algorithm.
+                      </p>
+                      <p>
+                          &nbsp;
+                      </p>
+          <h4>N=8-point radix-4 DIT-FFT</h4>
+                      <p>
+                          <img src="1738659393_fourier-transform/1738659393_fourier-transform-57.png" width="521" height="313" alt="">
+                      </p>
+                      <p>
+                          Where, -W<sup>4 </sup>= W<sup>0</sup>=1; -W<sup>5</sup>= W<sup>1</sup><sup>&nbsp; </sup>= a&nbsp; = (1-j)/2;&nbsp; -W<sup>2 </sup>= W<sup>6</sup>=j and -W<sup>3 </sup>= W<sup>7 </sup>= b&nbsp; =&nbsp; (1+j)/2
+                      </p><p>
+                          The above diagram is same as illustrated in section ‘Fast Fourier Transform’ under ‘Basics of Fourier Transform’
+                      </p>
+                      <p>
+                          <strong>&nbsp;</strong>
+                      </p>
+          <h4>N=8-point radix-2 DIT-FFT</h4>
+                      <p>
+                          &nbsp;
+                      </p>
+                      <p>
+                          <img src="1738659393_fourier-transform/1738659393_fourier-transform-58.png" width="602" height="307" alt="">
+                      </p>
+                      <p>
+                          <strong>** </strong><em>W</em><em><sup>x</sup></em><em> = W</em><em><sub>8</sub></em><em><sup>x</sup></em>
+                      </p>
+                      <p>
+                          <strong>&nbsp;</strong>
+                      </p>
+          <h2>
+                      Applications 
+          </h2>
+                      <p>
+                          Fourier transform is used in circuit analysis, signal analysis, cell phones, image analysis, signal processing, and LTI systems. The Fourier transform is most probably the best tool to find the frequency in an entire field. This makes it a useful tool for LTI systems and signal processing. Partial differential equations reduce to ordinary differential equations in Fourier Transform.
+                      </p>
+          
+          
+          
+          </div>
+          <div class="bug-report-mobile">
+              <bug-report id="bug-report" title="[BUG REPORT] UNDERSTAND VARIOUS SIGNAL PROCESSING TOOLS LIKE FOURIER SERIES, FOURIER
+          TRANSFORM, POWER SPECTRAL DENSITY ETC. FOR ANALYZING THE SIGNAL" page-type="text" context-info="{&quot;organisation&quot;:&quot;Virtual Labs&quot;,&quot;developer_institute&quot;:&quot;IITD&quot;,&quot;expname&quot;:&quot;UNDERSTAND VARIOUS SIGNAL PROCESSING TOOLS LIKE FOURIER SERIES, FOURIER\nTRANSFORM, POWER SPECTRAL DENSITY ETC. FOR ANALYZING THE SIGNAL&quot;,&quot;labname&quot;:&quot;Virtual Lab&quot;,&quot;phase&quot;:&quot;Testing&quot;}" checkbox-json="{&quot;text&quot;:[&quot;Insufficient Content&quot;],&quot;video&quot;:[&quot;Insufficient Content&quot;],&quot;assesment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;assessment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;simulation&quot;:[&quot;Simulation Not Working&quot;,&quot;Incorrect Results/Observations&quot;,&quot;Insufficient/Incorrect Instructions&quot;],&quot;DEFAULT&quot;:[&quot;Page Not Loading&quot;,&quot;Content Not Visible&quot;,&quot;Incorrect Content&quot;]}" position="override" button_style="
+                          position: fixed; 
+                          bottom: 20px;
+                          right: 20px;
+                          z-index: 1;
+                          font-size: 0;
+                          padding: 25px;
+                          border-radius: 50%;
+                          border: none;
+                          background-color: #0fc0ff;
+                          background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAYAAAA6GuKaAAAAAXNSR0IArs4c6QAABiFJREFUaEPFmVuMFEUUhv/TM7uwoBGVyG22u7ZnYGG5REETo8RA1BhFIka8ABFf0PCgDxhFEpCLqAlE1OiTiSj4gFGjD0QBETQaEqPRICALSHdPV+8YQQJBA+wuO1PHdMNcWGame2ZWqMfuc/nq1KlT1acJAzhShjFVAUsYdL8G3HjRdA7gHwna5uahLR91dnaeb9QlNWrA1+/o6GjuPnv2DQ30LICKNhk4qLF63PK8g434rejATJhjKa6m9WazOzOZzKlKTmYAcc8QnxEwJwqIAk5STpvpZJwD1eTHjR43PKflhtkZ2+ovVxbaTJiTSVM/gzCYGIebu4fc1nmi80w5J0nDWA7Qq1GACzLMR3pV7pZMJtNdTs/UzelE6msAQ0BYb7vuS6VyZaGTungGhPfygkRYZ7nusv4OEonEDc2xuEfA0JqgATBhieO6b/fXE0IM1pgPECgVvGP+x/bksFDo1JhUguPZI8FMAz0+zzFtSjqd9p8VRlJvew7E79QKHNgEDjrSndRfNyXEGmasLK4KttmeOysU2hdIGm0vA/xKUZh32VLeW6psCrGMmO+uB5qIeEh398P7jx8/m9cP9pGm9vtpmQ9WjHDzUSkPRYJOpVKDuK9vP0Dj8goMfsSR8ot6IKPoJI22XUBpEHitLWUx6heNVC15pmHMItCXBYeKPUZsLlFWVYNQsVg2nU7v82XaW1tHZ4lGhUEztOlEKOQ4A/b5XHZyuc0aWqdNIbYSY3aY00veM/9te3KE/ywlxGpmrKpJP8h5ftCR8qtyeqHQY3XdVNAO5vMskvMGoRWrT9Ke90QlX6HQF6N16Y4OI28Ampn/jatcxx+ZzJ8NQScSiZZBWvzJwAhhJoCKUQhkaoVmnAZoJcC9WowOH02nf6gWl0iRLpQk3ZwOym0n0DVVg10rNAAF7Ig1xedYltUbtpCRoZO6Po1J+z7S6VcHdLCIClusLnfBgED7NVv1ZX8lYGKYwbrSo8Qogxc4Um5pOD1Mo20DgZ+PBFxPTpcYJuBUljDRdd1jdW/EcYnEmKwWSxNR05WADnwo2mB3pV+oGzopxDowlkYGbjDSF9ILpwd1D2mtdB2uuhEv3D+yfwG4/opCB5WVnrZk+v1yfqtCJ3X9TpC2pybggYj0BYcf29KdXwe0WArCuqsCzSxtT4qq0GareStIXXo3JjxGwNSrAh0crMFFq3jYEJ9wpPygkB6mYZwg0PCaAcsp1Hm4RPFtS5eK0LpxvqayVs3DlYIO7r0K8xUhlufRGKNrupLmFQcImsEZBhWaOxq4y5ZyRvXqIcSnYDwaZdkukRkgaGqK32RZ1on+/qt/buliFRFWXxXokonXBJ3S22Yz8darAc2sdjqed1/NddpvnMQUHwPRdTWBD0R6EBbbrltoGJX6D71PJ3V9E0h76kpCMzirNTWNLpfPPkcodNDXi6m9QLGqhE6gwUgzaKMj04sq+QmF9hVrjnYj0IwejmvtjuN4DUEbhjEqztgLoqCXEToagQavsKV8rZqPSJH2DaSEmMGMXZHSpE5oZnzneK7fL8w1DJ1sTU6CltvEwPj/88OWwRYx77Y9b3HD0KYuvqUL/Y5oo85I542TooesrnTF8yE0PUwh5hGj6tfxZTNpEBqKvUE9QyfW9bnV3t5+bV9P7yECxuTBFGOvRn5v5eJgTLzsUhUFmuGCcLJoBiNL/ZT7bVFYiWrrnTSM9QC9WBSmzy2ZnluqI4QYGQcWM/O8Qi+7EjSjB4xtTNqHjuf4HVHO20q1tiZZi/k/j1r8Z8zcRxyfanfZv/dnrJgeYw1jQo6xr+SOfY5j2oRq9VMIIWLA7QSMslz3raDGG8ZMJhoPpR1QmvrFdd2eSoFKGm0rAF5bfM97bCnvKp2c/64idFLXd4C0woWFwMstKV+PthPrk/L/R/aeOfcbCBOKq8uLLCk3llos/0tON+8hUt+U5O1Rao5PjtIcrA+3qOWvDEC78wFlIO1I1wyFTuptC0G8uWSZHrCl3N4oUFT9NiE2a4yFQW6DLUfKsaHQU0aMGHq2pWULM98Bpncdzy35yxXVdf1yftXK9vS8CUVjtBjWHHXdn0qt/Qf/x1JblU8EiAAAAABJRU5ErkJggg==);
+                          background-repeat: no-repeat;
+                          background-position: center;
+                          background-size: 30px;
+                          filter: invert(1);">
+              </bug-report>
+          </div>        </div>
+      </div>
+      <footer class="text-light pt-2 vlabs-footer d-flex flex-column">
+        <div class="row px-5 mx-0">
+          <div class="col d-flex flex-column">
+            <span class="font-weight-bold vlabs-footer-sect-name pb-2 mb-3">Community Links</span>
+            <a href="https://www.sakshat.ac.in/" class="text-light">Sakshat Portal</a>
+            <a href="http://outreach.vlabs.ac.in/" class="text-light">Outreach Portal</a>
+            <a href="https://vlab.co.in/faq" class="text-light">FAQ: Virtual Labs</a>
+          </div>
+          <div class="col d-flex flex-column">
+            <span class="font-weight-bold vlabs-footer-sect-name pb-2 mb-3">Contact Us</span>
+            <span> Phone: General Information: 011-26582050 </span>
+            <span> Email: support@vlabs.ac.in </span>
+          </div>
+          <div class="col d-flex flex-column">
+            <span class="font-weight-bold vlabs-footer-sect-name pb-2 mb-3">Follow Us</span>
+            <div class="social-links">
+      	<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #55acee;" href="https://twitter.com/TheVirtualLabs">
+      	  <i class="fab fa-twitter"></i>
+      	</a>
+      	<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #3b5998;" href="https://www.facebook.com/Virtual-Labs-IIT-Delhi-301510159983871/">
+      	  <i class="fab fa-facebook"></i>
+      	</a>
+      	<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #e52d27;" href="https://www.youtube.com/watch?v=asxRaOgk6a0">
+      	  <i class="fab fa-youtube"></i>
+      	</a>
+      	<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #2867B2;" href="https://in.linkedin.com/in/virtual-labs-008ba9136">
+      	  <i class="fab fa-linkedin"></i>
+      	</a>
+            </div>
+          </div>
+        </div>
+        <div class="m-0 py-2 text-center" style="font-family: &quot;Open Sans&quot;, sans-serif; background: #212121;">
+          <a class="text-primary font-weight-bold" href="https://www.gnu.org/licenses/agpl-3.0.en.html"> AGPL 3.0 </a>
+          &nbsp;&amp;&nbsp;
+          <a class="text-primary font-weight-bold" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"> Creative Commons (CC BY-NC-SA 4.0) </a>
+        </div>
+      </footer>
+    <script src="./assets/js/toggleSidebar.js"></script>
+    <script src="./assets/js/event-handler.js"></script>
+
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register("sw.js");
+        });
+      }
+    </script>
+  
+
+<script type="module" src="https://cdn.vlabs.ac.in/bug-report/vlabs-bug-report.js"></script><script type="module" src="/exp-analyzing-the-signal-iitd/plugins/svc-rating/index.js"></script><script type="module" src="/exp-analyzing-the-signal-iitd/plugins/svc-rating/config.js"></script><script type="module" src="https://apis.google.com/js/api.js"></script></body></html>
