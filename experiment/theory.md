@@ -119,11 +119,9 @@
 			</p>
 			<br/>
 		    <h2>Properties of Fourier Transform</h2>
-			<ol>
 				<li>
 					<h3>Linearity</h3>
 				</li>
-			</ol>
 			<p>
 				The Fourier Transform satisfies linearity &amp; principle of superposition
 			</p>
@@ -742,13 +740,12 @@
 			<p>
 				&#xa0;
 			</p>
-<h4>>N=8-point radix-4 DIT-FFT</h4>
+<h4>N=8-point radix-4 DIT-FFT</h4>
 			<p>
 				<img src="1738659393_fourier-transform/1738659393_fourier-transform-57.png" width="521" height="313" alt="" />
 			</p>
 			<p>
 				Where, -W<sup>4 </sup>= W<sup>0</sup>=1; -W<sup>5</sup>= W<sup>1</sup><sup>&#xa0; </sup>= a&#xa0; = (1-j)/2;&#xa0; -W<sup>2 </sup>= W<sup>6</sup>=j and -W<sup>3 </sup>= W<sup>7 </sup>= b&#xa0; =&#xa0; (1+j)/2
-			</p>
 			<p>
 				The above diagram is same as illustrated in section ‘Fast Fourier Transform’ under ‘Basics of Fourier Transform’
 			</p>
