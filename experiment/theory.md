@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,7 +8,7 @@
 <body>
 			<ol>
 				<li>
-					<p><strong>&#xa0;&#xa0; Basics of Fourier Transform</strong></p>
+					<h2>Basics of Fourier Transform</h2>
 				</li>
 			</ol>
 			<p>
@@ -18,9 +17,9 @@
 			<p>
 				&#xa0;
 			</p>
-			<p>
-				<strong>Fourier transform</strong>
-			</p>
+			<h3>
+		    Fourier transform
+			</h3>
 			<p>
 				The Fourier transform of a time-domain signal is defined as follows
 			</p>
@@ -36,18 +35,18 @@
 			<p>
 				&#xa0;
 			</p>
-			<p>
-				<strong>Inverse Fourier transform</strong>
-			</p>
+			<h3>
+		    Inverse Fourier transform
+			</h3>
 			<p>
 				x(t) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-4.png" width="151" height="33" alt="" />ωt) dt
 			</p>
 			<p>
 				&#xa0;
 			</p>
-			<p>
-				<strong>Discrete Fourier Transform (DFT)</strong>
-			</p>
+			<h3>
+		     Discrete Fourier Transform (DFT)
+			</h3>
 			<p>
 				For digital systems, the Fourier transform is realized by
 			</p>
@@ -72,9 +71,9 @@
 			<p>
 				&#xa0;
 			</p>
-			<p>
-				<strong>Fast Fourier Transform (FFT)</strong>
-			</p>
+			<h3>
+		     Fast Fourier Transform (FFT)
+			</h3>
 			<p>
 				The basic idea of a fast Fourier transform is to break up a transform of length N into two transforms of length N/2. 
 			</p>
@@ -108,11 +107,7 @@
 			<p>
 				&#xa0;
 			</p>
-			<ol start="2">
-				<li>
-					&#xa0;&#xa0; Advantages of FFT over DFT
-				</li>
-			</ol>
+					<h3>Advantages of FFT over DFT</h3>
 			<p>
 				To compute the DFT of an N-point sequence it take O(N<sup>2</sup>) multiplies and adds. The FFT algorithm computes the DFT using O(N log N) multiplies and adds. 
 			</p>
@@ -122,14 +117,11 @@
 			<p>
 				&#xa0;
 			</p>
-			<ol start="3">
-				<li>
-					&#xa0;&#xa0; Properties of Fourier Transform
-				</li>
-			</ol>
+			<br/>
+		    <h2>Properties of Fourier Transform</h2>
 			<ol>
 				<li>
-					Linearity
+					<h3>Linearity</h3>
 				</li>
 			</ol>
 			<p>
@@ -150,11 +142,9 @@
 			<p>
 				&#xa0;
 			</p>
-			<ol start="2">
 				<li>
-					Scaling
+					<h3>Scaling</h3>
 				</li>
-			</ol>
 			<p>
 				F(x(t)) = X(ω)
 			</p>
@@ -167,11 +157,9 @@
 			<p>
 				&#xa0;
 			</p>
-			<ol start="3">
 				<li>
-					Symmetry
+					<h3>Symmetry</h3>
 				</li>
-			</ol>
 			<p>
 				When x(t) is real and even then X(ω) = X<sup>*</sup>(-ω)
 			</p>
@@ -181,19 +169,15 @@
 			<p>
 				&#xa0;
 			</p>
-			<ol start="4">
 				<li>
-					Convolution
+					<h3>Convolution</h3>
 				</li>
-			</ol>
 			<p>
 				Fourier transform makes the convolution of 2 signals into the product of their Fourier Transform. There are two types of convolutions, one for time domain and other for frequency domain.
 			</p>
-			<ol>
 				<li>
-					Time domain convolution
+					<h4>Time domain convolution</h4>
 				</li>
-			</ol>
 			<p>
 				F(x<sub>1</sub>(t)) = X<sub>1</sub>(ω),&#xa0; F(x<sub>2</sub>(t)) = X<sub>2</sub>(ω)
 			</p>
@@ -203,22 +187,18 @@
 			<p>
 				&#xa0;
 			</p>
-			<ol start="2">
 				<li>
-					Frequency domain convolution
+					<h4>Frequency domain convolution</h4>
 				</li>
-			</ol>
 			<p>
 				F(x<sub>1</sub>(t) . x<sub>2</sub>(t)) = 1/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />.X<sub>1</sub>(ω) * X<sub>2</sub>(ω)&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; [‘*’ – convolution sign)]
 			</p>
 			<p>
 				&#xa0;
 			</p>
-			<ol start="5">
 				<li>
-					Shifting Property
+					<h3>Shifting Property</h3>
 				</li>
-			</ol>
 			<p>
 				F(x(t – t<sub>0</sub>)) = e<sup>-j</sup><sup>ω</sup><sup>t0 </sup>X(ω)
 			</p>
@@ -228,33 +208,27 @@
 			<p>
 				&#xa0;
 			</p>
-			<ol start="6">
 				<li>
-					Duality
+					<h3>Duality</h3>
 				</li>
-			</ol>
 			<p>
 				F(x(t) =&#xa0; X(t) = 2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" /> x(-ω)
 			</p>
 			<p>
 				&#xa0;
 			</p>
-			<ol start="7">
 				<li>
-					Differentiation
+					<h3>Differentiation</h3>
 				</li>
-			</ol>
 			<p>
 				F(<img src="1738659393_fourier-transform/1738659393_fourier-transform-12.png" width="35" height="34" alt="" /> ) = jωX(ω)
 			</p>
 			<p>
 				&#xa0;
 			</p>
-			<ol start="8">
 				<li>
-					Integration
+					<h3>Integration</h3>
 				</li>
-			</ol>
 			<p>
 				F<img src="1738659393_fourier-transform/1738659393_fourier-transform-13.png" width="50" height="30" alt="" /><em>(t) dt</em>) = X(ω)/jω 
 			</p>
@@ -267,11 +241,9 @@
 			<p>
 				&#xa0;
 			</p>
-			<ol start="9">
 				<li>
-					Modulation Property
+					<h3>Modulation Property</h3>
 				</li>
-			</ol>
 			<p>
 				F{x(t)<em>cosat</em>} = ½ {X(ω + a) + X(ω - a)}
 			</p>
@@ -281,11 +253,9 @@
 			<p>
 				&#xa0;
 			</p>
-			<ol start="10">
 				<li>
 					If the Fourier transform of f(x) is F(k), then f<sup>*</sup>(x) &lt;=&gt;&#xa0; F<sup>*</sup>(-k)
 				</li>
-			</ol>
 			<p>
 				As a consequence Fourier transform of a real function must satisfy the symmetry relation. 
 			</p>
@@ -295,11 +265,9 @@
 			<p>
 				<strong>&#xa0;</strong>
 			</p>
-			<ol start="11">
 				<li>
-					&#xa0;Parseval’s theorem 
+				<h3>Parseval’s theorem</h3>
 				</li>
-			</ol>
 			<p>
 				Energy = <img src="1738659393_fourier-transform/1738659393_fourier-transform-17.png" width="49" height="30" alt="" /><strong><em>(t)|</em></strong><strong><em><sup>2</sup></em></strong><strong><em>dt = 1/2</em></strong><img src="1738659393_fourier-transform/1738659393_fourier-transform-18.png" width="10" height="18" alt="" /> <img src="1738659393_fourier-transform/1738659393_fourier-transform-19.png" width="51" height="30" alt="" /><strong><em>(</em></strong><strong>ω</strong><strong><em>)|</em></strong><strong><em><sup>2</sup></em></strong><strong><em>d</em></strong><strong>ω</strong>
 			</p>
@@ -309,23 +277,18 @@
 			<p>
 				&#xa0;
 			</p>
-			<ol start="12">
 				<li>
-					Time reversal
+					<h3>Time reversal</h3>
 				</li>
-			</ol>
 			<p>
 				F(x(-t)) = X(-ω)
 			</p>
 			<p>
 				<strong>&#xa0;</strong>
 			</p>
-			<ol start="4">
-				<li>
-					&#xa0;&#xa0; Fourier Transform of some common signals
-					<ol>
+		     <h2>Fourier Transform of some common signals</h2>
 						<li>
-							&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; Fourier Transform of a delta function
+	                     <h3>Fourier Transform of a delta function</h3>
 						</li>
 					</ol>
 				</li>
@@ -354,11 +317,9 @@
 			<p>
 				&#xa0;
 			</p>
-			<ol start="2">
 				<li>
-					&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; Fourier transform of a unit step function
+					<h3>Fourier transform of a unit step function</h3>
 				</li>
-			</ol>
 			<p>
 				<strong>&#xa0;</strong>
 			</p>
@@ -392,11 +353,9 @@
 			<p>
 				&#xa0;
 			</p>
-			<ol start="3">
 				<li>
-					&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; Fourier Transform of a unit pulse function
+					<h3> Fourier Transform of a unit pulse function</h3>
 				</li>
-			</ol>
 			<p>
 				A pulse function can be represented as,
 			</p>
@@ -514,11 +473,9 @@
 			<p>
 				&#xa0;
 			</p>
-			<ol start="4">
 				<li>
-					&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; Fourier Transform of a unit triangle pulse
+					<h3> Fourier Transform of a unit triangle pulse</h3>
 				</li>
-			</ol>
 			<p>
 				<img src="1738659393_fourier-transform/1738659393_fourier-transform-38.png" width="285" height="201" alt="" />
 			</p>
@@ -537,11 +494,9 @@
 			<p>
 				&#xa0;
 			</p>
-			<ol start="5">
 				<li>
-					&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; Fourier Transform of a Sawtooth function
+					<h3> Fourier Transform of a Sawtooth function</h3>
 				</li>
-			</ol>
 			<p>
 				<img src="1738659393_fourier-transform/1738659393_fourier-transform-40.png" width="311" height="221" alt="" />
 			</p>
@@ -617,14 +572,10 @@
 			<p>
 				<strong>&#xa0;</strong>
 			</p>
-			<ol start="5">
 				<li>
-					&#xa0;&#xa0; Algorithms
+					<h2> Algorithms</h2>
 				</li>
-			</ol>
-			<p>
-				<strong>For DFT &amp; FFT</strong>
-			</p>
+			<h3>For DFT &amp; FFT</h3>
 			<p>
 				Look at the aforementioned formula for DFT. The term <strong><em>W</em></strong><em><sup>k</sup></em><strong><em><sub>N</sub></em></strong><em><sub>&#xa0; </sub></em><em>(</em>= exp(-j(2<img src="1738659393_fourier-transform/1738659393_fourier-transform-6.png" width="11" height="31" alt="" /> .k) ) can be represented as follows
 			</p>
@@ -643,9 +594,7 @@
 			<p>
 				For example,
 			</p>
-			<p>
-				<strong>For a 2 point DFT</strong>
-			</p>
+<h3>For a 2 point DFT</h3>
 			<p>
 				<strong>W</strong><strong><sub>2</sub></strong><strong> = e</strong><strong><sup>-2jπ/N</sup></strong><strong> = e</strong><strong><sup>-2jπ/2</sup></strong><strong> = e</strong><strong><sup>-jπ </sup></strong><strong>= -1</strong>
 			</p>
@@ -673,9 +622,7 @@
 			<p>
 				&#xa0;
 			</p>
-			<p>
-				<strong>Similarly for a 4-point DFT</strong>
-			</p>
+			<h3>Similarly for a 4-point DFT</h3>
 			<p>
 				<strong>W</strong><strong><sub>4</sub></strong><strong> = e</strong><strong><sup>-2jπ/4</sup></strong><strong> = e</strong><strong><sup>-2jπ/4</sup></strong><strong> = e</strong><strong><sup>-jπ/2 </sup></strong><strong>= -j</strong>
 			</p>
@@ -745,9 +692,7 @@
 			<p>
 				&#xa0;
 			</p>
-			<p>
-				<strong>Matrix Relations in DFT</strong>
-			</p>
+		<h3>Matrix Relations in DFT</h3>
 			<p>
 				The DFT samples defined by
 			</p>
@@ -790,18 +735,14 @@
 			<p>
 				<strong>&#xa0;</strong>
 			</p>
-			<p>
-				<strong>For a 8-point FFT</strong>
-			</p>
+<h3>For a 8-point FFT</h3>
 			<p>
 				The FFT is a fast algorithm for computing the DFT. If we take the 2-point DFT and 4-point DFT and generalize them to 8-point, 16-point, ..., 2<sup>r</sup>-point, we get the FFT algorithm.
 			</p>
 			<p>
 				&#xa0;
 			</p>
-			<p>
-				<strong>N=8-point radix-4</strong><strong>&#xa0;&#xa0; </strong><strong>DIT-FFT</strong>
-			</p>
+<h4>>N=8-point radix-4 DIT-FFT</h4>
 			<p>
 				<img src="1738659393_fourier-transform/1738659393_fourier-transform-57.png" width="521" height="313" alt="" />
 			</p>
@@ -814,9 +755,7 @@
 			<p>
 				<strong>&#xa0;</strong>
 			</p>
-			<p>
-				<strong>N=8-point radix-2</strong><strong>&#xa0;&#xa0; </strong><strong>DIT-FFT</strong>
-			</p>
+<h4>N=8-point radix-2 DIT-FFT</h4>
 			<p>
 				&#xa0;
 			</p>
@@ -829,11 +768,9 @@
 			<p>
 				<strong>&#xa0;</strong>
 			</p>
-			<ol start="6">
-				<li>
-					&#xa0;&#xa0; Applications 
-				</li>
-			</ol>
+<h2>
+			Applications 
+</h2>
 			<p>
 				Fourier transform is used in circuit analysis, signal analysis, cell phones, image analysis, signal processing, and LTI systems. The Fourier transform is most probably the best tool to find the frequency in an entire field. This makes it a useful tool for LTI systems and signal processing. Partial differential equations reduce to ordinary differential equations in Fourier Transform.
 			</p>
