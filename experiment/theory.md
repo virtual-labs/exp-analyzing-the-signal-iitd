@@ -15,7 +15,7 @@
 				Fourier transform is a process to convert a spatial domain signal (i.e., time domain signal) into a frequency domain signal. Oppositely, the inverse Fourier transform is a process to convert the frequency domain signal to the primary time domain signal.
 			</p>
 			<h2>Notation of CTFT</h2>
-			<p>Let <code>x(t)</code> be a continuous-time signal. Then the CTFT is defined as:</p>
+			<p>Let <strong>x(t)</strong> be a continuous-time signal. Then the CTFT is defined as:</p>
 			<p>
 			\( X(j\omega) = \int_{-\infty}^{\infty} x(t) \cdot e^{-j\omega t} \, dt \)
 			</p>
@@ -26,7 +26,7 @@
 			<li>The transform assumes signals are absolutely integrable over time.</li>
 			</ul>
 			<h3>Inverse CTFT:</h3>
-			<p>To reconstruct <code>x(t)</code> from its CTFT:</p>
+			<p>To reconstruct <strong>x(t)</strong> from its CTFT:</p>
 			<p>
 			\( x(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} X(j\omega) \cdot e^{j\omega t} \, d\omega \)
 			</p>
@@ -36,7 +36,7 @@
 			<h2>Discrete Time Fourier Transform (DTFT)</h2>
 			<p>The Discrete-Time Fourier Transform (DTFT) is used to analyze discrete-time signals, i.e., signals that are defined only at discrete intervals of time (like samples from an analog signal). These arise naturally in digital signal processing because all digital devices (computers, DSPs) process data in discrete form.</p>
 			<h2>Notation of DTFT</h2>
-			<p>Let <code>x[n]</code> be a discrete-time signal. Then the DTFT is defined as:</p>
+			<p>Let <strong>x[n]</strong> be a discrete-time signal. Then the DTFT is defined as:</p>
 			<p>
 			\( X(e^{j\omega}) = \sum_{n=-\infty}^{\infty} x[n] \cdot e^{-j\omega n} \)
 			</p>
@@ -47,7 +47,7 @@
 			<li>\( X(e^{j\omega}) \) is periodic with period \( 2\pi \).</li>
 			</ul>
 			<h3>Inverse DTFT:</h3>
-			<p>To reconstruct <code>x[n]</code> from its DTFT:</p>
+			<p>To reconstruct <strong>x[n]</strong> from its DTFT:</p>
 			<p>
 			\( x[n] = \frac{1}{2\pi} \int_{-\pi}^{\pi} X(e^{j\omega}) \cdot e^{j\omega n} d\omega \)
 			</p>
