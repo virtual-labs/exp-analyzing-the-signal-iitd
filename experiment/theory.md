@@ -4,45 +4,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/imgstyles.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
-			<ol>
-				<li>
-					<h2>Basics of Fourier Transform</h2>
-				</li>
-			</ol>
+					<h2>Continuous Time Fourier Transform (CTFT)</h2>
 			<p>
 				Fourier transform is a process to convert a spatial domain signal (i.e., time domain signal) into a frequency domain signal. Oppositely, the inverse Fourier transform is a process to convert the frequency domain signal to the primary time domain signal.
 			</p>
+			<h2>Notation of CTFT</h2>
+			<p>Let <code>x(t)</code> be a continuous-time signal. Then the CTFT is defined as:</p>
 			<p>
+			\( X(j\omega) = \int_{-\infty}^{\infty} x(t) \cdot e^{-j\omega t} \, dt \)
+			</p>
+			<h3>Where:</h3>
+			<ul>
+			<li>\( \omega \) is the angular frequency in radians/second.</li>
+			<li>\( X(j\omega) \) is the frequency-domain representation of \( x(t) \).</li>
+			<li>The transform assumes signals are absolutely integrable over time.</li>
+			</ul>
+			<h3>Inverse CTFT:</h3>
+			<p>To reconstruct <code>x(t)</code> from its CTFT:</p>
+			<p>
+			\( x(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} X(j\omega) \cdot e^{j\omega t} \, d\omega \)
+			</p>
+						<p>
 				&#xa0;
 			</p>
-			<h3>
-		    Fourier transform
-			</h3>
+			<h2>Discrete Time Fourier Transform (DTFT)</h2>
+			<p>The Discrete-Time Fourier Transform (DTFT) is used to analyze discrete-time signals, i.e., signals that are defined only at discrete intervals of time (like samples from an analog signal). These arise naturally in digital signal processing because all digital devices (computers, DSPs) process data in discrete form.</p>
+			<h2>Notation of DTFT</h2>
+			<p>Let <code>x[n]</code> be a discrete-time signal. Then the DTFT is defined as:</p>
 			<p>
-				The Fourier transform of a time-domain signal is defined as follows
+			\( X(e^{j\omega}) = \sum_{n=-\infty}^{\infty} x[n] \cdot e^{-j\omega n} \)
 			</p>
+			<h3>Where:</h3>
+			<ul>
+			<li>\( \omega \) is the angular frequency in radians/sample.</li>
+			<li>\( e^{j\omega} \) represents the frequency-domain variable on the unit circle.</li>
+			<li>\( X(e^{j\omega}) \) is periodic with period \( 2\pi \).</li>
+			</ul>
+			<h3>Inverse DTFT:</h3>
+			<p>To reconstruct <code>x[n]</code> from its DTFT:</p>
 			<p>
-				X(ω) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-1.png" width="142" height="30" alt="" />ωt) dt
-			</p>
-			<p>
-				<em>&#xa0;</em>
-			</p>
-			<p>
-				<em>**x(t) denotes the signal in the time domain, </em><img src="1738659393_fourier-transform/1738659393_fourier-transform-2.png" width="42" height="24" alt="" /><em> denotes the signal in the frequency domain and </em><img src="1738659393_fourier-transform/1738659393_fourier-transform-3.png" width="14" height="24" alt="" /><em> </em>is the angular frequency.
-			</p>
-			<p>
-				&#xa0;
-			</p>
-			<h3>
-		    Inverse Fourier transform
-			</h3>
-			<p>
-				x(t) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-4.png" width="151" height="33" alt="" />ωt) dt
-			</p>
-			<p>
-				&#xa0;
+			\( x[n] = \frac{1}{2\pi} \int_{-\pi}^{\pi} X(e^{j\omega}) \cdot e^{j\omega n} d\omega \)
 			</p>
 			<h3>
 		     Discrete Fourier Transform (DFT)
@@ -92,6 +99,9 @@
 			<p>
 				= <img src="1738659393_fourier-transform/1738659393_fourier-transform-7.png" width="96" height="37" alt="" />e<sup>-j2πkr/(N/2)</sup> + e<sup>-j2πk/N</sup> <img src="1738659393_fourier-transform/1738659393_fourier-transform-8.png" width="129" height="37" alt="" />e<sup>-j2πkr/(N/2)</sup>
 			</p>
+						<p>
+				&#xa0;
+			</p>
 			<p>
 				<img src="1738659393_fourier-transform/1738659393_fourier-transform-9.png" width="630" height="359" alt="" />
 			</p>
@@ -122,168 +132,171 @@
 				<li>
 					<h3>Linearity</h3>
 				</li>
-			<p>
-				The Fourier Transform satisfies linearity &amp; principle of superposition
-			</p>
-			<p>
-				Consider two functions x<sub>1</sub>(t) &amp; x<sub>2</sub>(t)
-			</p>
-			<p>
-				If F(x<sub>1</sub>(t)) = X<sub>1</sub>(ω),&#xa0; F(x<sub>2</sub>(t)) = X<sub>2</sub>(ω)
-			</p>
-			<p>
-				Then F[a<sub>1</sub>x<sub>1</sub>(t) + a<sub>2</sub>x<sub>2</sub>(t)] = a<sub>1</sub>X<sub>1</sub>(ω) + a<sub>2</sub>X<sub>2</sub>(ω)&#xa0;
-			</p>
-			<p>
-				&#xa0;
-			</p>
-			<p>
-				&#xa0;
-			</p>
+				<p>The Fourier Transform satisfies the property of linearity (superposition).</p>
+				<p>Consider two signals \( x_1(t) \) and \( x_2(t) \) with Fourier Transforms:</p>
+				<p>
+				\( \mathcal{F}\{x_1(t)\} = X_1(j\omega), \quad \mathcal{F}\{x_2(t)\} = X_2(j\omega) \)
+				</p>
+				<p>Then for any constants \( a_1 \) and \( a_2 \), we have:</p>
+				<p>
+				\( \mathcal{F}\{a_1 x_1(t) + a_2 x_2(t)\} = a_1 X_1(j\omega) + a_2 X_2(j\omega) \)
+				</p>
 				<li>
 					<h3>Scaling</h3>
 				</li>
-			<p>
-				F(x(t)) = X(ω)
-			</p>
-			<p>
-				If ‘a’ is real constant then 
-			</p>
-			<p>
-				&#xa0;F(x(at)) = <img src="1738659393_fourier-transform/1738659393_fourier-transform-10.png" width="18" height="36" alt="" />X(ω),&#xa0; 
-			</p>
-			<p>
-				&#xa0;
-			</p>
+<p>If \( \mathcal{F}\{x(t)\} = X(j\omega) \), and \( a \) is a real constant, then:</p>
+
+<p>
+  \( \mathcal{F}\{x(at)\} = \frac{1}{|a|} X\left(\frac{j\omega}{a}\right) \)
+</p>
 				<li>
 					<h3>Symmetry</h3>
 				</li>
-			<p>
-				When x(t) is real and even then X(ω) = X<sup>*</sup>(-ω)
-			</p>
-			<p>
-				When x(t) is real and odd then X(ω) = X(-ω)
-			</p>
-			<p>
-				&#xa0;
-			</p>
+<p>If \( x(t) \) is real and even, then the Fourier Transform satisfies:</p>
+
+<p>
+  \( X(j\omega) = X^*(-j\omega) \)
+</p>
+
+<p>If \( x(t) \) is real and odd, then:</p>
+
+<p>
+  \( X(j\omega) = -X^*(-j\omega) \)
+</p>
 				<li>
 					<h3>Convolution</h3>
 				</li>
-			<p>
-				Fourier transform makes the convolution of 2 signals into the product of their Fourier Transform. There are two types of convolutions, one for time domain and other for frequency domain.
-			</p>
-				<li>
-					<h4>Time domain convolution</h4>
-				</li>
-			<p>
-				F(x<sub>1</sub>(t)) = X<sub>1</sub>(ω),&#xa0; F(x<sub>2</sub>(t)) = X<sub>2</sub>(ω)
-			</p>
-			<p>
-				Then F(x<sub>1</sub>(t)* x<sub>2</sub>(t)) = X<sub>1</sub>(ω) . X<sub>2</sub>(ω),&#xa0;&#xa0;&#xa0; [‘*’ – convolution sign)]
-			</p>
-			<p>
-				&#xa0;
-			</p>
-				<li>
-					<h4>Frequency domain convolution</h4>
-				</li>
-			<p>
-				F(x<sub>1</sub>(t) . x<sub>2</sub>(t)) = 1/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />.X<sub>1</sub>(ω) * X<sub>2</sub>(ω)&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; [‘*’ – convolution sign)]
-			</p>
-			<p>
-				&#xa0;
-			</p>
+<p>
+  Fourier Transform converts the convolution of two signals in time domain into the multiplication of their transforms in frequency domain.
+</p>
+
+  <li>
+    <h4>Time Domain Convolution</h4>
+  </li>
+
+<p>
+  If \( F(x_1(t)) = X_1(\omega) \) and \( F(x_2(t)) = X_2(\omega) \), then:
+</p>
+<p>
+  \[
+  F(x_1(t) * x_2(t)) = X_1(\omega) \cdot X_2(\omega)
+  \quad \text{(‘*’ denotes convolution)}
+  \]
+</p>
+
+  <li>
+    <h4>Frequency Domain Convolution</h4>
+  </li>
+<p>
+  If \( F(x_1(t)) = X_1(\omega) \), \( F(x_2(t)) = X_2(\omega) \), then:
+</p>
+<p>
+  \[
+  F(x_1(t) \cdot x_2(t)) = \frac{1}{2\pi} X_1(\omega) * X_2(\omega)
+  \quad \text{(‘*’ denotes convolution)}
+  \]
+</p>
 				<li>
 					<h3>Shifting Property</h3>
 				</li>
-			<p>
-				F(x(t – t<sub>0</sub>)) = e<sup>-j</sup><sup>ω</sup><sup>t0 </sup>X(ω)
-			</p>
-			<p>
-				As a consequence, transforms leave the Fourier spectrum | X(ω)|<sup>2</sup> unchanged.
-			</p>
-			<p>
-				&#xa0;
-			</p>
+<p>
+  \[
+  \mathcal{F}\{x(t - t_0)\} = e^{-j\omega t_0} X(\omega)
+  \]
+</p>
+<p>
+  As a consequence, time shifting affects only the phase, leaving the magnitude spectrum \( |X(\omega)|^2 \) unchanged.
+</p>
 				<li>
 					<h3>Duality</h3>
 				</li>
-			<p>
-				F(x(t) =&#xa0; X(t) = 2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" /> x(-ω)
-			</p>
-			<p>
-				&#xa0;
-			</p>
-				<li>
-					<h3>Differentiation</h3>
-				</li>
-			<p>
-				F(<img src="1738659393_fourier-transform/1738659393_fourier-transform-12.png" width="35" height="34" alt="" /> ) = jωX(ω)
-			</p>
-			<p>
-				&#xa0;
-			</p>
-				<li>
-					<h3>Integration</h3>
-				</li>
-			<p>
-				F<img src="1738659393_fourier-transform/1738659393_fourier-transform-13.png" width="50" height="30" alt="" /><em>(t) dt</em>) = X(ω)/jω 
-			</p>
-			<p>
-				When a function (i.e., x(t)) is not an energy function and hence the Fourier transform of <img src="1738659393_fourier-transform/1738659393_fourier-transform-14.png" width="49" height="30" alt="" /><em>(t) dt</em>] includes an impulse function. 
-			</p>
-			<p>
-				F<img src="1738659393_fourier-transform/1738659393_fourier-transform-13.png" width="50" height="30" alt="" /><em>(t) dt</em>) = X(ω)/jω + <img src="1738659393_fourier-transform/1738659393_fourier-transform-15.png" width="10" height="18" alt="" />X<img src="1738659393_fourier-transform/1738659393_fourier-transform-16.png" width="67" height="24" alt="" />
-			</p>
-			<p>
-				&#xa0;
-			</p>
-				<li>
-					<h3>Modulation Property</h3>
-				</li>
-			<p>
-				F{x(t)<em>cosat</em>} = ½ {X(ω + a) + X(ω - a)}
-			</p>
-			<p>
-				F{x(t)<em>sinat</em>} = ½ {X(ω + a) - X(ω - a)}
-			</p>
-			<p>
-				&#xa0;
-			</p>
-				<li>
-					If the Fourier transform of f(x) is F(k), then f<sup>*</sup>(x) &lt;=&gt;&#xa0; F<sup>*</sup>(-k)
-				</li>
-			<p>
-				As a consequence Fourier transform of a real function must satisfy the symmetry relation. 
-			</p>
-			<p>
-				F(k) = F<sup>*</sup>(-k), meaning that the Fourier transform is symmetric about the origin in k-space. |F(k)|<sup>2</sup> = |F(-k)|<sup>2</sup>
-			</p>
-			<p>
-				<strong>&#xa0;</strong>
-			</p>
-				<li>
-				<h3>Parseval’s theorem</h3>
-				</li>
-			<p>
-				Energy = <img src="1738659393_fourier-transform/1738659393_fourier-transform-17.png" width="49" height="30" alt="" /><strong><em>(t)|</em></strong><strong><em><sup>2</sup></em></strong><strong><em>dt = 1/2</em></strong><img src="1738659393_fourier-transform/1738659393_fourier-transform-18.png" width="10" height="18" alt="" /> <img src="1738659393_fourier-transform/1738659393_fourier-transform-19.png" width="51" height="30" alt="" /><strong><em>(</em></strong><strong>ω</strong><strong><em>)|</em></strong><strong><em><sup>2</sup></em></strong><strong><em>d</em></strong><strong>ω</strong>
-			</p>
-			<p>
-				The total energy in the time domain signal, x(t) [i.e., the left integral] can be easily calculated from the frequency domain signal, <em>X(</em><em>ω) </em>[i.e., from the right integral]
-			</p>
-			<p>
-				&#xa0;
-			</p>
-				<li>
-					<h3>Time reversal</h3>
-				</li>
-			<p>
-				F(x(-t)) = X(-ω)
-			</p>
-			<p>
-				<strong>&#xa0;</strong>
-			</p>
+<p>
+  Duality states that if \( x(t) \leftrightarrow X(\omega) \), then the roles of time and frequency can be interchanged.
+</p>
+<p>
+  \[
+  \mathcal{F}\{X(t)\} = 2\pi x(-\omega)
+  \]
+</p>
+<li>
+  <h3>Differentiation</h3>
+</li>
+<p>
+  The Fourier Transform of the derivative of a signal corresponds to multiplication by \( j\omega \) in the frequency domain:
+</p>
+<p>
+  \( \mathcal{F} \left\{ \frac{d}{dt}x(t) \right\} = j\omega X(\omega) \)
+</p>
+<li>
+  <h3>Integration</h3>
+</li>
+<p>
+  The Fourier Transform of the integral of a signal corresponds to division by \( j\omega \):
+</p>
+<p>
+  \( \mathcal{F} \left\{ \int_{-\infty}^{t} x(\tau) \, d\tau \right\} = \frac{X(\omega)}{j\omega} \)
+</p>
+<p>
+  If \( x(t) \) is not an energy signal, the Fourier Transform of its integral includes a Dirac delta term:
+</p>
+<p>
+  \( \mathcal{F} \left\{ \int_{-\infty}^{t} x(\tau) \, d\tau \right\} = \frac{X(\omega)}{j\omega} + \pi X(0) \delta(\omega) \)
+</p>
+<li>
+  <h3>Modulation Property</h3>
+</li>
+<p>
+  The Fourier Transform of a signal multiplied by a cosine is:
+</p>
+<p>
+  \( \mathcal{F} \{ x(t) \cos(at) \} = \frac{1}{2} \left[ X(\omega + a) + X(\omega - a) \right] \)
+</p>
+<p>
+  And the Fourier Transform of a signal multiplied by a sine is:
+</p>
+<p>
+  \( \mathcal{F} \{ x(t) \sin(at) \} = \frac{1}{2j} \left[ X(\omega + a) - X(\omega - a) \right] \)
+</p>
+
+<li>
+  <h3>Complex Conjugate Symmetry</h3>
+</li>
+<p>
+  If the Fourier Transform of \( f(x) \) is \( F(k) \), then:
+</p>
+<p>
+  \( f^*(x) \longleftrightarrow F^*(-k) \)
+</p>
+<p>
+  As a consequence, the Fourier Transform of a real function satisfies the conjugate symmetry property:
+</p>
+<p>
+  \( F(k) = F^*(-k) \)
+</p>
+<p>
+  This implies:
+</p>
+<p>
+  \( |F(k)|^2 = |F(-k)|^2 \)
+</p>
+
+<li>
+  <h3>Parseval’s Theorem</h3>
+</li>
+<p>
+  The total energy of a signal in the time domain equals the total energy in the frequency domain:
+</p>
+<p>
+  \( \int_{-\infty}^{\infty} |x(t)|^2 \, dt = \frac{1}{2\pi} \int_{-\infty}^{\infty} |X(\omega)|^2 \, d\omega \)
+</p>
+<li>
+  <h3>Time Reversal</h3>
+</li>
+<p>
+  \(
+    \mathcal{F}\{x(-t)\} = X(-\omega)
+  \)
+</p>
 		     <h2>Fourier Transform of some common signals</h2>
 						<li>
 	                     <h3>Fourier Transform of a delta function</h3>
@@ -313,6 +326,12 @@
 				Thus Fourier transform of a delta/impulse is a constant equal to 1, independent of frequency. Remember that derivation is used the shifting property of the impulse to eliminate the integral.
 			</p>
 			<p>
+				&#xa0;
+			</p>
+						<p>
+				<img src="NewImages/Delta.png" width="398" height="149" alt="" />
+			</p>
+						<p>
 				&#xa0;
 			</p>
 				<li>
@@ -349,6 +368,12 @@
 				When a function (i.e., x(t)) is not an energy function and hence the Fourier transform of <img src="1738659393_fourier-transform/1738659393_fourier-transform-14.png" width="49" height="30" alt="" /><em>(t) dt</em>] includes an impulse function. 
 			</p>
 			<p>
+				&#xa0;
+			</p>
+									<p>
+				<img src="NewImages/unitStep.png" width="398" height="149" alt="" />
+			</p>
+						<p>
 				&#xa0;
 			</p>
 				<li>
@@ -471,6 +496,12 @@
 			<p>
 				&#xa0;
 			</p>
+												<p>
+				<img src="NewImages/Rectangular.png" width="398" height="149" alt="" />
+			</p>
+						<p>
+				&#xa0;
+			</p>
 				<li>
 					<h3> Fourier Transform of a unit triangle pulse</h3>
 				</li>
@@ -490,6 +521,12 @@
 				So, Λ(ω) = sinc(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-11.png" width="12" height="24" alt="" />) . sinc(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-39.png" width="19" height="24" alt="" /> = sinc<sup>2</sup>(ω/2<img src="1738659393_fourier-transform/1738659393_fourier-transform-39.png" width="19" height="24" alt="" />
 			</p>
 			<p>
+				&#xa0;
+			</p>
+															<p>
+				<img src="NewImages/Triangular.png" width="398" height="149" alt="" />
+			</p>
+						<p>
 				&#xa0;
 			</p>
 				<li>
