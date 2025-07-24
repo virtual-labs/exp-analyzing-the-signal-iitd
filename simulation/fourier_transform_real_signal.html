@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Virtual Labs</title>
+  </head>
+  <body>
+    <!-- sidebar and body -->
+	    <!-- sidebar and body -->
+	<div id = "instructions">
+    <h1>Instructions for Fourier Transform Simulator for Real Signal</h1>
+<ul>
+    <li class="step step1">Step 1: Click on "Browse" to select and upload the `.csv` file containing the real signal data.</li>
+    <li class="step step2">Step 2: Enter the sampling frequency in Hz.</li>
+    <li class="step step3">Step 3: Once uploaded, the Fourier magnitude and phase plots will be displayed.</li>
+</ul>
+	</div>
+	<hr/>
+	
+    <!-----------------------------framework starts-------------------------------->
+	    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+        }
+
+        .containerff {
+            display: flex;
+            gap: 2em;
+            margin-bottom: 2em;
+        }
+
+        .box {
+            border: 0.2em solid #333;
+            padding: 1em;
+            text-align: center;
+            flex: 1;
+        }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+            height: 0;
+            overflow: hidden;
+            transition: opacity 0.3s ease, height 0.3s ease;
+        }
+
+        .four-boxes {
+            display: flex;
+            gap: 2em;
+            margin-top: 2em;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .dropdown, .input-box {
+            margin-top: 1em;
+            text-align: left;
+        }
+
+select, input {
+    width: 100%;
+    padding: 0.5em;
+    font-size: 1em;
+    border: 2px solid black; /* Adds a solid black border */
+    border-radius: 4px; /* Optional: Rounds the corners */
+}
+
+    </style>
+	<br/>
+	<br/>
+
+    <div class="containerff" style = "display : none;">
+        <div class="box space-y-2">
+            <div class="flex flex-col space-y-2 items-center">
+              <button 
+                class="button bg-blue-500 text-white rounded-md px-2 py-1"
+                id="triggerButton" aria-expanded="false">
+                Use Generated Signal
+              </button>
+              <a href="#realData">
+              <button 
+                class="button bg-blue-500 text-white rounded-md px-2 py-1"
+                aria-expanded="false">
+                Input Real Data
+              </button>
+            </a>
+            </div>
+          
+            <div id="inputSignal1" class="w-[30em] h-[20em]"></div>
+          </div>
+          
+
+        <div class="box" id="inputFieldsBox">
+		<p>Parameters</p>
+		<br>
+		<label for = "messageFrequency">Input Signal Frequency (Hz)</label>
+            <input id = "messageFrequency" type="text" value="100">
+		<div class = "furtherAdded">
+			Amplitude<input id = "amplitude" type="number" value="1" step="0.1">
+    <div style="display:none;">
+	Time Duration (s)<input id = "timeDuration" type="number" value="1" step="0.1">
+	Sampling Frequency (Hz)<input id = "fs" type="number" value="1000"> 
+	</div>
+		</div>
+		<label for = "pulseWidthff" id="labelPulse">Window Duration (s)</label>
+            <input id = "pulseWidthff" type="number" value="0.2" step="0.1">
+			<!--
+            <input type="text" placeholder="Input 2">
+            <input type="text" placeholder="Input 3">
+			-->
+        </div>
+
+        <div class="box">
+            <p>Magnitude Plot</p>
+			<div id="fourier-plot" class="w-[30em] h-[20em]"></div>
+        </div>
+	
+	        <div class="box">
+            <p>Phase Plot</p>
+			<div id="phasePlot" class="w-[30em] h-[20em]"></div>
+        </div>
+    </div>
+
+    <div class="four-boxes hidden" id="additionalBoxes">
+        <div class="box" id="dropdownBox1">
+            <p>Base Signal</p>
+            <div class="dropdown">
+    <select id="inputSelector" onchange="handleInputChange()">
+        <option value="" disabled selected>Select an input</option>
+        <option value="sine" selected>Sine Wave</option>
+        <option value="cosine">Cosine Wave</option>
+		<option value="rectangularff">Rectangular Pulse</option>
+		<option value="triangular">Triangular Pulse</option>
+		<!--
+		<option value="rectangular">Rectangular Wave</option>
+		-->
+    </select>
+            </div>
+        </div>
+
+        <div class="box" id="dropdownBox2">
+            <p>Operations</p>
+            <div class="dropdown">
+    <select id="masterInputSelector" onchange="handleInputChange()">
+        <option value="" disabled selected>Select an operation</option>
+		<option value="none"  selected>None</option>
+        <option value="addition">Addition</option>
+        <option value="subtraction">Subtraction</option>
+		<option value="multiplication">Multiplication</option>
+        <option value="convolution">Convolution</option>
+		<option value="fourierDifferentiation">Differentiation</option>
+		<option value="fourierIntegration">Integration</option>
+    </select>
+	<br/>
+	<br/>
+			<div>
+	    <!-- Dropdown for user input selection -->
+    <label for="inputSelector2">Add another Signal:</label>
+    <select id="inputSelector2" onchange="handleInputChange()">
+	    <option value="" disabled selected>Select an input</option>
+        <option value="sine" selected>Sine Wave</option>
+        <option value="cosine">Cosine Wave</option>
+		<!--
+		<option value="rectangular">Rectangular Wave</option>
+		-->
+    </select>
+			</div>
+			
+			<br/>
+			
+			<div>
+        <label for="carrierFrequency">Input Frequency (Hz):</label>
+<input class="input-field border border-black px-2 py-1 rounded-sm" type="number" id="carrierFrequency" value="200">
+                </div>
+				<div id="inputSignal2" class="w-[30em] h-[20em]"></div>			
+            </div>
+        </div>
+<!--
+        <div class="box" id="inputBox1">
+            <p>AWGN Noise</p>
+            <div class="input-box">
+			    <label for="snrInput">SNR (in dB):</label>
+                <input id="snrInput" type="text" value="10">
+            </div>
+		    <div id="plot12" class="w-[30em] h-[20em]"></div>
+        </div>
+-->		
+
+        <div class="box" id="inputBox2">
+
+		<button 
+		class="button bg-blue-500 text-white rounded-md px-2 py-1"
+		onclick = "simulateff()">Simulate</button>
+		<br><br>
+        <button 
+        class="button bg-green-500 text-white rounded-md px-2 py-1"
+        onclick="window.location.href = window.location.href;">Reset Simulator</button>
+    
+        </div>
+    </div>
+
+    <script>
+        const triggerButton = document.getElementById('triggerButton');
+        const additionalBoxes = document.getElementById('additionalBoxes');
+
+        triggerButton.addEventListener('click', () => {
+            const isHidden = additionalBoxes.classList.toggle('hidden');
+            triggerButton.setAttribute('aria-expanded', !isHidden);
+        });
+    </script>
+	
+    <!-------------------------------framework ends--------------------------------->	
+				<button
+                  onclick="inputSignal1()"
+                >
+                </button>
+			    <button
+				  id = "hideButton1"
+                  onclick="generateInputSignal2()"
+                >
+                </button>
+				<button
+				  id = "hideButton"
+                  onclick="simulation()"
+                >
+                </button>
+								<button
+                  onclick="generateNoisySignal()"
+                >
+                </button>
+				
+			    <button
+                  onclick="generatePSD2()"
+                >
+                </button>
+
+	            <div id = "scrolltomessage" class="flex items-center gap-2 justify-center max-lg:flex-col">
+              <div id="plot11"></div>
+	
+
+
+<h2 id="realData" class="text-2xl font-bold text-gray-800 mb-4">
+Fourier Transform for Real Signal
+</h2>
+
+<div class="containerff">
+    <div class="box">  
+    <div class="w-[30em] h-[20em]">
+        <h2>Upload CSV and Plot Fourier Transform Magnitude and Phase</h2>
+        <input type="file" id="csvInput" accept=".csv">
+        Sampling Frequency (Hz)<br/>
+        <input id = "fs1" type="number" value="1000">  
+    </div>
+    </div>
+
+    <div class="box">
+        <p>Magnitude Plot</p>
+        <div id="fourier-plotxx" class="w-[30em] h-[20em]"></div>
+    </div>
+
+        <div class="box">
+        <p>Phase Plot</p>
+        <div id="phasePlotxx" class="w-[30em] h-[20em]"></div>
+    </div>
+</div>
+
+<script>
+document.getElementById("inputSelector").addEventListener("change", function () {
+  const label = document.getElementById("labelPulse"); // <-- this targets the <label> tag
+  switch (this.value) {
+    case "rectangularff":
+    case "triangular":
+      label.textContent = "Pulse Width (s)";
+      break;
+    default:
+      label.textContent = "Window Duration (s)";
+  }
+});
+</script>
+
+<script>
+    const aInput = document.getElementById("messageFrequency");
+    const bInput = document.getElementById("carrierFrequency");
+    const cInput = document.getElementById("fs");
+  
+    // Function to update C based on A and B
+    function updateC() {
+      const aValue = parseFloat(aInput.value);
+      const bValue = parseFloat(bInput.value);
+  
+      // Only update if both A and B are numbers
+      if (!isNaN(aValue) && !isNaN(bValue)) {
+        cInput.value = (aValue > bValue) ? aValue * 10 : bValue * 10;  // Use aValue and bValue instead of a and b
+      } else {
+        cInput.value = ""; // Clear C if input is not valid
+      }
+    }
+  
+    // Add event listeners for both A and B
+    aInput.addEventListener("input", updateC);
+    bInput.addEventListener("input", updateC);
+  </script>
+  
+
+<script>
+    // Function to check if the sampling frequency is higher than the input frequencies
+    function checkFrequencies2() {
+        const messageFreq = parseFloat(document.getElementById('messageFrequency').value);
+        const carrierFreq = parseFloat(document.getElementById('carrierFrequency').value);
+        const samplingFreq = parseFloat(document.getElementById('fs').value);//(messageFreq > carrierFreq) ? messageFreq * 10 : carrierFreq * 10;
+
+        // Check if the sampling frequency is less than or equal to either the message or carrier frequency
+        if (samplingFreq <= 2*messageFreq || samplingFreq <= 2*carrierFreq) {
+            alert("The sampling frequency must be at least twice the highest frequency in the message signal; otherwise, aliasing occurs.");
+        } 
+    }
+
+    // Select all button elements on the page
+    const buttons1 = document.querySelectorAll('button');
+
+    // Attach the click event listener to each button
+    buttons1.forEach(button => {
+        button.addEventListener('click', checkFrequencies2);
+    });
+</script>
+
+	
+    <script>
+	/*
+        function generateSinusoid(fm, fs, L) {
+            let tt = [];
+            let y = [];
+            for (let i = 0; i < L; i++) {
+                let t = i / fs;
+                tt.push(t);
+                y.push(Math.sin(2 * Math.PI * fm * t));
+            }
+            return { tt, y };
+        }
+*/
+
+        function addNoise(signal, snr_db) {
+            let snr_linear = Math.pow(10, snr_db / 10);
+            let signal_power = signal.reduce((sum, val) => sum + val * val, 0) / signal.length;
+            let noise_variance = signal_power / snr_linear;
+            return signal.map(val => val + Math.sqrt(noise_variance) * randn());
+        }
+
+        function fft(signal) {
+            let N = signal.length;
+            let X = new Array(N).fill(0).map(() => [0, 0]);
+
+            for (let k = 0; k < N; k++) {
+                for (let n = 0; n < N; n++) {
+                    let phi = (2 * Math.PI * k * n) / N;
+                    let cos = Math.cos(phi);
+                    let sin = Math.sin(phi);
+                    X[k][0] += signal[n] * cos;  // Real part
+                    X[k][1] -= signal[n] * sin;  // Imaginary part
+                }
+            }
+            return X;
+        }
+
+        function ifft(X) {
+            let N = X.length;
+            let x = new Array(N).fill(0);
+
+            for (let n = 0; n < N; n++) {
+                for (let k = 0; k < N; k++) {
+                    let phi = (2 * Math.PI * k * n) / N;
+                    let cos = Math.cos(phi);
+                    let sin = Math.sin(phi);
+                    x[n] += (X[k][0] * cos - X[k][1] * sin) / N;
+                }
+            }
+            return x;
+        }
+
+        function multiplyComplexArrays(A, B) {
+            return A.map((a, i) => [
+                a[0] * B[i][0] - a[1] * B[i][1],  // Real part
+                a[0] * B[i][1] + a[1] * B[i][0]   // Imaginary part
+            ]);
+        }
+
+        function autoCorrelation(X) {
+            return multiplyComplexArrays(X, X.map(x => [x[0], -x[1]]));  // X .* conj(X)
+        }
+
+        function crossCorrelation(X, Y) {
+            return multiplyComplexArrays(X, Y.map(y => [y[0], -y[1]]));  // X .* conj(Y)
+        }
+
+         function toeplitz(column, row) {
+            let n = column.length;
+            let toeplitzMatrix = [];
+
+            for (let i = 0; i < n; i++) {
+                toeplitzMatrix[i] = [];
+                for (let j = 0; j < n; j++) {
+                    if (j >= i) {
+                        toeplitzMatrix[i][j] = row[j - i];
+                    } else {
+                        toeplitzMatrix[i][j] = column[i - j];
+                    }
+                }
+            }
+            return toeplitzMatrix;
+        }
+
+        function transpose(matrix) {
+         return matrix[0].map((_, colIndex) => matrix.map(row => row[colIndex]));
+         }
+		 
+function solveToeplitz(toeplitzMatrix, Rxy) {
+    let N = toeplitzMatrix.length;
+
+    // Check if the matrix is square
+    if (N === 0 || toeplitzMatrix.some(row => row.length !== N)) {
+        throw new Error('Toeplitz matrix must be square and non-empty.');
+    }
+
+    // Initialize solution vector B with zeros
+    let B = new Array(N).fill(0);
+
+    // Perform Gaussian elimination to solve the linear system
+    for (let i = 0; i < N; i++) {
+        // Check for zero pivot
+        if (toeplitzMatrix[i][i] === 0) {
+            throw new Error('Matrix is singular and cannot be solved.');
+        }
+
+        // Normalize the pivot row
+        let pivot = toeplitzMatrix[i][i];
+        for (let j = 0; j < N; j++) {
+            toeplitzMatrix[i][j] /= pivot; // Normalize row
+        }
+        Rxy[i] /= pivot; // Normalize Rxy as well
+
+        // Eliminate entries below the pivot
+        for (let j = i + 1; j < N; j++) {
+            let factor = toeplitzMatrix[j][i];
+            for (let k = 0; k < N; k++) {
+                toeplitzMatrix[j][k] -= factor * toeplitzMatrix[i][k];
+            }
+            Rxy[j] -= factor * Rxy[i]; // Update Rxy
+        }
+    }
+
+    // Back substitution to find the solution
+    for (let i = N - 1; i >= 0; i--) {
+        B[i] = Rxy[i];
+        for (let j = i + 1; j < N; j++) {
+            B[i] -= toeplitzMatrix[i][j] * B[j];
+        }
+    }
+
+    return B;
+}
+		
+		// Function to compute the full convolution of two signals
+       function convolve(signal1, signal2) {
+    let result = new Array(signal1.length + signal2.length - 1).fill(0);
+    for (let i = 0; i < signal1.length; i++) {
+        for (let j = 0; j < signal2.length; j++) {
+            result[i + j] += signal1[i] * signal2[j];
+        }
+    }
+    return result;
+}
+
+  function complex(re, im) {
+    return { re: re, im: im };
+  }
+
+  function addComplex(a, b) {
+    return complex(a.re + b.re, a.im + b.im);
+  }
+
+  function subtractComplex(a, b) {
+    return complex(a.re - b.re, a.im - b.im);
+  }
+
+  function multiplyComplex(a, b) {
+    return complex(a.re * b.re - a.im * b.im, a.re * b.im + a.im * b.re);
+  }
+
+  function scaleComplex(a, scalar) {
+    return complex(a.re * scalar, a.im * scalar);
+  }
+
+  function fft(input) {
+    const N = input.length;
+    if (N <= 1) return input;
+
+    // Split into even and odd elements
+    const even = fft(input.filter((_, i) => i % 2 === 0));
+    const odd = fft(input.filter((_, i) => i % 2 !== 0));
+
+    const result = Array(N).fill(null).map(() => complex(0, 0));
+    for (let k = 0; k < N / 2; k++) {
+      const t = multiplyComplex(
+        odd[k],
+        complex(Math.cos(-2 * Math.PI * k / N), Math.sin(-2 * Math.PI * k / N))
+      );
+      result[k] = addComplex(even[k], t);
+      result[k + N / 2] = subtractComplex(even[k], t);
+    }
+    return result;
+  }
+
+  function ifft(input) {
+    const N = input.length;
+
+    // Conjugate the input
+    const conjugated = input.map(x => complex(x.re, -x.im));
+
+    // Compute FFT of conjugated input
+    const fftResult = fft(conjugated);
+
+    // Conjugate and scale the output, then take only the real part
+    return fftResult.map(x => x.re / N);
+  }
+
+        let amplitude;
+        let timeDuration;
+        let fs;    // Sampling frequency
+		let fm;
+		let fc;
+        let T = 1;        // Total recording time (1 second)
+        let L;   // Signal length
+        //let { tt, y } = generateSinusoid(120, fs, L);
+        let snr_db;
+        let x;
+		//let y, y2, y3;
+		let label, label2, label3, label4, label5;
+		inputSignal2 = document.getElementById('inputSignal2');
+		plot11 = document.getElementById('plot11');
+function handleInputChange(fs, fm, fc) {
+    // Get the selected inputs from the dropdowns
+    amplitude = document.getElementById('amplitude').value;
+    timeDuration = document.getElementById('timeDuration').value;
+    const selectedInput = document.getElementById('inputSelector').value;
+    const selectedInput2 = document.getElementById('inputSelector2').value; // Assuming there is a second selector
+    const selectedMasterInput = document.getElementById('masterInputSelector').value; // Assuming there is a master input selector
+
+    // Generate time vector
+    let tt = Array.from({ length: fs * timeDuration + 1 }, (_, i) => i / fs);
+
+    // Initialize output variables
+    let y, y2, y3;
+
+    // Perform operations based on the first input selection
+    switch (selectedInput) {
+        case 'sine':
+            y = tt.map((x) => amplitude * Math.sin(2 * Math.PI * fm * x));
+		label = document.querySelector('label[for="inputSelector2"]');
+    label.style.display = 'none';
+	inputSelector2.style.display = 'none';
+	label2 = document.querySelector('label[for="carrierFrequency"]');
+	label2.style.display = 'none';
+	carrierFrequency.style.display = 'none';
+	label3 = document.querySelector('label[for="messageFrequency"]');
+	label3.style.display = 'block';
+	messageFrequency.style.display = 'block';
+	label4 = document.querySelector("#dropdownBox2"); 
+	label4.style.display = 'block';
+	hideButton.style.display = 'none';
+	hideButton1.style.display = 'none';
+	inputSignal2.style.display = 'none';
+	plot11.style.display = 'none';
+            break;
+        case 'cosine':
+            y = tt.map((x) => amplitude * Math.cos(2 * Math.PI * fm * x));
+		label = document.querySelector('label[for="inputSelector2"]');
+    label.style.display = 'none';
+	inputSelector2.style.display = 'none';
+	label2 = document.querySelector('label[for="carrierFrequency"]');
+	label2.style.display = 'none';
+	carrierFrequency.style.display = 'none';
+	label3 = document.querySelector('label[for="messageFrequency"]');
+	label3.style.display = 'block';
+	messageFrequency.style.display = 'block';
+	label4 = document.querySelector("#dropdownBox2"); 
+	label4.style.display = 'block';
+	hideButton.style.display = 'none';
+	hideButton1.style.display = 'none';
+	inputSignal2.style.display = 'none';
+	plot11.style.display = 'none';
+            break;
+    case 'rectangularff':
+        // Define the frequency and duty cycle
+        const frequency = parseInt(document.getElementById('messageFrequency').value);  // Frequency of the rectangular signal in Hz
+        const dutyCycle = 50; // Duty cycle in percentage (e.g., 50% duty cycle)
+        
+        const period = 1 / frequency; // Period of the rectangular signal (in seconds)
+        const pulseWidth = period * (dutyCycle / 100); // Pulse width calculated from duty cycle
+
+        y = tt.map((x) => {
+            // Create a rectangular pulse based on pulseWidth and period
+            return (x % period < pulseWidth) ? 1 : 0;
+        });
+			label = document.querySelector('label[for="inputSelector2"]');
+    label.style.display = 'none';
+	inputSelector2.style.display = 'none';
+	label2 = document.querySelector('label[for="carrierFrequency"]');
+	label2.style.display = 'none';
+	carrierFrequency.style.display = 'none';
+	label3 = document.querySelector('label[for="messageFrequency"]');
+	label3.style.display = 'none';
+	messageFrequency.style.display = 'none';
+	label4 = document.querySelector("#dropdownBox2"); 
+	label4.style.display = 'none';
+	hideButton.style.display = 'none';
+	hideButton1.style.display = 'none';
+	inputSignal2.style.display = 'none';
+	plot11.style.display = 'none';
+        break;
+	
+	    case 'triangular':
+
+			label = document.querySelector('label[for="inputSelector2"]');
+    label.style.display = 'none';
+	inputSelector2.style.display = 'none';
+	label2 = document.querySelector('label[for="carrierFrequency"]');
+	label2.style.display = 'none';
+	carrierFrequency.style.display = 'none';
+	label3 = document.querySelector('label[for="messageFrequency"]');
+	label3.style.display = 'none';
+	messageFrequency.style.display = 'none';
+	label4 = document.querySelector("#dropdownBox2"); 
+	label4.style.display = 'none';
+	hideButton.style.display = 'none';
+	hideButton1.style.display = 'none';
+	inputSignal2.style.display = 'none';
+	plot11.style.display = 'none';
+        break;
+        default:
+            alert('Please select a valid input for the first signal.');
+            return null;
+    }
+
+    // Perform operations based on the second input selection
+    switch (selectedInput2) {
+        case 'sine':
+            y2 = tt.map((x) => amplitude * Math.sin(2 * Math.PI * fc * x));
+            break;
+        case 'cosine':
+            y2 = tt.map((x) => amplitude * Math.cos(2 * Math.PI * fc * x));
+            break;
+        default:
+            alert('Please select a valid input for the second signal.');
+            return null;
+    }
+/*
+    // Ensure y and y2 have the same length for addition and subtraction
+    if (y.length !== y2.length) {
+        alert('The signals must have the same length for the selected operation.');
+        return null;
+    }
+*/
+
+// Perform operations based on the master input selection
+switch (selectedMasterInput) {
+    case 'none':
+		y3 = y;
+    label = document.querySelector('label[for="inputSelector2"]');
+    label.style.display = 'none';
+	inputSelector2.style.display = 'none';
+	label2 = document.querySelector('label[for="carrierFrequency"]');
+	label2.style.display = 'none';
+	carrierFrequency.style.display = 'none';
+	hideButton.style.display = 'none';
+	hideButton1.style.display = 'none';
+	inputSignal2.style.display = 'none';
+	plot11.style.display = 'none';
+	break;
+	
+    case 'addition':
+        y3 = y.map((value, index) => value + y2[index]);
+    label = document.querySelector('label[for="inputSelector2"]');
+    label.style.display = 'block';
+	inputSelector2.style.display = 'block';
+	label2 = document.querySelector('label[for="carrierFrequency"]');
+	label2.style.display = 'block';
+	carrierFrequency.style.display = 'block';
+	hideButton.style.display = 'block';
+	hideButton1.style.display = 'block';
+	inputSignal2.style.display = 'block';
+	plot11.style.display = 'block';
+        break;
+    case 'subtraction':
+        y3 = y.map((value, index) => value - y2[index]);
+    label = document.querySelector('label[for="inputSelector2"]');
+    label.style.display = 'block';
+	inputSelector2.style.display = 'block';
+	label2 = document.querySelector('label[for="carrierFrequency"]');
+	label2.style.display = 'block';
+	carrierFrequency.style.display = 'block';
+	hideButton.style.display = 'block';
+	hideButton1.style.display = 'block';
+    inputSignal2.style.display = 'block';
+	plot11.style.display = 'block';
+        break;
+    case 'multiplication':
+        y3 = y.map((value, index) => value * y2[index]);
+	label = document.querySelector('label[for="inputSelector2"]');
+    label.style.display = 'block';
+	inputSelector2.style.display = 'block';
+	label2 = document.querySelector('label[for="carrierFrequency"]');
+	label2.style.display = 'block';
+	carrierFrequency.style.display = 'block';
+	hideButton.style.display = 'block';
+	hideButton1.style.display = 'block';
+    inputSignal2.style.display = 'block';
+	plot11.style.display = 'block';
+        break;
+    case 'convolution':
+    label = document.querySelector('label[for="inputSelector2"]');
+    label.style.display = 'block';
+	inputSelector2.style.display = 'block';
+	label2 = document.querySelector('label[for="carrierFrequency"]');
+	label2.style.display = 'block';
+	carrierFrequency.style.display = 'block';
+	hideButton.style.display = 'block';
+	hideButton1.style.display = 'block';
+	inputSignal2.style.display = 'block';
+	plot11.style.display = 'block';
+	y3 = convolve(y, y2); // Ensure the `convolve` function is defined elsewhere in your code
+		break;
+		
+	case 'fourierDifferentiation':
+        const inputData = padToPowerOf2(y);
+		  // Helper function to display FFT and IFFT results as arrays
+  function computeFFT() {
+    // Convert inputData to an array of complex numbers with zero imaginary parts
+    const inputArray = inputData.map(x => complex(x, 0));
+
+    // Compute FFT
+    const fftResult = fft(inputArray);
+    
+
+  }
+
+  function computeIFFT() {
+    // Convert inputData to an array of complex numbers with zero imaginary parts
+    const inputArray = inputData.map(x => complex(x, 0));
+
+    // Compute FFT first
+    const fftResult = fft(inputArray);
+	
+	///////////////////////////////////////////////
+	let fm = parseInt(document.getElementById('messageFrequency').value);
+    let fc = parseInt(document.getElementById('carrierFrequency').value);
+	let L = (fm > fc) ? (fm * 10) : (fc * 10);  // Sampling frequency
+    L = nextPowerOfTwo(L);
+	let Fs = (fm > fc) ? (fm * 10) : (fc * 10);  // Sampling frequency
+    Fs = nextPowerOfTwo(Fs);
+	    // Frequency vector and shifted frequency
+    const freq = Array.from({length: L}, (_, i) => i * Fs / L);
+    const freq_shifted = freq.map(f => f >= Fs / 2 ? f - Fs : f);
+
+    // Fourier Differentiation
+    const j = { re: 0, im: 1 };
+    const k = freq_shifted.map(f => 2 * Math.PI * f);
+    const dX = fftResult.map((Xk, i) => ({
+        re: -j.im * k[i] * Xk.im,
+        im: j.im * k[i] * Xk.re
+    }));
+    //const dx_dt = ifft(dX).map(val => val.re);
+	///////////////////////////////////////////////
+
+    // Compute IFFT of the FFT result and display only the real part
+    y3 = ifft(dX);//ifft(fftResult);//const ifftResult = ifft(fftResult);
+  }
+  computeFFT();
+  computeIFFT();
+      label = document.querySelector('label[for="inputSelector2"]');
+    label.style.display = 'none';
+	inputSelector2.style.display = 'none';
+	label2 = document.querySelector('label[for="carrierFrequency"]');
+	label2.style.display = 'none';
+	carrierFrequency.style.display = 'none';
+	hideButton.style.display = 'none';
+	hideButton1.style.display = 'none';
+	inputSignal2.style.display = 'none';
+	plot11.style.display = 'none';
+
+        break;
+		
+	case 'fourierIntegration':
+        const inputData1 = padToPowerOf2(y);
+		  // Helper function to display FFT and IFFT results as arrays
+  function computeFFT1() {
+    // Convert inputData to an array of complex numbers with zero imaginary parts
+    const inputArray1 = inputData1.map(x => complex(x, 0));
+
+    // Compute FFT
+    const fftResult1 = fft(inputArray1);
+    
+
+  }
+
+  function computeIFFT1() {
+    // Convert inputData to an array of complex numbers with zero imaginary parts
+    const inputArray2 = inputData1.map(x => complex(x, 0));
+
+    // Compute FFT first
+    const fftResult2 = fft(inputArray2);
+	
+	///////////////////////////////////////////////
+		            let fm = parseInt(document.getElementById('messageFrequency').value);
+            let fc = parseInt(document.getElementById('carrierFrequency').value);
+	let L1 = (fm > fc) ? (fm * 10) : (fc * 10);  // Sampling frequency
+    L1 = nextPowerOfTwo(L1);
+	let Fs1 = (fm > fc) ? (fm * 10) : (fc * 10);	  // Sampling frequency
+    Fs1 = nextPowerOfTwo(Fs1);
+	    // Frequency vector and shifted frequency
+    const freq1 = Array.from({length: L1}, (_, i) => i * Fs1 / L1);
+    const freq_shifted1 = freq1.map(f1 => f1 >= Fs1 / 2 ? f1 - Fs1 : f1);
+
+    // Fourier Integration
+    const j1 = { re: 0, im: 1 };
+    const k1 = freq_shifted1.map(f1 => 2 * Math.PI * f1);
+    const dX1 = fftResult2.map((Xk, i) => i === 0 ? { re: 0, im: 0 } : {
+  re: -Xk.im / k1[i],    // Real part: -Xk.im / k[i]
+  im: Xk.re / k1[i]      // Imaginary part: Xk.re / k[i]
+    });
+    //const dx_dt = ifft(dX).map(val => val.re);
+	///////////////////////////////////////////////
+
+    // Compute IFFT of the FFT result and display only the real part
+    y3 = ifft(dX1);//ifft(fftResult);//const ifftResult = ifft(fftResult);
+
+  }
+  computeFFT1();
+  computeIFFT1();
+    label = document.querySelector('label[for="inputSelector2"]');
+    label.style.display = 'none';
+	inputSelector2.style.display = 'none';
+	label2 = document.querySelector('label[for="carrierFrequency"]');
+	label2.style.display = 'none';
+	carrierFrequency.style.display = 'none';
+	hideButton.style.display = 'none';
+	hideButton1.style.display = 'none';
+	inputSignal2.style.display = 'none';
+	plot11.style.display = 'none';
+        break;
+    default:
+        alert('Please select a valid operation for combining signals.');
+        return null;
+}
+
+    // Return the results as an object
+    return { y, y2, y3 };
+}
+
+
+function inputSignal1() {
+    let fm = parseInt(document.getElementById('messageFrequency').value);
+    let fc = parseInt(document.getElementById('carrierFrequency').value);
+	fs = parseInt(document.getElementById('fs').value); //(fm > fc) ? fm * 10 : fc * 10;	
+
+    let { y, y2, y3 } = handleInputChange(fs, fm, fc);
+    if (!y || !y2 || !y3) return;  // Ensure valid signals
+
+    // Plot y2 and y3 on the same plot
+    Plotly.newPlot('inputSignal1', [
+        { x: Array.from({ length: fs * timeDuration + 1}, (_, i) => i / fs), y: y, mode: 'lines', name: 'Signal 1' }
+    ], { title: 'Input Signal' , xaxis: { title: 'time (s)' },
+            yaxis: { title: 'Amplitude' }}, {
+				showLink: false,              // Hides "Edit in Chart Studio" link
+				displaylogo: false,           // Removes Plotly logo
+				modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+			});
+
+
+    //document.getElementById('scrolltoinputsignal1').scrollIntoView({ behavior: 'smooth' });
+}
+		
+function generateInputSignal2() {
+    let fm = parseInt(document.getElementById('messageFrequency').value);
+    let fc = parseInt(document.getElementById('carrierFrequency').value);
+    fs = parseInt(document.getElementById('fs').value); //(fm > fc) ? fm * 10 : fc * 10;	
+
+    let { y, y2, y3 } = handleInputChange(fs, fm, fc);
+    if (!y || !y2 || !y3) return;  // Ensure valid signals
+
+    // Plot y2 and y3 on the same plot
+    Plotly.newPlot('inputSignal2', [
+        { x: Array.from({ length: fs * timeDuration + 1}, (_, i) => i / fs), y: y2, mode: 'lines', name: 'Signal 1' }
+    ], { title: 'Input Signal 2' , xaxis: { title: 'time (s)' },
+            yaxis: { title: 'Amplitude' }}, {
+				showLink: false,              // Hides "Edit in Chart Studio" link
+				displaylogo: false,           // Removes Plotly logo
+				modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+			});
+
+    //document.getElementById('scrolltoinputsignal2').scrollIntoView({ behavior: 'smooth' });
+}
+		
+		        function simulation() {
+            // Main Wiener Filter Process
+            let fm = parseInt(document.getElementById('messageFrequency').value);
+            let fc = parseInt(document.getElementById('carrierFrequency').value);
+			let fs = (messageFreq > carrierFreq) ? messageFreq * 10 : carrierFreq * 10;	
+
+    let { y, y2, y3 } = handleInputChange(fs, fm, fc);
+    if (!y || !y2 || !y3) return;  // Ensure valid signals
+	
+
+            // User input for SNR in dB
+            let snr_db = parseFloat(document.getElementById('snrInput').value);
+
+            // Add Gaussian noise to the signal (assumes addNoise function is defined)
+            let x = addNoise(y3, snr_db);
+			
+			const config = {
+			    displaylogo: false,
+				modeBarButtonsToRemove: ['plotly-logomark'],
+				responsive: true
+			};
+
+            // Plot original message signal
+            Plotly.newPlot('plot11', [
+                { x: Array.from({ length: fs }, (_, i) => i / fs), y: y3, mode: 'lines', name: 'Original Message Signal' }
+            ], { title: 'Combined Signal' }, config);
+				//document.getElementById('scrolltomessage').scrollIntoView({ behavior: 'smooth' });
+        }
+
+
+	function generateNoisySignal() {		
+            let fm = parseInt(document.getElementById('messageFrequency').value);
+            let fc = parseInt(document.getElementById('carrierFrequency').value);
+			let fs = (fm > fc) ? fm * 10 : fc * 10;
+			let tt = Array.from({ length: fs }, (_, i) => i / fs);
+
+    let { y, y2, y3 } = handleInputChange(fs, fm, fc);
+    if (!y || !y2 || !y3) return;  // Ensure valid signals
+
+            // User input for SNR in dB
+            let snr_db = parseFloat(document.getElementById('snrInput').value);
+
+            // Add Gaussian noise to the signal (assumes addNoise function is defined)
+            let x = addNoise(y3, snr_db);
+
+		        Plotly.newPlot('plot12', [
+            { x: tt, y: x, mode: 'lines', name: 'Noisy Signal' },
+        ], { title: 'Noisy Signal' , xaxis: { title: 'time (s)' },
+            yaxis: { title: 'Amplitude' } });
+			//document.getElementById('scrolltonoisy').scrollIntoView({ behavior: 'smooth' });
+    }
+
+
+        // Generate random Gaussian noise
+        function randn() {
+            let u1 = Math.random();
+            let u2 = Math.random();
+            return Math.sqrt(-2.0 * Math.log(u1)) * Math.cos(2.0 * Math.PI * u2);
+        }
+
+
+
+// Manual PSD calculation function with windowing
+function manualPSD(signal, fs) {
+    let N = signal.length;
+
+    // Apply the window function to the signal
+	// Example Usage
+const windowType = document.getElementById('windowType').value; // Change this to 'hamming' or 'rectangular' for testing
+//const N = 64; // Length of the window
+const idx = 10; // Index for which to compute the window value
+    let windowedSignal = signal.map((val, idx) => val * computeWindowValue(windowType, idx, N));
+
+    // Compute the FFT of the windowed signal
+    let fft_signal = manualFFT(windowedSignal.map(val => ({ re: val, im: 0 })));
+
+    // Compute the PSD
+    let positiveFrequencies = fft_signal.slice(0, Math.floor(N / 2) + 1);
+    let psd = positiveFrequencies.map(c => (1 / (fs * N)) * (c.re ** 2 + c.im ** 2));
+
+    // Adjust for one-sided spectrum
+    for (let i = 1; i < psd.length - 1; i++) {
+        psd[i] *= 2;
+    }
+
+    // Frequency axis
+    let f = Array.from({ length: Math.floor(N / 2) + 1 }, (_, i) => (i * fs) / N);
+    return { psd, f };
+}
+
+// Function to compute a single value for the selected window at a specific index
+function computeWindowValue(windowType, idx, N) {
+    switch (windowType) {
+        case 'hann':
+            return hannWindow(idx, N); // Compute Hann window value
+        case 'hamming':
+            return hammingWindow(idx, N); // Compute Hamming window value
+        case 'rectangular':
+            return rectangularWindow(idx, N); // Compute Rectangular window value
+        default:
+            console.error('Invalid window type'); // Handle invalid window type
+            return null; // Return null for invalid input
+    }
+}
+
+// Hann window function
+function hannWindow(idx, N) {
+    return 0.5 * (1 - Math.cos((2 * Math.PI * idx) / (N - 1)));
+}
+
+// Hamming window function
+function hammingWindow(idx, N) {
+    return 0.54 - 0.46 * Math.cos((2 * Math.PI * idx) / (N - 1));
+}
+
+// Rectangular window function
+function rectangularWindow(idx, N) {
+    return 1; // Constant value for rectangular window
+}
+
+
+/*
+// Example Usage
+const windowType = 'hann'; // Change this to 'hamming' or 'rectangular' for testing
+const N = 64; // Length of the window
+console.log(computeWindow(windowType, N)); // Logs the computed window values for the selected type
+*/
+
+
+        // Manual FFT implementation (Cooley-Tukey algorithm)
+        function manualFFT(signal) {
+            let N = signal.length;
+            if (N <= 1) return signal;
+
+            if ((N & (N - 1)) !== 0) {
+            
+                let size = 1 << Math.ceil(Math.log2(N));
+                signal = signal.concat(Array(size - N).fill({ re: 0, im: 0 }));
+            }
+
+            return fftRecursive(signal);
+        }
+
+        function fftRecursive(signal) {
+            let N = signal.length;
+            if (N <= 1) return signal;
+
+            // Divide
+            let even = fftRecursive(signal.filter((_, index) => index % 2 === 0));
+            let odd = fftRecursive(signal.filter((_, index) => index % 2 !== 0));
+
+            // Combine
+            let result = Array(N).fill({ re: 0, im: 0 });
+            for (let k = 0; k < N / 2; k++) {
+                let expTerm = {
+                    re: Math.cos((-2 * Math.PI * k) / N),
+                    im: Math.sin((-2 * Math.PI * k) / N)
+                };
+                let oddK = complexMultiply(expTerm, odd[k]);
+                result[k] = complexAdd(even[k], oddK);
+                result[k + N / 2] = complexSubtract(even[k], oddK);
+            }
+            return result;
+        }
+
+        // Complex number operations
+        function complexAdd(a, b) {
+            return { re: a.re + b.re, im: a.im + b.im };
+        }
+
+        function complexSubtract(a, b) {
+            return { re: a.re - b.re, im: a.im - b.im };
+        }
+
+        function complexMultiply(a, b) {
+            return {
+                re: a.re * b.re - a.im * b.im,
+                im: a.re * b.im + a.im * b.re
+            };
+        }
+
+//////////////////////fourier//////////////////////////
+      // Manual FFT function
+      // Apply Hann window
+function applyHannWindow(signal) {
+  const N = signal.length;
+  return signal.map((val, n) => {
+    const windowValue = 0.5 * (1 - Math.cos((2 * Math.PI * n) / (N - 1)));
+    return val * windowValue;
+  });
+}
+
+      function fftff(signal) {
+        const N = signal.length;
+        const windowedSignal = applyHannWindow(signal); 
+        const result = new Array(N).fill(0).map(() => [0, 0]); // Complex array: [real, imag]
+
+        for (let k = 0; k < N; k++) {
+          for (let n = 0; n < N; n++) {
+            const angle = (-2 * Math.PI * k * n) / N;
+            result[k][0] += windowedSignal[n] * Math.cos(angle); // Real part
+            result[k][1] += windowedSignal[n] * Math.sin(angle); // Imaginary part
+          }
+          /*
+              // Normalize by dividing by N
+    result[k][0] /= N;  // Normalize real part
+    result[k][1] /= N;  // Normalize imaginary part
+  */
+        }
+        return result; // Array of [real, imag]
+      }
+
+      // Compute magnitude from complex array
+      function computeMagnitude(complexArray) {
+        return complexArray.map(([real, imag]) => Math.sqrt(real ** 2 + imag ** 2));
+        //return complexArray.map(mag => 20 * Math.log10(mag + 1e-12)); // Avoid log(0)
+      }
+      // Convert magnitude to dB scale
+function computeMagnitudeInDb(magnitudeArray) {
+  return magnitudeArray.map(mag => 20 * Math.log10(mag + 1e-12)); // Avoid log(0)
+}
+
+function computeFFTff() {
+    // Get user inputs
+    let fm = parseInt(document.getElementById('messageFrequency').value);
+    let fc = parseInt(document.getElementById('carrierFrequency').value);
+    let fs = parseInt(document.getElementById('fs').value);
+    let samplingRate = fs;
+
+    let { y, y2, y3 } = handleInputChange(fs, fm, fc);
+    if (!y || !y2 || !y3) return;
+
+    const signal = y3;
+
+    // Compute FFT
+    const fftResult = fftff(signal);
+    const magnitude0 = computeMagnitude(fftResult);       // Linear magnitude
+    const magnitude = computeMagnitudeInDb(magnitude0);   // dB magnitude
+
+    // Frequency axis
+    const N = signal.length;
+    const freqAxis = Array.from({ length: N / 2 }, (_, k) => k * (samplingRate / N));
+
+    // Define traces
+    const traceLinear = {
+        x: freqAxis,
+        y: magnitude0.slice(0, N / 2),
+        type: 'scatter',
+        mode: 'lines',
+        name: 'Linear Magnitude',
+        line: { color: 'blue' }
+    };
+
+    const traceDb = {
+        x: freqAxis,
+        y: magnitude.slice(0, N / 2),
+        type: 'scatter',
+        mode: 'lines',
+        name: 'Magnitude in dB',
+        line: { color: 'red' }
+    };
+
+    const layout = {
+        title: "Fourier Magnitude Spectrum",
+        xaxis: { title: "Frequency (Hz)", range: [0, ((fs / 10) + fm) + 5] },
+        yaxis: { title: "Magnitude / dB"}
+    };
+
+    Plotly.newPlot("fourier-plot", [traceLinear], layout, {
+        showLink: false,
+        displaylogo: false,
+        modeBarButtonsToRemove: ['sendDataToCloud']
+    });
+}
+
+
+
+    document.getElementById('csvInput').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const text = e.target.result;
+      const rows = text.split(/\r?\n/).filter(line => line.trim() !== '');
+      const signal = rows.map(row => parseFloat(row.split(',')[0])).filter(v => !isNaN(v));
+      if (signal.length === 0) return alert('Invalid or empty data.');
+      // Function to compute FFT and plot
+      function computeFFTffxx() {
+        // Get user inputs
+
+        let fs = parseInt(document.getElementById('fs1').value); // sampling frequency
+        let samplingRate = fs;
+
+        // Compute FFT
+        const fftResult = fftff(signal);
+        const magnitude = computeMagnitude(fftResult);
+
+        // Frequency axis
+        const N = signal.length;
+        const freqAxis = Array.from({ length: N / 2 }, (_, k) => k * (samplingRate / N));
+
+        // Plot using Plotly
+        const trace = {
+          x: freqAxis,
+          y: magnitude.slice(0, N / 2),
+          type: 'scatter',
+          mode: 'lines',
+          name: 'Magnitude Spectrum'
+        };
+
+        const layout = {
+          title: "Fourier Magnitude Spectrum",
+          xaxis: { title: "Frequency (Hz)", range: [0, fs/2] },
+          yaxis: { title: "Magnitude" }
+        };
+
+        Plotly.newPlot("fourier-plotxx", [trace], layout, {
+          showLink: false,
+          displaylogo: false,
+          modeBarButtonsToRemove: ['sendDataToCloud']
+        });
+
+        // Optional: scroll to plot
+        // document.getElementById('scrolltofourier').scrollIntoView({ behavior: 'smooth' });
+      }
+
+      // Call FFT after CSV is loaded and parsed
+      computeFFTffxx();
+    };
+
+    reader.readAsText(file);
+  });
+///////////////////////////////////////////////////////
+
+//////////////////////////////Phase Info///////////////////
+        // Function to zero-pad the array to the nearest power of 2
+        function padToPowerOf2(arr) {
+            const nextPowerOf2 = 2 ** Math.ceil(Math.log2(arr.length));
+            while (arr.length < nextPowerOf2) {
+                arr.push(0);
+            }
+            return arr;
+        }
+		
+
+        // Manual FFT function
+        function fft(x) {
+            const N = x.length;
+            if (N <= 1) return x;
+
+            // Split into even and odd parts
+            const even = fft(x.filter((_, i) => i % 2 === 0));
+            const odd = fft(x.filter((_, i) => i % 2 !== 0));
+
+            const combined = new Array(N).fill(0).map(() => ({ re: 0, im: 0 }));
+            for (let k = 0; k < N / 2; k++) {
+                const twiddle = {
+                    re: Math.cos(2 * Math.PI * k / N),
+                    im: -Math.sin(2 * Math.PI * k / N)
+                };
+
+                const product = {
+                    re: twiddle.re * odd[k].re - twiddle.im * odd[k].im,
+                    im: twiddle.re * odd[k].im + twiddle.im * odd[k].re
+                };
+
+                combined[k] = {
+                    re: even[k].re + product.re,
+                    im: even[k].im + product.im
+                };
+                combined[k + N / 2] = {
+                    re: even[k].re - product.re,
+                    im: even[k].im - product.im
+                };
+            }
+            return combined;
+        }
+
+        // Magnitude and phase calculation
+        function magnitude(complexArray) {
+            return complexArray.map(c => Math.sqrt(c.re ** 2 + c.im ** 2));
+        }
+
+        function phase(complexArray) {
+            return complexArray.map(c => Math.atan2(c.im, c.re));
+        }
+
+		function nextPowerOfTwo(n) {
+			if (n < 1) return 1; // Handle cases where n is less than 1
+			let power = 1;
+			while (power < n) {
+				power *= 2; // Multiply by 2 until we exceed n
+			}
+			return power;
+		}
+
+function phasePlot() {	
+	            let fm = parseInt(document.getElementById('messageFrequency').value);
+            let fc = parseInt(document.getElementById('carrierFrequency').value);
+        // Signal parameters
+         let fs = parseInt(document.getElementById('fs').value); //(fm > fc) ? fm * 10 : fc * 10;  // Sampling frequency
+		      fs = nextPowerOfTwo(fs);
+        const t = Array.from({ length: fs }, (_, i) => i / fs);  // Time vector
+
+        // Signal definition
+		    let { y, y2, y3 } = handleInputChange(fs, fm, fc);
+    if (!y || !y2 || !y3) return;  // Ensure valid signals
+        //const x = t.map(ti => Math.cos(2 * Math.PI * 1500 * ti - Math.PI / 4) - Math.sin(2 * Math.PI * 40 * ti));
+
+        // Zero-pad signal to nearest power of 2
+        const paddedX = padToPowerOf2(y3).map(val => ({ re: val, im: 0 }));
+
+        // Compute Fourier Transform
+        const y_ff = fft(paddedX);
+
+
+// Get the value of both input selectors
+const inputSelector1 = document.getElementById("inputSelector").value;
+const inputSelector2 = document.getElementById("inputSelector2").value;
+
+// Declare the variable tol
+let tol;
+let z;
+// Check if either inputSelector1 or inputSelector2 contains 'rectangular'
+if (inputSelector1 === 'rectangular' || inputSelector2 === 'rectangular') {
+             z = y_ff.slice().map((_, i, arr) => arr[(i + Math.floor(arr.length / 2)) % arr.length]); // fftshift
+
+} else {
+
+    z = y_ff.slice().map((_, i, arr) => arr[(i + Math.floor(arr.length / 2)) % arr.length]); // fftshift
+            // Apply tolerance check
+		const maxValue = Math.max(...magnitude(z));
+	// Code to run if both inputs are not 'rectangular'
+    tol = maxValue - 1;  // Assign value if 'rectangular' is selected in either input
+	// You can now use 'tol' for further calculations
+
+        z.forEach((c, index) => {
+            if (Math.sqrt(c.re ** 2 + c.im ** 2) < tol) {
+                z[index] = { re: 0, im: 0 };  // Set the complex number to zero
+            }
+        });
+
+}
+
+
+        // Frequency vector
+        const ly = y_ff.length;
+        const f = Array.from({ length: ly }, (_, i) => (i - ly / 2) / ly * fs);
+/*
+        // Plot magnitude of the Fourier Transform
+        const magnitudeData = {
+            x: f,
+            y: magnitude(z),
+            type: 'scatter',
+            mode: 'lines',
+            name: 'Magnitude'
+        };
+
+        Plotly.newPlot('magnitudePlot', [magnitudeData], {
+            title: 'Magnitude of Fourier Transform',
+            xaxis: { title: 'Frequency (Hz)' },
+            yaxis: { title: '|y|' }
+        });
+*/
+        // Plot phase of the Fourier Transform
+        const phaseData = {
+            x: f,
+            y: phase(z).map(value => value / Math.PI),//phase(z),
+            type: 'scatter',
+            mode: 'lines',
+            name: 'Phase'
+        };
+
+			Plotly.newPlot('phasePlot', [phaseData], { 
+				title: 'Phase Plot',
+				xaxis: { title: 'Frequency (Hz)', range: [-((fs/10) + fm + 5), ((fs/10) + fm + 5)] },
+				yaxis: { title: 'Phase (radians)' } 
+			}, {
+				showLink: false,              // Hides "Edit in Chart Studio" link
+				displaylogo: false,           // Removes Plotly logo
+				modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+			});
+
+		    //document.getElementById('scrolltophaseplot').scrollIntoView({ behavior: 'smooth' });
+}
+
+    document.getElementById('csvInput').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const text = e.target.result;
+        const rows = text.split(/\r?\n/).filter(line => line.trim() !== '');
+        const signal = rows.map(row => parseFloat(row.split(',')[0])).filter(v => !isNaN(v));
+        if (signal.length === 0) return alert('Invalid or empty data.');
+
+        function phasePlotxx() {
+
+            let fs = parseInt(document.getElementById('fs1').value);
+
+            fs = nextPowerOfTwo(fs);
+            const t = Array.from({ length: fs }, (_, i) => i / fs);
+
+            // Zero-pad signal to nearest power of 2
+            const paddedX = padToPowerOf2(signal).map(val => ({ re: val, im: 0 }));
+
+            // Compute Fourier Transform
+            const y_ff = fft(paddedX);
+
+            // Get the value of both input selectors
+            const inputSelector1 = document.getElementById("inputSelector").value;
+            const inputSelector2 = document.getElementById("inputSelector2").value;
+
+            // Declare variables
+            let tol;
+            let z;
+
+            // Apply fftshift in both cases
+            z = y_ff.map((_, i, arr) => arr[(i + Math.floor(arr.length / 2)) % arr.length]);
+
+            if (!(inputSelector1 === 'rectangular' || inputSelector2 === 'rectangular')) {
+                const maxValue = Math.max(...magnitude(z));
+                tol = maxValue - 1;
+
+                // Set small magnitude values to zero
+                z.forEach((c, index) => {
+                    if (Math.sqrt(c.re ** 2 + c.im ** 2) < tol) {
+                        z[index] = { re: 0, im: 0 };
+                    }
+                });
+            }
+
+            // Frequency vector
+            const ly = y_ff.length;
+            const f = Array.from({ length: ly }, (_, i) => (i - ly / 2) / ly * fs);
+
+            // Plot phase of the Fourier Transform
+            const phaseData = {
+                x: f,
+                y: phase(z).map(value => value / Math.PI),
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Phase'
+            };
+
+            Plotly.newPlot('phasePlotxx', [phaseData], {
+                title: 'Phase Plot',
+                xaxis: { title: 'Frequency (Hz)', range: [-fs/2, fs/2] },
+                yaxis: { title: 'Phase (radians)' }
+            }, {
+                showLink: false,
+                displaylogo: false,
+                modeBarButtonsToRemove: ['sendDataToCloud']
+            });
+
+            // Optional scroll:
+            // document.getElementById('scrolltophaseplot').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Call the phasePlot function after loading and parsing
+        phasePlotxx();
+    };
+
+    reader.readAsText(file);
+});
+
+///////////////////////////sine///////////////////////////
+
+function sinc(x) {
+            return x === 0 ? 1 : Math.sin(Math.PI * x) / (Math.PI * x);
+        }
+
+        function computeFourierTransform(frequencies, A1, f1, A2, f2, T, operation, signal1Type, signal2Type) {
+            return frequencies.map(f => {
+                const s1_pos = sinc((f - f1) * T);
+                const s1_neg = sinc((f + f1) * T);
+                const s2_pos = sinc((f - f2) * T);
+                const s2_neg = sinc((f + f2) * T);
+
+                let real = 0;
+                let imag = 0;
+
+                if (operation === "addition" || operation === "subtraction") {
+                    const sign = operation === "addition" ? 1 : -1;
+
+                    if (signal1Type === "cosine") {
+                        real += (T / 2) * A1 * (s1_pos + s1_neg);
+                    } else {
+                        imag += (T / 2) * A1 * (s1_pos - s1_neg);
+                    }
+
+                    if (signal2Type === "cosine") {
+                        real += sign * (T / 2) * A2 * (s2_pos + s2_neg);
+                    } else {
+                        imag += sign * (T / 2) * A2 * (s2_pos - s2_neg);
+                    }
+                }
+
+                else if (operation === "multiplication") {
+                    const f_sum = f1 + f2;
+                    const f_diff = Math.abs(f1 - f2);
+                    const sum_pos = sinc((f - f_sum) * T);
+                    const sum_neg = sinc((f + f_sum) * T);
+                    const diff_pos = sinc((f - f_diff) * T);
+                    const diff_neg = sinc((f + f_diff) * T);
+
+                    if (signal1Type === "cosine" && signal2Type === "cosine") {
+                        real = (T / 2) * A1 * A2 * ((sum_pos + sum_neg + diff_pos + diff_neg) / 2);
+                    } else if (signal1Type === "sine" && signal2Type === "sine") {
+                        real = - (T / 2) * A1 * A2 * ((sum_pos + sum_neg - diff_pos - diff_neg) / 2);
+                    } else {
+                        imag = (T / 2) * A1 * A2 * ((sum_pos - sum_neg + diff_pos - diff_neg) / 2);
+                    }
+                }
+
+                else if (operation === "convolution") {
+    let real1 = 0, imag1 = 0;
+    let real2 = 0, imag2 = 0;
+
+    if (signal1Type === "cosine") {
+        real1 = (T / 2) * A1 * (s1_pos + s1_neg);
+    } else {
+        imag1 = (T / 2) * A1 * (s1_pos - s1_neg);
+    }
+
+    if (signal2Type === "cosine") {
+        real2 = (T / 2) * A2 * (s2_pos + s2_neg);
+    } else {
+        imag2 = (T / 2) * A2 * (s2_pos - s2_neg);
+    }
+
+    // Complex multiplication: (a + ib)(c + id) = (ac - bd) + i(ad + bc)
+    real = real1 * real2 - imag1 * imag2;
+    imag = real1 * imag2 + imag1 * real2;
+}
+
+else if (operation === "fourierDifferentiation") {
+    // Differentiation operation in frequency domain
+    if (signal1Type === "cosine") {
+        real = (T / 2) * A1 * (s1_pos - s1_neg) * (2 * Math.PI * f);  // Differentiation for cosine signal1
+    } else if (signal1Type === "sine") {
+        imag = (T / 2) * A1 * (s1_pos + s1_neg) * (2 * Math.PI * f);  // Differentiation for sine signal1
+    }
+}
+
+else if (operation === "fourierIntegration") {
+    // Integration operation in frequency domain
+    if (f === 0) {
+        real = 0;
+        imag = 0; // Avoid divide-by-zero
+    } else if (signal1Type === "cosine") {
+        real = (T / 2) * A1 * (s1_pos + s1_neg) / (2 * Math.PI * f);  // Integration for cosine signal1
+    } else if (signal1Type === "sine") {
+        imag = (T / 2) * A1 * (s1_pos - s1_neg) / (2 * Math.PI * f);  // Integration for sine signal1
+    }
+}
+
+
+                else {
+                    if (signal1Type === "cosine") {
+                        real = (T / 2) * A1 * (s1_pos + s1_neg);
+                    } else {
+                        imag = (T / 2) * A1 * (s1_pos - s1_neg);
+                    }
+                }
+
+                return Math.sqrt(real ** 2 + imag ** 2);
+            });
+        }
+
+        function sine() {
+            let A1 = parseFloat(document.getElementById('amplitude').value);
+            let f1 = parseInt(document.getElementById('messageFrequency').value);
+            let A2 = parseFloat(document.getElementById('amplitude').value);
+            let f2 = parseInt(document.getElementById('carrierFrequency').value);
+            let T = parseFloat(document.getElementById('pulseWidthff').value);
+            let fs = parseInt(document.getElementById('fs').value);
+            let operation = document.getElementById('masterInputSelector').value;
+            let signal1Type = document.getElementById('inputSelector').value;
+            let signal2Type = document.getElementById('inputSelector2').value;
+
+            let f_min = -fs/2;
+            let f_max = fs/2;
+
+let f_min1, f_max1;
+
+
+if (f1 <= f2) {
+  if (operation === "none" || operation === "fourierDifferentiation" || operation === "fourierIntegration") {
+    f_min1 = -1.5 * f1;
+    f_max1 = 1.5 * f1;
+  } else if (operation === "addition" || operation === "subtraction") {
+    f_min1 = -1.2 * f2;
+    f_max1 = 1.2 * f2;
+  } else if (operation === "multiplication") {
+    f_min1 = -1.2 * (f1 + f2);
+    f_max1 = 1.2 * (f1 + f2);
+  } else {
+    f_min1 = -1.2 * f2;
+    f_max1 = 1.2 * f2;
+  }
+} else { // f1 > f2
+  if (operation === "none" || operation === "fourierDifferentiation" || operation === "fourierIntegration") {
+    f_min1 = -1.5 * f1;
+    f_max1 = 1.5 * f1;
+  } else if (operation === "addition" || operation === "subtraction") {
+    f_min1 = -1.2 * f1;
+    f_max1 = 1.2 * f1;
+  } else if (operation === "multiplication") {
+    f_min1 = -1.2 * (f1 + f2);
+    f_max1 = 1.2 * (f1 + f2);
+  } else {
+    f_min1 = -1.5 * f1;
+    f_max1 = 1.5 * f1;
+  }
+}
+
+
+            let N = fs;
+            let frequencies = Array.from({ length: N }, (_, i) =>
+                f_min + (i / (N - 1)) * (f_max - f_min)
+            );
+
+            let magnitude = computeFourierTransform(frequencies, A1, f1, A2, f2, T, operation, signal1Type, signal2Type);
+
+            let trace = {
+                x: frequencies,
+                y: magnitude,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Magnitude Spectrum',
+                line: { color: 'blue' }
+            };
+
+            let layout = {
+                title: 'Fourier Transform Magnitude Spectrum',
+                xaxis: { title: 'Frequency (Hz)', range: [f_min1, f_max1] },
+                yaxis: { title: 'Magnitude' }
+            };
+
+            Plotly.newPlot('fourier-plot', [trace], layout);
+        }
+
+    ////////////////////triangular////////////////////////////////////////////
+        // Function to generate a triangular pulse
+        function generateTriangularPulse(t, T, A) {
+            return t.map(x => {
+                if (Math.abs(x) <= T / 2) {
+                    return A * (1 - (2 * Math.abs(x) / T)); // Triangular shape
+                }
+                return 0; // Outside the pulse duration
+            });
+        }
+        function plotTriangularPulse() {
+            let A = document.getElementById('amplitude').value;  // Amplitude
+            timeDuration = document.getElementById('timeDuration').value;
+            let T = parseFloat(document.getElementById("pulseWidthff").value); //0.2; // Duration of the triangular pulse
+            let t_min = -(T + 1);
+            let t_max = (T + 1);
+            let N = 1000; // Number of time samples
+
+            // Time vector
+            let t = Array.from({ length: N }, (_, i) => t_min + (i / (N - 1)) * (t_max - t_min));
+
+            // Generate triangular pulse
+            let triangularWave = generateTriangularPulse(t, T, A);
+
+            // Plotting the triangular pulse
+            let timeTrace = {
+                x: t,
+                y: triangularWave,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Triangular Pulse',
+                line: { shape: 'linear', color: 'blue' }
+            };
+
+            let timeLayout = {
+                title: 'Input Signal',
+                xaxis: { title: 'Time (s)' },
+                yaxis: { title: 'Amplitude' },
+                grid: true
+            };
+
+            Plotly.newPlot('inputSignal1', [timeTrace], timeLayout, {
+				showLink: false,              // Hides "Edit in Chart Studio" link
+				displaylogo: false,           // Removes Plotly logo
+				modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+			});
+
+        }
+		
+		        // Compute the Fourier Transform of a Triangular Wave
+        function sinc(x) {
+            return x === 0 ? 1 : Math.sin(Math.PI * x) / (Math.PI * x);
+        }
+
+        function computeTriangularFourierTransform(frequencies, T, A) {
+            return frequencies.map(f => {
+                const coeff = A * T * Math.pow(sinc(f * T), 2);
+                return coeff;
+            });
+        }
+
+        function computePhaseSpectrum(frequencies, magnitude) {
+            return frequencies.map((f, index) => magnitude[index] >= 0 ? 0 : Math.PI);
+        }
+		
+		        function plotFourierTransform() {
+            let A = document.getElementById('amplitude').value;
+            timeDuration = document.getElementById('timeDuration').value;
+            let T = parseFloat(document.getElementById("pulseWidthff").value); //0.2;
+            let f_min = -parseInt(1/T * 10);
+            let f_max = parseInt(1/T * 10);
+            let N = 1000;
+
+            let frequencies = Array.from({ length: N }, (_, i) => f_min + (i / (N - 1)) * (f_max - f_min));
+            
+            let magnitude = computeTriangularFourierTransform(frequencies, T, A);
+            let phase = computePhaseSpectrum(frequencies, magnitude);
+
+            let magnitudeTrace = {
+                x: frequencies,
+                y: magnitude,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Magnitude Spectrum'
+            };
+
+            let phaseTrace = {
+                x: frequencies,
+                y: phase,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Phase Spectrum',
+                line: { shape: 'linear', color: 'red' }
+            };
+
+            let layout = {
+                title: 'Fourier Magnitude Spectrum',
+                xaxis: { title: 'Frequency (Hz)' },
+                yaxis: { title: 'Magnitude' },
+                grid: true
+            };
+
+            let phaseLayout = {
+                title: 'Phase Plot',
+                xaxis: { title: 'Frequency (Hz)' },
+                yaxis: { title: 'Phase (Radians)' },
+                grid: true
+            };
+
+            Plotly.newPlot('fourier-plot', [magnitudeTrace], layout, {
+            showLink: false,              // Hides "Edit in Chart Studio" link
+            displaylogo: false,          // Removes Plotly logo
+            modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+        });
+            Plotly.newPlot('phasePlot', [phaseTrace], phaseLayout, {
+            showLink: false,              // Hides "Edit in Chart Studio" link
+            displaylogo: false,          // Removes Plotly logo
+            modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+        });
+        }
+///////////////////////////triangular pulse ends//////////	
+
+///////////////////////////rect pulse ends//////////
+        function rect() {
+            function sinc(x) {
+                return x === 0 ? 1 : Math.sin(Math.PI * x) / (Math.PI * x);
+            }
+
+            function computeFourierTransform(frequencies, T, A) {
+                return frequencies.map(f => A * T * sinc(f * T));
+            }
+
+            function computePhaseSpectrum(frequencies, magnitude) {
+                return frequencies.map((f, index) => {
+                    if (f > 0) {
+                        return magnitude[index] >= 0 ? 0 : -Math.PI;
+                    } else {
+                        return magnitude[index] >= 0 ? 0 : Math.PI;
+                    }
+                });
+            }
+
+            function plotRectangularPulse() {
+                let T = parseFloat(document.getElementById("pulseWidthff").value);//0.2;
+                let A = document.getElementById('amplitude').value;
+                timeDuration = document.getElementById('timeDuration').value;
+                let N = 1001;
+                let t = Array.from({ length: N }, (_, i) => -(T + 1) + i * (2 * (T + 1) / (N - 1)));
+                let pulse = t.map(ti => (Math.abs(ti) <= T / 2 ? A : 0));
+
+                let pulseTrace = {
+                    x: t,
+                    y: pulse,
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: 'Rectangular Pulse'
+                };
+
+                let pulseLayout = {
+                    title: 'Input Signal',
+                    xaxis: { title: 'Time (s)' },
+                    yaxis: { title: 'Amplitude' }
+                };
+
+                Plotly.newPlot('inputSignal1', [pulseTrace], pulseLayout, {
+				showLink: false,              // Hides "Edit in Chart Studio" link
+				displaylogo: false,           // Removes Plotly logo
+				modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+			});
+
+            }
+
+            function plotFourierTransform() {
+                let A = document.getElementById('amplitude').value;
+                timeDuration = document.getElementById('timeDuration').value;
+                let T = parseFloat(document.getElementById("pulseWidthff").value); //0.2;
+                let f_min = -parseInt(1/T * 10);
+                let f_max = parseInt(1/T * 10);
+                let N = 1000;
+
+                let frequencies = Array.from({ length: N }, (_, i) => f_min + (i / (N - 1)) * (f_max - f_min));
+                let magnitude = computeFourierTransform(frequencies, T, A);
+                let phase = computePhaseSpectrum(frequencies, magnitude);
+
+                let magnitudeTrace = {
+                    x: frequencies,
+                    y: magnitude,
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: 'Magnitude Spectrum'
+                };
+
+                let phaseTrace = {
+                    x: frequencies,
+                    y: phase,
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: 'Phase Spectrum',
+                    line: { shape: 'linear', color: 'red' }
+                };
+
+                let layout = {
+                    title: 'Fourier Magnitude Spectrum',
+                    xaxis: { title: 'Frequency (Hz)' },
+                    yaxis: { title: 'Magnitude' }
+                };
+
+                let phaseLayout = {
+                    title: 'Phase Plot',
+                    xaxis: { title: 'Frequency (Hz)' },
+                    yaxis: { title: 'Phase (Radians)' }
+                };
+
+                Plotly.newPlot('fourier-plot', [magnitudeTrace], layout, {
+            showLink: false,              // Hides "Edit in Chart Studio" link
+            displaylogo: false,          // Removes Plotly logo
+            modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+        });
+                Plotly.newPlot('phasePlot', [phaseTrace], phaseLayout, {
+            showLink: false,              // Hides "Edit in Chart Studio" link
+            displaylogo: false,          // Removes Plotly logo
+            modeBarButtonsToRemove: ['sendDataToCloud'] // Removes the "Send data to cloud" button
+        });
+            }
+
+            plotRectangularPulse();
+            plotFourierTransform();
+        }
+
+///////////////////////////rect pulse ends//////////
+
+   // Helper function to hide elements
+    function hideElements() {
+        const elementsToHide = [
+            'label[for="inputSelector2"]',
+            'label[for="carrierFrequency"]',
+            '#inputSelector2',
+            '#carrierFrequency',
+            '#hideButton',
+            '#hideButton1',
+            '#inputSignal2',
+            '#plot11',
+        ];
+        elementsToHide.forEach(selector => {
+            const element = document.querySelector(selector);
+            if (element) element.style.display = 'none';
+        });
+    }
+	hideElements();
+	
+	function simulateff() {
+	const inputSelector1 = document.getElementById("inputSelector").value;
+    /*
+	    if (inputSelector1 === 'sine' || inputSelector1 === 'cosine') {
+	inputSignal1();
+generateInputSignal2();
+computeFFTff();
+phasePlot();
+}
+*/
+if (inputSelector1 === 'sine' || inputSelector1 === 'cosine') {
+	inputSignal1();
+generateInputSignal2();
+sine();
+phasePlot();
+}
+
+function simulateffxx() {
+computeFFTffxx();
+phasePlotxx();
+}
+    if (inputSelector1 === 'triangular') {
+        plotTriangularPulse();
+plotFourierTransform();		// Call Function 1 when input is 'sine'
+    }
+	    if (inputSelector1 === 'rectangularff') {
+        rect();
+    }
+	}
+    
+    </script>
+	
+	<style>
+#container {
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 25px 40px;
+  max-width: 100%;
+  margin: 20px auto;
+  text-align: left;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h1 {
+  color: #1e3a8a;
+  font-size: 24px;
+  margin-bottom: 25px;
+  text-align: justify;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li.step {
+  margin: 12px 0;
+  padding: 12px 15px;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+li.step::before {
+  content: "✔";
+  color: #10b981;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+li.step:hover {
+  transform: scale(1.02);
+  background-color: #f3f4f6;
+}
+
+/* Color code each step */
+.step1 {
+  background-color: #ffe0e0;
+  border-left: 5px solid #ef4444;
+}
+.step2 {
+  background-color: #e0f7ff;
+  border-left: 5px solid #0ea5e9;
+}
+.step3 {
+  background-color: #e0ffe5;
+  border-left: 5px solid #22c55e;
+}
+.step4 {
+  background-color: #f5e0ff;
+  border-left: 5px solid #a855f7;
+}
+	</style>
+  </body>
+</html>
