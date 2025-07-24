@@ -128,7 +128,7 @@
 				&#xa0;
 			</p>
 			<br/>
-		    <h2>Properties of Fourier Transform</h2>
+		    <h2>Properties of Continuous Time Fourier Transform (CTFT)</h2>
 				<li>
 					<h3>Linearity</h3>
 				</li>
@@ -178,10 +178,10 @@
   If \( F(x_1(t)) = X_1(\omega) \) and \( F(x_2(t)) = X_2(\omega) \), then:
 </p>
 <p>
-  \[
+  \(
   F(x_1(t) * x_2(t)) = X_1(\omega) \cdot X_2(\omega)
   \quad \text{(‘*’ denotes convolution)}
-  \]
+  \)
 </p>
 
   <li>
@@ -191,18 +191,18 @@
   If \( F(x_1(t)) = X_1(\omega) \), \( F(x_2(t)) = X_2(\omega) \), then:
 </p>
 <p>
-  \[
+  \(
   F(x_1(t) \cdot x_2(t)) = \frac{1}{2\pi} X_1(\omega) * X_2(\omega)
   \quad \text{(‘*’ denotes convolution)}
-  \]
+  \)
 </p>
 				<li>
 					<h3>Shifting Property</h3>
 				</li>
 <p>
-  \[
+  \(
   \mathcal{F}\{x(t - t_0)\} = e^{-j\omega t_0} X(\omega)
-  \]
+  \)
 </p>
 <p>
   As a consequence, time shifting affects only the phase, leaving the magnitude spectrum \( |X(\omega)|^2 \) unchanged.
@@ -214,9 +214,9 @@
   Duality states that if \( x(t) \leftrightarrow X(\omega) \), then the roles of time and frequency can be interchanged.
 </p>
 <p>
-  \[
+  \(
   \mathcal{F}\{X(t)\} = 2\pi x(-\omega)
-  \]
+  \)
 </p>
 <li>
   <h3>Differentiation</h3>
@@ -297,6 +297,160 @@
     \mathcal{F}\{x(-t)\} = X(-\omega)
   \)
 </p>
+<br/>
+<h2>Properties of Discrete-Time Fourier Transform (DTFT)</h2>
+
+<li>
+  <h3>Linearity</h3>
+</li>
+<p>The DTFT satisfies the property of linearity (superposition).</p>
+<p>Consider two signals \( x_1[n] \) and \( x_2[n] \) with DTFTs:</p>
+<p>
+  \( \mathcal{F}\{x_1[n]\} = X_1(e^{j\omega}), \quad \mathcal{F}\{x_2[n]\} = X_2(e^{j\omega}) \)
+</p>
+<p>Then for any constants \( a_1 \) and \( a_2 \), we have:</p>
+<p>
+  \( \mathcal{F}\{a_1 x_1[n] + a_2 x_2[n]\} = a_1 X_1(e^{j\omega}) + a_2 X_2(e^{j\omega}) \)
+</p>
+
+<li>
+  <h3>Time Shifting</h3>
+</li>
+<p>
+  \(
+  \mathcal{F}\{x[n - n_0]\} = e^{-j\omega n_0} X(e^{j\omega})
+  \)
+</p>
+<p>
+  Shifting in time domain introduces a linear phase shift in the frequency domain.
+</p>
+
+<li>
+  <h3>Frequency Shifting</h3>
+</li>
+<p>
+  \(
+  \mathcal{F}\{x[n] e^{j\omega_0 n}\} = X(e^{j(\omega - \omega_0)})
+  \)
+</p>
+<p>
+  Multiplying by a complex exponential shifts the spectrum.
+</p>
+
+<li>
+  <h3>Convolution</h3>
+</li>
+<p>
+  Time-domain convolution corresponds to multiplication in the frequency domain:
+</p>
+<p>
+  \(
+  \mathcal{F}\{x_1[n] * x_2[n]\} = X_1(e^{j\omega}) \cdot X_2(e^{j\omega})
+  \)
+</p>
+
+<li>
+  <h4>Frequency Domain Convolution</h4>
+</li>
+<p>
+  \(
+  \mathcal{F}\{x_1[n] \cdot x_2[n]\} = \frac{1}{2\pi} \int_{-\pi}^{\pi} X_1(e^{j\theta}) X_2(e^{j(\omega - \theta)}) d\theta
+  \)
+</p>
+
+<li>
+  <h3>Symmetry</h3>
+</li>
+<p>If \( x[n] \) is real and even:</p>
+<p>
+  \( X(e^{j\omega}) = X^*(e^{-j\omega}) \)
+</p>
+<p>If \( x[n] \) is real and odd:</p>
+<p>
+  \( X(e^{j\omega}) = -X^*(e^{-j\omega}) \)
+</p>
+<li>
+  <h3>Differencing</h3>
+</li>
+<p>
+  The DTFT of the first difference \( x[n] - x[n-1] \) is:
+</p>
+<p>
+  \(
+  \mathcal{F}\{x[n] - x[n - 1]\} = (1 - e^{-j\omega}) X(e^{j\omega})
+  \)
+</p>
+
+<li>
+  <h3>Accumulation (Discrete Integration)</h3>
+</li>
+<p>
+  \(
+  \mathcal{F} \left\{ \sum_{k=-\infty}^n x[k] \right\} = \frac{X(e^{j\omega})}{1 - e^{-j\omega}} + \pi X(1) \delta(\omega)
+  \)
+</p>
+
+<li>
+  <h3>Modulation Property</h3>
+</li>
+<p>
+  \(
+  \mathcal{F} \{ x[n] \cos(\omega_0 n) \} = \frac{1}{2} \left[ X(e^{j(\omega - \omega_0)}) + X(e^{j(\omega + \omega_0)}) \right]
+  \)
+</p>
+<p>
+  \(
+  \mathcal{F} \{ x[n] \sin(\omega_0 n) \} = \frac{1}{2j} \left[ X(e^{j(\omega - \omega_0)}) - X(e^{j(\omega + \omega_0)}) \right]
+  \)
+</p>
+
+<li>
+  <h3>Conjugate Symmetry</h3>
+</li>
+<p>
+  If \( x[n] \) is real, then:
+</p>
+<p>
+  \( X(e^{j\omega}) = X^*(e^{-j\omega}) \)
+</p>
+<p>
+  Therefore,
+  \( |X(e^{j\omega})| = |X(e^{-j\omega})| \)
+</p>
+
+<li>
+  <h3>Parseval’s Theorem</h3>
+</li>
+<p>
+  The total energy in time domain equals the total energy in frequency domain:
+</p>
+<p>
+  \(
+  \sum_{n=-\infty}^{\infty} |x[n]|^2 = \frac{1}{2\pi} \int_{-\pi}^{\pi} |X(e^{j\omega})|^2 d\omega
+  \)
+</p>
+
+<li>
+  <h3>Time Reversal</h3>
+</li>
+<p>
+  \(
+  \mathcal{F}\{x[-n]\} = X(e^{-j\omega})
+  \)
+</p>
+
+<li>
+  <h3>Periodicity</h3>
+</li>
+<p>
+  DTFT is always periodic in \( \omega \) with period \( 2\pi \):
+</p>
+<p>
+  \(
+  X(e^{j\omega}) = X(e^{j(\omega + 2\pi)})
+  \)
+</p>
+<br/>
 		     <h2>Fourier Transform of some common signals</h2>
 						<li>
 	                     <h3>Fourier Transform of a delta function</h3>
