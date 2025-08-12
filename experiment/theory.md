@@ -511,56 +511,47 @@ X(\text{Π}) = \text{sinc}(\omega/2)
 				&#xa0;
 			</p>
     <h2>Common Discrete-Time Signals and their DTFT</h2>
-
     <ul>
       <li>
         <h3>Unit Impulse Sequence</h3>
         <div>Signal:</div>
         <div>\( x[n] = \delta[n] \)</div>
-
         <div>DTFT:</div>
         <div>\( X(e^{j\omega}) = 1 \)</div>
-
       </li>
 	  <br/>
 	  <p>
-				<img src="unitImpulseDTFT.png" width="398" height="149" alt="" />
+				<img src="unitImpulseDTFT.PNG" width="398" alt="" />
 			</p>
       <br/>
       <li>
         <h3>Unit Step Sequence</h3>
         <div>Signal:</div>
         <div>\( x[n] = u[n] \)</div>
-
         <div>DTFT:</div>
         <div>\( X(e^{j\omega}) = \pi\,\delta(\omega) + \dfrac{1}{1 - e^{-j\omega}} \)</div>
-
       </li>
 	  <br/>
 	  <p>
-				<img src="unitStepDTFT.png" width="398" height="149" alt="" />
+				<img src="unitStepDTFT.PNG" width="398" alt="" />
 			</p>
       <br/>
       <li>
         <h3>Discrete-Time Sinusoid</h3>
         <div>Signal:</div>
         <div>\( x[n] = \cos(\omega_0 n) \quad \text{or} \quad x[n] = \sin(\omega_0 n) \)</div>
-
         <div>DTFT:</div>
         <div>\( X(e^{j\omega}) = \pi\!\left[\delta(\omega-\omega_0) + \delta(\omega+\omega_0)\right] \)</div>
-
       </li>
 	  <br/>
 	  <p>
-				<img src="sineDTFT.png" width="398" height="149" alt="" />
+				<img src="sineDTFT.PNG" width="398" alt="" />
 			</p>
       <br/>
-
       <li>
         <h3>Finite-Length Rectangular Pulse</h3>
         <div>Signal (length \(N\), starting at \(n=0\)):</div>
         <div>\( x[n] = \begin{cases} 1, & 0 \le n \le N-1 \\ 0, & \text{otherwise} \end{cases} \)</div>
-
         <div>DTFT:</div>
         <div>
           \( X(e^{j\omega}) = \displaystyle e^{-j\omega\frac{N-1}{2}} \cdot \frac{\sin\!\big(\tfrac{N\omega}{2}\big)}{\sin\!\big(\tfrac{\omega}{2}\big)} \)
@@ -577,7 +568,7 @@ X(\text{Π}) = \text{sinc}(\omega/2)
       </li>
 	  	  <br/>
 	  <p>
-				<img src="rectangularDTFT.png" width="398" height="149" alt="" />
+				<img src="rectangularDTFT.PNG" width="398" alt="" />
 			</p>
     </ul>
 <h2>
@@ -588,3 +579,4 @@ X(\text{Π}) = \text{sinc}(\omega/2)
 			</p>
 </body>
 </html>
+
