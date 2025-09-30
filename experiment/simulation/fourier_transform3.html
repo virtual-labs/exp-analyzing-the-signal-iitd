@@ -12,14 +12,20 @@
 	    <!-- sidebar and body -->
 	<div id = "instructions">
     <h1>Instructions for Fourier Transform Simulator</h1>
-<ul>
-    <li class="step step1">Step 1: Click on "Use Generated Signal" to generate the signal.</li>
-    <li class="step step2">Step 2: Enter the input frequency value in Hz in the parameters section.</li>
-    <li class="step step3">Step 3: Select the base signal from the dropdown menu.</li>
-    <li class="step step4">Step 4: Choose an operation such as addition, multiplication, or convolution from the dropdown menu.</li>
-    <li class="step step1">Step 5: Click the "Simulate" button to run the simulation.</li>
-    <li class="step step2">Step 6: Reset the simulator by clicking the "Reset Simulator" button.</li>
-</ul>
+    <ul>
+        <li class="step step1">Step 1: Click on "Use Generated Signal" to generate the input signal.</li>
+        <li class="step step2">Step 2: Enter the input signal frequency (in Hz), amplitude, and window duration (in seconds) in the parameters section.</li>
+        <li class="step step3">Step 3: Select the base signal from the dropdown menu in the "Base Signal" section.</li>
+        <li class="step step4">Step 4: Choose an operation (such as addition, multiplication, or convolution) from the "Operations" section.</li>
+        <li class="step step1">Step 5: Click the "Simulate" button to run the simulation.</li>
+        <li class="step step2">Step 6: Reset the simulator by clicking the "Reset Simulator" button.</li>
+        <li class="step step3">&#9888; <strong>Disclaimer:</strong> A Sinc window function is applied in this simulation.
+            The sinc function acts as an ideal low-pass filter that perfectly isolates the frequency components of interest while smoothly removing others.
+            Thus, after windowing with the Sinc function, the Fourier transform provides a frequency spectrum that still corresponds closely to the original signal.
+            Window Duration (s) represents the time window over which the signal is considered (for example, a 0.2-second window), it would influence how the frequencies in the Fourier transform are spread out. A larger duration results in a more narrow frequency spread (better frequency resolution), 
+            while a smaller duration results in a more spread out frequency spectrum (lower frequency resolution).</li>
+    </ul>
+    
 	</div>
 	<hr/>
 	
