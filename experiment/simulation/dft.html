@@ -14,11 +14,10 @@
     <h1>Instructions for Discrete Fourier Transform (DFT) Simulator</h1>
 <ul>
     <li class="step step1">Step 1: Click on "Generate Input Signal" to generate the signal.</li>
-    <li class="step step2">Step 2: Enter the input signal frequency (in Hz), and the sampling frequency (Hz) in the parameters section.</li>
-    <li class="step step3">Step 3: Select the base signal from the dropdown menu in the "Base Signal" section.</li>
-    <li class="step step4">Step 4: Choose an operation (such as addition, multiplication, or convolution) from the "Operations" section.</li>
-    <li class="step step1">Step 5: Click the "Simulate" button to run the simulation.</li>
-    <li class="step step2">Step 6: Reset the simulator by clicking the "Reset Simulator" button.</li>
+    <li class="step step2">Step 2: Select the base signal from the dropdown menu, and Enter the input signal frequency (in Hz), and the sampling frequency (Hz) in the parameters section.</li>
+    <li class="step step4">Step 3: Choose an operation (such as addition, multiplication, or convolution) from the "Operations" section.</li>
+    <li class="step step1">Step 4: Click the "Simulate" button to run the simulation.</li>
+    <li class="step step2">Step 5: Reset the simulator by clicking the "Reset Simulator" button.</li>
 </ul>
 	</div>
 	<hr/>
@@ -105,22 +104,32 @@ label[for = "pulseWidthff"],#pulseWidthff {display:none}
 .popup .close-btn {
   display: block;
 }
-
+#inputBox2 {
+        border: 2px solid white; /* Adjust the border width and color as needed */
+    }
     </style>
 	<br/>
 	<br/>
     <div class="containerff">
-        <div class="box">
-            <button 
-			class="button bg-blue-500 text-white rounded-md px-2 py-1"
-			id="triggerButton" onclick="popUpDiv()" aria-expanded="false">Generate Input Signal</button>
-			<div id="inputSignal1" class="w-[30em] h-[20em]"></div>
-        </div>
+
 
         <div class="box" id="inputFieldsBox">
 		<span class="close-btn" onclick="closePopup()">&times;</span>
 		<p>Parameters</p>
 		<br>
+        <p>Base Signal</p>
+        <div class="dropdown">
+<select id="inputSelector" onchange="handleInputChange()">
+    <option value="" disabled selected>Select an input</option>
+    <option value="sine" selected>Sine Wave</option>
+    <option value="cosine">Cosine Wave</option>
+    <option value="rectangularff">Rectangular Pulse</option>
+    <option value="triangular">triangular Pulse</option>
+    <!--
+    <option value="rectangular">Rectangular Wave</option>
+    -->
+</select>
+        </div><br/>
 		<label for = "messageFrequency">Input Signal Frequency (Hz)</label>
             <input id = "messageFrequency" type="text" value="10">
 		<label for = "samplingFrequency">Sampling Frequency (Hz)</label>
@@ -138,31 +147,12 @@ label[for = "pulseWidthff"],#pulseWidthff {display:none}
         </div>
 
         <div class="box">
-            <p>Magnitude Plot</p>
-			<div id="fourier-plot" class="w-[30em] h-[20em]"></div>
-        </div>
-	
-	        <div class="box">
-            <p>Phase Plot</p>
-			<div id="phasePlot" class="w-[30em] h-[20em]"></div>
-        </div>
-    </div>
-
-    <div class="four-boxes hidden" id="additionalBoxes">
-        <div class="box" id="dropdownBox1">
-            <p>Base Signal</p>
-            <div class="dropdown">
-    <select id="inputSelector" onchange="handleInputChange()">
-        <option value="" disabled selected>Select an input</option>
-        <option value="sine" selected>Sine Wave</option>
-        <option value="cosine">Cosine Wave</option>
-		<option value="rectangularff">Rectangular Pulse</option>
-		<option value="triangular">triangular Pulse</option>
-		<!--
-		<option value="rectangular">Rectangular Wave</option>
-		-->
-    </select>
-            </div>
+            <p>Input Signal</p>
+            <br/>
+            <button 
+			class="button bg-blue-500 text-white rounded-md px-2 py-1"
+			 onclick="popUpDiv()" aria-expanded="false">Generate Input Signal</button>
+			<div id="inputSignal1" class="w-[30em] h-[20em]"></div>
         </div>
 
         <div class="box" id="dropdownBox2">
@@ -202,6 +192,11 @@ label[for = "pulseWidthff"],#pulseWidthff {display:none}
 				<div id="inputSignal2" class="w-[30em] h-[20em]"></div>			
             </div>
         </div>
+
+    </div>
+
+    <div class="four-boxes" id="additionalBoxes">
+
 <!--
         <div class="box" id="inputBox1">
             <p>AWGN Noise</p>
@@ -213,6 +208,15 @@ label[for = "pulseWidthff"],#pulseWidthff {display:none}
         </div>
 -->		
 
+        <div class="box">
+            <p>Magnitude Plot</p>
+			<div id="fourier-plot" class="w-[30em] h-[20em]"></div>
+        </div>
+	
+	        <div class="box">
+            <p>Phase Plot</p>
+			<div id="phasePlot" class="w-[30em] h-[20em]"></div>
+        </div>
         <div class="box" id="inputBox2">
 
 
