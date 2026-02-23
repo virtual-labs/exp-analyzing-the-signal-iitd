@@ -16,7 +16,7 @@
         "d": "Incorrect."
       },
       "correctAnswer": "c",
-      "difficulty": "intermediate"
+      "difficulty": "beginner"
     },
     {
       "question": "2. What is the significance of the duality property in the Fourier Transform?",
@@ -33,7 +33,7 @@
         "d": "Energy conservation is related to Parseval's theorem."
       },
       "correctAnswer": "b",
-      "difficulty": "intermediate"
+      "difficulty": "beginner"
     },
     {
       "question": "3. What type of signal corresponds to a sinc function in the frequency domain?",
@@ -50,7 +50,7 @@
         "d": "A cosine wave has delta functions at its positive and negative frequencies."
       },
       "correctAnswer": "c",
-      "difficulty": "intermediate"
+      "difficulty": "beginner"
     },
     {
       "question": "4. Which of the following best describes the Fourier Transform of a time-limited signal?",

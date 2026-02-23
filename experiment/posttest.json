@@ -16,7 +16,7 @@
         "d": "This is incorrect. Time-shifting affects the phase of the Fourier Transform."
       },
       "correctAnswer": "c",
-      "difficulty": "hard"
+      "difficulty": "intermediate"
     },
     {
       "question": "2. What effect does time reversal have on the Fourier Transform of a signal x(t)?",
@@ -33,7 +33,7 @@
         "d": "This is incorrect; time reversal does not shift the spectrum."
       },
       "correctAnswer": "c",
-      "difficulty": "hard"
+      "difficulty": "intermediate"
     },
     {
       "question": "3. If x(t) is real and even, what is the nature of its Fourier Transform X(f)?",
@@ -50,7 +50,7 @@
         "d": "This is incorrect; the transform is even, not odd."
       },
       "correctAnswer": "b",
-      "difficulty": "hard"
+      "difficulty": "intermediate"
     },
     {
       "question": "4. Why does a rectangular window in the time domain lead to spectral leakage in the frequency domain?",
@@ -67,7 +67,7 @@
         "d": "This is incorrect; rectangular windows decrease frequency resolution due to leakage."
       },
       "correctAnswer": "b",
-      "difficulty": "hard"
+      "difficulty": "intermediate"
     },
     {
       "question": "5. Which of the following is a necessary condition for a signal to have a Fourier Transform?",
@@ -84,7 +84,7 @@
         "d": "This is incorrect; finite bandwidth is not a requirement for existence."
       },
       "correctAnswer": "c",
-      "difficulty": "hard"
+      "difficulty": "intermediate"
     },
     
 
@@ -103,7 +103,7 @@
         "d": "This is incorrect; the bandwidth is related to the magnitude spectrum, not the phase."
       },
       "correctAnswer": "b",
-      "difficulty": "hard"
+      "difficulty": "intermediate"
     },
     {
       "question": "7. What is the Fourier Transform of a triangular pulse?",
@@ -120,7 +120,7 @@
         "d": "This is correct; the Fourier Transform of a triangular pulse is a sinc function squared."
       },
       "correctAnswer": "d",
-      "difficulty": "hard"
+      "difficulty": "intermediate"
     },
     {
       "question": "8. What is the effect of frequency scaling on the Fourier Transform of a signal?",
@@ -137,7 +137,7 @@
         "d": "This is incorrect; scaling in the time domain affects the Fourier Transform."
       },
       "correctAnswer": "b",
-      "difficulty": "hard"
+      "difficulty": "intermediate"
     },
     {
       "question": "9. What is the Fourier Transform of a signal x(t) sampled at a rate fs?",
@@ -154,7 +154,7 @@
         "d": "This is incorrect; the Fourier Transform is not necessarily a sinc function."
       },
       "correctAnswer": "a",
-      "difficulty": "hard"
+      "difficulty": "advanced"
     },
     {
       "question": "10. What happens to the Fourier Transform of a signal when the signal is convolved with a filter in the time domain?",
@@ -171,7 +171,7 @@
         "d": "This is incorrect; multiplication in the frequency domain corresponds to convolution in the time domain."
       },
       "correctAnswer": "a",
-      "difficulty": "hard"
+      "difficulty": "advanced"
     }
   ]
 }
