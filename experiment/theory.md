@@ -384,6 +384,7 @@
 			<p>
 				<img src="1738659393_fourier-transform/1738659393_fourier-transform-20.png" width="490" height="160" alt="" />
 			</p>
+      **Fig 1: Dirac Delta Function**
 			<p>
 				Thus Fourier transform of a delta/impulse is a constant equal to 1, independent of frequency. 
 			</p>
@@ -393,6 +394,7 @@
 						<p>
 				<img src="NewImages/Delta.png" width="398" height="149" alt="" />
 			</p>
+      **Fig 2: Fourier Transform of a Delta Function**
 						<p>
 				&#xa0;
 			</p>
@@ -405,6 +407,7 @@
 			<p>
 				<img src="1738659393_fourier-transform/1738659393_fourier-transform-24.png" width="398" height="149" alt="" />
 			</p>
+      **Fig 3: Unit Step Function**
 			<p>
 				γ (t) = 0 for t&lt;0
 			</p>
@@ -424,6 +427,7 @@
 											<p>
 				<img src="NewImages/unitStep.png" width="398" height="149" alt="" />
 			</p>
+      **Fig 4: Fourier Transform of the Continuous-Time Unit Step Function**
 						<p>
 				&#xa0;
 			</p>
@@ -439,6 +443,7 @@
 			<p>
 				<img src="1738659393_fourier-transform/1738659393_fourier-transform-30.png" width="432" height="279" alt="" />
 			</p>
+      **Fig 5: Unit Pulse / Rectangular Pulse**
 			<p>
 				For a function rect(t) = Π(t) = 1 for |t| ≤ ½
 			</p>
@@ -478,6 +483,7 @@ X(\text{Π}) = \text{sinc}(\omega/2)
 												<p>
 				<img src="NewImages/Rectangular.png" width="398" height="149" alt="" />
 			</p>
+      **Fig 6: Fourier Transform of the Continuous-Time Rectangular Pulse Π(t)**
 						<p>
 				&#xa0;
 			</p>
@@ -487,6 +493,7 @@ X(\text{Π}) = \text{sinc}(\omega/2)
 			<p>
 				<img src="1738659393_fourier-transform/1738659393_fourier-transform-38.png" width="285" height="201" alt="" />
 			</p>
+      **Fig 7: Unit Triangle Pulse**
 			<p>
 				A unit triangle pulse is simply the convolution of a unit pulse function with itself.
 			</p>
@@ -507,6 +514,7 @@ X(\text{Π}) = \text{sinc}(\omega/2)
 															<p>
 				<img src="NewImages/Triangular.png" width="398" height="149" alt="" />
 			</p>
+      **Fig 8: Fourier Transform of the Continuous-Time Unit Triangle Pulse Λ(t)**
 						<p>
 				&#xa0;
 			</p>
@@ -523,6 +531,7 @@ X(\text{Π}) = \text{sinc}(\omega/2)
 	  <p>
 				<img src="unitImpulseDTFT.PNG" width="398" alt="" />
 			</p>
+    **Fig 9: DTFT of the Discrete-Time Unit Impulse \(\delta[n]\)**
       <br/>
       <li>
         <h3>Unit Step Sequence</h3>
@@ -535,6 +544,7 @@ X(\text{Π}) = \text{sinc}(\omega/2)
 	  <p>
 				<img src="unitStepDTFT.PNG" width="398" alt="" />
 			</p>
+      **Fig 10: DTFT of the Discrete-Time Unit Step u[n]**
       <br/>
       <li>
         <h3>Discrete-Time Sinusoid</h3>
@@ -547,6 +557,7 @@ X(\text{Π}) = \text{sinc}(\omega/2)
 	  <p>
 				<img src="sineDTFT.PNG" width="398" alt="" />
 			</p>
+      **Fig 11: DTFT of the Discrete-Time Sinusoid**
       <br/>
       <li>
         <h3>Finite-Length Rectangular Pulse</h3>
@@ -570,6 +581,7 @@ X(\text{Π}) = \text{sinc}(\omega/2)
 	  <p>
 				<img src="rectangularDTFT.PNG" width="398" alt="" />
 			</p>
+      **Fig 12: DTFT of the Discrete-Time Finite-Length Rectangular Pulse**
     </ul>
 <h2>
 			Applications 
