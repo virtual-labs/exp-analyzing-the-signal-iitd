@@ -21,7 +21,7 @@
       Click the <em>“Generate Input Signal”</em> button to create the input signals. Choose the base signal, such as a sine wave, cosine wave, rectangular pulse, or triangular pulse, and select the operation from the dropdown menus.
     </li>
     <li>
-      <strong>2. Display the fourier magnitude spectrum and the phase plot:</strong> 
+      <strong>2. Display the Fourier Magnitude Spectrum and the Phase Plot:</strong> 
       Click the <em>“Simulate”</em> button to visualize the fourier magnitude spectrum and phase plot of the input signal.
     </li>
   </ul>
