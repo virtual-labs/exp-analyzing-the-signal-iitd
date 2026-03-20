@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "1. What is the Fourier Transform of the Dirac delta function?",
+      "question": "What is the Fourier Transform of the Dirac delta function?",
       "answers": {
         "a": "A sinc function.",
         "b": "A Gaussian function.",
@@ -19,7 +19,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "2. What is the significance of the duality property in the Fourier Transform?",
+      "question": "What is the significance of the duality property in the Fourier Transform?",
       "answers": {
         "a": "It simplifies convolution calculations.",
         "b": "It allows the Fourier Transform of a signal to be obtained from its inverse.",
@@ -36,7 +36,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "3. What type of signal corresponds to a sinc function in the frequency domain?",
+      "question": "What type of signal corresponds to a sinc function in the frequency domain?",
       "answers": {
         "a": "A Gaussian signal.",
         "b": "A unit step signal.",
@@ -53,7 +53,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "4. Which of the following best describes the Fourier Transform of a time-limited signal?",
+      "question": "Which of the following best describes the Fourier Transform of a time-limited signal?",
       "answers": {
         "a": "A time-limited signal has a band-limited Fourier Transform.",
         "b": "The Fourier Transform is always infinite in duration.",
@@ -70,7 +70,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "5. What is the effect of multiplying a signal by a cosine wave in the time domain?",
+      "question": "What is the effect of multiplying a signal by a cosine wave in the time domain?",
       "answers": {
         "a": "It results in a band-pass filter effect.",
         "b": "It shifts the signal's spectrum to a higher frequency.",
@@ -87,7 +87,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "6. What happens when you double the frequency of a sinusoidal signal in the time domain?",
+      "question": "What happens when you double the frequency of a sinusoidal signal in the time domain?",
       "answers": {
         "a": "Its Fourier Transform shifts to the left.",
         "b": "Its Fourier Transform shifts to higher frequencies.",
@@ -104,7 +104,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "7. What is the consequence of sampling a signal below its Nyquist rate?",
+      "question": "What is the consequence of sampling a signal below its Nyquist rate?",
       "answers": {
         "a": "The signal becomes periodic.",
         "b": "The signal's frequency increases.",
@@ -121,7 +121,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "8. What does the sampling theorem guarantee?",
+      "question": "What does the sampling theorem guarantee?",
       "answers": {
         "a": "Signals can be reconstructed exactly from samples if sampled below Nyquist rate.",
         "b": "Signals must be periodic to be sampled correctly.",
@@ -138,7 +138,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "9. What happens in the frequency domain when two signals overlap in time?",
+      "question": "What happens in the frequency domain when two signals overlap in time?",
       "answers": {
         "a": "Their spectra multiply.",
         "b": "Their spectra add.",
@@ -155,7 +155,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "10. How does aliasing appear in the frequency domain?",
+      "question": "How does aliasing appear in the frequency domain?",
       "answers": {
         "a": "As increased amplitude of the spectral components.",
         "b": "As copies of the spectrum overlapping due to undersampling.",
