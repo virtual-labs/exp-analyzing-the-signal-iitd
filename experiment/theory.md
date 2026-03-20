@@ -218,8 +218,6 @@ The Discrete-Time Fourier Transform (DTFT) is used to analyze discrete-time sign
     <h3>Fourier Transform of a Unit Step Function</h3>
     <p><img src="1738659393_fourier-transform/1738659393_fourier-transform-24.png" width="398" height="149" alt="Unit Step Function" /></p>
     <strong>Fig 3: Unit Step Function</strong>
-    <p><img src="1738659393_fourier-transform//unitStep.png" width="398" height="149" alt="Fourier Transform of Continuous-Time Unit Step" /></p>
-    <strong>Fig 4: Fourier Transform of the Continuous-Time Unit Step Function</strong>
   </li>
 
   <li>
@@ -236,9 +234,9 @@ The Discrete-Time Fourier Transform (DTFT) is used to analyze discrete-time sign
       \( X(\omega) = \frac{\sin(\omega/2)}{\omega/2} = \text{sinc}(\omega/2) \)
     </div>
     <p><img src="1738659393_fourier-transform/1738659393_fourier-transform-30.png" width="432" height="279" alt="Unit Pulse" /></p>
-    <strong>Fig 5: Unit Pulse / Rectangular Pulse</strong>
+    <strong>Fig 4: Unit Pulse / Rectangular Pulse</strong>
     <p><img src="NewImages/Rectangular.png" width="398" height="149" alt="Fourier Transform of Rectangular Pulse" /></p>
-    <strong>Fig 6: Fourier Transform of the Continuous-Time Rectangular Pulse Π(t)</strong>
+    <strong>Fig 5: Fourier Transform of the Continuous-Time Rectangular Pulse Π(t)</strong>
   </li>
 
   <li>
@@ -247,9 +245,9 @@ The Discrete-Time Fourier Transform (DTFT) is used to analyze discrete-time sign
     <p>\( \Lambda(t) = \Pi(t) * \Pi(t) \)</p>
     <p>\( \mathcal{F}\{\Lambda(t)\} = \text{sinc}^2(\omega/2) \)</p>
     <p><img src="1738659393_fourier-transform/1738659393_fourier-transform-38.png" width="285" height="201" alt="Unit Triangle Pulse" /></p>
-    <strong>Fig 7: Unit Triangle Pulse</strong>
+    <strong>Fig 6: Unit Triangle Pulse</strong>
     <p><img src="NewImages/Triangular.png" width="398" height="149" alt="Fourier Transform of Unit Triangle Pulse" /></p>
-    <strong>Fig 8: Fourier Transform of the Continuous-Time Unit Triangle Pulse Λ(t)</strong>
+    <strong>Fig 7: Fourier Transform of the Continuous-Time Unit Triangle Pulse Λ(t)</strong>
   </li>
 </ul>
 
@@ -262,7 +260,7 @@ The Discrete-Time Fourier Transform (DTFT) is used to analyze discrete-time sign
     <p>Signal: \( x[n] = \delta[n] \)</p>
     <p>DTFT: \( X(e^{j\omega}) = 1 \)</p>
     <p><img src="unitImpulseDTFT.PNG" width="398" alt="DTFT of Unit Impulse" /></p>
-    <strong>Fig 9: DTFT of the Discrete-Time Unit Impulse \(\delta[n]\)</strong>
+    <strong>Fig 8: DTFT of the Discrete-Time Unit Impulse \(\delta[n]\)</strong>
   </li>
 
   <li>
@@ -270,7 +268,7 @@ The Discrete-Time Fourier Transform (DTFT) is used to analyze discrete-time sign
     <p>Signal: \( x[n] = u[n] \)</p>
     <p>DTFT: \( X(e^{j\omega}) = \pi \delta(\omega) + \left(\dfrac{1}{1 - e^{-j\omega}}\right) \)</p>
     <p><img src="unitStepDTFT.PNG" width="398" alt="DTFT of Unit Step" /></p>
-    <strong>Fig 10: DTFT of the Discrete-Time Unit Step u[n]</strong>
+    <strong>Fig 9: DTFT of the Discrete-Time Unit Step u[n]</strong>
   </li>
 
   <li>
@@ -278,7 +276,7 @@ The Discrete-Time Fourier Transform (DTFT) is used to analyze discrete-time sign
     <p>Signal: \( x[n] = \cos(\omega_0 n) \) or \( x[n] = \sin(\omega_0 n) \)</p>
     <p>DTFT: \( X(e^{j\omega}) = \pi \left[\delta(\omega - \omega_0) + \delta(\omega + \omega_0)\right] \)</p>
     <p><img src="sineDTFT.PNG" width="398" alt="DTFT of Sinusoid" /></p>
-    <strong>Fig 11: DTFT of the Discrete-Time Sinusoid</strong>
+    <strong>Fig 10: DTFT of the Discrete-Time Sinusoid</strong>
   </li>
 
   <li>
@@ -296,7 +294,7 @@ The Discrete-Time Fourier Transform (DTFT) is used to analyze discrete-time sign
       \( X_{\text{shifted}}(e^{j\omega}) = e^{-j\omega n_0} \cdot e^{-j\omega\frac{N-1}{2}} \cdot \frac{\sin\left(\frac{N\omega}{2}\right)}{\sin\left(\frac{\omega}{2}\right)} \)
     </p>
     <p><img src="rectangularDTFT.PNG" width="398" alt="DTFT of Finite-Length Rectangular Pulse" /></p>
-    <strong>Fig 12: DTFT of the Discrete-Time Finite-Length Rectangular Pulse</strong>
+    <strong>Fig 11: DTFT of the Discrete-Time Finite-Length Rectangular Pulse</strong>
   </li>
 </ul>
 
