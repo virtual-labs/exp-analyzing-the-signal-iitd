@@ -202,7 +202,6 @@ The Discrete-Time Fourier Transform (DTFT) is used to analyze discrete-time sign
     </p>
     <p>Thus Fourier transform of a delta/impulse is a constant equal to 1, independent of frequency:</p>
     <p>\( \mathcal{F}\{\delta(t)\} = 1 \)</p>
-
     <p><img src="1738659393_fourier-transform/1738659393_fourier-transform-20.png" width="490" height="160" alt="Dirac Delta Function" /></p>
     <strong>Fig 1: Dirac Delta Function</strong>
     <p><img src="NewImages/Delta.png" width="398" height="149" alt="Fourier Transform of a Delta Function" /></p>
