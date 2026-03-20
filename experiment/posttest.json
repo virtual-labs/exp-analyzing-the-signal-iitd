@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "1. Which mathematical property of the Fourier Transform explains why time-domain convolution corresponds to frequency-domain multiplication?",
+      "question": "Which mathematical property of the Fourier Transform explains why time-domain convolution corresponds to frequency-domain multiplication?",
       "answers": {
         "a": "Linearity",
         "b": "Duality",
@@ -19,7 +19,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "2. What effect does time reversal have on the Fourier Transform of a signal x(t)?",
+      "question": "What effect does time reversal have on the Fourier Transform of a signal x(t)?",
       "answers": {
         "a": "It results in a phase shift.",
         "b": "It produces the complex conjugate of the Fourier Transform.",
@@ -36,7 +36,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "3. If x(t) is real and even, what is the nature of its Fourier Transform X(f)?",
+      "question": "If x(t) is real and even, what is the nature of its Fourier Transform X(f)?",
       "answers": {
         "a": "Imaginary and odd",
         "b": "Real and even",
@@ -53,7 +53,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "4. Why does a rectangular window in the time domain lead to spectral leakage in the frequency domain?",
+      "question": "Why does a rectangular window in the time domain lead to spectral leakage in the frequency domain?",
       "answers": {
         "a": "Because the Fourier Transform of a rectangular function is a Gaussian.",
         "b": "Because the time-domain window is not smooth, causing sinc-like ripples in frequency.",
@@ -70,7 +70,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "5. Which of the following is a necessary condition for a signal to have a Fourier Transform?",
+      "question": "Which of the following is a necessary condition for a signal to have a Fourier Transform?",
       "answers": {
         "a": "The signal must be periodic.",
         "b": "The signal must be real-valued.",
@@ -89,7 +89,7 @@
     
 
     {
-      "question": "6. What is the relationship between the bandwidth of a signal and the width of its Fourier Transform?",
+      "question": "What is the relationship between the bandwidth of a signal and the width of its Fourier Transform?",
       "answers": {
         "a": "The bandwidth is inversely proportional to the width of the Fourier Transform.",
         "b": "The bandwidth is directly proportional to the width of the Fourier Transform.",
@@ -106,7 +106,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "7. What is the Fourier Transform of a triangular pulse?",
+      "question": "What is the Fourier Transform of a triangular pulse?",
       "answers": {
         "a": "A sinc function.",
         "b": "A Gaussian function.",
@@ -123,7 +123,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "8. What is the effect of frequency scaling on the Fourier Transform of a signal?",
+      "question": "What is the effect of frequency scaling on the Fourier Transform of a signal?",
       "answers": {
         "a": "The Fourier Transform is scaled by the same factor.",
         "b": "The Fourier Transform is scaled by the reciprocal of the scaling factor.",
@@ -140,7 +140,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "9. What is the Fourier Transform of a signal x(t) sampled at a rate fs?",
+      "question": "What is the Fourier Transform of a signal x(t) sampled at a rate fs?",
       "answers": {
         "a": "The Fourier Transform is periodic with period fs.",
         "b": "The Fourier Transform is continuous with no periodicity.",
@@ -157,7 +157,7 @@
       "difficulty": "advanced"
     },
     {
-      "question": "10. What happens to the Fourier Transform of a signal when the signal is convolved with a filter in the time domain?",
+      "question": "What happens to the Fourier Transform of a signal when the signal is convolved with a filter in the time domain?",
       "answers": {
         "a": "The Fourier Transform of the signal is multiplied by the Fourier Transform of the filter.",
         "b": "The Fourier Transform of the signal is shifted in frequency.",
