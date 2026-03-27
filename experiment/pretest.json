@@ -10,9 +10,9 @@
         "d": "An impulse in the frequency domain."
       },
       "explanations": {
-        "a": "A sinc function is the Fourier Transform of a rectangular pulse.",
-        "b": "A Gaussian function in the time domain transforms into another Gaussian.",
-        "c": "The Fourier Transform of the Dirac delta function δ(t) is a constant function across all frequencies.",
+        "a": "Incorrect. A sinc function is the Fourier Transform of a rectangular pulse.",
+        "b": "Incorrect. A Gaussian function in the time domain transforms into another Gaussian.",
+        "c": "Correct! The Fourier Transform of the Dirac delta function δ(t) is a constant function across all frequencies.",
         "d": "Incorrect."
       },
       "correctAnswer": "c",
@@ -27,10 +27,10 @@
         "d": "It explains how energy is conserved in the transform."
       },
       "explanations": {
-        "a": "Convolution is simplified using the convolution property.",
-        "b": "Duality enables symmetry between time and frequency domains for transforms.",
-        "c": "This describes the convolution theorem, not duality.",
-        "d": "Energy conservation is related to Parseval's theorem."
+        "a": "Incorrect. Convolution is simplified using the convolution property.",
+        "b": "Correct! Duality enables symmetry between time and frequency domains for transforms.",
+        "c": "Incorrect. This describes the convolution theorem, not duality.",
+        "d": "Incorrect. Energy conservation is related to Parseval's theorem."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -44,10 +44,10 @@
         "d": "A cosine wave."
       },
       "explanations": {
-        "a": "A Gaussian transforms into another Gaussian.",
-        "b": "The step function has a complex frequency domain representation.",
-        "c": "A rectangular pulse in time results in a sinc function in frequency.",
-        "d": "A cosine wave has delta functions at its positive and negative frequencies."
+        "a": "Incorrect. A Gaussian transforms into another Gaussian.",
+        "b": "Incorrect. The step function has a complex frequency domain representation.",
+        "c": "Correct! A rectangular pulse in time results in a sinc function in frequency.",
+        "d": "Incorrect. A cosine wave has delta functions at its positive and negative frequencies."
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
@@ -61,10 +61,10 @@
         "d": "The Fourier Transform is finite only for periodic signals."
       },
       "explanations": {
-        "a": "The Fourier Transform of a time-limited signal is not band-limited; it spreads over all frequencies.",
-        "b": "This statement is correct as the Fourier Transform of a time-limited signal typically has infinite duration.",
-        "c": "Fourier Transforms do not have the same duration as the signal.",
-        "d": "Fourier Transforms apply to any signal, not just periodic ones."
+        "a": "Incorrect. The Fourier Transform of a time-limited signal is not band-limited; it spreads over all frequencies.",
+        "b": "Correct! The Fourier Transform of a time-limited signal typically has infinite duration.",
+        "c": "Incorrect. Fourier Transforms do not have the same duration as the signal.",
+        "d": "Incorrect. Fourier Transforms apply to any signal, not just periodic ones."
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
@@ -78,10 +78,10 @@
         "d": "It reduces the signal's bandwidth."
       },
       "explanations": {
-        "a": "This is incorrect; modulation does not create a band-pass effect directly.",
-        "b": "Multiplying by a cosine modulates the signal, shifting its spectrum.",
-        "c": "This applies to sampling, not modulation.",
-        "d": "Modulation does not reduce bandwidth."
+        "a": "Incorrect. Modulation does not create a band-pass effect directly.",
+        "b": "Correct! Multiplying by a cosine modulates the signal, shifting its spectrum.",
+        "c": "Incorrect. This applies to sampling, not modulation.",
+        "d": "Incorrect. Modulation does not reduce bandwidth."
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
@@ -95,46 +95,46 @@
         "d": "The signal becomes band-limited."
       },
       "explanations": {
-        "a": "Shifting left is incorrect; increasing frequency shifts the spectrum to higher frequencies.",
-        "b": "Doubling the frequency moves the delta spikes in the Fourier domain farther apart.",
-        "c": "Doubling frequency doesn't affect time duration.",
-        "d": "It doesn’t make the signal more band-limited."
+        "a": "Incorrect. Increasing frequency shifts the spectrum to higher frequencies.",
+        "b": "Correct! Doubling the frequency moves the delta spikes in the Fourier domain farther apart.",
+        "c": "Incorrect. Doubling frequency doesn't affect time duration.",
+        "d": "Incorrect. It doesn’t make the signal more band-limited."
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
     },
     {
-      "question": "What is the consequence of sampling a signal below its Nyquist rate?",
+      "question": "If x1(t) and x2(t) have Fourier Transforms X1(ω) and X2(ω), what is the Fourier Transform of a*x1(t) + b*x2(t)?",
       "answers": {
-        "a": "The signal becomes periodic.",
-        "b": "The signal's frequency increases.",
-        "c": "Aliasing occurs, causing frequency overlap.",
-        "d": "The amplitude of the signal increases."
+        "a": "X1(ω) + X2(ω)",
+        "b": "a*X1(ω) + b*X2(ω)",
+        "c": "a*X2(ω) + b*X1(ω)",
+        "d": "a*b*X1(ω)*X2(ω)"
       },
       "explanations": {
-        "a": "Sampling does not make the signal itself periodic, but its spectrum becomes periodic.",
-        "b": "Frequency increase is not a direct consequence of undersampling.",
-        "c": "Aliasing is the correct effect of undersampling — higher frequency content overlaps with lower frequencies.",
-        "d": "Sampling does not change amplitude."
+        "a": "Incorrect. Scaling factors are missing.",
+        "b": "Correct! Fourier Transform is linear: FT{a*x1 + b*x2} = a*X1 + b*X2.",
+        "c": "Incorrect. Coefficients are swapped incorrectly.",
+        "d": "Incorrect. Product occurs in time-domain multiplication, not linear combination."
       },
-      "correctAnswer": "c",
+      "correctAnswer": "b",
       "difficulty": "intermediate"
     },
     {
-      "question": "What does the sampling theorem guarantee?",
+      "question": "What happens to the Fourier Transform of x(t) if the signal is multiplied by e^{jω0t} in time domain?",
       "answers": {
-        "a": "Signals can be reconstructed exactly from samples if sampled below Nyquist rate.",
-        "b": "Signals must be periodic to be sampled correctly.",
-        "c": "Exact reconstruction is possible if sampling rate is greater than twice the highest frequency.",
-        "d": "Aliasing is unavoidable."
+        "a": "The transform shifts by ω0 in frequency",
+        "b": "The transform scales by ω0",
+        "c": "The transform is inverted in frequency",
+        "d": "The transform remains unchanged"
       },
       "explanations": {
-        "a": "Sampling below Nyquist leads to aliasing, not perfect reconstruction.",
-        "b": "Periodicity is not a requirement for sampling.",
-        "c": "This is the core statement of the sampling theorem.",
-        "d": "Aliasing can be avoided with proper sampling."
+        "a": "Correct! Multiplying by e^{jω0t} shifts the Fourier Transform by ω0.",
+        "b": "Incorrect. Scaling in frequency does not occur here.",
+        "c": "Incorrect. Inversion happens with time reversal, not complex exponential multiplication.",
+        "d": "Incorrect. Multiplication in time modifies the spectrum."
       },
-      "correctAnswer": "c",
+      "correctAnswer": "a",
       "difficulty": "intermediate"
     },
     {
@@ -146,27 +146,27 @@
         "d": "They cancel out each other."
       },
       "explanations": {
-        "a": "Multiplication in time corresponds to convolution in frequency, not overlap.",
-        "b": "Overlapping signals in time leads to addition of their frequency spectra.",
-        "c": "Bandwidth is not compressed simply by time-domain overlap.",
-        "d": "Cancellation depends on the phase, not just overlap."
+        "a": "Incorrect. Multiplication in time corresponds to convolution in frequency, not overlap.",
+        "b": "Correct! Overlapping signals in time leads to addition of their frequency spectra.",
+        "c": "Incorrect. Bandwidth is not compressed simply by time-domain overlap.",
+        "d": "Incorrect. Cancellation depends on the phase, not just overlap."
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
     },
     {
-      "question": "How does aliasing appear in the frequency domain?",
+      "question": "What is the Fourier Transform of a unit step signal u(t) in angular frequency ω?",
       "answers": {
-        "a": "As increased amplitude of the spectral components.",
-        "b": "As copies of the spectrum overlapping due to undersampling.",
-        "c": "As a single narrow spike.",
-        "d": "As a shift of the whole spectrum to zero frequency."
+        "a": "1",
+        "b": "πδ(ω) + 1/(jω)",
+        "c": "sinc(ω)",
+        "d": "Another unit step function"
       },
       "explanations": {
-        "a": "Aliasing does not increase amplitude.",
-        "b": "Aliasing results in overlapping replicas of the spectrum in the frequency domain.",
-        "c": "Aliasing is not a spike — it causes distortion.",
-        "d": "Spectrum shifting to zero is not aliasing."
+        "a": "Incorrect. A constant does not represent u(t) in frequency domain.",
+        "b": "Correct! In angular frequency domain, U(ω) = πδ(ω) + 1/(jω).",
+        "c": "Incorrect. sinc function comes from rectangular pulses, not step.",
+        "d": "Incorrect. Step in time does not map to step in frequency."
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
