@@ -87,7 +87,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "What happens when you double the frequency of a sinusoidal signal in the time domain?",
+      "question": "What happens in the frequency domain when you double the frequency of a sinusoidal signal?",
       "answers": {
         "a": "Its Fourier Transform shifts to the left.",
         "b": "Its Fourier Transform shifts to higher frequencies.",
