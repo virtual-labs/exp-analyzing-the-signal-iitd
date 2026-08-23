@@ -863,6 +863,33 @@ switch (selectedMasterInput) {
 }
 
 
+// Renders x/y data as a discrete-time "stem" plot (marker + vertical line to zero
+// for every sample) instead of a continuous line, since DFT/DTFT deals with
+// discrete-time signals and discrete-frequency spectra, not continuous ones.
+function discreteStemTraces(x, y, color, name) {
+    const stems = [];
+    for (let i = 0; i < x.length; i++) {
+        stems.push({
+            x: [x[i], x[i]],
+            y: [0, y[i]],
+            mode: 'lines',
+            type: 'scatter',
+            line: { color: color, width: 1 },
+            hoverinfo: 'skip',
+            showlegend: false
+        });
+    }
+    stems.push({
+        x: x,
+        y: y,
+        mode: 'markers',
+        type: 'scatter',
+        marker: { color: color, size: 5 },
+        name: name
+    });
+    return stems;
+}
+
 function inputSignal1() {
     let fm = parseInt(document.getElementById('messageFrequency').value);
     let fc = parseInt(document.getElementById('carrierFrequency').value);
@@ -871,10 +898,11 @@ function inputSignal1() {
     let { y, y2, y3 } = handleInputChange(fs, fm, fc);
     if (!y || !y2 || !y3) return;  // Ensure valid signals
 
-    // Plot y2 and y3 on the same plot
-    Plotly.newPlot('inputSignal1', [
-        { x: Array.from({ length: fs }, (_, i) => i / fs), y: y, mode: 'lines', name: 'Signal 1' }
-    ], { title: 'Input Signal' , xaxis: { title: 'time (s)' },
+    // Plot as discrete-time samples (stem plot), not a continuous line —
+    // the DFT operates on a discrete-time sequence, so the input must look like one.
+    const t1 = Array.from({ length: fs }, (_, i) => i / fs);
+    Plotly.newPlot('inputSignal1', discreteStemTraces(t1, y, 'rgba(17, 97, 230, 0.86)', 'Signal 1'),
+        { title: 'Input Signal (discrete-time samples)' , xaxis: { title: 'n (sample index) / time (s)' },
             yaxis: { title: 'Amplitude' }}, {
 				showLink: false,              // Hides "Edit in Chart Studio" link
 				displaylogo: false,           // Removes Plotly logo
@@ -893,10 +921,10 @@ function generateInputSignal2() {
     let { y, y2, y3 } = handleInputChange(fs, fm, fc);
     if (!y || !y2 || !y3) return;  // Ensure valid signals
 
-    // Plot y2 and y3 on the same plot
-    Plotly.newPlot('inputSignal2', [
-        { x: Array.from({ length: fs }, (_, i) => i / fs), y: y2, mode: 'lines', name: 'Signal 1' }
-    ], { title: 'Input Signal 2' , xaxis: { title: 'time (s)' },
+    // Plot as discrete-time samples (stem plot), not a continuous line.
+    const t2 = Array.from({ length: fs }, (_, i) => i / fs);
+    Plotly.newPlot('inputSignal2', discreteStemTraces(t2, y2, 'rgba(17, 97, 230, 0.86)', 'Signal 2'),
+        { title: 'Input Signal 2 (discrete-time samples)' , xaxis: { title: 'n (sample index) / time (s)' },
             yaxis: { title: 'Amplitude' }}, {
 				showLink: false,              // Hides "Edit in Chart Studio" link
 				displaylogo: false,           // Removes Plotly logo
@@ -928,10 +956,10 @@ function generateInputSignal2() {
 				responsive: true
 			};
 
-            // Plot original message signal
-            Plotly.newPlot('plot11', [
-                { x: Array.from({ length: fs }, (_, i) => i / fs), y: y3, mode: 'lines', name: 'Original Message Signal' }
-            ], { title: 'Combined Signal' }, config);
+            // Plot original message signal as discrete-time samples
+            const t11 = Array.from({ length: fs }, (_, i) => i / fs);
+            Plotly.newPlot('plot11', discreteStemTraces(t11, y3, 'rgba(17, 97, 230, 0.86)', 'Original Message Signal'),
+                { title: 'Combined Signal (discrete-time samples)' }, config);
 				//document.getElementById('scrolltomessage').scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -951,9 +979,8 @@ function generateInputSignal2() {
             // Add Gaussian noise to the signal (assumes addNoise function is defined)
             let x = addNoise(y3, snr_db);
 
-		        Plotly.newPlot('plot12', [
-            { x: tt, y: x, mode: 'lines', name: 'Noisy Signal' },
-        ], { title: 'Noisy Signal' , xaxis: { title: 'time (s)' },
+		        Plotly.newPlot('plot12', discreteStemTraces(tt, x, 'rgba(17, 97, 230, 0.86)', 'Noisy Signal'),
+        { title: 'Noisy Signal (discrete-time samples)' , xaxis: { title: 'n (sample index) / time (s)' },
             yaxis: { title: 'Amplitude' } });
 			//document.getElementById('scrolltonoisy').scrollIntoView({ behavior: 'smooth' });
     }
@@ -1223,9 +1250,10 @@ let factor = Math.floor(
     // Use fftshift-style rearrangement: negative freqs first, then positive
     const halfN = Math.floor(N / 2);
     const magnitudeShifted = [...magnitudef.slice(halfN), ...magnitudef.slice(0, halfN)];
-    
-    // Create symmetric frequency axis: from -fs/2 to fs/2
-    const freqAxis = Array.from({ length: N }, (_, i) => (i - halfN) * (samplingRate / N));
+
+    // DFT/DTFT convention: frequency axis in radians (omega = 2*pi*k/N),
+    // NOT Hz. This is discrete by construction — one value per bin k.
+    const freqAxis = Array.from({ length: N }, (_, i) => (i - halfN) * (2 * Math.PI / N));
 
     // Clean near-zero values
     const magnitudeClean = magnitudeShifted.map(v => (Math.abs(v) < threshold ? 0 : v));
@@ -1248,7 +1276,7 @@ let factor = Math.floor(
 
         const layout = {
             title: "Fourier Magnitude Spectrum",
-            xaxis: { title: "Frequency (Hz)", range: [-(((fs / factor) + fm) + 5), ((fs / factor) + fm) + 5] },
+            xaxis: { title: "Frequency (radians)", range: [-Math.PI, Math.PI] },
             yaxis: { title: "Magnitude" },
             showlegend: false
         };
@@ -1262,22 +1290,17 @@ let factor = Math.floor(
         return;
     }
 
-    // Otherwise, plot full magnitude spectrum
-    const trace = {
-        x: freqAxis,
-        y: magnitudeClean,
-        type: 'scatter',
-        mode: 'lines',
-        name: 'Magnitude Spectrum'
-    };
+    // Otherwise, plot full magnitude spectrum as discrete stems (DFT output
+    // is a finite set of N discrete bins, not a continuous curve).
+    const traces = discreteStemTraces(freqAxis, magnitudeClean, 'rgba(17, 97, 230, 0.86)', 'Magnitude Spectrum');
 
     const layout = {
         title: "Fourier Magnitude Spectrum",
-        xaxis: { title: "Frequency (Hz)", range: [-(((fs / 10) + fm) + 5), ((fs / 10) + fm) + 5] },
+        xaxis: { title: "Frequency (radians)", range: [-Math.PI, Math.PI] },
         yaxis: { title: "Magnitude" }
     };
 
-    Plotly.newPlot("fourier-plot", [trace], layout, {
+    Plotly.newPlot("fourier-plot", traces, layout, {
         showLink: false,
         displaylogo: false,
         modeBarButtonsToRemove: ['sendDataToCloud']
@@ -1406,9 +1429,10 @@ if (inputSelector1 === 'rectangular' || inputSelector2 === 'rectangular') {
 }
 
 
-        // Frequency vector
+        // Frequency vector — radians (omega = 2*pi*k/N), the correct DTFT/DFT
+        // convention, discrete by construction (one value per bin), not Hz.
         const ly = y_ff.length;
-        const f = Array.from({ length: ly }, (_, i) => (i - ly / 2) / ly * fs);
+        const f = Array.from({ length: ly }, (_, i) => (i - ly / 2) * (2 * Math.PI / ly));
 /*
         // Plot magnitude of the Fourier Transform
         const magnitudeData = {
@@ -1425,19 +1449,21 @@ if (inputSelector1 === 'rectangular' || inputSelector2 === 'rectangular') {
             yaxis: { title: '|y|' }
         });
 */
-        // Plot phase of the Fourier Transform
+        // Plot phase of the Fourier Transform as discrete points (not a
+        // continuous line — phase is only defined at each discrete bin).
         const phaseData = {
             x: f,
             y: phase(z).map(value => value / Math.PI),//phase(z),
             type: 'scatter',
-            mode: 'lines',
+            mode: 'markers',
+            marker: { size: 5, color: 'rgba(17, 97, 230, 0.86)' },
             name: 'Phase'
         };
 
 			Plotly.newPlot('phasePlot', [phaseData], { 
 				title: 'Phase Plot',
-				xaxis: { title: 'Frequency (Hz)', range: [-((fs/factor) + fm + 5), ((fs/factor) + fm + 5)] },
-				yaxis: { title: 'Phase (radians)' } 
+				xaxis: { title: 'Frequency (radians)', range: [-Math.PI, Math.PI] },
+				yaxis: { title: 'Phase (radians, x pi)' } 
 			}, {
 				showLink: false,              // Hides "Edit in Chart Studio" link
 				displaylogo: false,           // Removes Plotly logo
