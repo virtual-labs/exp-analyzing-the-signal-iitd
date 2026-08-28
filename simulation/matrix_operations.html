@@ -1,0 +1,1466 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Virtual Labs</title>
+    <link rel="stylesheet" href="../css/matrix_operations.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.0/math.min.js"></script>
+    <style>
+      /* Style for overlay container */
+      .overlay {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        z-index: 1000; /* Ensure it's on top of other content */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .resultbox {
+        width: 95px; /* Adjust the box width as needed */
+        height: 30px; /* Adjust the box height as needed */
+        background-color: black; /* Adjust the box background color as needed */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        color: white;
+        border-radius: 5px;
+        border: none;
+      }
+      .overlay-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow for the container */
+        position: relative; /* Ensure close button can be positioned */
+      }
+
+      .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- sidebar and body -->
+    <div class="flex min-h-[80vh]">
+      <div class="px-1 pb-6 flex-1">
+        <!--  -->
+        <div>
+          <div class="">
+            <div class="flex flex-col items-center">
+              <div class="calculations">
+                <!-- matrix -->
+                <div class="matrix flex items-center flex-col">
+                  <p class="text-[20px] text-center font-bold text-black my-5">
+                    Matrix A
+                  </p>
+                  <!-- input -->
+                  <div class="flex justify-around">
+                    <textarea
+                      id="matrixTextarea1"
+                      wrap="off"
+                      spellcheck="false"
+                      autocapitalize="off"
+                      autocomplete="off"
+                      class="input_area"
+                      placeholder="1  2 3
+4 -5 6
+7 -1 2/3"
+                      required=""
+                    ></textarea>
+                  </div>
+                  <div class="inputBoxes hidden" id="matrixGrid1"></div>
+                  <div class="Buttons">
+                    <button
+                      id="toggleButton1"
+                      class="bg-[#22C5EE] text-white hover:text-[#22C5EE] hover:bg-white border-2 hover:border-black"
+                    >
+                      Cell
+                    </button>
+                    <button
+                      id="clearButton1"
+                      class="bg-[#22C5EE] text-white hover:text-[#22C5EE] hover:bg-white"
+                    >
+                      Clear
+                    </button>
+                    <button
+                      id="increaseButton1"
+                      disabled
+                      class="flex items-center justify-center text-[20px] font-medium text-black bg-[#808080]"
+                    >
+                      +
+                    </button>
+                    <button
+                      id="decreaseButton1"
+                      disabled
+                      class="flex items-center w-full justify-center text-[20px] font-medium text-black bg-[#808080]"
+                    >
+                      -
+                    </button>
+                  </div>
+                  <div class="operations">
+                    <div class="part1 flex flex-col w-full">
+                      <button id="determinant1" value="Determinant det">
+                        Determinant
+                      </button>
+                      <button id="transpose1" value="Transpose tsp">
+                        Transpose
+                      </button>
+                      <button id="adjoint1" value="Adjoint adj">Adjoint</button>
+                      <button id="cofactor1" value="Cofactor cft">
+                        Cofactor
+                      </button>
+                      <button id="minor1" value="Minor mnr">Minor</button>
+                    </div>
+                    <div class="part2 flex flex-col w-[100%]">
+                      <button id="inverse1" value="Inverse inv">Inverse</button>
+                      <button id="diagonalize1" value="Diagonalise dig">
+                        Diagonalise
+                      </button>
+                      <button id="trace1" value="Trace trc">Trace</button>
+                      <button id="ref1" value="Row Echelon Form ref">
+                        Reduced Row Echelon Form
+                      </button>
+                      <button id="rankofmatrix1" value="Rank of matrix">
+                        Rank of Matrix
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="middle_part">
+                  <button id="division" class="calc" value="Division div">
+                    A / B
+                  </button>
+                  <button
+                    id="multiplication"
+                    class="calc"
+                    value="Multiplication mul"
+                  >
+                    A x B
+                  </button>
+                  <button id="addition" class="calc" value="Addition add">
+                    A + B
+                  </button>
+                  <button
+                    id="substraction"
+                    class="calc"
+                    value="Subtraction sub"
+                  >
+                    A - B
+                  </button>
+                </div>
+                <!-- matrix -->
+                <div class="matrix flex items-center flex-col">
+                  <p class="text-[20px] text-center font-bold text-black my-5">
+                    Matrix B
+                  </p>
+                  <!-- input -->
+                  <div class="flex justify-around">
+                    <textarea
+                      id="matrixTextarea"
+                      wrap="off"
+                      spellcheck="false"
+                      autocapitalize="off"
+                      autocomplete="off"
+                      class="input_area"
+                      placeholder="1  2 3
+4 -5 6
+7 -1 2/3"
+                      required=""
+                    ></textarea>
+                  </div>
+                  <div class="inputBoxes hidden" id="matrixGrid"></div>
+                  <div class="Buttons">
+                    <button
+                      id="toggleButton"
+                      class="bg-[#22C5EE] text-white hover:text-[#22C5EE] hover:bg-white"
+                    >
+                      Cell
+                    </button>
+                    <button
+                      id="clearButton"
+                      class="bg-[#22C5EE] text-white hover:text-[#22C5EE] hover:bg-white"
+                    >
+                      Clear
+                    </button>
+                    <button
+                      id="increaseButton"
+                      disabled
+                      class="flex items-center justify-center text-[20px] font-medium text-black bg-[#808080]"
+                    >
+                      +
+                    </button>
+                    <button
+                      id="decreaseButton"
+                      disabled
+                      class="flex items-center w-full justify-center text-[20px] font-medium text-black bg-[#808080]"
+                    >
+                      -
+                    </button>
+                  </div>
+                  <div class="operations">
+                    <div class="part1 flex flex-col w-full">
+                      <button id="determinant" value="Determinant det">
+                        Determinant
+                      </button>
+                      <button id="transpose" value="Transpose tsp">
+                        Transpose
+                      </button>
+                      <button id="adjoint" value="Adjoint adj">Adjoint</button>
+                      <button id="cofactor" value="Cofactor cft">
+                        Cofactor
+                      </button>
+                      <button id="minor" value="Minor mnr">Minor</button>
+                    </div>
+                    <div class="part2 flex flex-col w-[100%]">
+                      <button id="inverse" value="Inverse inv">Inverse</button>
+                      <button id="diagonalize" value="Diagonalise dig">
+                        Diagonalise
+                      </button>
+                      <button id="trace" value="Trace trc">Trace</button>
+                      <button id="ref" value="Row Echelon Form ref">
+                        Reduced Row Echelon Form
+                      </button>
+                      <button id="rankofmatrix" value="Rank of Matrix">
+                        Rank of Matrix
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="flex bg-slate-400 flex-col items-center">
+              <p id="result"></p>
+              hello
+            </div> -->
+            <!-- Overlay container -->
+            <div class="overlay" style="display: none" id="overlay">
+              <div class="overlay-content">
+                <span class="close-button" onclick="toggleOverlay()"
+                  >&times;</span
+                >
+                <h2 class="text-[#17bee7] text-[20px]" id="overlayheading">
+                  Overlay Content
+                </h2>
+                <div class="flex flex-col justify-center items-center gap-3">
+                  <div class="inputBoxes hidden" id="overlaymatrixGrid"></div>
+                  <div class="flex items-center">=</div>
+                  <div id="result"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var overlay = document.getElementById("overlay");
+
+      // Function to toggle the overlay visibility
+      function toggleOverlay() {
+        overlay.style.display =
+          overlay.style.display === "none" ? "flex" : "none";
+      }
+    </script>
+    <script>
+      let matrixSize = 3; // Initial size of the matrix
+      let matrixSize1 = 3; // Initial size of the matrix   Yesterday_you_stoped_here_
+
+      function createMatrix(size, values = []) {
+        const container = document.getElementById("matrixGrid");
+        container.innerHTML = ""; // Clear the container
+
+        // Set the grid template columns based on the matrix size
+        container.style.gridTemplateColumns = `repeat(${size}, 65px)`;
+
+        // Create input elements based on the matrix size
+        for (let i = 0; i < size; i++) {
+          for (let j = 0; j < size; j++) {
+            const input = document.createElement("input");
+            input.className = "box";
+            input.value = values[i] && values[i][j] ? values[i][j] : "";
+            container.appendChild(input);
+          }
+        }
+      }
+      function createMatrix1(size, values = []) {
+        const container = document.getElementById("matrixGrid1");
+        container.innerHTML = ""; // Clear the container
+
+        // Set the grid template columns based on the matrix size
+        container.style.gridTemplateColumns = `repeat(${size}, 65px)`;
+
+        // Create input elements based on the matrix size
+        for (let i = 0; i < size; i++) {
+          for (let j = 0; j < size; j++) {
+            const input = document.createElement("input");
+            input.className = "box";
+            input.value = values[i] && values[i][j] ? values[i][j] : "";
+            container.appendChild(input);
+          }
+        }
+      }
+      function matrixToGrid(matrixString) {
+        const rows = matrixString
+          .trim()
+          .split("\n")
+          .map((row) => row.trim().split(/\s+/));
+        matrixSize = 3; // Reset matrix size to 3x3 when toggling
+        createMatrix(matrixSize, rows);
+      }
+      function matrixToGrid1(matrixString) {
+        const rows = matrixString
+          .trim()
+          .split("\n")
+          .map((row) => row.trim().split(/\s+/));
+        matrixSize1 = 3; // Reset matrix size to 3x3 when toggling
+        createMatrix1(matrixSize1, rows);
+      }
+
+      function gridToMatrix() {
+        const inputs = document.querySelectorAll("#matrixGrid .box");
+        let matrixString = "";
+
+        for (let i = 0; i < matrixSize; i++) {
+          const row = [];
+          for (let j = 0; j < matrixSize; j++) {
+            row.push(inputs[i * matrixSize + j].value);
+          }
+          matrixString += row.join(" ") + "\n";
+        }
+
+        return matrixString.trim();
+      }
+
+      function gridToMatrix1() {
+        const inputs = document.querySelectorAll("#matrixGrid1 .box");
+        let matrixString = "";
+
+        for (let i = 0; i < matrixSize1; i++) {
+          const row = [];
+          for (let j = 0; j < matrixSize1; j++) {
+            row.push(inputs[i * matrixSize1 + j].value);
+          }
+          matrixString += row.join(" ") + "\n";
+        }
+
+        return matrixString.trim();
+      }
+
+      document
+        .getElementById("toggleButton")
+        .addEventListener("click", function () {
+          const textarea = document.getElementById("matrixTextarea");
+          const grid = document.getElementById("matrixGrid");
+          const increaseButton = document.getElementById("increaseButton");
+          const decreaseButton = document.getElementById("decreaseButton");
+          const toggleButton = document.getElementById("toggleButton");
+          if (!textarea.classList.contains("hidden")) {
+            const matrixString = textarea.value;
+            matrixToGrid(matrixString);
+            textarea.classList.add("hidden");
+            grid.classList.remove("hidden");
+            increaseButton.disabled = false;
+            decreaseButton.disabled = false;
+            toggleButton.textContent = "Box";
+            increaseButton.style.backgroundColor = "#22C5EE";
+            decreaseButton.style.backgroundColor = "#22C5EE";
+          } else {
+            const matrixString = gridToMatrix();
+            textarea.value = matrixString;
+            textarea.classList.remove("hidden");
+            grid.classList.add("hidden");
+            increaseButton.disabled = true;
+            decreaseButton.disabled = true;
+            toggleButton.textContent = "Cell";
+            increaseButton.style.backgroundColor = "#808080";
+            decreaseButton.style.backgroundColor = "#808080";
+          }
+        });
+
+      document
+        .getElementById("toggleButton1")
+        .addEventListener("click", function () {
+          const textarea = document.getElementById("matrixTextarea1");
+          const grid = document.getElementById("matrixGrid1");
+          const increaseButton = document.getElementById("increaseButton1");
+          const decreaseButton = document.getElementById("decreaseButton1");
+          const toggleButton = document.getElementById("toggleButton1");
+          if (!textarea.classList.contains("hidden")) {
+            const matrixString = textarea.value;
+            matrixToGrid1(matrixString);
+            textarea.classList.add("hidden");
+            grid.classList.remove("hidden");
+            increaseButton.disabled = false;
+            decreaseButton.disabled = false;
+            toggleButton.textContent = "Box";
+            increaseButton.style.backgroundColor = "#22C5EE";
+            decreaseButton.style.backgroundColor = "#22C5EE";
+          } else {
+            const matrixString = gridToMatrix1();
+            textarea.value = matrixString;
+            textarea.classList.remove("hidden");
+            grid.classList.add("hidden");
+            increaseButton.disabled = true;
+            decreaseButton.disabled = true;
+            toggleButton.textContent = "Cell";
+            increaseButton.style.backgroundColor = "#808080";
+            decreaseButton.style.backgroundColor = "#808080";
+          }
+        });
+
+      document
+        .getElementById("increaseButton")
+        .addEventListener("click", function () {
+          if (matrixSize < 10) {
+            // Limit the size to 10x10 for practical purposes
+            matrixSize++;
+            createMatrix(matrixSize);
+          }
+        });
+      document
+        .getElementById("increaseButton1")
+        .addEventListener("click", function () {
+          if (matrixSize1 < 10) {
+            // Limit the size to 10x10 for practical purposes
+            matrixSize1++;
+            createMatrix1(matrixSize1);
+          }
+        });
+      document
+        .getElementById("decreaseButton")
+        .addEventListener("click", function () {
+          if (matrixSize > 1) {
+            // Minimum size is 1x1
+            matrixSize--;
+            createMatrix(matrixSize);
+          }
+        });
+      document
+        .getElementById("decreaseButton1")
+        .addEventListener("click", function () {
+          if (matrixSize1 > 1) {
+            // Minimum size is 1x1
+            matrixSize1--;
+            createMatrix1(matrixSize1);
+          }
+        });
+      document
+        .getElementById("clearButton")
+        .addEventListener("click", function () {
+          const textarea = document.getElementById("matrixTextarea");
+          const grid = document.getElementById("matrixGrid");
+
+          if (!textarea.classList.contains("hidden")) {
+            // Clear the textarea
+            textarea.value = "";
+          } else {
+            // Clear the grid inputs
+            const inputs = document.querySelectorAll("#matrixGrid .box");
+            inputs.forEach((input) => (input.value = ""));
+          }
+        });
+      document
+        .getElementById("clearButton1")
+        .addEventListener("click", function () {
+          const textarea = document.getElementById("matrixTextarea1");
+          const grid = document.getElementById("matrixGrid1");
+
+          if (!textarea.classList.contains("hidden")) {
+            // Clear the textarea
+            textarea.value = "";
+          } else {
+            // Clear the grid inputs
+            const inputs = document.querySelectorAll("#matrixGrid1 .box");
+            inputs.forEach((input) => (input.value = ""));
+          }
+        });
+      // Initial matrix setup
+      createMatrix(matrixSize);
+      createMatrix1(matrixSize1);
+    </script>
+    <script>
+      // determinant
+      function calculateDeterminant(matrixString) {
+        try {
+          // Replace newlines with semicolons and parse the matrix string
+          const formattedString = matrixString.replace(/\n/g, ";");
+          // Convert the formatted string into a matrix
+          const matrix = math.matrix(
+            formattedString
+              .split(";")
+              .map((row) => row.trim().split(/\s+/).map(Number))
+          );
+          // Calculate the determinant
+          const determinant = math.det(matrix);
+          return Math.round(determinant * 10000) / 10000; // Round to 4 decimal places
+        } catch (error) {
+          return "Matrix not compatible for determinant";
+        }
+      }
+
+      function parseMatrixString(matrixString) {
+        return matrixString
+          .trim()
+          .split("\n")
+          .map((row) => row.trim().split(/\s+/).map(Number));
+      }
+
+      function getSubMatrix(matrix, skipRow, skipCol) {
+        return matrix
+          .filter((_, row) => row !== skipRow)
+          .map((row) => row.filter((_, col) => col !== skipCol));
+      }
+
+      function calcDeterminant(matrix) {
+        const mathMatrix = math.matrix(matrix);
+        return math.det(mathMatrix);
+      }
+
+      function calculateAdjoint(matrixString) {
+        const matrix = parseMatrixString(matrixString);
+        const numRows = matrix.length;
+        const numCols = matrix[0].length;
+        const minors = Array(numRows)
+          .fill(null)
+          .map(() => Array(numCols).fill(0));
+
+        for (let i = 0; i < numRows; i++) {
+          for (let j = 0; j < numCols; j++) {
+            const subMatrix = getSubMatrix(matrix, i, j);
+            minors[i][j] = (-1) ** (i + j) * calcDeterminant(subMatrix);
+          }
+        }
+
+        // Transpose the minors matrix to get the adjoint
+        const adjoint = math.transpose(minors);
+
+        // Round off each value in the adjoint matrix to 2 decimal digits
+        for (let i = 0; i < adjoint.length; i++) {
+          for (let j = 0; j < adjoint[i].length; j++) {
+            adjoint[i][j] = Math.round(adjoint[i][j] * 100) / 100;
+          }
+        }
+
+        return adjoint;
+      }
+      // function formatMatrix(matrix) {
+      //   return matrix.map((row) => row.join(" ")).join("\n");
+      // }
+      function formatMatrix(matrix) {
+        if (Array.isArray(matrix[0])) {
+          // Handle array of arrays (matrix)
+          return matrix.map((row) => row.join(" ")).join("\n");
+        } else {
+          // Handle single array (vector)
+          return matrix.join(" ");
+        }
+      }
+      //adjoint
+      // transpose
+      function transposeMatrix(matrixString) {
+        try {
+          // Split the input string into rows
+          const rows = matrixString
+            .trim()
+            .split("\n")
+            .map((row) => row.trim().split(/\s+/));
+
+          // Convert rows to columns for the transpose
+          const rowCount = rows.length;
+          const colCount = rows[0].length;
+          const transposedMatrix = Array.from({ length: colCount }, () =>
+            Array(rowCount).fill("")
+          );
+
+          for (let i = 0; i < rowCount; i++) {
+            for (let j = 0; j < colCount; j++) {
+              transposedMatrix[j][i] = rows[i][j];
+            }
+          }
+
+          // Convert the transposed matrix back to a string format
+          return transposedMatrix.map((row) => row.join(" ")).join("\n");
+        } catch (error) {
+          return "Matrix not compatible for transpose";
+        }
+      }
+      // inverse of matrix
+      // function parseMatrixString(matrixString) {
+      //       return matrixString.trim().split('\n').map(row => row.trim().split(/\s+/).map(Number));
+      //   }
+      function roundMatrix(matrix, decimals) {
+        const factor = Math.pow(10, decimals);
+        return matrix.map((row) =>
+          row.map((value) => Math.round(value * factor) / factor)
+        );
+      }
+
+      function calculateInverse(matrixString) {
+        try {
+		  const determinantff = calculateDeterminant(matrixString);
+        // Check if the matrix is singular (determinant is 0)
+        if (determinantff === 0) {
+            return "The matrix is singular and doesn't have an inverse";
+        } 
+          const matrix = parseMatrixString(matrixString);
+          const mathMatrix = math.matrix(matrix);
+          const inverseMatrix = math.inv(mathMatrix);
+          const roundedMatrix = roundMatrix(inverseMatrix.toArray(), 2);
+          return roundedMatrix;
+        } catch (error) {
+          return "The matrix is singular and doesn't have an inverse";
+        }
+      }
+
+      function calculateCofactor(matrixString) {
+        try {
+          const matrix = parseMatrixString(matrixString);
+          const n = matrix.length;
+          const cofactorMatrix = [];
+
+          for (let i = 0; i < n; i++) {
+            const cofactorRow = [];
+            for (let j = 0; j < n; j++) {
+              const submatrix = matrix
+                .map((row, rowIndex) =>
+                  rowIndex !== i
+                    ? row.filter((_, colIndex) => colIndex !== j)
+                    : null
+                )
+                .filter((row) => row !== null);
+
+              const determinant = calcDeterminant(submatrix);
+              cofactorRow.push(((i + j) % 2 === 0 ? 1 : -1) * determinant);
+            }
+            cofactorMatrix.push(cofactorRow);
+          }
+          return roundMatrix(cofactorMatrix, 2);
+        } catch (error) {
+          return `Error: ${error.message}`;
+        }
+      }
+
+      // cofactor of matrix
+      // minor of matrix
+      function calculateMinor(matrixString) {
+        try {
+          const matrix = parseMatrixString(matrixString);
+          const n = matrix.length;
+          const minorMatrix = [];
+
+          for (let i = 0; i < n; i++) {
+            const minorRow = [];
+            for (let j = 0; j < n; j++) {
+              const submatrix = matrix
+                .map((row, rowIndex) =>
+                  rowIndex !== i
+                    ? row.filter((_, colIndex) => colIndex !== j)
+                    : null
+                )
+                .filter((row) => row !== null);
+
+              const determinant = calcDeterminant(submatrix);
+              minorRow.push(determinant);
+            }
+            minorMatrix.push(minorRow);
+          }
+          return roundMatrix(minorMatrix, 2);
+        } catch (error) {
+          return `Error: ${error.message}`;
+        }
+      }
+      // minor of matrix
+// Diagonalize matrix function
+function diagonalizeMatrix(matrixString) {
+  try {
+    const matrix = parseMatrixString(matrixString);  // Parse the input matrix string
+    const n = matrix.length;  // Get the size of the matrix
+
+    // Initialize an empty matrix to store the diagonal matrix
+    const diagonalElements = [];
+
+    // Loop to create the diagonal matrix
+    for (let i = 0; i < n; i++) {
+      // Create a row filled with zeros
+      const row = new Array(n).fill(0);
+
+      // Set the diagonal element in the row
+      row[i] = matrix[i][i];
+
+      // Push the row to the diagonal matrix
+      diagonalElements.push(row);
+    }
+
+    // Return the diagonalized matrix
+    return diagonalElements;
+
+  } catch (error) {
+    return `Error: ${error.message}`;
+  }
+}
+/*
+// Function to parse the matrix string into a 2D array (you need to implement this)
+function parseMatrixString(matrixString) {
+  return JSON.parse(matrixString);  // Assuming the matrix is passed as a JSON string
+}
+*/
+
+      //diagonalize matrix
+      //trace
+      function findTrace(matrixString) {
+        try {
+          const matrix = parseMatrixString(matrixString);
+          const n = matrix.length;
+
+          // Check if the matrix is square
+          if (!matrix.every((row) => row.length === n)) {
+            throw new Error("Matrix is not square");
+          }
+
+          // Calculate the trace
+          let trace = 0;
+          for (let i = 0; i < n; i++) {
+            trace += matrix[i][i];
+          }
+          return trace;
+        } catch (error) {
+          return `Error: ${error.message}`;
+        }
+      }
+      //trace
+      //ref
+      function toRowEchelonForm(matrix) {
+        let rows = matrix.length;
+        let cols = matrix[0].length;
+        let lead = 0;
+
+        for (let r = 0; r < rows; r++) {
+          if (cols <= lead) {
+            return matrix;
+          }
+          let i = r;
+          while (matrix[i][lead] === 0) {
+            i++;
+            if (i === rows) {
+              i = r;
+              lead++;
+              if (cols === lead) {
+                return matrix;
+              }
+            }
+          }
+
+          let temp = matrix[r];
+          matrix[r] = matrix[i];
+          matrix[i] = temp;
+
+          let val = matrix[r][lead];
+          for (let j = 0; j < cols; j++) {
+            matrix[r][j] /= val;
+          }
+
+          for (let i = 0; i < rows; i++) {
+            if (i === r) continue;
+            val = matrix[i][lead];
+            for (let j = 0; j < cols; j++) {
+              matrix[i][j] -= val * matrix[r][j];
+            }
+          }
+          lead++;
+        }
+        return matrix;
+      }
+      function rowEchelonForm(matrixString) {
+        try {
+          let matrix = parseMatrixString(matrixString);
+          matrix = toRowEchelonForm(matrix);
+          return matrix;
+        } catch (error) {
+          return `Error: ${error.message}`;
+        }
+      }
+      //ref
+      //rank of matrix
+      function swapRows(matrix, row1, row2) {
+        [matrix[row1], matrix[row2]] = [matrix[row2], matrix[row1]];
+      }
+
+      function rankOfMatrix(matrixString) {
+        let matrix = parseMatrixString(matrixString);
+        let rowCount = matrix.length;
+        let colCount = matrix[0].length;
+        let rank = colCount;
+
+        for (let row = 0; row < rank; row++) {
+          if (matrix[row][row] !== 0) {
+            for (let col = 0; col < rowCount; col++) {
+              if (col !== row) {
+                let mult = matrix[col][row] / matrix[row][row];
+                for (let i = 0; i < rank; i++) {
+                  matrix[col][i] -= mult * matrix[row][i];
+                }
+              }
+            }
+          } else {
+            let reduce = true;
+            for (let i = row + 1; i < rowCount; i++) {
+              if (matrix[i][row] !== 0) {
+                swapRows(matrix, row, i);
+                reduce = false;
+                break;
+              }
+            }
+            if (reduce) {
+              rank--;
+              for (let i = 0; i < rowCount; i++) {
+                matrix[i][row] = matrix[i][rank];
+              }
+            }
+            row--;
+          }
+        }
+
+        return rank;
+      }
+      //rank of matrix
+    </script>
+    <script>
+      function determinantResult(determinant) {
+        var resultContainer = document.getElementById("result");
+
+        // Clear any existing content in the result container
+        resultContainer.innerHTML = "";
+
+        var determinantGrid = document.createElement("div");
+        determinantGrid.className = "inputBoxes";
+
+        // Create and append the determinant value cell
+        var determinantValue = document.createElement("div");
+        determinantValue.className = "resultbox";
+        determinantValue.innerText = determinant;
+        determinantValue.readOnly = true; // Make input read-only
+        determinantGrid.appendChild(determinantValue);
+
+        // Append the new determinant grid to the result container
+        resultContainer.appendChild(determinantGrid);
+      }
+      function printResultmatrix(matrixString) {
+        var resultContainer = document.getElementById("result");
+
+        // Clear any existing content in the result container
+        resultContainer.innerHTML = "";
+
+        // Parse the matrix string into a 2D array
+        const matrix = parseMatrixString(matrixString);
+
+        var matrixGrid = document.createElement("div");
+        matrixGrid.className = "inputBoxes";
+
+        // Set grid template columns based on the number of columns in the matrix
+        var columns = matrix[0].length;
+        matrixGrid.style.gridTemplateColumns = `repeat(${columns}, 100px)`;
+
+        // Create and append cells for each value in the matrix
+        matrix.forEach((row) => {
+          row.forEach((value) => {
+            var input = document.createElement("input");
+            input.className = "resultbox";
+            input.value = value;
+            input.readOnly = true; // Make input read-only
+            matrixGrid.appendChild(input);
+          });
+        });
+
+        // Append the new matrix grid to the result container
+        resultContainer.appendChild(matrixGrid);
+      }
+    </script>
+    <script>
+      function logMatrixValues(textareaId, gridId) {
+        const textarea = document.getElementById(textareaId);
+        const grid = document.getElementById(gridId);
+        if (!textarea.classList.contains("hidden")) {
+          console.log(textarea.value);
+          return textarea.value;
+        } else {
+          const inputs = document.querySelectorAll(`#${gridId} .box`);
+          const matrix = [];
+          // Collect values from input fields
+          for (let i = 0; i < inputs.length; i++) {
+            const row = Math.floor(i / matrixSize1);
+            if (!matrix[row]) {
+              matrix[row] = [];
+            }
+            matrix[row].push(inputs[i].value);
+          }
+          // Create matrix string with rows separated by newline
+          const matrixString = matrix.map((row) => row.join(" ")).join("\n");
+          console.log(matrixString);
+          return matrixString;
+        }
+      }
+      function insertMatrix(matrixString) {
+        var matrixGrid = document.getElementById("overlaymatrixGrid");
+        matrixGrid.innerHTML = ""; // Clear any existing content
+
+        var rows = matrixString.trim().split("\n");
+        var columns = rows[0].trim().split(/\s+/).length;
+
+        // Set grid template columns based on the number of columns
+        matrixGrid.style.gridTemplateColumns = `repeat(${columns}, 65px)`;
+
+        rows.forEach((row) => {
+          var values = row.trim().split(/\s+/);
+          values.forEach((value) => {
+            var input = document.createElement("input");
+            input.className = "box";
+            input.value = value;
+            input.readOnly = true; // Make input read-only
+            matrixGrid.appendChild(input);
+          });
+        });
+        // Show the grid
+        matrixGrid.classList.remove("hidden");
+      }
+      document
+        .getElementById("determinant1")
+        .addEventListener("click", function () {
+          const matrixString = logMatrixValues(
+            "matrixTextarea1",
+            "matrixGrid1"
+          );
+          const result = calculateDeterminant(matrixString);
+          document.getElementById("overlayheading").innerText = "Determinant";
+          toggleOverlay();
+          insertMatrix(matrixString);
+          if (typeof result === "string") {
+            document.getElementById("result").innerHTML = result;
+          } else {
+            determinantResult(result);
+          }
+        });
+      document
+        .getElementById("transpose1")
+        .addEventListener("click", function () {
+          const matrixString = logMatrixValues(
+            "matrixTextarea1",
+            "matrixGrid1"
+          );
+          const result = transposeMatrix(matrixString);
+          console.log(result);
+          document.getElementById("overlayheading").innerText = "Transpose";
+          toggleOverlay();
+          insertMatrix(matrixString);
+          printResultmatrix(result);
+        });
+
+      document
+        .getElementById("cofactor1")
+        .addEventListener("click", function () {
+          const matrixString = logMatrixValues(
+            "matrixTextarea1",
+            "matrixGrid1"
+          );
+          const cofactorMatrix = calculateCofactor(matrixString);
+          console.log(cofactorMatrix);
+          document.getElementById("overlayheading").innerText = "Cofactor";
+          toggleOverlay();
+          insertMatrix(matrixString);
+          if (typeof cofactorMatrix === "string") {
+            document.getElementById("result").innerHTML = cofactorMatrix; // Print the error message
+          } else {
+            const formattedcofactorMatrix = formatMatrix(cofactorMatrix);
+            printResultmatrix(formattedcofactorMatrix);
+          }
+        });
+
+      document
+        .getElementById("adjoint1")
+        .addEventListener("click", function () {
+          const matrixString = logMatrixValues(
+            "matrixTextarea1",
+            "matrixGrid1"
+          );
+          const adjointMatrix = calculateAdjoint(matrixString);
+          document.getElementById("overlayheading").innerText = "Adjoint";
+          toggleOverlay();
+          insertMatrix(matrixString);
+          const formattedAdjointString = formatMatrix(adjointMatrix);
+          printResultmatrix(formattedAdjointString);
+        });
+
+      document
+        .getElementById("inverse1")
+        .addEventListener("click", function () {
+          const matrixString = logMatrixValues(
+            "matrixTextarea1",
+            "matrixGrid1"
+          );
+          const inverseMatrix = calculateInverse(matrixString);
+          document.getElementById("overlayheading").innerText =
+            "Inverse Matrix";
+          toggleOverlay();
+          insertMatrix(matrixString);
+          if (typeof inverseMatrix === "string") {
+            document.getElementById("result").innerHTML = inverseMatrix; // Print the error message
+          } else {
+            const formattedinverseMatrix = formatMatrix(inverseMatrix);
+            printResultmatrix(formattedinverseMatrix);
+          }
+        });
+
+      document.getElementById("minor1").addEventListener("click", function () {
+        const matrixString = logMatrixValues("matrixTextarea1", "matrixGrid1");
+        const minorMatrix = calculateMinor(matrixString);
+        console.log(minorMatrix);
+        document.getElementById("overlayheading").innerText = "Minor Matrix";
+        toggleOverlay();
+        insertMatrix(matrixString);
+        if (typeof minorMatrix === "string") {
+          document.getElementById("result").innerHTML = minorMatrix;
+        } else {
+          const formattedminorMatrix = formatMatrix(minorMatrix);
+          printResultmatrix(formattedminorMatrix);
+        }
+      });
+
+      document
+        .getElementById("diagonalize1")
+        .addEventListener("click", function () {
+          const matrixString = logMatrixValues(
+            "matrixTextarea1",
+            "matrixGrid1"
+          );
+          const diagonal = diagonalizeMatrix(matrixString);
+          console.log(diagonal);
+          document.getElementById("overlayheading").innerText = "Diagonal";
+          toggleOverlay();
+          insertMatrix(matrixString);
+          if (typeof diagonal === "string") {
+            document.getElementById("result").innerHTML = diagonal; // Print the error message
+          } else {
+            const formatteddiagonalMatrix = formatMatrix(diagonal);
+            printResultmatrix(formatteddiagonalMatrix);
+          }
+        });
+
+      document.getElementById("trace1").addEventListener("click", function () {
+        const matrixString = logMatrixValues("matrixTextarea1", "matrixGrid1");
+        const trace = findTrace(matrixString);
+        console.log(trace);
+        document.getElementById("overlayheading").innerText = "Trace";
+        toggleOverlay();
+        insertMatrix(matrixString);
+        if (typeof trace === "string") {
+          document.getElementById("result").innerHTML = trace;
+        } else {
+          var trc = String(trace);
+          printResultmatrix(trc);
+        }
+      });
+      document.getElementById("ref1").addEventListener("click", function () {
+        const matrixString = logMatrixValues("matrixTextarea1", "matrixGrid1");
+        const refMatrix = rowEchelonForm(matrixString);
+        console.log(refMatrix);
+        document.getElementById("overlayheading").innerText =
+          "Row Echelon Form";
+        toggleOverlay();
+        insertMatrix(matrixString);
+        if (typeof refMatrix === "string") {
+          document.getElementById("result").innerHTML = refMatrix;
+        } else {
+          const formattedrefMatrix = formatMatrix(refMatrix);
+          printResultmatrix(formattedrefMatrix);
+        }
+      });
+      document
+        .getElementById("rankofmatrix1")
+        .addEventListener("click", function () {
+          const matrixString = logMatrixValues(
+            "matrixTextarea1",
+            "matrixGrid1"
+          );
+          const rankMatrix = rankOfMatrix(matrixString);
+          console.log("rankofmat", rankMatrix, typeof rankMatrix);
+          document.getElementById("overlayheading").innerText =
+            "Rank of Matrix";
+          toggleOverlay();
+          insertMatrix(matrixString);
+          if (typeof rankMatrix === "string") {
+            document.getElementById("result").innerHTML = rankMatrix; // Print the error message
+          } else {
+            const formattedrankMatrix = String(rankMatrix);
+            printResultmatrix(formattedrankMatrix);
+          }
+        });
+    </script>
+    <script>
+      document
+        .getElementById("determinant")
+        .addEventListener("click", function () {
+          const matrixString = logMatrixValues("matrixTextarea", "matrixGrid");
+          const result = calculateDeterminant(matrixString);
+          document.getElementById("overlayheading").innerText = "Determinant";
+          toggleOverlay();
+          insertMatrix(matrixString);
+          if (typeof result === "string") {
+            document.getElementById("result").innerHTML = result;
+          } else {
+            determinantResult(result);
+          }
+        });
+      document
+        .getElementById("transpose")
+        .addEventListener("click", function () {
+          const matrixString = logMatrixValues("matrixTextarea", "matrixGrid");
+          const result = transposeMatrix(matrixString);
+          console.log(result);
+          document.getElementById("overlayheading").innerText = "Transpose";
+          toggleOverlay();
+          insertMatrix(matrixString);
+          printResultmatrix(result);
+        });
+
+      document
+        .getElementById("cofactor")
+        .addEventListener("click", function () {
+          const matrixString = logMatrixValues("matrixTextarea", "matrixGrid");
+          const cofactorMatrix = calculateCofactor(matrixString);
+          console.log(cofactorMatrix);
+          document.getElementById("overlayheading").innerText = "Cofactor";
+          toggleOverlay();
+          insertMatrix(matrixString);
+          if (typeof cofactorMatrix === "string") {
+            document.getElementById("result").innerHTML = cofactorMatrix; // Print the error message
+          } else {
+            const formattedcofactorMatrix = formatMatrix(cofactorMatrix);
+            printResultmatrix(formattedcofactorMatrix);
+          }
+        });
+
+      document.getElementById("adjoint").addEventListener("click", function () {
+        const matrixString = logMatrixValues("matrixTextarea", "matrixGrid");
+        const adjointMatrix = calculateAdjoint(matrixString);
+        document.getElementById("overlayheading").innerText = "Adjoint";
+        toggleOverlay();
+        insertMatrix(matrixString);
+        const formattedAdjointString = formatMatrix(adjointMatrix);
+        printResultmatrix(formattedAdjointString);
+      });
+
+      document.getElementById("inverse").addEventListener("click", function () {
+        const matrixString = logMatrixValues("matrixTextarea", "matrixGrid");
+        const inverseMatrix = calculateInverse(matrixString);
+        document.getElementById("overlayheading").innerText = "Inverse Matrix";
+        toggleOverlay();
+        insertMatrix(matrixString);
+        if (typeof inverseMatrix === "string") {
+          document.getElementById("result").innerHTML = inverseMatrix; // Print the error message
+        } else {
+          const formattedinverseMatrix = formatMatrix(inverseMatrix);
+          printResultmatrix(formattedinverseMatrix);
+        }
+      });
+
+      document.getElementById("minor").addEventListener("click", function () {
+        const matrixString = logMatrixValues("matrixTextarea", "matrixGrid");
+        const minorMatrix = calculateMinor(matrixString);
+        console.log(minorMatrix);
+        document.getElementById("overlayheading").innerText = "Minor Matrix";
+        toggleOverlay();
+        insertMatrix(matrixString);
+        if (typeof minorMatrix === "string") {
+          document.getElementById("result").innerHTML = minorMatrix; // Print the error message
+        } else {
+          const formattedminorMatrix = formatMatrix(minorMatrix);
+          printResultmatrix(formattedminorMatrix);
+        }
+      });
+
+      document
+        .getElementById("diagonalize")
+        .addEventListener("click", function () {
+          const matrixString = logMatrixValues("matrixTextarea", "matrixGrid");
+          const diagonal = diagonalizeMatrix(matrixString);
+          console.log(diagonal);
+          document.getElementById("overlayheading").innerText = "Diagonal";
+          toggleOverlay();
+          insertMatrix(matrixString);
+          if (typeof diagonal === "string") {
+            document.getElementById("result").innerHTML = diagonal; // Print the error message
+          } else {
+            const formatteddiagonalMatrix = formatMatrix(diagonal);
+            printResultmatrix(formatteddiagonalMatrix);
+          }
+        });
+
+      document.getElementById("trace").addEventListener("click", function () {
+        const matrixString = logMatrixValues("matrixTextarea", "matrixGrid");
+        const trace = findTrace(matrixString);
+        console.log(trace);
+        document.getElementById("overlayheading").innerText = "Trace";
+        toggleOverlay();
+        insertMatrix(matrixString);
+        if (typeof trace === "string") {
+          document.getElementById("result").innerHTML = trace;
+        } else {
+          var trc = String(trace);
+          printResultmatrix(trc);
+        }
+      });
+
+      document.getElementById("ref").addEventListener("click", function () {
+        const matrixString = logMatrixValues("matrixTextarea", "matrixGrid");
+        const refMatrix = rowEchelonForm(matrixString);
+        console.log(refMatrix);
+        document.getElementById("overlayheading").innerText =
+          "Row Echelon Form";
+        toggleOverlay();
+        insertMatrix(matrixString);
+        if (typeof refMatrix === "string") {
+          document.getElementById("result").innerHTML = refMatrix;
+        } else {
+          const formattedrefMatrix = formatMatrix(refMatrix);
+          printResultmatrix(formattedrefMatrix);
+        }
+      });
+      document
+        .getElementById("rankofmatrix")
+        .addEventListener("click", function () {
+          const matrixString = logMatrixValues("matrixTextarea", "matrixGrid");
+          const rankMatrix = rankOfMatrix(matrixString);
+          console.log("rankofmat", rankMatrix, typeof rankMatrix);
+          document.getElementById("overlayheading").innerText =
+            "Rank of Matrix";
+          toggleOverlay();
+          insertMatrix(matrixString);
+          if (typeof rankMatrix === "string") {
+            document.getElementById("result").innerHTML = rankMatrix;
+          } else {
+            const formattedrankMatrix = String(rankMatrix);
+            printResultmatrix(formattedrankMatrix);
+          }
+        });
+    </script>
+    <script>
+      // Function to convert a 2D array of numbers into a Math.js matrix
+      function arrayToMatrix(array) {
+        return math.matrix(array);
+      }
+
+// Function to perform division of two matrices
+function matrixDivision(matrix1, matrix2) {
+  try {
+    // Check if matrix2 is invertible
+    const determinant = math.det(matrix2);
+    if (determinant === 0) {
+      return "Matrix2 is singular and does not have an inverse";
+    }
+
+    // Perform matrix multiplication of matrix1 with inverse of matrix2
+    const result = math.multiply(matrix1, math.inv(matrix2));
+
+    // Return the result as an array with elements rounded to 4 decimal places
+    return result
+      .toArray()
+      .map((row) => row.map((val) => parseFloat(val.toFixed(4))));
+  } catch (error) {
+    return `Error: ${error.message}`;
+  }
+}
+
+      // Function to perform multiplication of two matrices
+      function matrixMultiplication(matrix1, matrix2) {
+        try {
+          const result = math.multiply(matrix1, matrix2);
+          return result.toArray();
+        } catch (error) {
+          return `Error: ${error.message}`;
+        }
+      }
+      // Function to perform addition of two matrices
+      function matrixAddition(matrix1, matrix2) {
+        try {
+          const result = math.add(matrix1, matrix2);
+          return result.toArray();
+        } catch (error) {
+          return `Error: ${error.message}`;
+        }
+      }
+      // Function to perform subtraction of two matrices
+      function matrixSubtraction(matrix1, matrix2) {
+        try {
+          const result = math.subtract(matrix1, matrix2);
+          return result.toArray();
+        } catch (error) {
+          return `Error: ${error.message}`;
+        }
+      }
+    </script>
+    <script>
+      function insertTwoMatricesWithSymbol(
+        matrixString1,
+        matrixString2,
+        symbol
+      ) {
+        var overlayContainer = document.getElementById("overlaymatrixGrid");
+        overlayContainer.innerHTML = ""; // Clear any existing content
+
+        function createMatrixGrid(matrixString) {
+          var matrixGrid = document.createElement("div");
+          matrixGrid.className = "inputBoxes";
+
+          var rows = matrixString.trim().split("\n");
+          var columns = rows[0].trim().split(/\s+/).length;
+
+          // Set grid template columns based on the number of columns
+          matrixGrid.style.gridTemplateColumns = `repeat(${columns}, 65px)`;
+
+          rows.forEach((row) => {
+            var values = row.trim().split(/\s+/);
+            values.forEach((value) => {
+              var input = document.createElement("input");
+              input.className = "box";
+              input.value = value;
+              input.readOnly = true; // Make input read-only
+              matrixGrid.appendChild(input);
+            });
+          });
+
+          return matrixGrid;
+        }
+
+        // Create grids for the two matrices
+        var matrixGrid1 = createMatrixGrid(matrixString1);
+        var matrixGrid2 = createMatrixGrid(matrixString2);
+
+        // Create the symbol element
+        var symbolElement = document.createElement("div");
+        symbolElement.className = "symbol";
+        symbolElement.innerText = symbol;
+
+        // Create a container to hold the matrices and the symbol in flex-row direction
+        var flexContainer = document.createElement("div");
+        flexContainer.style.display = "flex";
+        flexContainer.style.alignItems = "center";
+        flexContainer.style.gap = "20px"; // Add some space between elements
+
+        // Append the matrices and symbol to the flex container
+        flexContainer.appendChild(matrixGrid1);
+        flexContainer.appendChild(symbolElement);
+        flexContainer.appendChild(matrixGrid2);
+
+        // Append the flex container to the overlay container
+        overlayContainer.appendChild(flexContainer);
+
+        // Show the container
+        overlayContainer.classList.remove("hidden");
+      }
+      document
+        .getElementById("division")
+        .addEventListener("click", function () {
+          const matrixString1 = logMatrixValues(
+            "matrixTextarea1",
+            "matrixGrid1"
+          );
+          const matrixString2 = logMatrixValues("matrixTextarea", "matrixGrid");
+
+          const matrix1 = arrayToMatrix(parseMatrixString(matrixString1));
+          const matrix2 = arrayToMatrix(parseMatrixString(matrixString2));
+          const result = matrixDivision(matrix1, matrix2);
+          document.getElementById("overlayheading").innerText =
+            "Matrix Division";
+          toggleOverlay();
+          if (typeof result === "string") {
+            document.getElementById("result").innerHTML = result;
+          } else {
+            const formattedMatrix = formatMatrix(result);
+            insertTwoMatricesWithSymbol(matrixString1, matrixString2, "/");
+            printResultmatrix(formattedMatrix);
+          }
+        });
+
+      document
+        .getElementById("multiplication")
+        .addEventListener("click", function () {
+          const matrixString1 = logMatrixValues(
+            "matrixTextarea1",
+            "matrixGrid1"
+          );
+          const matrixString2 = logMatrixValues("matrixTextarea", "matrixGrid");
+
+          const matrix1 = arrayToMatrix(parseMatrixString(matrixString1));
+          const matrix2 = arrayToMatrix(parseMatrixString(matrixString2));
+          const result = matrixMultiplication(matrix1, matrix2);
+          document.getElementById("overlayheading").innerText =
+            "Matrix Multiplication";
+          toggleOverlay();
+          if (typeof result === "string") {
+            document.getElementById("result").innerHTML = result;
+          } else {
+            const formattedMatrix = formatMatrix(result);
+            insertTwoMatricesWithSymbol(matrixString1, matrixString2, "*");
+            printResultmatrix(formattedMatrix);
+          }
+        });
+
+      document
+        .getElementById("addition")
+        .addEventListener("click", function () {
+          const matrixString1 = logMatrixValues(
+            "matrixTextarea1",
+            "matrixGrid1"
+          );
+          const matrixString2 = logMatrixValues("matrixTextarea", "matrixGrid");
+
+          const matrix1 = arrayToMatrix(parseMatrixString(matrixString1));
+          const matrix2 = arrayToMatrix(parseMatrixString(matrixString2));
+          const result = matrixAddition(matrix1, matrix2);
+          document.getElementById("overlayheading").innerText =
+            "Matrix Addition";
+          toggleOverlay();
+          if (typeof result === "string") {
+            document.getElementById("result").innerHTML = result; // Print the error message
+          } else {
+            const formattedMatrix = formatMatrix(result);
+            insertTwoMatricesWithSymbol(matrixString1, matrixString2, "+");
+            printResultmatrix(formattedMatrix);
+          }
+        });
+      document
+        .getElementById("substraction")
+        .addEventListener("click", function () {
+          const matrixString1 = logMatrixValues(
+            "matrixTextarea1",
+            "matrixGrid1"
+          );
+          const matrixString2 = logMatrixValues("matrixTextarea", "matrixGrid");
+
+          const matrix1 = arrayToMatrix(parseMatrixString(matrixString1));
+          const matrix2 = arrayToMatrix(parseMatrixString(matrixString2));
+          const result = matrixSubtraction(matrix1, matrix2);
+          document.getElementById("overlayheading").innerText =
+            "Matrix Substraction";
+          toggleOverlay();
+          if (typeof result === "string") {
+            document.getElementById("result").innerHTML = result;
+          } else {
+            insertTwoMatricesWithSymbol(matrixString1, matrixString2, "-");
+            const formattedMatrix = formatMatrix(result);
+            printResultmatrix(formattedMatrix);
+          }
+        });
+    </script>
+  </body>
+</html>

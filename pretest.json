@@ -1,0 +1,175 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "What is the Fourier Transform of the Dirac delta function?",
+      "answers": {
+        "a": "A sinc function.",
+        "b": "A Gaussian function.",
+        "c": "A constant function.",
+        "d": "An impulse in the frequency domain."
+      },
+      "explanations": {
+        "a": "Incorrect. A sinc function is the Fourier Transform of a rectangular pulse.",
+        "b": "Incorrect. A Gaussian function in the time domain transforms into another Gaussian.",
+        "c": "Correct! The Fourier Transform of the Dirac delta function δ(t) is a constant function across all frequencies.",
+        "d": "Incorrect."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the significance of the duality property in the Fourier Transform?",
+      "answers": {
+        "a": "It simplifies convolution calculations.",
+        "b": "It allows the Fourier Transform of a signal to be obtained from its inverse.",
+        "c": "It relates time-domain multiplication to frequency-domain convolution.",
+        "d": "It explains how energy is conserved in the transform."
+      },
+      "explanations": {
+        "a": "Incorrect. Convolution is simplified using the convolution property.",
+        "b": "Correct! Duality enables symmetry between time and frequency domains for transforms.",
+        "c": "Incorrect. This describes the convolution theorem, not duality.",
+        "d": "Incorrect. Energy conservation is related to Parseval's theorem."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What type of signal corresponds to a sinc function in the frequency domain?",
+      "answers": {
+        "a": "A Gaussian signal.",
+        "b": "A unit step signal.",
+        "c": "A rectangular pulse.",
+        "d": "A cosine wave."
+      },
+      "explanations": {
+        "a": "Incorrect. A Gaussian transforms into another Gaussian.",
+        "b": "Incorrect. The step function has a complex frequency domain representation.",
+        "c": "Correct! A rectangular pulse in time results in a sinc function in frequency.",
+        "d": "Incorrect. A cosine wave has delta functions at its positive and negative frequencies."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following best describes the Fourier Transform of a time-limited signal?",
+      "answers": {
+        "a": "A time-limited signal has a band-limited Fourier Transform.",
+        "b": "The Fourier Transform is always infinite in duration.",
+        "c": "The Fourier Transform has the same duration as the signal.",
+        "d": "The Fourier Transform is finite only for periodic signals."
+      },
+      "explanations": {
+        "a": "Incorrect. The Fourier Transform of a time-limited signal is not band-limited; it spreads over all frequencies.",
+        "b": "Correct! The Fourier Transform of a time-limited signal typically has infinite duration.",
+        "c": "Incorrect. Fourier Transforms do not have the same duration as the signal.",
+        "d": "Incorrect. Fourier Transforms apply to any signal, not just periodic ones."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What is the effect of multiplying a signal by a cosine wave in the time domain?",
+      "answers": {
+        "a": "It results in a band-pass filter effect.",
+        "b": "It shifts the signal's spectrum to a higher frequency.",
+        "c": "It convolves the signal with a sinc function in frequency.",
+        "d": "It reduces the signal's bandwidth."
+      },
+      "explanations": {
+        "a": "Incorrect. Modulation does not create a band-pass effect directly.",
+        "b": "Correct! Multiplying by a cosine modulates the signal, shifting its spectrum.",
+        "c": "Incorrect. This applies to sampling, not modulation.",
+        "d": "Incorrect. Modulation does not reduce bandwidth."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What happens in the frequency domain when you double the frequency of a sinusoidal signal?",
+      "answers": {
+        "a": "Its Fourier Transform shifts to the left.",
+        "b": "Its Fourier Transform shifts to higher frequencies.",
+        "c": "The signal's duration increases.",
+        "d": "The signal becomes band-limited."
+      },
+      "explanations": {
+        "a": "Incorrect. Increasing frequency shifts the spectrum to higher frequencies.",
+        "b": "Correct! Doubling the frequency moves the delta spikes in the Fourier domain farther apart.",
+        "c": "Incorrect. Doubling frequency doesn't affect time duration.",
+        "d": "Incorrect. It doesn’t make the signal more band-limited."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "If x1(t) and x2(t) have Fourier Transforms X1(ω) and X2(ω), what is the Fourier Transform of a*x1(t) + b*x2(t)?",
+      "answers": {
+        "a": "X1(ω) + X2(ω)",
+        "b": "a*X1(ω) + b*X2(ω)",
+        "c": "a*X2(ω) + b*X1(ω)",
+        "d": "a*b*X1(ω)*X2(ω)"
+      },
+      "explanations": {
+        "a": "Incorrect. Scaling factors are missing.",
+        "b": "Correct! Fourier Transform is linear: FT{a*x1 + b*x2} = a*X1 + b*X2.",
+        "c": "Incorrect. Coefficients are swapped incorrectly.",
+        "d": "Incorrect. Product occurs in time-domain multiplication, not linear combination."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What happens to the Fourier Transform of x(t) if the signal is multiplied by e^{jω0t} in time domain?",
+      "answers": {
+        "a": "The transform shifts by ω0 in frequency",
+        "b": "The transform scales by ω0",
+        "c": "The transform is inverted in frequency",
+        "d": "The transform remains unchanged"
+      },
+      "explanations": {
+        "a": "Correct! Multiplying by e^{jω0t} shifts the Fourier Transform by ω0.",
+        "b": "Incorrect. Scaling in frequency does not occur here.",
+        "c": "Incorrect. Inversion happens with time reversal, not complex exponential multiplication.",
+        "d": "Incorrect. Multiplication in time modifies the spectrum."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What happens in the frequency domain when two signals overlap in time?",
+      "answers": {
+        "a": "Their spectra multiply.",
+        "b": "Their spectra add.",
+        "c": "Their bandwidths compress.",
+        "d": "They cancel out each other."
+      },
+      "explanations": {
+        "a": "Incorrect. Multiplication in time corresponds to convolution in frequency, not overlap.",
+        "b": "Correct! Overlapping signals in time leads to addition of their frequency spectra.",
+        "c": "Incorrect. Bandwidth is not compressed simply by time-domain overlap.",
+        "d": "Incorrect. Cancellation depends on the phase, not just overlap."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What is the Fourier Transform of a unit step signal u(t) in angular frequency ω?",
+      "answers": {
+        "a": "1",
+        "b": "πδ(ω) + 1/(jω)",
+        "c": "sinc(ω)",
+        "d": "Another unit step function"
+      },
+      "explanations": {
+        "a": "Incorrect. A constant does not represent u(t) in frequency domain.",
+        "b": "Correct! In angular frequency domain, U(ω) = πδ(ω) + 1/(jω).",
+        "c": "Incorrect. sinc function comes from rectangular pulses, not step.",
+        "d": "Incorrect. Step in time does not map to step in frequency."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    }
+  ]
+}
