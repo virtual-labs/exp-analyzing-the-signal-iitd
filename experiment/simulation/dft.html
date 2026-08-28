@@ -866,6 +866,23 @@ switch (selectedMasterInput) {
 // Renders x/y data as a discrete-time "stem" plot (marker + vertical line to zero
 // for every sample) instead of a continuous line, since DFT/DTFT deals with
 // discrete-time signals and discrete-frequency spectra, not continuous ones.
+// Builds Plotly tickvals/ticktext so a radian frequency axis (omega = 2*pi*k/N)
+// also displays the underlying bin index k at each tick — satisfies the
+// "x-axis should show bin indices" request while keeping the correct
+// radian-domain values and spacing underneath.
+function binIndexTicks(freqAxis, halfN, maxTicks) {
+    maxTicks = maxTicks || 12;
+    const N = freqAxis.length;
+    const step = Math.max(1, Math.ceil(N / maxTicks));
+    const tickvals = [];
+    const ticktext = [];
+    for (let i = 0; i < N; i += step) {
+        tickvals.push(freqAxis[i]);
+        ticktext.push(String(i - halfN));
+    }
+    return { tickvals: tickvals, ticktext: ticktext };
+}
+
 function discreteStemTraces(x, y, color, name) {
     const stems = [];
     for (let i = 0; i < x.length; i++) {
@@ -1276,7 +1293,13 @@ let factor = Math.floor(
 
         const layout = {
             title: "Fourier Magnitude Spectrum",
-            xaxis: { title: "Frequency (radians)", range: [-Math.PI, Math.PI] },
+            xaxis: {
+                title: "Frequency (radians) — labels show bin index k",
+                range: [-Math.PI, Math.PI],
+                tickmode: 'array',
+                tickvals: nonZeroIndices.map(i => freqAxis[i]),
+                ticktext: nonZeroIndices.map(i => String(i - halfN))
+            },
             yaxis: { title: "Magnitude" },
             showlegend: false
         };
@@ -1294,9 +1317,16 @@ let factor = Math.floor(
     // is a finite set of N discrete bins, not a continuous curve).
     const traces = discreteStemTraces(freqAxis, magnitudeClean, 'rgba(17, 97, 230, 0.86)', 'Magnitude Spectrum');
 
+    const magTicks = binIndexTicks(freqAxis, halfN);
     const layout = {
         title: "Fourier Magnitude Spectrum",
-        xaxis: { title: "Frequency (radians)", range: [-Math.PI, Math.PI] },
+        xaxis: {
+            title: "Frequency (radians) — labels show bin index k",
+            range: [-Math.PI, Math.PI],
+            tickmode: 'array',
+            tickvals: magTicks.tickvals,
+            ticktext: magTicks.ticktext
+        },
         yaxis: { title: "Magnitude" }
     };
 
@@ -1460,9 +1490,16 @@ if (inputSelector1 === 'rectangular' || inputSelector2 === 'rectangular') {
             name: 'Phase'
         };
 
+        const phaseTicks = binIndexTicks(f, ly / 2);
 			Plotly.newPlot('phasePlot', [phaseData], { 
 				title: 'Phase Plot',
-				xaxis: { title: 'Frequency (radians)', range: [-Math.PI, Math.PI] },
+				xaxis: {
+					title: 'Frequency (radians) — labels show bin index k',
+					range: [-Math.PI, Math.PI],
+					tickmode: 'array',
+					tickvals: phaseTicks.tickvals,
+					ticktext: phaseTicks.ticktext
+				},
 				yaxis: { title: 'Phase (radians, x pi)' } 
 			}, {
 				showLink: false,              // Hides "Edit in Chart Studio" link
