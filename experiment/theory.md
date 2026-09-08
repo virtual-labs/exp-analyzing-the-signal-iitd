@@ -58,6 +58,31 @@ The Discrete-Time Fourier Transform (DTFT) is used to analyze discrete-time sign
 
 <br/>
 
+<h2>Discrete Fourier Transform (DFT)</h2>
+<p>
+The DTFT of a discrete-time signal is continuous in frequency, which makes it impossible to compute or store on a digital computer. The Discrete Fourier Transform (DFT) solves this by sampling the DTFT at \( N \) equally spaced points around the unit circle, giving a finite, computable, discrete-frequency representation. This is exactly what Simulation 3 in this experiment computes.
+</p>
+
+<h3>Notation of DFT</h3>
+<p>For a finite-length sequence \( x[n] \) of length \( N \) (i.e., \( n = 0, 1, \dots, N-1 \)), the \( N \)-point DFT is defined as:</p>
+<p>
+\( X[k] = \sum_{n=0}^{N-1} x[n] \, e^{-j\frac{2\pi}{N}kn}, \quad k = 0, 1, \dots, N-1 \)
+</p>
+
+<h3>Inverse DFT:</h3>
+<p>
+\( x[n] = \frac{1}{N}\sum_{k=0}^{N-1} X[k] \, e^{j\frac{2\pi}{N}kn} \)
+</p>
+
+<h3>Where:</h3>
+<ul>
+<li>\( N \) is the number of samples in the sequence, and also the number of frequency bins \( X[k] \) produced.</li>
+<li>The frequency bin \( k \) corresponds to the discrete angular frequency \( \omega_k = \frac{2\pi k}{N} \) radians/sample.</li>
+<li>Unlike the DTFT, both \( x[n] \) and \( X[k] \) are discrete and finite -- this is why DFT output is plotted as discrete bins (not a continuous curve), as shown in Simulation 3.</li>
+</ul>
+
+<br/>
+
 <h2>Properties of Continuous-Time Fourier Transform (CTFT)</h2>
 
 <li><h3>Linearity</h3></li>
@@ -202,8 +227,8 @@ The Discrete-Time Fourier Transform (DTFT) is used to analyze discrete-time sign
     </p>
     <p>Thus Fourier transform of a delta/impulse is a constant equal to 1, independent of frequency:</p>
     <p>\( \mathcal{F}\{\delta(t)\} = 1 \)</p>
-    <p><img src="1738659393_fourier-transform/1738659393_fourier-transform-20.png" width="490" height="160" alt="Dirac Delta Function" /></p>
-    <strong>Fig 1: Dirac Delta Function</strong>
+    <p><img src="1738659393_fourier-transform/1738659393_fourier-transform-20.png" width="490" height="160" alt="Unit impulse in continuous time" /></p>
+    <strong>Fig 1: Unit impulse in continuous time</strong>
     <p><img src="NewImages/Delta.png" width="398" height="149" alt="Fourier Transform of a Delta Function" /></p>
     <strong>Fig 2: Fourier Transform of a Delta Function</strong>
   </li>
