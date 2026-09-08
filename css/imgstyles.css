@@ -1,0 +1,6 @@
+img {
+  display: inline;
+  vertical-align: right; /* Aligns the image with the text */
+  width: auto; /* Adjust as needed */
+  height: auto; /* Maintains aspect ratio */
+}

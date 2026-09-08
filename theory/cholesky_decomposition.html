@@ -1,0 +1,672 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Virtual Labs</title>
+    <link rel="stylesheet" href="../css/vlabs-style.css" />
+    <link rel="shortcut icon" href="../images/favicon.ico" />
+    <style>
+      table.matrix {
+        border-collapse: collapse;
+        margin: 10px;
+      }
+      table.matrix td {
+        border: 1px solid black;
+        padding: 5px;
+        text-align: center;
+      }
+      .det-container {
+        display: inline-block;
+        border: none;
+        margin: 20px;
+        font-size: 1.5em;
+      }
+      .det {
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+        border-collapse: collapse;
+      }
+      .det td {
+        padding: 5px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="border-b-orange-500 border-b-8">
+      <nav class="flex justify-between">
+        <button class="px-4 py-1 rounded-r-md border-r" onclick="showModal()">
+          <img class="w-[30px] h-[30px]" src="../images/menu.png" />
+        </button>
+        <div class="flex justify-center">
+          <a href="https://vlab.co.in" class="navbar-brand">
+            <img
+              src="../images/vlabs-color-small-moe.jpg"
+              alt="vlabs logo"
+              class="mx-4 px-4 max-md:w-[118px] max-md:h-[64px] py-2"
+            />
+          </a>
+        </div>
+        <div id="headerNavbar" class="flex items-center ml-auto max-md:hidden">
+          <ul
+            class="flex text-center text-[#2c98cd]"
+            style="font-family: Raleway, sans-serif"
+          >
+            <li class="px-2 m-1">
+              <a
+                class="mx-4 px-4 py-2 hover:bg-[#99cc3e] hover:underline hover:text-white rounded-lg"
+                href="https://vlab.co.in"
+                >HOME</a
+              >
+            </li>
+            <li class="px-2 m-1">
+              <a
+                class="mx-4 px-4 py-2 hover:bg-[#99cc3e] hover:underline hover:text-white rounded-lg"
+                href="https://vlab.co.in/participating-institutes"
+                >PARTNERS</a
+              >
+            </li>
+            <li class="px-2 m-1">
+              <a
+                class="mx-4 px-4 py-2 hover:bg-[#99cc3e] hover:underline hover:text-white rounded-lg"
+                href="https://vlab.co.in/contact-us"
+                >CONTACT</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- overlaynavbar -->
+      <div
+        class="overlaycontainer w-[100%] h-[100vh] bg-[#00000080] fixed top-[0%] -z-50 opacity-0"
+      ></div>
+      <div
+        class="overlaysignupform ease-in-out duration-100 fixed -top-[150%] left-[50%] -translate-x-1/2 z-50"
+      >
+        <div class="flex justify-center items-center px-4 h-[100vh] w-[100vw]">
+          <div
+            class="relative bg-white border border-solid border-[#00000033] rounded-md w-[498px] flex flex-col overflow-y-auto"
+          >
+            <div class="p-4 flex justify-between items-center border-b">
+              <div class="w-[87px] h-[50px] flex justify-center items-center">
+                <a href="https://vlab.co.in">
+                  <img
+                    src="../images/vlabs-color-small-moe.jpg"
+                    alt="vlabs logo"
+                    class="w-[71px] h-[40px]"
+                  />
+                </a>
+              </div>
+              <button class="w-[24px] h-[24px]" onclick="closeModal()">
+                <img src="../images/close.png" />
+              </button>
+            </div>
+            <div
+              class="p-4 flex flex-col text-[19.2px] font-bold text-[#3e6389]"
+            >
+              <div class="flex justify-center">
+                <a
+                  href="../index.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Aim
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../theory.html"
+                  class="p-2 text-[#FF6600] hover:underline"
+                >
+                  Theory
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../pretest.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Pretest
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../procedure.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Procedure
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../simulation.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Simulation
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../posttest.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Posttest
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../references.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  References
+                </a>
+              </div>
+              <div class="flex justify-center">
+                <a
+                  href="../feedback.html"
+                  class="p-2 hover:text-[#343a40] hover:underline"
+                >
+                  Feedback
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- sidebar and body -->
+    <div class="flex min-h-[380px]">
+      <div class="maincontent px-8 pb-6 flex-1">
+        <div
+          class="w-full text-[19.2px] text-[#313636]"
+          style="font-family: Raleway, sans-serif"
+        >
+          <h2
+            class="text-center pt-6 border-b pb-2 mb-2 text-[#2C99CE] text-[32px]"
+          >
+            Cholesky Decomposition
+          </h2>
+          <h3 class="text-[24px] font-semibold text-black">Procedures</h3>
+          <p>
+            <span class="font-semibold">1. </span>Choose an n X n matrix
+            <br />
+            <span class="font-semibold">2. </span>The chosen matrix should be
+            symmetric.
+            <br />
+          </p>
+          <div class="flex items-center pl-6">
+            Let’s assume, A=
+            <table class="matrix">
+              <tr>
+                <td>a<sub>1</sub></td>
+                <td>a<sub>2</sub></td>
+                <td>a<sub>3</sub></td>
+              </tr>
+              <tr>
+                <td>a<sub>2</sub></td>
+                <td>a<sub>4</sub></td>
+                <td>a<sub>5</sub></td>
+              </tr>
+              <tr>
+                <td>a<sub>3</sub></td>
+                <td>a<sub>5</sub></td>
+                <td>a<sub>6</sub></td>
+              </tr>
+            </table>
+          </div>
+          <p class="pl-6">
+            a matrix A is symmetric if,
+            <br />
+            (a) A is a square matrix
+            <br />
+            (b) and A = A<sup>T</sup>
+          </p>
+          <p>
+            <span class="font-semibold">3. </span>The chosen matrix should be
+            positive definite as well. a matrix A is positive definite if
+            determinants of all upper-left sub-matrices are positive or,
+          </p>
+          <div class="flex items-center pl-6">
+            <div class="det-container">
+              <table class="det">
+                <tr>
+                  <td>a<sub>1</sub></td>
+                </tr>
+              </table>
+            </div>
+            > 0
+          </div>
+          <div class="flex items-center pl-6">
+            <div class="det-container">
+              <table class="det">
+                <tr>
+                  <td>a<sub>1</sub></td>
+                  <td>a<sub>2</sub></td>
+                </tr>
+                <tr>
+                  <td>a<sub>2</sub></td>
+                  <td>a<sub>4</sub></td>
+                </tr>
+              </table>
+            </div>
+            > 0
+          </div>
+          <div class="flex items-center pl-6">
+            <div class="det-container">
+              <table class="det">
+                <tr>
+                  <td>a<sub>1</sub></td>
+                  <td>a<sub>2</sub></td>
+                  <td>a<sub>3</sub></td>
+                </tr>
+                <tr>
+                  <td>a<sub>2</sub></td>
+                  <td>a<sub>4</sub></td>
+                  <td>a<sub>5</sub></td>
+                </tr>
+                <tr>
+                  <td>a<sub>3</sub></td>
+                  <td>a<sub>5</sub></td>
+                  <td>a<sub>6</sub></td>
+                </tr>
+              </table>
+            </div>
+            > 0
+          </div>
+          <p>
+            <span class="font-semibold">4. </span>Every symmetric positive
+            definite matrix A can be decomposed into a product of a unique lower
+            triangular matrix L and its transpose. <br />
+          </p>
+          <p class="text-center font-bold">A = L*L<sup>T</sup></p>
+          <p>
+            <span class="font-semibold">5. </span>There is a clear-cut formula
+            to find the elements of matrix <b>L</b><br />
+          </p>
+          <div class="flex justify-center">
+            <img
+              src="../images/theory/cholskyimg1.png"
+              alt="cholsky_decomposition_image_1"
+              class="w-48 h-44"
+            />
+          </div>
+          <p>
+            Where, for example, l<sub>ki</sub> denotes the matrix <b>L</b>’s
+            entry/element in k<sub>th</sub>
+            row and ith column.
+            <br />
+            <br />
+            l<sub>kk</sub> denotes the main diagonal elements of matrix
+            <b>L</b> <br /><br />
+          </p>
+          <p>
+            <span class="font-semibold">Example:</span>
+          </p>
+          <div class="flex items-center pl-6">
+            Given matrix, A=
+            <table class="matrix">
+              <tr>
+                <td>4</td>
+                <td>2</td>
+                <td>14</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>17</td>
+                <td>-5</td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td>-5</td>
+                <td>83</td>
+              </tr>
+            </table>
+          </div>
+          <p>
+            The matrix A is symmetric as A = AT <br />
+            <br />
+            Now, we’ll check given matrix A is positive definite or not.
+          </p>
+          <div class="flex items-center pl-3">
+            <div class="det-container">
+              <table class="det">
+                <tr>
+                  <td>4</td>
+                </tr>
+              </table>
+            </div>
+            > 0
+          </div>
+          <div class="flex items-center pl-3">
+            <div class="det-container">
+              <table class="det">
+                <tr>
+                  <td>4</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>17</td>
+                </tr>
+              </table>
+            </div>
+            = 68 - 4 = 64 > 0
+          </div>
+          <div class="flex items-center pl-3">
+            <div class="det-container">
+              <table class="det">
+                <tr>
+                  <td>4</td>
+                  <td>2</td>
+                  <td>14</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>17</td>
+                  <td>-5</td>
+                </tr>
+                <tr>
+                  <td>14</td>
+                  <td>-5</td>
+                  <td>83</td>
+                </tr>
+              </table>
+            </div>
+            =1600 > 0
+          </div>
+          <p>
+            So, the matrix is positive definite as well. <br /><br />
+            Any symmetric positive definite matrix A can be decomposed into a
+            product of a unique lower triangular matrix L and its transpose or,
+          </p>
+          <p class="text-center font-bold">A = L*L<sup>T</sup></p>
+          <p>Formula ,</p>
+          <div>
+            <img
+              src="../images/theory/cholskyimg1.png"
+              alt="cholsky_decomposition_image_1"
+              class="w-48 h-44"
+            />
+          </div>
+          <p>
+            l<sub>11</sub> = √4 = 2 <br />
+            l<sub>21</sub> = a<sub>21</sub> / l<sub>11</sub> = 2/2 =1 <br />
+            l<sub>22</sub> = √( a<sub>22</sub> – (l<sub>21</sub>)2) = √(17 – 1)
+            = 4 <br />
+            l<sub>31</sub> = a<sub>31</sub> / l<sub>11</sub> = 14/2 = 7 <br />
+            l<sub>32</sub> = (a<sub>32</sub> – l<sub>31</sub> * l<sub>21</sub>)
+            / l<sub>22</sub> = (-5 – (7)*(1)) / 4 = -3 <br />
+            l<sub>33</sub> = √( a<sub>33</sub> – (l<sub>31</sub>)2 -
+            (l<sub>32</sub>)2) = √(83 – (7)2 - (-3)2) = 5 <br />
+          </p>
+          <p>
+            Now, from the solutions of the aforementioned equations we obtain
+            the matrix <b>L</b>.
+          </p>
+          <div class="flex items-center pl-6">
+            <b>L</b>=
+            <table class="matrix">
+              <tr>
+                <td>l<sub>11</sub></td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>l<sub>21</sub></td>
+                <td>l<sub>22</sub></td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>l<sub>31</sub></td>
+                <td>l<sub>32</sub></td>
+                <td>l<sub>33</sub></td>
+              </tr>
+            </table>
+            =
+            <table class="matrix">
+              <tr>
+                <td>2</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>4</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>-3</td>
+                <td>5</td>
+              </tr>
+            </table>
+          </div>
+          <div class="flex items-center pl-6">
+            And <b> L*L<sup>T</sup></b
+            >=
+            <table class="matrix">
+              <tr>
+                <td>2</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>4</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>-3</td>
+                <td>5</td>
+              </tr>
+            </table>
+            *
+            <table class="matrix">
+              <tr>
+                <td>2</td>
+                <td>1</td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td>0</td>
+                <td>4</td>
+                <td>-3</td>
+              </tr>
+              <tr>
+                <td>0</td>
+                <td>0</td>
+                <td>5</td>
+              </tr>
+            </table>
+            =
+            <table class="matrix">
+              <tr>
+                <td>4</td>
+                <td>2</td>
+                <td>14</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>17</td>
+                <td>-5</td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td>-5</td>
+                <td>83</td>
+              </tr>
+            </table>
+            = A
+          </div>
+          <h3 class="text-[24px] font-semibold text-black">
+            Some more discussion about Cholesky decomposition (Extra)
+          </h3>
+          <p>a square matrix A can be factorized as</p>
+          <br />
+          <p>
+            <b>A = L*U</b> <br />
+            Where <b>L</b> is a lower triangular matrix and U is an upper
+            triangular matrix. We’ve already discussed in detail about ‘LU
+            decomposition’ <br />
+            For a symmetric and positive definite matrix <br />
+            U = L <sup>T</sup> <br />
+            So, in this case, <b>A = L*U = L * L<sup>T</sup></b> <br />
+            For a system of linear equations <br />
+            Ax = b <br />
+            Or, L* L<sup>T</sup> * x = b <br />
+            Let, L<sup>T</sup> * x = y <br />
+            Then, L * y = b <br />
+            Now, one need to find the value of <b>L</b> by calculating <br />
+            <b>L * L<sup>T</sup> = A</b>
+          </p>
+          <div class="flex items-center pl-6">
+            Or,
+            <table class="det">
+              <tr>
+                <td>l<sub>11</sub></td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>l<sub>21</sub></td>
+                <td>l<sub>22</sub></td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>l<sub>31</sub></td>
+                <td>l<sub>32</sub></td>
+                <td>l<sub>33</sub></td>
+              </tr>
+            </table>
+            *
+            <table class="det">
+              <tr>
+                <td>l<sub>11</sub></td>
+                <td>l<sub>21</sub></td>
+                <td>l<sub>31</sub></td>
+              </tr>
+              <tr>
+                <td>0</td>
+                <td>l<sub>22</sub></td>
+                <td>l<sub>23</sub></td>
+              </tr>
+              <tr>
+                <td>0</td>
+                <td>0</td>
+                <td>l<sub>33</sub></td>
+              </tr>
+            </table>
+            =
+            <table class="det">
+              <tr>
+                <td>4</td>
+                <td>2</td>
+                <td>14</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>17</td>
+                <td>-5</td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td>-5</td>
+                <td>83</td>
+              </tr>
+            </table>
+          </div>
+          <p>
+            See above to find the solution of matrix L. This is already
+            discussed as a formula. <br />
+            Once, one has solved y from <b>L*y = b </b> <br />
+            Then solve x from <b>‘LT * x = y’</b> <br />
+            <br />
+            In the above, we’ve discussed the whole procedure of finding matrix
+            <b>L</b> from a given matrix.
+          </p>
+          <!--  -->
+        </div>
+      </div>
+    </div>
+    <footer class="">
+      <div class="flex max-sm:flex-col text-white bg-[#111111] px-6">
+        <div class="flex-1 flex flex-col px-[15px]">
+          <span class="font-weight-bold vlabs-footer-sect-name pb-2 mb-3"
+            >Community Links</span
+          >
+          <a href="https://www.sakshat.ac.in/" class="text-light"
+            >Sakshat Portal</a
+          >
+          <a href="http://outreach.vlabs.ac.in/" class="text-light"
+            >Outreach Portal</a
+          >
+          <a href="https://vlab.co.in/faq" class="text-light"
+            >FAQ: Virtual Labs</a
+          >
+        </div>
+        <div class="flex-1 flex flex-col px-[15px]">
+          <span class="font-bold vlabs-footer-sect-name pb-2 mb-3"
+            >Contact Us</span
+          >
+          <span> Phone: General Information: 011-26582050 </span>
+          <span> Email: support@vlabs.ac.in </span>
+        </div>
+        <div class="flex-1 flex flex-col px-[15px]">
+          <span class="font-bold vlabs-footer-sect-name pb-2 mb-3"
+            >Follow Us</span
+          >
+          <div class="flex pb-2">
+            <a
+              class="p-2 mt-1 mr-2 rounded-full flex justify-center items-center"
+              style="background: #55acee"
+              href="https://twitter.com/TheVirtualLabs"
+            >
+              <img src="../images/twitter.png" alt="twitter" />
+            </a>
+            <a
+              class="p-2 mt-1 mr-2 flex rounded-full justify-center items-center"
+              style="background: #3b5998"
+              href="https://www.facebook.com/Virtual-Labs-IIT-Delhi-301510159983871/"
+            >
+              <img src="../images/facebook.png" alt="facebook" />
+            </a>
+            <a
+              class="p-2 mt-1 mr-2 flex rounded-full justify-center items-center"
+              style="background: #e52d27"
+              href="https://www.youtube.com/watch?v=asxRaOgk6a0"
+            >
+              <img src="../images/youtube.png" alt="youtube" />
+            </a>
+            <a
+              class="p-2 mt-1 mr-2 flex rounded-full justify-center items-center"
+              style="background: #2867b2"
+              href="https://in.linkedin.com/in/virtual-labs-008ba9136"
+            >
+              <img src="../images/linkedin.png" alt="linkedin" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="m-0 py-2 text-center text-white text-sm max-sm:text-[12px]"
+        style="font-family: 'Open Sans', sans-serif; background: #212121"
+      >
+        <a
+          class="text-[#007bff] hover:text-[#3273dc] hover:underline font-bold"
+          href="https://www.gnu.org/licenses/agpl-3.0.en.html"
+        >
+          AGPL 3.0
+        </a>
+        &nbsp;&amp;&nbsp;
+        <a
+          class="text-[#007bff] hover:text-[#3273dc] hover:underline font-bold"
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        >
+          Creative Commons (CC BY-NC-SA 4.0)
+        </a>
+      </div>
+    </footer>
+    <script src="../js/toggleSidebar.js"></script>
+  </body>
+</html>
